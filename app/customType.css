@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'archiaregular';
+  src: url('./type/archia-regular-webfont.eot');
+  src: url('./type/archia-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('./type/archia-regular-webfont.woff2') format('woff2'),
+       url('./type/archia-regular-webfont.woff') format('woff'),
+       url('./type/archia-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'jetbrains-medium';
+  src: url('./type/JetBrainsMono-Medium.eot');
+  src: url('./type/JetBrainsMono-Medium.eot?#iefix') format('embedded-opentype'),
+       url('./type/JetBrainsMono-Medium.woff2') format('woff2'),
+       url('./type/JetBrainsMono-Medium.woff') format('woff');
+  font-weight: medium;
+  font-style: medium;
+}
