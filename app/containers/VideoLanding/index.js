@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Player, ControlBar } from 'video-react';
+import PropTypes from 'prop-types';
+import {
+  Player,
+  ControlBar,
+  BigPlayButton,
+  VolumeMenuButton,
+} from 'video-react';
 
 import H1 from 'components/H1';
 
@@ -19,7 +25,7 @@ import backgroundVideo11 from 'video/background-video-11.mp4';
 
 import Overlay from './Overlay';
 
-export default function FeaturePage() {
+const VideoLanding = ({ width, height }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
   const videos = [
     backgroundVideo1,
@@ -37,39 +43,53 @@ export default function FeaturePage() {
 
   useEffect(() => {
     setBackgroundVideo(videos[Math.floor(Math.random() * videos.length)]);
-  }, []);
+  });
 
   return (
     <React.Fragment>
-      <Player
-        height="100%"
-        width="100%"
-        playsInline
-        poster="/assets/poster.png"
-        src={backgroundVideo}
-        autoPlay
-        loop
-      >
-        <ControlBar disableCompletely />
-      </Player>
-      <Flex
-        width="100%"
-        height="100%"
-        flexDirection="column"
-        alignItems="center"
-        alignContent="center"
-        justifyContent="center"
-        sx={{
-          position: 'absolute',
-          top: '0',
-          zIndex: '2',
+      <div
+        style={{
+          maxHeight: '100vh',
+          maxWidth: '100vw',
         }}
       >
-        <H1>
-          The centre of <br /> applied chaos_
-        </H1>
-      </Flex>
-      <Overlay />
+        <Player
+          height={height}
+          width={width}
+          playsInline
+          poster="/assets/poster.png"
+          src={backgroundVideo}
+          autoPlay
+          loop
+        >
+          <ControlBar disableCompletely />
+          <BigPlayButton disabled />
+          <VolumeMenuButton disabled />
+        </Player>
+        <Flex
+          height="100%"
+          flexDirection="column"
+          justifyContent="center"
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: width * 0.2167,
+            zIndex: '2',
+          }}
+        >
+          <H1>
+            The centre of <br /> applied chaos_
+          </H1>
+        </Flex>
+        <Overlay />
+      </div>
     </React.Fragment>
   );
-}
+};
+
+VideoLanding.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
+
+export default VideoLanding;

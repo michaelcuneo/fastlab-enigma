@@ -15,21 +15,59 @@ function Footer() {
         alignContent="center"
         justifyContent="center"
         flexDirection="column"
-        px={['6.6%']}
+        px={['6.88%']}
       >
         <FastlabIcon />
         <Text
           py={3}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '11pt' }}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '8pt' }}
         >
           <FormattedMessage {...messages.licenseMessage} />
+        </Text>
+      </Flex>
+      <Flex alignItems="center" flexDirection="row">
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          Home
+        </Text>
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          About
+        </Text>
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          Projects
+        </Text>
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          Updates
+        </Text>
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          Programs
+        </Text>
+        <Text
+          px={4}
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
+        >
+          Contact
         </Text>
       </Flex>
       <Flex
         alignContent="center"
         justifyContent="center"
         flexDirection="column"
-        px={['6.6%']}
+        px={['6.88%']}
       >
         <UonIcon />
       </Flex>

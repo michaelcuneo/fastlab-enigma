@@ -11,19 +11,9 @@ export const HeaderLink = styled(Link)`
   cursor: pointer;
   outline: 0;
   font-family: 'archiaregular', sans-serif;
-  font-size: 50pt;
-  padding: 0px 0px 0px 20px;
+  font-size: 40pt;
+  padding: 0px 0px 30px 35px;
   color: white;
-
-  &:hover {
-    background: #ec184a;
-    height: 256px;
-  }
-
-  &:active {
-    background: #41addd;
-    color: #fff;
-  }
 `;
 
 export const SmallLink = styled(Link)`
@@ -36,15 +26,6 @@ export const SmallLink = styled(Link)`
   outline: 0;
   font-family: 'archiaregular', sans-serif;
   font-size: 24pt;
-  padding: 0px 0px 0px 20px;
+  padding: 0px 0px 0px 35px;
   color: white;
-
-  &:hover {
-    background: #ec184a;
-  }
-
-  &:active {
-    background: #41addd;
-    color: #fff;
-  }
 `;

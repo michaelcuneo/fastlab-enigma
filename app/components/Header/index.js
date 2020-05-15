@@ -6,7 +6,7 @@ import IconNav from 'images/icon-nav-trigger.svg';
 import CloseNav from 'images/icon-close.svg';
 import FastlabIcon from './FastlabIcon';
 
-import LinksDiv from './LinksDiv';
+import { LinksDiv } from './LinksDiv';
 
 import NavBar from './NavBar';
 import { HeaderLink, SmallLink } from './HeaderLink';
