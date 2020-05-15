@@ -10,6 +10,6 @@ const StyledIcon = styled(NormalImg)`
   height: 69px;
 `;
 
-const UonIcon = () => <StyledIcon src={uonWhite} />;
+const UonIcon = () => <StyledIcon alt="Uon-Icon" src={uonWhite} />;
 
 export default UonIcon;

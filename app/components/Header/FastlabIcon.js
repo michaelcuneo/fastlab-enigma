@@ -14,6 +14,6 @@ const StyledIcon = styled(NormalImg)`
   z-index: 2;
 `;
 
-const FastlabIcon = () => <StyledIcon src={fastlabIcon} />;
+const FastlabIcon = () => <StyledIcon alt="Fastlab-Icon" src={fastlabIcon} />;
 
 export default FastlabIcon;

@@ -10,6 +10,6 @@ const StyledIcon = styled(NormalImg)`
   height: 32px;
 `;
 
-const FastlabIcon = () => <StyledIcon src={fastlabIcon} />;
+const FastlabIcon = () => <StyledIcon alt="Fastlab-Icon" src={fastlabIcon} />;
 
 export default FastlabIcon;

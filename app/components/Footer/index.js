@@ -2,7 +2,7 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { Flex, Text } from 'rebass';
-import LocaleToggle from 'containers/LocaleToggle';
+// import LocaleToggle from 'containers/LocaleToggle';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
 import Wrapper from './Wrapper';

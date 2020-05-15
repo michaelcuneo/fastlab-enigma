@@ -8,6 +8,7 @@ const Wrapper = styled(Flex)`
   justify-content: space-between;
   background: #151417;
   color: #ffffff;
+  z-index: 2;
 `;
 
 export default Wrapper;

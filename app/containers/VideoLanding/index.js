@@ -42,8 +42,8 @@ export default function FeaturePage() {
   return (
     <React.Fragment>
       <Player
-        height="100vw"
-        width="100vw"
+        height="100%"
+        width="100%"
         playsInline
         poster="/assets/poster.png"
         src={backgroundVideo}
@@ -61,6 +61,7 @@ export default function FeaturePage() {
         justifyContent="center"
         sx={{
           position: 'absolute',
+          top: '0',
           zIndex: '2',
         }}
       >
