@@ -23,6 +23,8 @@ import backgroundVideo9 from 'video/background-video-09.mp4';
 import backgroundVideo10 from 'video/background-video-10.mp4';
 import backgroundVideo11 from 'video/background-video-11.mp4';
 
+import BackgroundImage from './BackgroundImage';
+
 import Overlay from './Overlay';
 
 const VideoLanding = ({ width, height }) => {
@@ -51,21 +53,26 @@ const VideoLanding = ({ width, height }) => {
         style={{
           maxHeight: '100vh',
           maxWidth: '100vw',
+          zIndex: 1,
         }}
       >
-        <Player
-          height={height}
-          width={width}
-          playsInline
-          poster="/assets/poster.png"
-          src={backgroundVideo}
-          autoPlay
-          loop
-        >
-          <ControlBar disableCompletely />
-          <BigPlayButton disabled />
-          <VolumeMenuButton disabled />
-        </Player>
+        {backgroundVideo ? (
+          <Player
+            height={height}
+            width={width}
+            playsInline
+            poster="/assets/poster.png"
+            src={backgroundVideo}
+            autoPlay
+            loop
+          >
+            <ControlBar disableCompletely />
+            <BigPlayButton disabled />
+            <VolumeMenuButton disabled />
+          </Player>
+        ) : (
+          <BackgroundImage />
+        )}
         <Flex
           height="100%"
           flexDirection="column"
@@ -74,11 +81,12 @@ const VideoLanding = ({ width, height }) => {
             position: 'absolute',
             top: 0,
             left: width * 0.2167,
-            zIndex: '2',
+            zIndex: '1',
           }}
         >
           <H1 height={height} width={width}>
-            The centre of <br /> applied chaos_
+            The centre of <br /> applied chaos
+            <span className="blink_me">_</span>
           </H1>
         </Flex>
         <Overlay />

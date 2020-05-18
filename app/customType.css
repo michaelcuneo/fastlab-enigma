@@ -18,3 +18,21 @@
   font-weight: medium;
   font-style: medium;
 }
+
+@font-face {
+  font-family: 'jetbrains-bold';
+  src: url('./type/JetBrainsMono-Bold.eot');
+  src: url('./type/JetBrainsMono-Bold.eot?#iefix') format('embedded-opentype'),
+       url('./type/JetBrainsMono-Bold.woff2') format('woff2'),
+       url('./type/JetBrainsMono-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: bold;
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
+}

@@ -38,7 +38,17 @@ const OverlayContainer = () => {
   };
 
   return width && height && grid1x && grid2x ? (
-    <Box style={{ position: 'absolute', top: 0, padding: 0, margin: 0 }}>
+    <Box
+      style={{
+        position: 'fixed',
+        top: 0,
+        bottom: 0,
+        padding: 0,
+        margin: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+      }}
+    >
       <svg id="overlay" width={width} height={height}>
         <line
           x1={grid1x}

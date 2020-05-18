@@ -1,0 +1,12 @@
+{
+  "trigger": true,
+  "modules": ["add-to-group"],
+  "parentResource": "fastlab",
+  "functionName": "fastlabPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": "[]",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "roleName": "fastlabPostConfirmation",
+  "skipEdit": true,
+  "resourceName": "fastlabPostConfirmation"
+}

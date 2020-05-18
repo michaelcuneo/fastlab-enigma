@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { bubble as Menu } from 'react-burger-menu';
 import { FormattedMessage } from 'react-intl';
 
@@ -13,6 +13,12 @@ import { HeaderLink, SmallLink } from './HeaderLink';
 import messages from './messages';
 
 function Header() {
+  const [menuOpened, setMenuOpened] = useState(false);
+
+  const closeMenu = () => setMenuOpened(false);
+
+  const handleStateChange = state => setMenuOpened(state.isOpen);
+
   const styles = {
     bmBurgerButton: {
       position: 'fixed',
@@ -64,6 +70,8 @@ function Header() {
       <Menu
         right
         width={599}
+        isOpen={menuOpened}
+        onStateChange={state => handleStateChange(state)}
         pageWrapId="page-wrap"
         outerContainerId="outer-container"
         customBurgerIcon={
@@ -94,25 +102,25 @@ function Header() {
           width="100%"
         />
         <LinksDiv>
-          <HeaderLink to="/">
+          <HeaderLink to="/" onClick={closeMenu}>
             <FormattedMessage {...messages.home} />
           </HeaderLink>
-          <HeaderLink to="/about">
+          <HeaderLink to="/about" onClick={closeMenu}>
             <FormattedMessage {...messages.about} />
           </HeaderLink>
-          <HeaderLink to="/projects">
+          <HeaderLink to="/projects" onClick={closeMenu}>
             <FormattedMessage {...messages.projects} />
           </HeaderLink>
-          <HeaderLink to="/updates">
+          <HeaderLink to="/updates" onClick={closeMenu}>
             <FormattedMessage {...messages.updates} />
           </HeaderLink>
-          <HeaderLink to="/programs">
+          <HeaderLink to="/programs" onClick={closeMenu}>
             <FormattedMessage {...messages.programs} />
           </HeaderLink>
-          <HeaderLink to="/contact">
+          <HeaderLink to="/contact" onClick={closeMenu}>
             <FormattedMessage {...messages.contact} />
           </HeaderLink>
-          <SmallLink to="/login">
+          <SmallLink to="/login" onClick={closeMenu}>
             <FormattedMessage {...messages.login} />
           </SmallLink>
         </LinksDiv>

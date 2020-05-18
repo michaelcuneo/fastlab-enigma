@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
-import UpdatesContainer from 'containers/UpdatesContainer';
-import PointsContainer from 'containers/PointsContainer';
 import VideoLanding from 'containers/VideoLanding';
+import PointsContainer from 'containers/PointsContainer';
+import ShowcaseContainer from 'containers/ShowcaseContainer';
+import UpdatesContainer from 'containers/UpdatesContainer';
 import OverlayContainer from 'containers/OverlayContainer';
 
 export function HomePage() {
@@ -25,6 +26,7 @@ export function HomePage() {
 
   return (
     <React.Fragment>
+      {/* div with id="page-wrap" is important for the burger menu */}
       <div id="page-wrap">
         <Helmet>
           <title>Home Page</title>
@@ -32,6 +34,7 @@ export function HomePage() {
         </Helmet>
         <VideoLanding width={width} height={height} />
         <PointsContainer width={width} height={height} />
+        <ShowcaseContainer width={width} height={height} />
         <UpdatesContainer width={width} height={height} />
         <OverlayContainer width={width} height={height} />
       </div>

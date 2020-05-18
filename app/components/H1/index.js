@@ -7,7 +7,7 @@ import { Text } from 'rebass';
 // Update the height in real time from Props, and calculate on the fly for responsive.
 
 // 100px high is 9.26% of 1080
-const H1 = ({ children, height, width }) => {
+const H1 = ({ children, width }) => {
   const [fontSize, setFontSize] = useState('100px');
 
   useEffect(() => {
@@ -35,7 +35,6 @@ const H1 = ({ children, height, width }) => {
 
 H1.propTypes = {
   children: PropTypes.node,
-  height: PropTypes.number,
   width: PropTypes.number,
 };
 

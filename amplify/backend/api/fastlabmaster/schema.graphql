@@ -1,0 +1,83 @@
+type Project @model {
+  id: ID!
+  date: AWSDateTime
+  title: String!
+  abstract: String!
+  details: String!
+  funding: String!
+  videoURL: String
+  categoryId: ID!
+  category: Category! @connection(name: "CategoryLink")
+  gallery: Gallery @connection(name: "ProjectGallery")
+  collaborators: [ProjectStaff]! @connection(name: "ProjectCollaborators")
+}
+
+type Post @model {
+  id: ID!
+  title: String!
+  data: String!
+  date: AWSDateTime
+  videoURL: String
+  gallery: Gallery @connection(name: "PostGallery")
+  staffID: Staff! @connection(name: "StaffPosts")
+}
+
+type Category @model {
+  id: ID!
+  label: String!
+  value: String!
+  description: String!
+  Project: Project @connection(name: "CategoryLink")
+}
+
+type Role @model {
+  id: ID!
+  label: String!
+  value: String!
+  description: String!
+  staff: [StaffRoles] @connection(name: "RoleLink")
+}
+
+type StaffRoles @model {
+  id: ID!
+  roleId: ID!
+  role: Role! @connection(name: "RoleLink")
+  staff: Staff! @connection(name: "StaffLink")
+}
+
+type ProjectStaff @model {
+  id: ID!
+  project: Project! @connection(name: "ProjectCollaborators")
+  staff: Staff! @connection(name: "StaffCollaborators")
+}
+
+type Staff @model {
+  id: ID!
+  name: String!
+  firstName: String!
+  lastName: String!
+  mugshot: String!
+  title: String!
+  bio: String!
+  email: String!
+  website: String!
+  cognitoID: ID
+  posts: [Post] @connection(name: "StaffPosts")
+  roles: [StaffRoles] @connection(name: "StaffLink")
+  projects: [ProjectStaff] @connection(name: "StaffCollaborators")
+}
+
+type Image @model {
+  id: ID!
+  key: String!
+  mime: String!
+  gallery: Gallery @connection(name: "ImageList")
+}
+
+type Gallery @model {
+  id: ID!
+  name: String!
+  project: Project @connection(name: "ProjectGallery")
+  post: Post @connection(name: "PostGallery")
+  images: [Image] @connection(name: "ImageList")
+}

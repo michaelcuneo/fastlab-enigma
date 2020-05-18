@@ -20,6 +20,10 @@ import 'sanitize.css/sanitize.css';
 // Import root app
 import App from 'containers/App';
 
+// Import AWS Authentication stuff.
+import Amplify, { Auth, I18n } from 'aws-amplify';
+import AuthManager from 'containers/AuthManager';
+
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
 
@@ -27,15 +31,39 @@ import LanguageProvider from 'containers/LanguageProvider';
 import '!file-loader?name=[name].[ext]!./images/favicon.ico';
 import 'file-loader?name=.htaccess!./.htaccess'; // eslint-disable-line import/extensions
 
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistStore } from 'redux-persist';
+import { setAutoFreeze } from 'immer';
+import { localForage } from 'localforage';
+
 import configureStore from './configureStore';
 
 // Import i18n messages
 import { translationMessages } from './i18n';
 
+// Import the AWS Configuration and configure.
+import awsExports from './aws-exports';
+
 // All my Custom CSS.
 import 'video-react/dist/video-react.css';
 import 'customType.css';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
+
+setAutoFreeze(false);
+
+I18n.setLanguage('en');
+const dict = {
+  en: {
+    'Phone Number': 'Mobile Phone Number',
+  },
+};
+
+I18n.putVocabularies(dict);
+
+Amplify.configure(awsExports);
+Auth.configure({
+  authenticationFlowType: 'USER_PASSWORD_AUTH',
+});
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -50,15 +78,27 @@ openSansObserver.load().then(() => {
 const initialState = {};
 const store = configureStore(initialState, history);
 const MOUNT_NODE = document.getElementById('app');
+let runtime = null;
+
+if (process.env.NODE_ENV === 'production') {
+  runtime = require('offline-plugin/runtime'); // eslint-disable-line global-require
+}
 
 const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
-      </LanguageProvider>
+      <PersistGate
+        loading={null}
+        persistor={persistStore(store, { storage: localForage })}
+      >
+        <LanguageProvider messages={messages}>
+          <ConnectedRouter history={history}>
+            <AuthManager>
+              <App runtime={runtime} />
+            </AuthManager>
+          </ConnectedRouter>
+        </LanguageProvider>
+      </PersistGate>
     </Provider>,
     MOUNT_NODE,
   );
@@ -91,11 +131,4 @@ if (!window.Intl) {
     });
 } else {
   render(translationMessages);
-}
-
-// Install ServiceWorker and AppCache in the end since
-// it's not most important operation and if main code fails,
-// we do not want it installed
-if (process.env.NODE_ENV === 'production') {
-  require('offline-plugin/runtime').install(); // eslint-disable-line global-require
 }
