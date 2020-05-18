@@ -21,5 +21,4 @@
 
 ## License
 
-This project is copyright under the MIT license, Copyright (c) 2019 Maximilian
-Stoiber. For more information see `LICENSE.md`.
+This project is copyright under a proprietary licence, Copyright (c) 2020 The University of Newcastle, Michael Cuneo, and Enigma. For more information see `LICENSE.md`.
