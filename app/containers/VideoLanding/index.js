@@ -77,7 +77,7 @@ const VideoLanding = ({ width, height }) => {
             zIndex: '2',
           }}
         >
-          <H1>
+          <H1 height={height} width={width}>
             The centre of <br /> applied chaos_
           </H1>
         </Flex>

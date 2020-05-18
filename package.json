@@ -1,17 +1,17 @@
 {
-  "name": "react-boilerplate",
-  "version": "4.0.0",
-  "description": "A highly scalable, offline-first foundation with the best DX and a focus on performance and best practices",
+  "name": "fastlab-enigma",
+  "version": "0.1.0",
+  "description": "Fastlab Enigma, The School of Creative Industries, The University of Newcastle",
   "repository": {
     "type": "git",
-    "url": "git://github.com/react-boilerplate/react-boilerplate.git"
+    "url": "git://github.com/michaelcuneo/fastlab-enigma.git"
   },
   "engines": {
     "npm": ">=5",
     "node": ">=8.15.1"
   },
-  "author": "Max Stoiber",
-  "license": "MIT",
+  "author": "Michael Cuneo",
+  "license": "UNLICENSED",
   "scripts": {
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
