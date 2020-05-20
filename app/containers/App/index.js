@@ -39,6 +39,7 @@ function App({ runtime /* , loggedIn */ }) {
         onUpdateFailed: () => {},
       });
     }
+    setDimensions();
   }, []);
 
   const setDimensions = () => {
@@ -71,7 +72,6 @@ function App({ runtime /* , loggedIn */ }) {
       <Footer />
       <GlobalStyle />
       <ThemeProvider theme={theme} />
-      {setDimensions}
     </AppWrapper>
   );
 }

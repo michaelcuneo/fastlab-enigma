@@ -2,17 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-import { Authenticator } from 'aws-amplify-react';
+// import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
 import OverlayContainer from 'containers/OverlayContainer';
 
 import { Flex } from 'rebass';
 
-import rprTheme from './rprTheme';
+// import rprTheme from './rprTheme';
 
 function LoginPage({ width, height }) {
+  /*
   const signUpConfig = {
     defaultCountryCode: '61',
   };
+  */
 
   return (
     <Flex
@@ -28,11 +30,13 @@ function LoginPage({ width, height }) {
         <title>Login Page</title>
         <meta name="description" content="Fastlab Login Page" />
       </Helmet>
-      <Authenticator
+      {/*
+      <AmplifyAuthenticator
         signUpConfig={signUpConfig}
         key="Authenticator"
         theme={rprTheme}
       />
+      */}
       <OverlayContainer width={width} height={height} />
     </Flex>
   );
