@@ -41,12 +41,11 @@ const OverlayContainer = () => {
     <Box
       style={{
         position: 'fixed',
-        background: '#151417',
         top: 0,
         bottom: 0,
         padding: 0,
         margin: 0,
-        zIndex: 0,
+        zIndex: 3,
         pointerEvents: 'none',
       }}
     >
@@ -108,12 +107,13 @@ const OverlayContainer = () => {
           strokeWidth={1}
         />
         <defs>
+          {/* use Width for both X * Y Calculations here because it's Square */}
           <pattern
             id="dot"
             x={width * 0.0208}
-            y={height * 0.0078}
+            y={width * 0.0208}
             width={width * 0.023839}
-            height={height * 0.023839}
+            height={width * 0.023839}
             patternUnits="userSpaceOnUse"
           >
             <circle
@@ -128,8 +128,8 @@ const OverlayContainer = () => {
           style={{ fill: 'url(#dot) rgba(255, 255, 255, 0.4)' }}
           x="0"
           y="0"
-          height={width}
-          width={height}
+          height={height}
+          width={width}
         />
       </svg>
     </Box>

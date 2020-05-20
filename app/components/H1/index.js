@@ -15,22 +15,28 @@ const H1 = ({ children, width }) => {
   });
 
   const calcFontSize = () => {
-    if (width < 1920) {
+    if (width > 1920 || window.innerHeight > 1080) {
       setFontSize('9.2vh');
     }
-    if (window.innerHeight < 1080) {
-      setFontSize('9.2vh');
+    if (width < 1920 || window.innerHeight < 1080) {
+      setFontSize(`${window.innerHeight * 0.0926}px`);
     }
   };
 
   const StyledText = styled(Text)`
-    font-size: ${fontSize};
     font-family: 'archiaregular', sans-serif;
     color: #e0e0e0;
     line-height: ${fontSize};
   `;
 
-  return <StyledText>{children}</StyledText>;
+  return (
+    <StyledText
+      fontSize={['40px', '80px', '100px']}
+      lineHeight={['40px', '80px', '100px']}
+    >
+      {children}
+    </StyledText>
+  );
 };
 
 H1.propTypes = {

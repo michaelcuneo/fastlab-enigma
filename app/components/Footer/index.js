@@ -1,16 +1,20 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Flex, Text } from 'rebass';
+import { useMediaQuery } from 'react-responsive';
+
+import { Flex, Box, Text } from 'rebass';
 // import LocaleToggle from 'containers/LocaleToggle';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
-import Wrapper from './Wrapper';
+import { DesktopWrapper, MobileWrapper } from './Wrapper';
 import messages from './messages';
 
 function Footer() {
-  return (
-    <Wrapper>
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1225 });
+
+  return isDesktopOrLaptop ? (
+    <DesktopWrapper>
       <Flex
         alignContent="center"
         justifyContent="center"
@@ -71,7 +75,29 @@ function Footer() {
       >
         <UonIcon />
       </Flex>
-    </Wrapper>
+    </DesktopWrapper>
+  ) : (
+    <MobileWrapper>
+      <Flex
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <Box pt="75px">
+          <FastlabIcon />
+        </Box>
+        <Box p="38.1px">
+          <UonIcon />
+        </Box>
+        <Text
+          pb="85px"
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '11px' }}
+        >
+          <FormattedMessage {...messages.licenseMessage} />
+        </Text>
+      </Flex>
+    </MobileWrapper>
   );
 }
 

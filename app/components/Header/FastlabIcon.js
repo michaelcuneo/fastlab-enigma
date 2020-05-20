@@ -5,7 +5,7 @@ import fastlabIcon from 'images/Fastlab_LLW.svg';
 
 import NormalImg from 'components/Img';
 
-const StyledIcon = styled(NormalImg)`
+const StyledDesktopIcon = styled(NormalImg)`
   position: fixed;
   width: 109px;
   height: 32px;
@@ -14,6 +14,19 @@ const StyledIcon = styled(NormalImg)`
   z-index: 2;
 `;
 
-const FastlabIcon = () => <StyledIcon alt="Fastlab-Icon" src={fastlabIcon} />;
+export const FastlabIconDesktop = () => (
+  <StyledDesktopIcon alt="Fastlab-Icon-Desktop" src={fastlabIcon} />
+);
 
-export default FastlabIcon;
+const StyledMobileIcon = styled(NormalImg)`
+  position: fixed;
+  width: 95px;
+  height: 26px;
+  left: 20px;
+  top: 26px;
+  z-index: 2;
+`;
+
+export const FastlabIconMobile = () => (
+  <StyledMobileIcon alt="Fastlab-Icon-Mobile" src={fastlabIcon} />
+);

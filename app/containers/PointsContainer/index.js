@@ -23,7 +23,7 @@ const PointsContainer = ({ width }) => {
 
   return (
     <Flex
-      pt="150px" // Distance from Landing Container to first image.
+      pt="114px" // Distance from Landing Container to first image.
       pb="80px" // Distance from Point Container to first image in showcase.
       px={width * 0.0688}
       alignItems="baseline"

@@ -6,6 +6,11 @@ const GlobalStyle = createGlobalStyle`
     user-drag: none;
   }
 
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+  }
+
   html,
   body {
     height: 100%;
@@ -18,12 +23,6 @@ const GlobalStyle = createGlobalStyle`
 
   body.fontLoaded {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
-  #app {
-    background-color: #fafafa;
-    min-height: 100%;
-    min-width: 100%;
   }
 
   p,

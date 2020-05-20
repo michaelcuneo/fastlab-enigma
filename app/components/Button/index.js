@@ -11,7 +11,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import StyledButton from './StyledButton';
-import Wrapper from './Wrapper';
 
 function Button({ onClick, to, children, color }) {
   const button = (
@@ -20,7 +19,7 @@ function Button({ onClick, to, children, color }) {
     </Link>
   );
 
-  return <Wrapper>{button}</Wrapper>;
+  return button;
 }
 
 Button.propTypes = {

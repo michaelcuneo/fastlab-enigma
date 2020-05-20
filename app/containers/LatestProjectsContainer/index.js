@@ -5,7 +5,7 @@ import Button from 'components/Button';
 
 import { Flex, Box, Text } from 'rebass';
 
-const ShowcaseContainer = () => {
+const LatestProjectsContainer = (/* { width, height, data } */) => {
   const StyledText = styled(Text)`
     font-size: 34pt;
     font-family: 'archiaregular', sans-serif;
@@ -13,10 +13,11 @@ const ShowcaseContainer = () => {
   `;
 
   return (
-    <Flex py="107px" style={{ background: '#151417' }}>
+    <Flex flexDirection="column" py="107px" style={{ background: '#151417' }}>
       <Box>
         <StyledText>Projects go here... </StyledText>
       </Box>
+
       <Flex sx={{ float: 'right' }}>
         <Button color="dark" to="/projects">
           Explore more projects
@@ -26,4 +27,4 @@ const ShowcaseContainer = () => {
   );
 };
 
-export default ShowcaseContainer;
+export default LatestProjectsContainer;

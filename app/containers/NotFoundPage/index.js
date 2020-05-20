@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import OverlayContainer from 'containers/OverlayContainer';
@@ -14,24 +15,34 @@ import H1 from 'components/H1';
 import Button from 'components/Button';
 import messages from './messages';
 
-export default function NotFound() {
+function NotFound({ height, width }) {
   return (
     <React.Fragment>
+      <OverlayContainer width={width} height={height} />
       <Flex
+        height={window.innerHeight}
         flexDirection="column"
         justifyContent="center"
-        alignItems="center"
         alignContent="center"
-        sx={{ width: '100vw', height: '100vh', zIndex: 1 }}
+        alignItems="center"
+        sx={{
+          background: '#151417',
+        }}
       >
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
-        <Button color="pink" to="/">
+        <Button color="pink" to="/" alignItems="center">
           Return to the main page
         </Button>
       </Flex>
-      <OverlayContainer />
     </React.Fragment>
   );
 }
+
+NotFound.propTypes = {
+  height: PropTypes.number,
+  width: PropTypes.number,
+};
+
+export default NotFound;

@@ -6,8 +6,12 @@ import { Switch, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 
 import HomePage from 'containers/HomePage/Loadable';
+import AboutPage from 'containers/AboutPage/Loadable';
+import ContactPage from 'containers/ContactPage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+
+import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -16,7 +20,6 @@ import theme from './Theme';
 
 import GlobalStyle from '../../global-styles';
 
-// Add the rebass theme here later for break point configuration
 function App({ runtime /* , loggedIn */ }) {
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
@@ -43,14 +46,18 @@ function App({ runtime /* , loggedIn */ }) {
   }, []);
 
   const setDimensions = () => {
-    setWidth(document.body.scrollWidth);
-    setHeight(document.body.scrollHeight);
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
   };
 
-  return (
+  // ff Height and Width isn't worked out yet... don't render.
+  return height && width ? (
     <AppWrapper id="outer-container">
       <Helmet titleTemplate="%s - fastlab" defaultTitle="Fastlab">
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta
+          name="description"
+          content="A School of Creative Industries, University of Newcastle, application"
+        />
       </Helmet>
       <Header />
       <Switch>
@@ -62,17 +69,36 @@ function App({ runtime /* , loggedIn */ }) {
           )}
         />
         <Route
+          path="/contact"
+          render={props => (
+            <ContactPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/about"
+          render={props => (
+            <AboutPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
           path="/login"
           render={props => (
             <LoginPage {...props} height={height} width={width} />
           )}
         />
-        <Route path="" component={NotFoundPage} />
+        <Route
+          path=""
+          render={props => (
+            <NotFoundPage {...props} height={height} width={width} />
+          )}
+        />
       </Switch>
       <Footer />
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>
+  ) : (
+    <LoadingIndicator />
   );
 }
 

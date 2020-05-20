@@ -30,8 +30,7 @@ const StyledButton = ({ children, color }) => {
 
   const CustomButton = styled.button`
     display: inline-flex;
-    justify-content: center;
-    width: 331px;
+    width: auto;
     height: 80px;
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
@@ -44,6 +43,7 @@ const StyledButton = ({ children, color }) => {
     border-radius: 40px;
     background: ${background};
     border: 0px;
+    padding: 0px 30px 0px 30px;
 
     &:hover {
       background: ${background};
