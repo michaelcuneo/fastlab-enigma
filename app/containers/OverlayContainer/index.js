@@ -41,6 +41,7 @@ const OverlayContainer = () => {
     <Box
       style={{
         position: 'fixed',
+        background: '#151417',
         top: 0,
         bottom: 0,
         padding: 0,

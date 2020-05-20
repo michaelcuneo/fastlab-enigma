@@ -53,7 +53,7 @@ const VideoLanding = ({ width, height }) => {
         style={{
           maxHeight: '100vh',
           maxWidth: '100vw',
-          zIndex: 1,
+          zIndex: 2,
         }}
       >
         {backgroundVideo ? (
@@ -81,7 +81,7 @@ const VideoLanding = ({ width, height }) => {
             position: 'absolute',
             top: 0,
             left: width * 0.2167,
-            zIndex: '1',
+            zIndex: 2,
           }}
         >
           <H1 height={height} width={width}>
