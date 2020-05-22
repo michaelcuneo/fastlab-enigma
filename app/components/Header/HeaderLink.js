@@ -1,63 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const HeaderLink = ({ to, children, mobile, onClick }) => {
+import { Text } from 'rebass';
+
+import { useSpring, animated as a } from 'react-spring';
+
+export const HeaderLink = ({ to, onClick, link, linkDetails }) => {
+  const [hoverState, setHoverState] = useState(false);
+
+  const CustomAnimation = useSpring({
+    minHeight: !hoverState ? 140 : 250,
+    maxHeight: !hoverState ? 140 : 250,
+    background: !hoverState ? '#151417' : '#EC184A',
+    justifyContent: !hoverState ? 'flex-start' : 'center',
+  });
+
   const StyledLink = styled(Link)`
-    display: inline-flex;
-    width: 100%;
     text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
-    user-select: none;
     cursor: pointer;
     outline: 0;
-    font-family: 'archiaregular', sans-serif;
-    font-size: ${mobile ? '30px' : '50px'};
-    padding: 0px 0px 30px 35px;
     color: white;
+  `;
+
+  const AnimatedBox = styled(a.div)`
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  `;
+
+  const LinkText = styled(Text)`
+    font-family: 'archia', sans-serif;
+    font-size: 50px;
+    line-height: 100px;
+  `;
+
+  const LinkDetails = styled(Text)`
+    font-family: 'archia', sans-serif;
+    font-size: 18px;
+    line-height: 22px;
   `;
 
   return (
     <StyledLink to={to} onClick={onClick}>
-      {children}
+      <AnimatedBox
+        onMouseOver={() => setHoverState(true)}
+        onFocus={() => setHoverState(true)}
+        onMouseLeave={() => setHoverState(false)}
+        style={CustomAnimation}
+      >
+        <LinkText p="20px 0px 20px 35px">{link}</LinkText>
+        <LinkDetails p="0px 0px 20px 35px">{linkDetails}</LinkDetails>
+      </AnimatedBox>
     </StyledLink>
   );
 };
 
 HeaderLink.propTypes = {
   to: PropTypes.string,
-  mobile: PropTypes.bool,
   onClick: PropTypes.func,
-  children: PropTypes.node,
-};
-
-export const HeaderLinkSmall = ({ to, children, mobile, onClick }) => {
-  const StyledLink = styled(Link)`
-    width: 100%;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
-    user-select: none;
-    cursor: pointer;
-    outline: 0;
-    font-family: 'archiaregular', sans-serif;
-    font-size: ${mobile ? '24px' : '24px'};
-    padding: 0px 0px 0px 35px;
-    color: white;
-  `;
-
-  return (
-    <StyledLink to={to} onClick={onClick}>
-      {children}
-    </StyledLink>
-  );
-};
-
-HeaderLinkSmall.propTypes = {
-  to: PropTypes.string,
-  mobile: PropTypes.bool,
-  onClick: PropTypes.func,
-  children: PropTypes.node,
+  link: PropTypes.object,
+  linkDetails: PropTypes.object,
 };

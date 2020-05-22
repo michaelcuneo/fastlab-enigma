@@ -2,43 +2,41 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
-// import { AmplifyAuthenticator } from '@aws-amplify/ui-react';
+import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react';
 import OverlayContainer from 'containers/OverlayContainer';
 
 import { Flex } from 'rebass';
 
-// import rprTheme from './rprTheme';
-
 function LoginPage({ width, height }) {
-  /*
   const signUpConfig = {
     defaultCountryCode: '61',
   };
-  */
 
   return (
-    <Flex
-      sx={{ background: '#151417' }}
-      justifyContent="center"
-      margin="auto auto"
-      alignContent="center"
-      height={window.innerHeight - 155}
-      width="100vw"
-      alignItems="center"
-    >
+    <React.Fragment>
       <Helmet key="Helmet">
         <title>Login Page</title>
         <meta name="description" content="Fastlab Login Page" />
       </Helmet>
-      {/*
-      <AmplifyAuthenticator
-        signUpConfig={signUpConfig}
-        key="Authenticator"
-        theme={rprTheme}
-      />
-      */}
       <OverlayContainer width={width} height={height} />
-    </Flex>
+      <Flex
+        sx={{ background: '#151417', zIndex: 999999 }}
+        justifyContent="center"
+        margin="auto auto"
+        alignContent="center"
+        height={window.innerHeight - 155}
+        width="100vw"
+        alignItems="center"
+      >
+        <AmplifyAuthenticator signUpConfig={signUpConfig} key="Authenticator">
+          <AmplifySignIn
+            headerText="Enter Chaos"
+            submitButtonText="Go"
+            slot="sign-in"
+          />
+        </AmplifyAuthenticator>
+      </Flex>
+    </React.Fragment>
   );
 }
 

@@ -23,6 +23,7 @@ const UpdatesContainer = ({ width, height }) => {
 
   const fakeData = [
     {
+      id: '1',
       title: 'Title One',
       image: MarkGroup1,
       updateTitle: 'Update Title One',
@@ -32,6 +33,7 @@ const UpdatesContainer = ({ width, height }) => {
       tags: 'tags, tags, other tags, taggies',
     },
     {
+      id: '2',
       title: 'Title Two',
       image: MarkGroup2,
       updateTitle: 'Update Title Two',
@@ -41,6 +43,7 @@ const UpdatesContainer = ({ width, height }) => {
       tags: 'tags, tags, other tags, taggies',
     },
     {
+      id: '3',
       title: 'Title Three',
       image: MarkGroup3,
       updateTitle: 'Update Title Three',
@@ -50,6 +53,7 @@ const UpdatesContainer = ({ width, height }) => {
       tags: 'tags, tags, other tags, taggies',
     },
     {
+      id: '4',
       title: 'Title Four',
       image: MarkGroup4,
       updateTitle: 'Update Title Four',
@@ -82,7 +86,7 @@ const UpdatesContainer = ({ width, height }) => {
       <Flex
         width="100%"
         flexDirection="row"
-        alignSelf="flex-end"
+        justifyContent="flex-end"
         sx={{ background: '#EC184A' }}
         pb={[100]}
         pr={['6.88vw']}

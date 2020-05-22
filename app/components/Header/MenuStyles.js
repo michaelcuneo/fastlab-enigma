@@ -25,10 +25,12 @@ export const TabletMobileStyles = {
   bmMenuWrap: {
     position: 'fixed',
     height: '100%',
+    zIndex: 99999,
   },
   bmMenu: {
     height: '100%',
     background: '#151417',
+    zIndex: 99999,
   },
   bmMorphShape: {
     fill: '#373a47',
@@ -71,10 +73,12 @@ export const DesktopLaptopStyles = {
   bmMenuWrap: {
     position: 'fixed',
     height: '100%',
+    zIndex: 99999,
   },
   bmMenu: {
     height: '100%',
     background: '#151417',
+    zIndex: 99999,
   },
   bmMorphShape: {
     fill: '#373a47',

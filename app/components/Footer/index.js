@@ -8,6 +8,7 @@ import { Flex, Box, Text } from 'rebass';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
 import { DesktopWrapper, MobileWrapper } from './Wrapper';
+import { FooterLink } from './FooterLink';
 import messages from './messages';
 
 function Footer() {
@@ -29,43 +30,17 @@ function Footer() {
           <FormattedMessage {...messages.licenseMessage} />
         </Text>
       </Flex>
-      <Flex alignItems="center" flexDirection="row">
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Home
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          About
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Projects
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Updates
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Programs
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Contact
-        </Text>
+      <Flex
+        sx={{ width: '40%' }}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <FooterLink to="/">Home</FooterLink>
+        <FooterLink to="/about">About</FooterLink>
+        <FooterLink to="/projects">Projects</FooterLink>
+        <FooterLink to="/updates">Updates</FooterLink>
+        <FooterLink to="/programs">Programs</FooterLink>
+        <FooterLink to="/contact">Contact</FooterLink>
       </Flex>
       <Flex
         alignContent="center"

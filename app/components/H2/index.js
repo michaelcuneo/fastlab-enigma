@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Text } from 'rebass';
@@ -7,32 +7,16 @@ import { Text } from 'rebass';
 // Update the height in real time from Props, and calculate on the fly for responsive.
 
 // 100px high is 9.26% of 1080
-const H2 = ({ children, width }) => {
-  const [fontSize, setFontSize] = useState('50px');
-
-  useEffect(() => {
-    calcFontSize();
-  });
-
-  const calcFontSize = () => {
-    if (width > 1920 || window.innerHeight > 1080) {
-      setFontSize('50px');
-    }
-    if (width < 1920 || window.innerHeight < 1080) {
-      setFontSize(`${window.innerHeight * 0.0926}px`);
-    }
-  };
-
+const H2 = ({ children }) => {
   const StyledText = styled(Text)`
     font-family: 'archiaregular', sans-serif;
     color: #e0e0e0;
-    line-height: ${fontSize};
   `;
 
   return (
     <StyledText
-      fontSize={['40px', '80px', '100px']}
-      lineHeight={['40px', '80px', '100px']}
+      fontSize={['25px', '40px', '50px']}
+      lineHeight={['25px', '40px', '50px']}
     >
       {children}
     </StyledText>
@@ -41,7 +25,6 @@ const H2 = ({ children, width }) => {
 
 H2.propTypes = {
   children: PropTypes.node,
-  width: PropTypes.number,
 };
 
 export default H2;

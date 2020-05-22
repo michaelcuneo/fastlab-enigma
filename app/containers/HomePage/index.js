@@ -26,7 +26,6 @@ export function HomePage() {
 
   return (
     <React.Fragment>
-      {/* div with id="page-wrap" is important for the burger menu */}
       <OverlayContainer width={width} height={height} />
       <Helmet>
         <title>Home Page</title>

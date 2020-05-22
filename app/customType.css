@@ -36,3 +36,12 @@
 @keyframes blinker {  
   50% { opacity: 0; }
 }
+
+:root {
+  --amplify-primary-color: #0FF48D;
+  --amplify-primary-tint: #151417;
+  --amplify-primary-shade: #151417;
+  --amplify-white: #151417;
+  --amplify-light-grey: #707070;
+}
+

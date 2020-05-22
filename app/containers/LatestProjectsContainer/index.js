@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Button from 'components/Button';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Text } from 'rebass';
 
 const LatestProjectsContainer = (/* { width, height, data } */) => {
   const StyledText = styled(Text)`
@@ -13,17 +13,32 @@ const LatestProjectsContainer = (/* { width, height, data } */) => {
   `;
 
   return (
-    <Flex flexDirection="column" py="107px" style={{ background: '#151417' }}>
-      <Box>
-        <StyledText>Projects go here... </StyledText>
-      </Box>
-
-      <Flex sx={{ float: 'right' }}>
+    <React.Fragment>
+      <Flex
+        flexDirection="column"
+        sx={{ background: '#151417', zIndex: '1' }}
+        justifyContent="space-around"
+        pl={['6.88vw']}
+      >
+        <Flex height="200px">
+          <StyledText>
+            (Replace me with the Featured Projects component.)
+          </StyledText>
+        </Flex>
+      </Flex>
+      <Flex
+        width="100%"
+        flexDirection="row"
+        justifyContent="flex-end"
+        sx={{ background: '#151417' }}
+        pb={[100]}
+        pr={['6.88vw']}
+      >
         <Button color="dark" to="/projects">
           Explore more projects
         </Button>
       </Flex>
-    </Flex>
+    </React.Fragment>
   );
 };
 

@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Text } from 'rebass';
 
+import { useSpring, animated as a } from 'react-spring';
+
 import styled from 'styled-components';
 
-const StyledButton = ({ children, color }) => {
+/*
+  x: '-10px',
+  y: '-10px',
+  spread: '40px',
+  colour: `rgba(255, 255, 255, 0.2), 10px, 10px, 40px, ${shadow}`,
+*/
+
+function StyledButton({ children, color }) {
   let shadow;
   let background;
   let foreground;
@@ -28,7 +37,14 @@ const StyledButton = ({ children, color }) => {
     foreground = '#EC184A';
   }
 
-  const CustomButton = styled.button`
+  const [hoverState, setHoverState] = useState(false);
+  const CustomAnimation = useSpring({
+    boxShadow: !hoverState
+      ? `0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(0, 0, 0, 0)`
+      : `-10px -10px 40px rgba(255, 255, 255, 0.1), 10px 10px 40px ${shadow}`,
+  });
+
+  const CustomButton = styled(a.button)`
     display: inline-flex;
     width: auto;
     height: 80px;
@@ -44,29 +60,23 @@ const StyledButton = ({ children, color }) => {
     background: ${background};
     border: 0px;
     padding: 0px 30px 0px 30px;
-
-    &:hover {
-      background: ${background};
-      color: #ffffff;
-      box-shadow: -10px -10px 40px rgba(255, 255, 255, 0.2),
-        10px 10px 40px ${shadow};
-    }
-
-    &:active {
-      background: ${background};
-      color: #ffffff;
-    }
+    z-index: 99999;
   `;
 
   return (
-    <CustomButton>
+    <CustomButton
+      onMouseOver={() => setHoverState(true)}
+      onFocus={() => setHoverState(true)}
+      onMouseLeave={() => setHoverState(false)}
+      style={CustomAnimation}
+    >
       {children}
       <Text pl={3} color={foreground}>
         &rsaquo;
       </Text>
     </CustomButton>
   );
-};
+}
 
 StyledButton.propTypes = {
   color: PropTypes.string,

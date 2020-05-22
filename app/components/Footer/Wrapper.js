@@ -12,6 +12,7 @@ export const DesktopWrapper = styled(Flex)`
   background: #151417;
   color: #ffffff;
   z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 `;
 
 export const MobileWrapper = styled(Flex)`
@@ -23,4 +24,5 @@ export const MobileWrapper = styled(Flex)`
   background: #151417;
   color: #ffffff;
   z-index: 9999;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 `;

@@ -20,6 +20,7 @@ export const FormContainer = {
   textAlign: 'center',
   marginTop: '20px',
   margin: '5% auto 50px',
+  background: '#151417',
 };
 export const FormSection = {};
 export const FormField = {};

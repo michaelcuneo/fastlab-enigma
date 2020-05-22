@@ -42,7 +42,8 @@ const PointsContainer = ({ width }) => {
           <FormattedMessage {...messages.pointone} />
         </PointHeader>
         <PointText>
-          Short description here. Links through to section on About page.
+          We carry out research at the intersection of Art, Science and
+          Technology.
         </PointText>
       </Flex>
       <Flex flexDirection="column" width={width * 0.1302}>
@@ -56,7 +57,8 @@ const PointsContainer = ({ width }) => {
           <FormattedMessage {...messages.pointtwo} />
         </PointHeader>
         <PointText>
-          Short description here. Links through to section on About page.
+          We offer organisations insights, analysis, and tools to help them
+          tackle the constantly evolving challenge of change.
         </PointText>
       </Flex>
       <Flex flexDirection="column" width={width * 0.1302}>
@@ -70,7 +72,8 @@ const PointsContainer = ({ width }) => {
           <FormattedMessage {...messages.pointthree} />
         </PointHeader>
         <PointText>
-          Short description here. Links through to section on About page.
+          We help forward-thinking organisations build a framework within their
+          teams to support consistent creativity and innovation.
         </PointText>
       </Flex>
       <Flex flexDirection="column" width={width * 0.1302}>
@@ -84,7 +87,7 @@ const PointsContainer = ({ width }) => {
           <FormattedMessage {...messages.pointfour} />
         </PointHeader>
         <PointText>
-          Short description here. Links through to section on About page.
+          We help organisations engrain brilliant thinking into their culture.
         </PointText>
       </Flex>
     </Flex>

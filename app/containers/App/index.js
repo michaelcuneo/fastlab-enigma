@@ -29,7 +29,6 @@ function App({ runtime /* , loggedIn */ }) {
   }, [window.removeEventListener('resize', setDimensions)]);
 
   useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
     if (process.env.NODE_ENV === 'production') {
       runtime.install({
         onUpdating: () => {},
@@ -60,7 +59,7 @@ function App({ runtime /* , loggedIn */ }) {
         />
       </Helmet>
       <Header />
-      <Switch>
+      <Switch id="page-wrap">
         <Route
           exact
           path="/"

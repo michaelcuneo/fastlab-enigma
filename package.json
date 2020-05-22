@@ -65,7 +65,11 @@
     "toposort": "^2.0.2"
   },
   "dependencies": {
+    "@aws-amplify/ui-react": "^0.2.6",
     "@babel/polyfill": "7.4.3",
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
     "aws-amplify": "^3.0.11",
     "chalk": "2.4.2",
     "compression": "1.7.4",
@@ -95,6 +99,7 @@
     "react-redux": "7.0.2",
     "react-responsive": "^8.0.3",
     "react-router-dom": "5.0.0",
+    "react-spring": "^8.0.27",
     "react-swipeable-views": "^0.13.9",
     "react-video-cover": "^1.2.2",
     "rebass": "^4.0.7",

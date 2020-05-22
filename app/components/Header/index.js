@@ -1,17 +1,17 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
-import { bubble as Menu } from 'react-burger-menu';
+import { slide as Menu } from 'react-burger-menu';
 import { FormattedMessage } from 'react-intl';
 
 import { useMediaQuery } from 'react-responsive';
 
 import IconNav from 'images/icon-nav-trigger.svg';
 import CloseNav from 'images/icon-close.svg';
+
+import { Flex, Box } from 'rebass';
+
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
-import { LinksDiv, LinksDivTop, LinksDivBottom } from './LinksDiv';
-
-import { HeaderLink, HeaderLinkSmall } from './HeaderLink';
+import { HeaderLink } from './HeaderLink';
 import messages from './messages';
 
 import { DesktopLaptopStyles, TabletMobileStyles } from './MenuStyles';
@@ -55,59 +55,61 @@ function Header() {
         <hr
           style={{
             position: 'absolute',
-            focus: 'none',
-            color: '#E0E0E0',
+            color: '#707070',
             top: '106px',
           }}
           width="100%"
         />
-        <LinksDiv>
-          <LinksDivTop>
-            <HeaderLink to="/" mobile={isTabletMobile} onClick={closeMenu}>
-              <FormattedMessage {...messages.home} />
-            </HeaderLink>
-            <HeaderLink to="/about" mobile={isTabletMobile} onClick={closeMenu}>
-              <FormattedMessage {...messages.about} />
-            </HeaderLink>
+        <Flex
+          flexDirection="column"
+          justifyContent="space-between"
+          sx={{ padding: '115px 0px 0px 0px', width: '100%', height: '100%' }}
+        >
+          <Box sx={{ width: '100%' }}>
+            <HeaderLink
+              to="/"
+              link={<FormattedMessage {...messages.home} />}
+              linkDetails={<FormattedMessage {...messages.homeDetails} />}
+              mobile={isTabletMobile}
+              onClick={closeMenu}
+            />
+            <HeaderLink
+              to="/about"
+              link={<FormattedMessage {...messages.about} />}
+              linkDetails={<FormattedMessage {...messages.aboutDetails} />}
+              mobile={isTabletMobile}
+              onClick={closeMenu}
+            />
             <HeaderLink
               to="/projects"
+              link={<FormattedMessage {...messages.projects} />}
+              linkDetails={<FormattedMessage {...messages.projectsDetails} />}
               mobile={isTabletMobile}
               onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.projects} />
-            </HeaderLink>
+            />
             <HeaderLink
               to="/updates"
+              link={<FormattedMessage {...messages.updates} />}
+              linkDetails={<FormattedMessage {...messages.updatesDetails} />}
               mobile={isTabletMobile}
               onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.updates} />
-            </HeaderLink>
+            />
             <HeaderLink
               to="/programs"
+              link={<FormattedMessage {...messages.programs} />}
+              linkDetails={<FormattedMessage {...messages.programsDetails} />}
               mobile={isTabletMobile}
               onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.programs} />
-            </HeaderLink>
+            />
             <HeaderLink
               to="/contact"
+              link={<FormattedMessage {...messages.contact} />}
+              linkDetails={<FormattedMessage {...messages.contactDetails} />}
               mobile={isTabletMobile}
               onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.contact} />
-            </HeaderLink>
-          </LinksDivTop>
-          <LinksDivBottom>
-            <HeaderLinkSmall
-              to="/login"
-              mobile={isTabletMobile}
-              onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.login} />
-            </HeaderLinkSmall>
-          </LinksDivBottom>
-        </LinksDiv>
+            />
+          </Box>
+        </Flex>
       </Menu>
     </React.Fragment>
   );

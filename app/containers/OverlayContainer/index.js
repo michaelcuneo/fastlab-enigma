@@ -27,7 +27,7 @@ const OverlayContainer = () => {
     setWidth(document.body.scrollWidth);
     setHeight(document.body.scrollHeight);
 
-    // Calculate scaled Grid Area
+    // Calculate Scaled Desktop Grid Area
     setGrid1x(document.body.scrollWidth * 0.0688);
     setGrid2x(document.body.scrollWidth * 0.212);
     setGrid3x(document.body.scrollWidth * 0.3552);

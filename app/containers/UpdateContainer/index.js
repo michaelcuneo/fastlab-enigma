@@ -5,12 +5,13 @@ import { Flex, Box, Image, Text } from 'rebass';
 
 const UpdateContainer = ({ data, width }) => (
   <Box
+    key={data.id}
     minWidth={width * 0.2865}
     height="640px"
     px={['5px', '10px', '20px']}
     pt={Math.random() * (200 - 0)}
     sx={{
-      zIndex: 99999,
+      zIndex: 9999,
     }}
   >
     <Box

@@ -13,7 +13,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
@@ -36,6 +35,10 @@ import { persistStore } from 'redux-persist';
 import { setAutoFreeze } from 'immer';
 import { localForage } from 'localforage';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+
 import configureStore from './configureStore';
 
 // Import i18n messages
@@ -48,6 +51,8 @@ import awsExports from './aws-exports';
 import 'video-react/dist/video-react.css';
 import 'customType.css';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
+
+library.add(faAngleRight);
 
 setAutoFreeze(false);
 
@@ -63,15 +68,6 @@ I18n.putVocabularies(dict);
 Amplify.configure(awsExports);
 Auth.configure({
   authenticationFlowType: 'USER_PASSWORD_AUTH',
-});
-
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
 });
 
 // Create redux store with history

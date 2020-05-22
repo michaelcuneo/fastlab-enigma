@@ -10,7 +10,7 @@ import { FormattedMessage } from 'react-intl';
 
 import OverlayContainer from 'containers/OverlayContainer';
 
-import { Flex } from 'rebass';
+import { Flex, Box } from 'rebass';
 import H1 from 'components/H1';
 import Button from 'components/Button';
 import messages from './messages';
@@ -20,7 +20,7 @@ function NotFound({ height, width }) {
     <React.Fragment>
       <OverlayContainer width={width} height={height} />
       <Flex
-        height={window.innerHeight}
+        height={window.innerHeight - 155}
         flexDirection="column"
         justifyContent="center"
         alignContent="center"
@@ -32,9 +32,11 @@ function NotFound({ height, width }) {
         <H1>
           <FormattedMessage {...messages.header} />
         </H1>
-        <Button color="pink" to="/" alignItems="center">
-          Return to the main page
-        </Button>
+        <Box p="40px">
+          <Button color="dark" to="/">
+            Return to the main page
+          </Button>
+        </Box>
       </Flex>
     </React.Fragment>
   );

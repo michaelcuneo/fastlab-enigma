@@ -43,9 +43,8 @@ const VideoLanding = ({ width, height }) => {
 
   return (
     <React.Fragment>
-      <div height={window.innerHeight} width={window.innerWidth}>
+      <div height={height} width={width}>
         <Player
-          style={{}}
           height={height}
           width={width}
           playsInline
