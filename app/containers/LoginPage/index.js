@@ -5,6 +5,8 @@ import { Helmet } from 'react-helmet';
 import { AmplifyAuthenticator, AmplifySignIn } from '@aws-amplify/ui-react';
 import OverlayContainer from 'containers/OverlayContainer';
 
+import Footer from 'components/Footer';
+
 import { Flex } from 'rebass';
 
 function LoginPage({ width, height }) {
@@ -30,12 +32,13 @@ function LoginPage({ width, height }) {
       >
         <AmplifyAuthenticator signUpConfig={signUpConfig} key="Authenticator">
           <AmplifySignIn
-            headerText="Enter Chaos"
+            headerText="Control the Chaos"
             submitButtonText="Go"
             slot="sign-in"
           />
         </AmplifyAuthenticator>
       </Flex>
+      <Footer width={width} height={height} />
     </React.Fragment>
   );
 }

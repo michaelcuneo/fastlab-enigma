@@ -7,6 +7,8 @@ import LatestProjectsContainer from 'containers/LatestProjectsContainer';
 import LatestUpdatesContainer from 'containers/LatestUpdatesContainer';
 import OverlayContainer from 'containers/OverlayContainer';
 
+import Footer from 'components/Footer';
+
 export function HomePage() {
   const [height, setHeight] = useState();
   const [width, setWidth] = useState();
@@ -35,6 +37,7 @@ export function HomePage() {
       <PointsContainer width={width} height={height} />
       <LatestProjectsContainer width={width} height={height} />
       <LatestUpdatesContainer width={width} height={height} />
+      <Footer width={width} height={height} />
     </React.Fragment>
   );
 }

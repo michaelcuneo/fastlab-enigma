@@ -61,4 +61,8 @@ export default defineMessages({
     id: `${scope}.login`,
     defaultMessage: 'Login',
   },
+  loginDetails: {
+    id: `${scope}.login`,
+    defaultMessage: 'Login to your account to contribute to FastLab',
+  },
 });

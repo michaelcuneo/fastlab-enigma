@@ -12,9 +12,9 @@ import MarkGroup4 from 'images/Mask Group 7.png';
 import { Flex, Box, Text } from 'rebass';
 
 import Overlay from './Overlay';
-import UpdateContainer from '../UpdateContainer';
+import ProjectContainer from '../ProjectContainer';
 
-const LatestUpdatesContainer = ({ width, height }) => {
+const RelatedProjectsContainer = ({ width, height }) => {
   const StyledText = styled(Text)`
     font-size: 34pt;
     font-family: 'archiaregular', sans-serif;
@@ -66,42 +66,47 @@ const LatestUpdatesContainer = ({ width, height }) => {
 
   return (
     <React.Fragment>
-      <Overlay width={width} height={height} />
-      <Flex
-        flexDirection="column"
-        sx={{ background: '#EC184A' }}
-        justifyContent="space-around"
-        pl={['6.88vw']}
-      >
-        <Box pt={[172]}>
-          <StyledText>Latest Updates</StyledText>
-        </Box>
-        {/* Change this Flex to a slideable Horizontal Container */}
-        <Flex sx={{ overflowX: 'scroll', flexDirection: 'row' }} height="900px">
-          {fakeData.map(data => (
-            <UpdateContainer width={width} data={data} />
-          ))}
+      <Flex flexDirection="column" width={width}>
+        <Overlay width={width} />
+        <Flex
+          flexDirection="column"
+          sx={{ background: '#EC184A' }}
+          justifyContent="space-around"
+          pl={[width * 0.0729]}
+        >
+          <Box pt={[172]}>
+            <StyledText>Related Projects</StyledText>
+          </Box>
+          {/* Change this Flex to a slideable Horizontal Container */}
+          <Flex
+            sx={{ overflowX: 'scroll', flexDirection: 'row' }}
+            minHeight="800px"
+          >
+            {fakeData.map(data => (
+              <ProjectContainer width={width} height={height} data={data} />
+            ))}
+          </Flex>
         </Flex>
-      </Flex>
-      <Flex
-        width="100%"
-        flexDirection="row"
-        justifyContent="flex-end"
-        sx={{ background: '#EC184A' }}
-        pb={[100]}
-        pr={['6.88vw']}
-      >
-        <Button color="pink" to="/projects">
-          See all updates
-        </Button>
+        <Flex
+          width="100%"
+          flexDirection="row"
+          justifyContent="flex-end"
+          sx={{ background: '#EC184A' }}
+          pb={[100]}
+          pr={[width * 0.0729]}
+        >
+          <Button color="pink" to="/projects">
+            Explore more projects
+          </Button>
+        </Flex>
       </Flex>
     </React.Fragment>
   );
 };
 
-LatestUpdatesContainer.propTypes = {
+RelatedProjectsContainer.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
 
-export default LatestUpdatesContainer;
+export default RelatedProjectsContainer;

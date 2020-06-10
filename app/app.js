@@ -128,3 +128,5 @@ if (!window.Intl) {
 } else {
   render(translationMessages);
 }
+
+window.LOG_LEVEL = 'debug';

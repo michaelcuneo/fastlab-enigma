@@ -68,6 +68,7 @@ module.exports = require('./webpack.base.babel')({
   plugins: [
     // Minify and optimize the index.html
     new HtmlWebpackPlugin({
+      chunksSortMode: 'none',
       template: 'app/index.html',
       minify: {
         removeComments: true,
@@ -106,6 +107,11 @@ module.exports = require('./webpack.base.babel')({
 
       // Removes warning for about `additional` section usage
       safeToUseOptionalCaches: true,
+
+      // Turn OfflinePlugin on.
+      ServiceWorker: {
+        events: true,
+      },
     }),
 
     new CompressionPlugin({

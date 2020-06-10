@@ -8,12 +8,12 @@ import { ThemeProvider } from 'styled-components';
 import HomePage from 'containers/HomePage/Loadable';
 import AboutPage from 'containers/AboutPage/Loadable';
 import ContactPage from 'containers/ContactPage/Loadable';
+import ProgramsPage from 'containers/ProgramsPage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
 
 import AppWrapper from './AppWrapper';
 import theme from './Theme';
@@ -74,6 +74,12 @@ function App({ runtime /* , loggedIn */ }) {
           )}
         />
         <Route
+          path="/programs"
+          render={props => (
+            <ProgramsPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
           path="/about"
           render={props => (
             <AboutPage {...props} height={height} width={width} />
@@ -92,7 +98,6 @@ function App({ runtime /* , loggedIn */ }) {
           )}
         />
       </Switch>
-      <Footer />
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>

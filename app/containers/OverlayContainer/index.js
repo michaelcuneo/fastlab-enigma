@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { Box } from 'rebass';
 
-import LoadingIndicator from 'components/LoadingIndicator';
-
 const OverlayContainer = () => {
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
@@ -133,9 +131,7 @@ const OverlayContainer = () => {
         />
       </svg>
     </Box>
-  ) : (
-    <LoadingIndicator />
-  );
+  ) : null;
 };
 
 export default OverlayContainer;

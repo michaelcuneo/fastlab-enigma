@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import OverlayContainer from 'containers/OverlayContainer';
+import Footer from 'components/Footer';
 
 import { Flex, Box } from 'rebass';
 import H1 from 'components/H1';
@@ -38,6 +39,7 @@ function NotFound({ height, width }) {
           </Button>
         </Box>
       </Flex>
+      <Footer height={height} width={width} />
     </React.Fragment>
   );
 }

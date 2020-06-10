@@ -19,9 +19,7 @@ import backgroundVideo9 from 'video/background-video-09.mp4';
 import backgroundVideo10 from 'video/background-video-10.mp4';
 import backgroundVideo11 from 'video/background-video-11.mp4';
 
-import Overlay from './Overlay';
-
-const VideoLanding = ({ width, height }) => {
+const VideoHeader = ({ width, height }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
   const videos = [
     backgroundVideo1,
@@ -54,15 +52,14 @@ const VideoLanding = ({ width, height }) => {
         <ControlBar disableCompletely />
         <BigPlayButton disabled />
         <VolumeMenuButton disabled />
-        <Overlay height={height} width={width} />
       </Player>
     </div>
   );
 };
 
-VideoLanding.propTypes = {
+VideoHeader.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
 
-export default VideoLanding;
+export default VideoHeader;

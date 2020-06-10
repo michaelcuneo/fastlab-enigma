@@ -1,40 +1,27 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Text } from 'rebass';
-
 import { useSpring, animated as a } from 'react-spring';
 
 import styled from 'styled-components';
 
-/*
-  x: '-10px',
-  y: '-10px',
-  spread: '40px',
-  colour: `rgba(255, 255, 255, 0.2), 10px, 10px, 40px, ${shadow}`,
-*/
-
-function StyledButton({ children, color }) {
+function StyledButton({ children, color, active }) {
   let shadow;
   let background;
-  let foreground;
 
   if (color === 'dark') {
     shadow = 'rgba(0, 0, 0, 1)';
     background = '#151417';
-    foreground = '#0FF48D';
   }
 
   if (color === 'pink') {
     shadow = 'rgba(204, 20, 63, 1)';
     background = '#EC184A';
-    foreground = '#151417';
   }
 
   if (color === 'white') {
     shadow = 'rgba(0, 0, 0, 1)';
     background = '#FFFFFF';
-    foreground = '#EC184A';
   }
 
   const [hoverState, setHoverState] = useState(false);
@@ -46,9 +33,10 @@ function StyledButton({ children, color }) {
 
   const CustomButton = styled(a.button)`
     display: inline-flex;
+    align-content: center;
     align-items: center;
     width: auto;
-    height: 80px;
+    height: 50px;
     text-decoration: none;
     -webkit-font-smoothing: antialiased;
     -webkit-touch-callout: none;
@@ -60,7 +48,8 @@ function StyledButton({ children, color }) {
     background: ${background};
     border: 0px;
     padding: 0px 30px 0px 30px;
-    z-index: 9999999;
+    z-index: 999999;
+    color: ${active ? 'white' : 'green'};
   `;
 
   return (
@@ -71,9 +60,6 @@ function StyledButton({ children, color }) {
       style={CustomAnimation}
     >
       {children}
-      <Text pl={3} color={foreground}>
-        &rsaquo;
-      </Text>
     </CustomButton>
   );
 }
@@ -81,6 +67,7 @@ function StyledButton({ children, color }) {
 StyledButton.propTypes = {
   color: PropTypes.string,
   children: PropTypes.node,
+  active: PropTypes.object,
 };
 
 export default StyledButton;

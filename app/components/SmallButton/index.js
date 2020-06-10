@@ -12,21 +12,30 @@ import { Link } from 'react-router-dom';
 
 import StyledButton from './StyledButton';
 
-function Button({ to, children, color, onClick }) {
+function SmallButton({ to, color, onClick, selection, item }) {
+  const active = selection === item.value || selection === 'All';
   const button = (
     <Link style={{ textDecoration: 'none' }} to={to} onClick={onClick}>
-      <StyledButton color={color}>{children}</StyledButton>
+      <StyledButton
+        color={color}
+        selection={selection}
+        item={item}
+        active={active}
+      >
+        {item.label || 'All'}
+      </StyledButton>
     </Link>
   );
 
   return button;
 }
 
-Button.propTypes = {
+SmallButton.propTypes = {
   color: PropTypes.string,
   to: PropTypes.string,
-  children: PropTypes.node,
   onClick: PropTypes.func,
+  selection: PropTypes.string,
+  item: PropTypes.object,
 };
 
-export default Button;
+export default SmallButton;

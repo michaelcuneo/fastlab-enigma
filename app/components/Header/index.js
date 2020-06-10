@@ -11,7 +11,7 @@ import { Flex, Box } from 'rebass';
 
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
-import { HeaderLink } from './HeaderLink';
+import { HeaderLink, LoginLink } from './HeaderLink';
 import messages from './messages';
 
 import { DesktopLaptopStyles, TabletMobileStyles } from './MenuStyles';
@@ -62,52 +62,58 @@ function Header() {
         />
         <Flex
           flexDirection="column"
-          justifyContent="space-between"
-          sx={{ padding: '115px 0px 0px 0px', width: '100%', height: '100%' }}
+          sx={{
+            padding: '110px 0px 0px 0px',
+            width: '100%',
+            height: '100vh',
+          }}
         >
-          <Box sx={{ width: '100%' }}>
+          <Box>
             <HeaderLink
               to="/"
               link={<FormattedMessage {...messages.home} />}
               linkDetails={<FormattedMessage {...messages.homeDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
             <HeaderLink
               to="/about"
               link={<FormattedMessage {...messages.about} />}
               linkDetails={<FormattedMessage {...messages.aboutDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
             <HeaderLink
               to="/projects"
               link={<FormattedMessage {...messages.projects} />}
               linkDetails={<FormattedMessage {...messages.projectsDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
             <HeaderLink
               to="/updates"
               link={<FormattedMessage {...messages.updates} />}
               linkDetails={<FormattedMessage {...messages.updatesDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
             <HeaderLink
               to="/programs"
               link={<FormattedMessage {...messages.programs} />}
               linkDetails={<FormattedMessage {...messages.programsDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
             <HeaderLink
               to="/contact"
               link={<FormattedMessage {...messages.contact} />}
               linkDetails={<FormattedMessage {...messages.contactDetails} />}
-              mobile={isTabletMobile}
               onClick={closeMenu}
             />
+          </Box>
+          <Box pl="35px">
+            <LoginLink
+              to="/login"
+              link={<FormattedMessage {...messages.login} />}
+              onClick={closeMenu}
+            >
+              <FormattedMessage {...messages.login} />
+            </LoginLink>
           </Box>
         </Flex>
       </Menu>

@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import { Flex } from 'rebass';
 
 export const DesktopWrapper = styled(Flex)`
-  display: flex;
-  position: absolute;
-  left: 0;
-  right: 0;
+  position: relative;
   height: 155px;
   justify-content: space-between;
   background: #151417;
