@@ -33,7 +33,7 @@ function ResearchersContainer({ width }) {
       width={[5 / 10, 2 / 10, width * 0.0635]}
       sx={{ maxWidth: width * 0.0635 }}
     >
-      <Link to={`/staff/${newStaff.id}`}>
+      <Link to={`/researcher/${newStaff.id}`}>
         <StaffLink
           key={newStaff.id}
           width={width}

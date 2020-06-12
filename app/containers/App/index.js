@@ -9,6 +9,7 @@ import HomePage from 'containers/HomePage/Loadable';
 import AboutPage from 'containers/AboutPage/Loadable';
 import ContactPage from 'containers/ContactPage/Loadable';
 import ProgramsPage from 'containers/ProgramsPage/Loadable';
+import ResearcherPage from 'containers/ResearcherPage/Loadable';
 import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
@@ -65,6 +66,12 @@ function App({ runtime /* , loggedIn */ }) {
           path="/"
           render={props => (
             <HomePage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/researcher/:id"
+          render={props => (
+            <ResearcherPage {...props} height={height} width={width} />
           )}
         />
         <Route

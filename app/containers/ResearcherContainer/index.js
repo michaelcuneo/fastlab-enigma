@@ -8,6 +8,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { useMediaQuery } from 'react-responsive';
 
+import { Flex, Box, Text } from 'rebass';
 import H2 from 'components/H2';
 import ParsedContent from 'components/ParsedContent';
 import SideMenu from 'components/SideMenu';
@@ -16,8 +17,6 @@ import Footer from 'components/Footer';
 import OverlayContainer from 'containers/OverlayContainer';
 import VideoHeader from 'containers/VideoHeader';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
-
-import { Flex, Box, Text } from 'rebass';
 
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';

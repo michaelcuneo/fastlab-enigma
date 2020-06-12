@@ -48,7 +48,6 @@ function StyledButton({ children, color, active }) {
     background: ${background};
     border: 0px;
     padding: 0px 30px 0px 30px;
-    z-index: 999999;
     color: ${active ? 'white' : 'green'};
   `;
 

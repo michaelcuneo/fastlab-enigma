@@ -79,7 +79,7 @@ const LatestUpdatesContainer = ({ width, height }) => {
         {/* Change this Flex to a slideable Horizontal Container */}
         <Flex sx={{ overflowX: 'scroll', flexDirection: 'row' }} height="900px">
           {fakeData.map(data => (
-            <UpdateContainer width={width} data={data} />
+            <UpdateContainer key={data.id} width={width} data={data} />
           ))}
         </Flex>
       </Flex>

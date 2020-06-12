@@ -27,21 +27,25 @@ function AboutPage({ width, height }) {
 
   const menuItems = [
     {
+      id: '1',
       title: 'Rapid',
       link: 'rapid',
       details: 'Nothing',
     },
     {
+      id: '2',
       title: 'Transmission',
       link: 'transmission',
       details: 'Nothing',
     },
     {
+      id: '3',
       title: 'Accelerator',
       link: 'accelerator',
       details: 'Nothing',
     },
     {
+      id: '4',
       title: 'ZED Studio',
       link: 'zed',
       details: 'Nothing',

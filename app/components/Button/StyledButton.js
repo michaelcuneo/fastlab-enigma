@@ -45,7 +45,7 @@ function StyledButton({ children, color }) {
   });
 
   const CustomButton = styled(a.button)`
-    display: inline-flex;
+    display: flex;
     align-items: center;
     width: auto;
     height: 80px;
@@ -60,7 +60,6 @@ function StyledButton({ children, color }) {
     background: ${background};
     border: 0px;
     padding: 0px 30px 0px 30px;
-    z-index: 9999999;
   `;
 
   return (

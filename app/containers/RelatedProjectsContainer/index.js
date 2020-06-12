@@ -83,7 +83,13 @@ const RelatedProjectsContainer = ({ width, height }) => {
             minHeight="800px"
           >
             {fakeData.map(data => (
-              <ProjectContainer width={width} height={height} data={data} />
+              <ProjectContainer
+                key={data.id}
+                width={width}
+                height={height}
+                data={data}
+                staggered
+              />
             ))}
           </Flex>
         </Flex>

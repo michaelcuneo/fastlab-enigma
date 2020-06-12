@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Flex, Box, Text } from 'rebass';
 
-const ProjectContainer = ({ data, height, width, offset, staggered }) => {
+const ProjectContainer = ({ data, height, width, top, left, staggered }) => {
   let PX;
   let SX;
   let PT;
@@ -11,24 +11,26 @@ const ProjectContainer = ({ data, height, width, offset, staggered }) => {
   let HEIGHT;
 
   if (staggered) {
-    PX = ['0px', '10px', '10px'];
+    PX = ['0px', '15px', '15px'];
     PT = Math.random() * (200 - 0);
     SX = {
-      zIndex: 99999,
+      zIndex: 999,
       minWidth: `${width * 0.2792}px`,
       minHeight: `${height * 0.2792 * 1.82}px`,
       height: `${height * 0.2792}px`,
       maxWidth: `${width * 0.2792}px`,
     };
-    HEIGHT = '274px';
-    WIDTH = '402px';
+    HEIGHT = '536px';
+    WIDTH = '640px';
   } else {
     PX = [];
-    PT = offset;
     SX = {
-      zIndex: 99999,
+      position: 'absolute',
+      zIndex: 999,
       minWidth: width,
       minHeight: height,
+      top,
+      left,
     };
     HEIGHT = height;
     WIDTH = width;
@@ -50,7 +52,7 @@ const ProjectContainer = ({ data, height, width, offset, staggered }) => {
           maxWidth: WIDTH,
         }}
       >
-        <Box
+        <Flex
           sx={{
             position: 'relative',
             bottom: 0,
@@ -59,41 +61,18 @@ const ProjectContainer = ({ data, height, width, offset, staggered }) => {
           }}
           mt="5px"
           p="34px"
-          height="274px"
-          width={width}
+          flexDirection="column"
+          justifyContent="space-between"
         >
-          <Flex flexDirection="row" justifyContent="space-between">
-            <Text
-              sx={{
-                color: '#151417',
-                fontSize: '24px',
-                lineHeight: '28px',
-                fontFamily: 'archia',
-              }}
-            >
-              {data.updateTitle}
-            </Text>
-            <Text
-              sx={{
-                color: '#B9B9B9',
-                fontSize: '24px',
-                lineHeight: '28px',
-                fontFamily: 'archia',
-              }}
-            >
-              {data.updateDate}
-            </Text>
-          </Flex>
           <Text
             sx={{
-              color: '#868686',
-              fontSize: '16px',
-              lineHeight: '25px',
+              color: '#151417',
+              fontSize: '24px',
+              lineHeight: '28px',
               fontFamily: 'archia',
             }}
-            my="28px"
           >
-            {data.updateDetails}
+            {data.title}
           </Text>
           <Text
             sx={{
@@ -106,7 +85,7 @@ const ProjectContainer = ({ data, height, width, offset, staggered }) => {
           >
             {data.tags}
           </Text>
-        </Box>
+        </Flex>
       </Flex>
     </Box>
   );
@@ -116,7 +95,8 @@ ProjectContainer.propTypes = {
   data: PropTypes.object,
   width: PropTypes.number,
   height: PropTypes.number,
-  offset: PropTypes.number,
+  top: PropTypes.string,
+  left: PropTypes.string,
   staggered: PropTypes.bool,
 };
 

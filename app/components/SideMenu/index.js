@@ -50,6 +50,7 @@ const SideMenu = ({
     >
       {menuItems.map(item => (
         <MenuItem
+          key={item.id}
           currentMenuItem={currentMenuItem}
           py="12.5px"
           onClick={() => setCurrentMenuItem(item)}
