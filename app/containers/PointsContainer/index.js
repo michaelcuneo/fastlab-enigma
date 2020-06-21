@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Image } from 'rebass';
+import { Flex, Box, Image } from 'rebass';
 
 import { FormattedMessage } from 'react-intl';
+
+import { useMediaQuery } from 'react-responsive';
 
 import Point1 from 'images/Point_One.svg';
 import Point2 from 'images/Point_Two.svg';
@@ -14,27 +16,105 @@ import { PointHeader, PointText } from './PointText';
 import messages from './messages';
 
 const PointsContainer = ({ width }) => {
-  const image1Scale = width * 0.0677; // 130px as a percentage of full height (1080)
-  const image2Scale = width * 0.0844; // 100px as a percentage of full height (1080)
-  const image3Scale = width * 0.0646; // 100px as a percentage of full height (1080)
-  const image4Scale = width * 0.0661; // 100px as a percentage of full height (1080)
-
   const headerPadding = '52px';
 
-  return (
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  return isTabletMobile ? (
     <Flex
-      pt="114px" // Distance from Landing Container to first image.
+      pt={['80px', '80px', '114px']} // Distance from Landing Container to first image.
       pb="80px" // Distance from Point Container to first image in showcase.
-      px={width * 0.0688}
+      px={width * 0.0827}
+      justifyContent="space-between"
+      flexDirection="column"
+      style={{ position: 'relative', background: '#151417' }}
+    >
+      <Flex flexDirection="row" width="100%" pb="60px">
+        <Box width={width * 0.1813} px={width * 0.0133}>
+          <Image
+            height={width * 0.1813}
+            width={width * 0.1813}
+            src={Point1}
+            alt="Point One"
+          />
+        </Box>
+        <Box width={width * 0.5973}>
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointone} />
+          </PointHeader>
+          <PointText>
+            <FormattedMessage {...messages.point1message} />
+          </PointText>
+        </Box>
+      </Flex>
+      <Flex flexDirection="row" width="100%" pb="60px">
+        <Box width={width * 0.1813} px={width * 0.0133}>
+          <Image
+            height={width * 0.1813}
+            width={width * 0.1813}
+            src={Point2}
+            alt="Point Two"
+          />
+        </Box>
+        <Box width={width * 0.5973}>
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointtwo} />
+          </PointHeader>
+          <PointText>
+            <FormattedMessage {...messages.point2message} />
+          </PointText>
+        </Box>
+      </Flex>
+      <Flex flexDirection="row" width="100%" pb="60px">
+        <Box width={width * 0.1813} px={width * 0.0133}>
+          <Image
+            height={width * 0.1813}
+            width={width * 0.1813}
+            src={Point3}
+            alt="Point Three"
+          />
+        </Box>
+        <Box width={width * 0.5973}>
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointthree} />
+          </PointHeader>
+          <PointText>
+            <FormattedMessage {...messages.point3message} />
+          </PointText>
+        </Box>
+      </Flex>
+      <Flex flexDirection="row" width="100%" pb="60px">
+        <Box width={width * 0.1813} px={width * 0.0133}>
+          <Image
+            height={width * 0.1813}
+            width={width * 0.1813}
+            src={Point4}
+            alt="Point Four"
+          />
+        </Box>
+        <Box width={width * 0.5973}>
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointfour} />
+          </PointHeader>
+          <PointText>
+            <FormattedMessage {...messages.point4message} />
+          </PointText>
+        </Box>
+      </Flex>
+    </Flex>
+  ) : (
+    <Flex
+      pt={['80px', '80px', '114px']} // Distance from Landing Container to first image.
+      pb="80px" // Distance from Point Container to first image in showcase.
+      px={width * 0.0827}
       alignItems="baseline"
       justifyContent="space-between"
-      flexWrap="wrap"
       style={{ position: 'relative', background: '#151417' }}
     >
       <Flex flexDirection="column" width={width * 0.1302}>
         <Image
-          height={image1Scale}
-          width={image1Scale}
+          height={width * 0.0677}
+          width={width * 0.0677}
           src={Point1}
           alt="Point One"
         />
@@ -46,10 +126,10 @@ const PointsContainer = ({ width }) => {
           Technology.
         </PointText>
       </Flex>
-      <Flex flexDirection="column" width={width * 0.1302}>
+      <Flex flexDirection="column" width={[width * 0.1302]}>
         <Image
-          height={image2Scale}
-          width={image2Scale}
+          height={width * 0.0677}
+          width={width * 0.0677}
           src={Point2}
           alt="Point Two"
         />
@@ -61,10 +141,10 @@ const PointsContainer = ({ width }) => {
           tackle the constantly evolving challenge of change.
         </PointText>
       </Flex>
-      <Flex flexDirection="column" width={width * 0.1302}>
+      <Flex flexDirection="column" width={[width * 0.1302]}>
         <Image
-          height={image3Scale}
-          width={image3Scale}
+          height={width * 0.0677}
+          width={width * 0.0677}
           src={Point3}
           alt="Point Three"
         />
@@ -76,10 +156,10 @@ const PointsContainer = ({ width }) => {
           teams to support consistent creativity and innovation.
         </PointText>
       </Flex>
-      <Flex flexDirection="column" width={width * 0.1302}>
+      <Flex flexDirection="column" width={[width * 0.1302]}>
         <Image
-          height={image4Scale}
-          width={image4Scale}
+          height={width * 0.0677}
+          width={width * 0.0677}
           src={Point4}
           alt="Point Four"
         />

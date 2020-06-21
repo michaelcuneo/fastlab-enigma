@@ -9,7 +9,7 @@ const MenuItem = ({ py, onClick, item, currentMenuItem }) => {
     font-family: 'jetbrains-bold', sans-serif;
     font-size: 20px;
     line-size: 25px;
-    color: ${currentMenuItem.title === item.title ? '#0FF48D' : 'white'};
+    color: ${currentMenuItem === item.id ? '#0FF48D' : 'white'};
   `;
 
   return (
@@ -23,7 +23,7 @@ MenuItem.propTypes = {
   py: PropTypes.string,
   onClick: PropTypes.func,
   item: PropTypes.object,
-  currentMenuItem: PropTypes.object,
+  currentMenuItem: PropTypes.number,
 };
 
 const SideMenu = ({
@@ -38,7 +38,7 @@ const SideMenu = ({
     background: #151417;
     border: 1px solid #707070;
     border-radius: 40px;
-    z-index: 99999;
+    z-index: 9999;
   `;
 
   return (
@@ -53,7 +53,7 @@ const SideMenu = ({
           key={item.id}
           currentMenuItem={currentMenuItem}
           py="12.5px"
-          onClick={() => setCurrentMenuItem(item)}
+          onClick={() => setCurrentMenuItem(item.id)}
           item={item}
         />
       ))}
@@ -65,7 +65,7 @@ SideMenu.propTypes = {
   width: PropTypes.number,
   menuItems: PropTypes.array,
   setCurrentMenuItem: PropTypes.func,
-  currentMenuItem: PropTypes.object,
+  currentMenuItem: PropTypes.number,
 };
 
 export default SideMenu;

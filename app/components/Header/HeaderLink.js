@@ -9,7 +9,13 @@ import { Text } from 'rebass';
 
 import { useSpring, animated as a } from 'react-spring';
 
-export const HeaderLink = ({ to, onClick, link, linkDetails, small }) => {
+export const HeaderLink = ({
+  to,
+  onClick,
+  link,
+  linkDetails,
+  isTabletMobile,
+}) => {
   const [hoverState, setHoverState] = useState(false);
 
   const resetState = () => {
@@ -35,7 +41,7 @@ export const HeaderLink = ({ to, onClick, link, linkDetails, small }) => {
   });
 
   const StyledLink = styled(Link)`
-    text-decoration: none;
+    text-decoration: none !important;
     cursor: pointer;
     outline: 0;
     color: white;
@@ -53,18 +59,14 @@ export const HeaderLink = ({ to, onClick, link, linkDetails, small }) => {
     font-family: 'archia', sans-serif;
     font-size: 50px;
     line-height: 100px;
-  `;
-
-  const LinkTextSmall = styled(Text)`
-    font-family: 'archia', sans-serif;
-    font-size: 18px;
-    line-height: 25px;
+    color: white;
   `;
 
   const LinkDetails = styled(a.div)`
     font-family: 'archia', sans-serif;
     font-size: 18px;
     line-height: 22px;
+    color: white;
   `;
 
   const LinkArrow = styled(a.div)`
@@ -74,9 +76,24 @@ export const HeaderLink = ({ to, onClick, link, linkDetails, small }) => {
     justify-content: center;
     align-items: center;
     padding: 0px 20px 0px 0px;
+    color: white;
   `;
 
-  return (
+  return isTabletMobile ? (
+    <StyledLink to={to} onClick={onClick}>
+      <AnimatedBox>
+        <LinkText
+          fontSize={['40px', '40px', '50px']}
+          lineHeight={['80px', '80px', '100px']}
+        >
+          {link}
+        </LinkText>
+        <LinkArrow>
+          <FontAwesomeIcon icon="angle-right" size="3x" />
+        </LinkArrow>
+      </AnimatedBox>
+    </StyledLink>
+  ) : (
     <StyledLink
       onMouseOver={() => setHoverState(true)}
       onFocus={() => {}}
@@ -85,11 +102,7 @@ export const HeaderLink = ({ to, onClick, link, linkDetails, small }) => {
       onClick={onClick}
     >
       <AnimatedBox style={CustomAnimation}>
-        {small ? (
-          <LinkTextSmall>{link}</LinkTextSmall>
-        ) : (
-          <LinkText>{link}</LinkText>
-        )}
+        <LinkText>{link}</LinkText>
         <LinkDetails style={CustomDetailAnimation}>{linkDetails}</LinkDetails>
         <LinkArrow style={CustomHideAnimation}>
           <FontAwesomeIcon icon="angle-right" size="3x" />
@@ -104,32 +117,5 @@ HeaderLink.propTypes = {
   onClick: PropTypes.func,
   link: PropTypes.object,
   linkDetails: PropTypes.object,
-  small: PropTypes.bool,
-};
-
-export const LoginLink = ({ to, onClick, link }) => {
-  const StyledLink = styled(Link)`
-    text-decoration: none;
-    cursor: pointer;
-    outline: 0;
-    color: white;
-  `;
-
-  const LinkTextSmall = styled(Text)`
-    font-family: 'archia', sans-serif;
-    font-size: 18px;
-    line-height: 25px;
-  `;
-
-  return (
-    <StyledLink to={to} onClick={onClick}>
-      <LinkTextSmall>{link}</LinkTextSmall>
-    </StyledLink>
-  );
-};
-
-LoginLink.propTypes = {
-  to: PropTypes.string,
-  onClick: PropTypes.func,
-  link: PropTypes.object,
+  isTabletMobile: PropTypes.bool,
 };

@@ -7,6 +7,12 @@ import {
   VolumeMenuButton,
 } from 'video-react';
 
+import { Flex, Image } from 'rebass';
+
+import { useMediaQuery } from 'react-responsive';
+
+import maskGroup from 'images/Mask_Group_1.png';
+
 import backgroundVideo1 from 'video/background-video-01.mp4';
 import backgroundVideo2 from 'video/background-video-02.mp4';
 import backgroundVideo3 from 'video/background-video-03.mp4';
@@ -21,6 +27,9 @@ import backgroundVideo11 from 'video/background-video-11.mp4';
 
 const VideoHeader = ({ width, height }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
+
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
   const videos = [
     backgroundVideo1,
     backgroundVideo2,
@@ -39,7 +48,11 @@ const VideoHeader = ({ width, height }) => {
     setBackgroundVideo(videos[Math.floor(Math.random() * videos.length)]);
   });
 
-  return (
+  return isTabletMobile ? (
+    <Flex sx={{ position: 'relative' }}>
+      <Image size="contain" height="483px" width={width} src={maskGroup} />
+    </Flex>
+  ) : (
     <div height={height} width={width}>
       <Player
         height={height}

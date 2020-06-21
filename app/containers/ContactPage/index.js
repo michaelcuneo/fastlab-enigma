@@ -6,7 +6,9 @@ import { FormattedMessage } from 'react-intl';
 
 import { useMediaQuery } from 'react-responsive';
 
-import { Flex, Text } from 'rebass';
+import { Flex, Text, Image } from 'rebass';
+
+import Sig3 from 'images/scribbles_mark-3-white.svg';
 
 import VideoHeader from 'containers/VideoHeader';
 import H2 from 'components/H2';
@@ -59,23 +61,35 @@ function ContactPage({ width, height }) {
         flexDirection="column"
         sx={{
           position: 'absolute',
-          borderTop: '1px solid rgba(255, 255, 255, 0.4)',
           height: 'auto',
           top: '400px',
           background: '#151417',
+          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         }}
       >
         <Flex
-          flexDirection="column"
           sx={{
             position: 'relative',
           }}
-          py="182px"
-          px={width * 0.0729}
+          justifyContent="flex-begin"
+          alignItems="flex-begin"
+          pt={['20px', '20px', '182px']}
+          pb={['20px', '20px', '182px']}
+          px={[width * 0.0933, width * 0.0933, width * 0.2167]}
         >
+          <Image
+            sx={{
+              position: 'absolute',
+              left: `-${(width * 0.1292) / 4}px !important`,
+              top: height * 0.1444,
+            }}
+            width={width * 0.1292}
+            src={Sig3}
+          />
           <Flex
+            height="auto"
             flexDirection="column"
-            sx={{ position: 'relative', maxWidth: width * 0.4229 }}
+            sx={{ position: 'relative', minWidth: width * 0.4229 }}
           >
             <Text pb={37}>
               We’re open for business and would love to hear from you. Feel free

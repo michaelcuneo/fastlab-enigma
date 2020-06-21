@@ -1,63 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { useMediaQuery } from 'react-responsive';
+
+import Sig1 from 'images/scribbles_mark-1-white.svg';
+import Sig3 from 'images/scribbles_mark-3-white.svg';
+
+import { graphqlOperation } from 'aws-amplify';
+import { Connect } from 'aws-amplify-react';
 
 import Button from 'components/Button';
 
-import MarkGroup1 from 'images/Mask Group 2.png';
-import MarkGroup2 from 'images/Mask Group 3.png';
-import MarkGroup3 from 'images/Mask Group 4.png';
-import MarkGroup4 from 'images/Mask Group 7.png';
-import MarkGroup5 from 'images/Mask Group 8.png';
-import MarkGroup6 from 'images/Mask Group 10.png';
-import MarkGroup7 from 'images/Mask Group 5.png';
-
-import { Flex } from 'rebass';
+import { Flex, Image } from 'rebass';
 import ProjectContainer from 'containers/ProjectContainer';
 
-const LatestProjectsContainer = () => {
-  const fakeData = [
-    {
-      id: '1',
-      title: 'Title One',
-      image: MarkGroup1,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '2',
-      title: 'Title Two',
-      image: MarkGroup2,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '3',
-      title: 'Title Three',
-      image: MarkGroup3,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '4',
-      title: 'Title Four',
-      image: MarkGroup4,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '5',
-      title: 'Title Five',
-      image: MarkGroup5,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '6',
-      title: 'Title Six',
-      image: MarkGroup6,
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '7',
-      title: 'Title Seven',
-      image: MarkGroup7,
-      tags: 'tags, tags, other tags, taggies',
-    },
-  ];
+import { listProjects } from '../../../src/graphql/queries';
+
+function LatestProjectsContainer({ dark }) {
+  const height = window.innerHeight;
+  const width = window.innerWidth;
+
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return (
     <React.Fragment>
@@ -70,73 +33,138 @@ const LatestProjectsContainer = () => {
           sx={{ position: 'relative' }}
           flexWrap="wrap"
           width="100%"
-          height="1448px"
+          minHeight="1350px"
+          height="auto"
         >
-          <ProjectContainer
-            width={554}
-            height={430}
-            top="207px"
-            left="0px"
-            data={fakeData[0]}
-          />
-          <ProjectContainer
-            width={407}
-            height={506}
-            top="419px"
-            left="554px"
-            data={fakeData[1]}
-          />
-          <ProjectContainer
-            width={421}
-            height={506}
-            top="294px"
-            left="961px"
-            data={fakeData[2]}
-          />
-          <ProjectContainer
-            width={538}
-            height={506}
-            top="41px"
-            left="1382px"
-            data={fakeData[3]}
-          />
-          <ProjectContainer
-            width={292}
-            height={416}
-            top="637px"
-            left="262px"
-            data={fakeData[4]}
-          />
-          <ProjectContainer
-            width={407}
-            height={416}
-            top="925px"
-            left="830px"
-            data={fakeData[5]}
-          />
-          <ProjectContainer
-            width={407}
-            height={506}
-            top="657px"
-            left="1382px"
-            data={fakeData[6]}
+          <Connect
+            key="LatestProjectsData"
+            query={graphqlOperation(listProjects, {
+              filter: {
+                featured: {
+                  eq: true,
+                },
+              },
+              limit: 100,
+            })}
+          >
+            {({ data, loading, error }) => {
+              if (error) return <h3>Error</h3>;
+              if (loading || !data) return null;
+              return !isTabletMobile ? (
+                <React.Fragment>
+                  <ProjectContainer
+                    key={data.listProjects.items[0].id}
+                    width={width * 0.2885}
+                    height={height * 0.3981}
+                    top={`${height * 0.1917}px`}
+                    left="0px"
+                    item={data.listProjects.items[0]}
+                  />
+                  <Image
+                    sx={{
+                      width: width * 0.1292,
+                      height: height * 0.1769,
+                      position: 'absolute',
+                      left: `${width * 0.3323}px`,
+                      top: `${height * 0.087}px`,
+                    }}
+                    src={Sig3}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[1].id}
+                    width={width * 0.212}
+                    height={height * 0.4685}
+                    top={`${height * 0.388}px`}
+                    left={`${width * 0.2885}px`}
+                    item={data.listProjects.items[1]}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[2].id}
+                    width={width * 0.2193}
+                    height={height * 0.4685}
+                    top={`${height * 0.2722}px`}
+                    left={`${width * 0.5005}px`}
+                    item={data.listProjects.items[2]}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[3].id}
+                    width={width * 0.2802}
+                    height={height * 0.4685}
+                    top={`${height * 0.038}px`}
+                    left={`${width * 0.7198}px`}
+                    item={data.listProjects.items[3]}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[4].id}
+                    width={width * 0.1521}
+                    height={height * 0.3852}
+                    top={`${height * 0.5898}px`}
+                    left={`${width * 0.1365}px`}
+                    item={data.listProjects.items[4]}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[5].id}
+                    width={width * 0.212}
+                    height={height * 0.3852}
+                    top={`${height * 0.8565}px`}
+                    left={`${width * 0.4323}px`}
+                    item={data.listProjects.items[5]}
+                  />
+                  <ProjectContainer
+                    key={data.listProjects.items[6].id}
+                    width={width * 0.212}
+                    height={height * 0.4685}
+                    top={`${height * 0.6083}px`}
+                    left={`${width * 0.7198}px`}
+                    item={data.listProjects.items[6]}
+                  />
+                </React.Fragment>
+              ) : (
+                data.listProjects.items.map(item => (
+                  <ProjectContainer
+                    key={item.id}
+                    width="100%"
+                    height="100%"
+                    screenWidth={width}
+                    screenHeight={height}
+                    item={item}
+                    staggered
+                  />
+                ))
+              );
+            }}
+          </Connect>
+          <Image
+            sx={{
+              position: 'absolute',
+              left: `-${width * 0.1292} / 2`,
+              bottom: `170px`,
+            }}
+            width={width * 0.1292}
+            src={Sig1}
           />
         </Flex>
       </Flex>
-      <Flex
-        width="100%"
-        flexDirection="row"
-        justifyContent="flex-end"
-        sx={{ background: '#151417' }}
-        pb={[100]}
-        pr={['6.88vw']}
-      >
-        <Button color="dark" to="/projects">
-          Explore more projects
-        </Button>
-      </Flex>
+      {!dark && (
+        <Flex
+          width="100%"
+          flexDirection="row"
+          justifyContent="flex-end"
+          sx={{ background: '#151417' }}
+          pb={[100]}
+          pr={width * 0.0729}
+        >
+          <Button color="dark" to="/projects" arrow="right">
+            Explore more projects
+          </Button>
+        </Flex>
+      )}
     </React.Fragment>
   );
+}
+
+LatestProjectsContainer.propTypes = {
+  dark: PropTypes.bool,
 };
 
 export default LatestProjectsContainer;

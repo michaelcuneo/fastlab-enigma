@@ -5,6 +5,7 @@ export const TabletMobileStyles = {
     height: '38px',
     right: '20px',
     top: '20px',
+    pointerEvents: 'none',
   },
   bmBurgerBars: {
     background: '#373a47',
@@ -42,7 +43,7 @@ export const TabletMobileStyles = {
     display: 'inline-block',
   },
   bmOverlay: {
-    background: 'rgba(0, 0, 0, 0.3)',
+    background: 'rgba(0, 0, 0, 0.4)',
   },
 };
 
@@ -90,6 +91,6 @@ export const DesktopLaptopStyles = {
     display: 'inline-block',
   },
   bmOverlay: {
-    background: 'rgba(0, 0, 0, 0.3)',
+    background: 'rgba(0, 0, 0, 0.4)',
   },
 };

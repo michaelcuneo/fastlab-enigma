@@ -66,7 +66,7 @@ function StyledButton({ children, color, active }) {
 StyledButton.propTypes = {
   color: PropTypes.string,
   children: PropTypes.node,
-  active: PropTypes.object,
+  active: PropTypes.bool,
 };
 
 export default StyledButton;

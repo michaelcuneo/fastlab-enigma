@@ -4,15 +4,15 @@ import styled from 'styled-components';
 
 import Button from 'components/Button';
 
-import MarkGroup1 from 'images/Mask Group 2.png';
-import MarkGroup2 from 'images/Mask Group 3.png';
-import MarkGroup3 from 'images/Mask Group 4.png';
-import MarkGroup4 from 'images/Mask Group 7.png';
+import { graphqlOperation } from 'aws-amplify';
+import { Connect } from 'aws-amplify-react';
 
 import { Flex, Box, Text } from 'rebass';
 
+import ProjectContainer from 'containers/ProjectContainer';
 import Overlay from './Overlay';
-import ProjectContainer from '../ProjectContainer';
+
+import { listProjects } from '../../../src/graphql/queries';
 
 const RelatedProjectsContainer = ({ width, height }) => {
   const StyledText = styled(Text)`
@@ -20,49 +20,6 @@ const RelatedProjectsContainer = ({ width, height }) => {
     font-family: 'archiaregular', sans-serif;
     color: white;
   `;
-
-  const fakeData = [
-    {
-      id: '1',
-      title: 'Title One',
-      image: MarkGroup1,
-      updateTitle: 'Update Title One',
-      updateDate: '17 Aug',
-      updateDetails:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis',
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '2',
-      title: 'Title Two',
-      image: MarkGroup2,
-      updateTitle: 'Update Title Two',
-      updateDate: '23 Jun',
-      updateDetails:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis',
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '3',
-      title: 'Title Three',
-      image: MarkGroup3,
-      updateTitle: 'Update Title Three',
-      updateDate: '18 Feb',
-      updateDetails:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis',
-      tags: 'tags, tags, other tags, taggies',
-    },
-    {
-      id: '4',
-      title: 'Title Four',
-      image: MarkGroup4,
-      updateTitle: 'Update Title Four',
-      updateDate: '08 Nov',
-      updateDetails:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Bibendum est ultricies integer quis. Iaculis',
-      tags: 'tags, tags, other tags, taggies',
-    },
-  ];
 
   return (
     <React.Fragment>
@@ -74,30 +31,47 @@ const RelatedProjectsContainer = ({ width, height }) => {
           justifyContent="space-around"
           pl={[width * 0.0729]}
         >
-          <Box pt={[172]}>
+          <Box pt={['172px']} pb={['60px']}>
             <StyledText>Related Projects</StyledText>
           </Box>
-          {/* Change this Flex to a slideable Horizontal Container */}
           <Flex
-            sx={{ overflowX: 'scroll', flexDirection: 'row' }}
-            minHeight="800px"
+            flexWrap="wrap"
+            flexDirection="row"
+            maxHeight="800px"
+            sx={{ height: 'auto' }}
           >
-            {fakeData.map(data => (
-              <ProjectContainer
-                key={data.id}
-                width={width}
-                height={height}
-                data={data}
-                staggered
-              />
-            ))}
+            <Connect
+              key="LatestProjectsData"
+              query={graphqlOperation(listProjects, {
+                filter: {
+                  featured: {
+                    eq: true,
+                  },
+                },
+                limit: 7,
+              })}
+            >
+              {({ data, loading, error }) => {
+                if (error) return <h3>Error</h3>;
+                if (loading || !data) return null;
+                return data.listProjects.items.map(item => (
+                  <ProjectContainer
+                    key={item.id}
+                    item={item}
+                    screenWidth={width}
+                    screenHeight={height}
+                    staggered
+                  />
+                ));
+              }}
+            </Connect>
           </Flex>
         </Flex>
         <Flex
           width="100%"
           flexDirection="row"
           justifyContent="flex-end"
-          sx={{ background: '#EC184A' }}
+          sx={{ background: '#ec184a' }}
           pb={[100]}
           pr={[width * 0.0729]}
         >

@@ -90,7 +90,12 @@ function ResearchersContainer({ width }) {
                   label="All Researchers"
                   onClick={() => setSelection(null)}
                   selection="All"
-                  item="All"
+                  item={{
+                    id: 'all',
+                    label: 'All',
+                    value: 'all',
+                    description: 'all',
+                  }}
                 />,
               ];
             }}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
 import { FormattedMessage } from 'react-intl';
 
@@ -11,7 +12,7 @@ import { Flex, Box } from 'rebass';
 
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
-import { HeaderLink, LoginLink } from './HeaderLink';
+import { HeaderLink /* , LoginLink */ } from './HeaderLink';
 import messages from './messages';
 
 import { DesktopLaptopStyles, TabletMobileStyles } from './MenuStyles';
@@ -23,6 +24,14 @@ function Header() {
 
   const closeMenu = () => setMenuOpened(false);
   const handleStateChange = state => setMenuOpened(state.isOpen);
+
+  const StyledLine = styled.hr`
+    position: absolute;
+    color: #707070;
+    top: 106px;
+    width: 100%;
+    outline: none;
+  `;
 
   return (
     <React.Fragment>
@@ -52,14 +61,7 @@ function Header() {
         }
         styles={isTabletMobile ? TabletMobileStyles : DesktopLaptopStyles}
       >
-        <hr
-          style={{
-            position: 'absolute',
-            color: '#707070',
-            top: '106px',
-          }}
-          width="100%"
-        />
+        <StyledLine />
         <Flex
           flexDirection="column"
           sx={{
@@ -74,46 +76,43 @@ function Header() {
               link={<FormattedMessage {...messages.home} />}
               linkDetails={<FormattedMessage {...messages.homeDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
             <HeaderLink
               to="/about"
               link={<FormattedMessage {...messages.about} />}
               linkDetails={<FormattedMessage {...messages.aboutDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
             <HeaderLink
               to="/projects"
               link={<FormattedMessage {...messages.projects} />}
               linkDetails={<FormattedMessage {...messages.projectsDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
             <HeaderLink
               to="/updates"
               link={<FormattedMessage {...messages.updates} />}
               linkDetails={<FormattedMessage {...messages.updatesDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
             <HeaderLink
               to="/programs"
               link={<FormattedMessage {...messages.programs} />}
               linkDetails={<FormattedMessage {...messages.programsDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
             <HeaderLink
               to="/contact"
               link={<FormattedMessage {...messages.contact} />}
               linkDetails={<FormattedMessage {...messages.contactDetails} />}
               onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
             />
-          </Box>
-          <Box pl="35px">
-            <LoginLink
-              to="/login"
-              link={<FormattedMessage {...messages.login} />}
-              onClick={closeMenu}
-            >
-              <FormattedMessage {...messages.login} />
-            </LoginLink>
           </Box>
         </Flex>
       </Menu>

@@ -7,14 +7,7 @@ import { useSpring, animated as a } from 'react-spring';
 
 import styled from 'styled-components';
 
-/*
-  x: '-10px',
-  y: '-10px',
-  spread: '40px',
-  colour: `rgba(255, 255, 255, 0.2), 10px, 10px, 40px, ${shadow}`,
-*/
-
-function StyledButton({ children, color }) {
+const StyledButton = ({ children, color, arrow }) => {
   let shadow;
   let background;
   let foreground;
@@ -69,17 +62,25 @@ function StyledButton({ children, color }) {
       onMouseLeave={() => setHoverState(false)}
       style={CustomAnimation}
     >
+      {arrow === 'left' && (
+        <Text pr={3} color={foreground}>
+          &lsaquo;
+        </Text>
+      )}
       {children}
-      <Text pl={3} color={foreground}>
-        &rsaquo;
-      </Text>
+      {arrow === 'right' && (
+        <Text pl={3} color={foreground}>
+          &rsaquo;
+        </Text>
+      )}
     </CustomButton>
   );
-}
+};
 
 StyledButton.propTypes = {
   color: PropTypes.string,
   children: PropTypes.node,
+  arrow: PropTypes.string,
 };
 
 export default StyledButton;

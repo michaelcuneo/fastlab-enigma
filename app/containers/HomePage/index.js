@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
+import ParsedContent from 'components/ParsedContent';
+
 import VideoLanding from 'containers/VideoLanding';
 import PointsContainer from 'containers/PointsContainer';
 import LatestProjectsContainer from 'containers/LatestProjectsContainer';
@@ -33,7 +35,11 @@ export function HomePage() {
         <title>Home Page</title>
         <meta name="description" content="Fastlab" />
       </Helmet>
-      <VideoLanding width={width} height={height} />
+      <VideoLanding
+        width={width}
+        height={height}
+        text={<ParsedContent content="The centre of <br /> applied chaos" />}
+      />
       <PointsContainer width={width} height={height} />
       <LatestProjectsContainer width={width} height={height} />
       <LatestUpdatesContainer width={width} height={height} />

@@ -40,7 +40,7 @@ const Overlay = ({ width, height, text }) => {
 Overlay.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-  text: PropTypes.string,
+  text: PropTypes.object,
 };
 
 export default Overlay;

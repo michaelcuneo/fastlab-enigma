@@ -20,8 +20,7 @@ import 'sanitize.css/sanitize.css';
 import App from 'containers/App';
 
 // Import AWS Authentication stuff.
-import Amplify, { Auth, I18n } from 'aws-amplify';
-import AuthManager from 'containers/AuthManager';
+import Amplify from 'aws-amplify';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -52,23 +51,17 @@ import 'video-react/dist/video-react.css';
 import 'customType.css';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 
+import 'react-multi-carousel/lib/styles.css';
+
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
 library.add(faAngleRight);
 
 setAutoFreeze(false);
 
-I18n.setLanguage('en');
-const dict = {
-  en: {
-    'Phone Number': 'Mobile Phone Number',
-  },
-};
-
-I18n.putVocabularies(dict);
-
 Amplify.configure(awsExports);
-Auth.configure({
-  authenticationFlowType: 'USER_PASSWORD_AUTH',
-});
 
 // Create redux store with history
 const initialState = {};
@@ -89,9 +82,7 @@ const render = messages => {
       >
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
-            <AuthManager>
-              <App runtime={runtime} />
-            </AuthManager>
+            <App runtime={runtime} />
           </ConnectedRouter>
         </LanguageProvider>
       </PersistGate>

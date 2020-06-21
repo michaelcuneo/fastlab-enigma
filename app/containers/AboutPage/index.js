@@ -13,11 +13,15 @@ import ParsedContent from 'components/ParsedContent';
 import SideMenu from 'components/SideMenu';
 import Footer from 'components/Footer';
 
+import Sig1 from 'images/scribbles_mark-1-white.svg';
+
 import OverlayContainer from 'containers/OverlayContainer';
 import VideoHeader from 'containers/VideoHeader';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box, Text, Image } from 'rebass';
+
+import Button from 'components/Button';
 
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
@@ -27,51 +31,48 @@ function AboutPage({ width, height }) {
 
   const menuItems = [
     {
-      id: '1',
+      id: 0,
       title: 'About Fastlab',
       link: 'about',
       details:
         '<p>Housed in the School of Creative Industries and Innovation Hub’s Honeysuckle building FASTLab carries out research and development at the intersection of Art, Science and Technology.</p><p>FASTLab is a Gateway to the University of Newcastle’s internationally recognised research centres, the expertise of staff, students and graduates, and the outstanding facilities the University has to offer.</p><p>Across its themes of Human Behaviour, Future Work, Transmedia Arts, Narrative possibilities and Connected Communities the FASTLab team thinks - among other things - about Innovation and enterprise; Technology (AI & Robotics); globalization; migration; aging; (in-work) poverty and inequality; macro-economic instability. FASTLab’s transdisciplinary team pursues a broad range of projects, from exhibitions and installations, performances and prototypes, to cooperation with the private sector, NGO’s and universities.',
     },
     {
-      id: '2',
+      id: 1,
       title: 'FastLab and your business',
       link: 'business',
-      details: 'Nothing',
+      details:
+        '<p>New and emerging technologies and innovative business models are rapidly transforming life, business and the global economy. As digital technologies reshape and disrupt our world, businesses established in less turbulent times need to make complex and critical decisions to navigate this changed landscape.</p><p>We offer organisations real insights, analysis, and tools to help them tackle the constantly evolving challenge of change.</p>',
     },
     {
-      id: '3',
+      id: 2,
       title: 'Funding and Support',
       link: 'funding',
-      details: 'Nothing',
+      details:
+        '<p>FASTLAB is the creative industries vehicle for connecting across the Australian Government’s nine STEM focused research priority centres.</p><p>FASTLAB recognises that STEM Research is key to discovery and that this is associated with Practical Quantitative Research Challenges However, the socialization of human behaviour that enables these discoveries to be usedeffectively, and impact society are part of our unique approach in the creativeindustries.</p><p>In a post-industrial era, competition is not just about the pursuit of efficiency. To attainsustainable economic growth and balanced social and environmental developments,we need a paradigm shift on how businesses, the government and the NGOs cancreate value through creativity and innovation. We need talents with new mind setsand skill sets to meet the opportunities and challenges of the 21st century.</p><p>Our Research focuses on human centred interactions, it harnesses human imagination, empathy, cooperation, co-design, design thinking, visualization, playfulness and creativity. This approach compliments and enhances the STEM Research. It enables a better understanding of the underlying systems of creativity, and motivations of humans. It provides new opportunities to solve Australia’s most important challenges.</p>',
     },
     {
-      id: '4',
+      id: 3,
       title: 'Fastlab Researchers',
       link: 'researchers',
       details: 'Nothing',
     },
     {
-      id: '5',
+      id: 4,
       title: 'Join the FastLab team',
       link: 'join',
-      details: 'Nothing',
+      details:
+        '<p>There are a number of ways to work with FASTLab.</p><ul><li><p>You can take part in RAPID</p><p>RAPID is series of research ‘sprints’ conducted over a 3-6 month period. Each RAPID sprint is a research project carried out between FASTLab researchers and an external partner (a community, business or NGO).</p><p>RAPID provides financial, human and technological resources to enable partners to work together on user-driven real-world problems.</p></li><li><p>You can enrol a research student</p><p>Transmission offers organisations a new avenue for improving their competitive position and renewing their business. Transmission is a research program that presents an opportunity for organisations to design projects for our students, who are supervised by FASTLab researchers in tandem with industry professionals. Transmission offers Masters and PhD students a unique opportunity to undertake practice based research, gain a thorough understanding of innovation methods, tackle real-world business challenges and expand their professional networks. You can commission workshops  If   you’re   tired   of   consultants   wielding   post-it-notes   and   maker-pens   we   can   offer   acompletely   different   and   dynamic   format   for   your   next   workshop.   Our   playfulprocesses   deliver   results   and   a   high   level   of   participant   satisfaction.   FromHackathons   to   one-day   games   we   design   sessions   that   engage   all   your   staffensuring that everyone’s ideas are liberated. Whether you’re innovating, strategizing,team building or problem solving   – use our creative talent to get you to where youneed to be and enjoy the journey to get you there! You can contract us for research and consultancy   1.This one doesn’t really need much more describing but our staff team have research expertise to help you evaluate the success of a current project or co-design a new one using (for example) innovation and Human-Centered Design research methods through Visual Storytelling, Design Thinking, Design Ethnography, User Experiences (UX), Service Design, Co- & Participatory Design.You can ask us to build and test prototypes and pretotypes..... We can help you innovate your product as a service provider, help you reinvent your role and support it with digital frameworks and platforms, adding the customer experience and your client ownership.You can come to a talk or a networking sessionWe run keynotes and interactive talks to provoke and promote discussion about the things that have been exercising us at any given time. Sign up to our newsfeed for regular updates and come and introduce yourself.</p></li></ul>',
     },
     {
-      id: '6',
+      id: 5,
       title: 'Media information',
       link: 'media',
-      details: 'Nothing',
-    },
-    {
-      id: '7',
-      title: 'FAQ',
-      link: 'faq',
-      details: 'Nothing',
+      details: 'There are currently no media releases at this stage',
     },
   ];
 
-  const [currentMenuItem, setCurrentMenuItem] = useState(menuItems[0]);
+  const [currentMenuItem, setCurrentMenuItem] = useState(0);
 
   const DetailHeader = styled(Box)`
     font-family: 'archia', sans-serif;
@@ -129,7 +130,7 @@ function AboutPage({ width, height }) {
           height: 'auto',
           top: '400px',
           background: '#151417',
-          borderTop: '1px solid rgba(255, 255, 255, 0.4)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         }}
       >
         <Flex
@@ -138,35 +139,80 @@ function AboutPage({ width, height }) {
           }}
           justifyContent="flex-begin"
           alignItems="flex-begin"
-          py="182px"
-          px={width * 0.0729}
+          pt={['40px', '40px', '182px']}
+          px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
-          <SideMenu
-            width={width}
-            height={height}
-            menuItems={menuItems}
-            currentMenuItem={currentMenuItem}
-            setCurrentMenuItem={setCurrentMenuItem}
-          />
+          {!isTabletMobile && (
+            <SideMenu
+              width={width}
+              height={height}
+              menuItems={menuItems}
+              currentMenuItem={currentMenuItem}
+              setCurrentMenuItem={setCurrentMenuItem}
+              isTabletMobile={isTabletMobile}
+            />
+          )}
           <Flex
             height="auto"
             flexDirection="column"
-            pl={width * 0.0802}
+            pl={['0px', '0px', width * 0.0802]}
             sx={{ position: 'relative', minWidth: width * 0.4229 }}
           >
-            {currentMenuItem.link === 'researchers' ? (
+            {menuItems[currentMenuItem].link === 'researchers' ? (
               <ResearchersContainer width={width} />
             ) : (
               <React.Fragment>
                 <DetailHeader pt="10px" pb="30px">
-                  {currentMenuItem.title}
+                  {menuItems[currentMenuItem].title}
                 </DetailHeader>
-                <DetailText pr={width * 0.1432}>
-                  <ParsedContent content={currentMenuItem.details} />
+                <DetailText pr={['0px', '0px', width * 0.1432]}>
+                  <ParsedContent content={menuItems[currentMenuItem].details} />
                 </DetailText>
               </React.Fragment>
             )}
           </Flex>
+        </Flex>
+        <Flex sx={{ position: 'relative' }}>
+          <Image
+            sx={{
+              position: 'absolute',
+              right: `${(width * 0.1292) / 2}px !important`,
+              bottom: 0,
+            }}
+            width={['25%', '25%', width * 0.1292]}
+            src={Sig1}
+          />
+        </Flex>
+        <Flex
+          width="100%"
+          flexDirection="row"
+          justifyContent="flex-end"
+          pt={[32]}
+          pb={['20px', '20px', '182px']}
+          pr={
+            menuItems[currentMenuItem].link === 'researchers'
+              ? width * 0.0729
+              : width * 0.2167
+          }
+        >
+          {!isTabletMobile && (
+            <Button
+              color="dark"
+              to="/about"
+              onClick={() => {
+                if (currentMenuItem === 5) {
+                  setCurrentMenuItem(0);
+                } else {
+                  setCurrentMenuItem(currentMenuItem + 1);
+                }
+              }}
+              arrow="right"
+            >
+              {currentMenuItem === 5
+                ? menuItems[0].title
+                : menuItems[currentMenuItem + 1].title}
+            </Button>
+          )}
         </Flex>
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />

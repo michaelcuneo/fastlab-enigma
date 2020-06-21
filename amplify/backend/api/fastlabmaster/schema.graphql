@@ -7,6 +7,8 @@ type Project @model {
   funding: String!
   videoURL: String
   categoryId: ID!
+  featured: Boolean!
+  featuredImage: Image! @connection(name: "ProjectImage")
   category: Category! @connection(name: "CategoryLink")
   gallery: Gallery @connection(name: "ProjectGallery")
   collaborators: [ProjectStaff]! @connection(name: "ProjectCollaborators")
@@ -18,6 +20,7 @@ type Post @model {
   data: String!
   date: AWSDateTime
   videoURL: String
+  featuredImage: Image! @connection(name: "PostImage")
   gallery: Gallery @connection(name: "PostGallery")
   staffID: Staff! @connection(name: "StaffPosts")
 }
@@ -71,6 +74,8 @@ type Image @model {
   id: ID!
   key: String!
   mime: String!
+  project: Project @connection(name: "ProjectImage")
+  post: Post @connection(name: "PostImage")
   gallery: Gallery @connection(name: "ImageList")
 }
 

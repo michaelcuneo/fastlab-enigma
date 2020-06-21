@@ -12,6 +12,94 @@ export const onCreateProject = /* GraphQL */ `
       funding
       videoURL
       categoryId
+      featured
+      featuredImage {
+        id
+        key
+        mime
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
       category {
         id
         label
@@ -26,6 +114,12 @@ export const onCreateProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -53,6 +147,12 @@ export const onCreateProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -73,6 +173,11 @@ export const onCreateProject = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -111,6 +216,7 @@ export const onCreateProject = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -141,6 +247,94 @@ export const onUpdateProject = /* GraphQL */ `
       funding
       videoURL
       categoryId
+      featured
+      featuredImage {
+        id
+        key
+        mime
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
       category {
         id
         label
@@ -155,6 +349,12 @@ export const onUpdateProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -182,6 +382,12 @@ export const onUpdateProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -202,6 +408,11 @@ export const onUpdateProject = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -240,6 +451,7 @@ export const onUpdateProject = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -270,6 +482,94 @@ export const onDeleteProject = /* GraphQL */ `
       funding
       videoURL
       categoryId
+      featured
+      featuredImage {
+        id
+        key
+        mime
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
       category {
         id
         label
@@ -284,6 +584,12 @@ export const onDeleteProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -311,6 +617,12 @@ export const onDeleteProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -331,6 +643,11 @@ export const onDeleteProject = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -369,6 +686,7 @@ export const onDeleteProject = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -396,9 +714,10 @@ export const onCreatePost = /* GraphQL */ `
       data
       date
       videoURL
-      gallery {
+      featuredImage {
         id
-        name
+        key
+        mime
         project {
           id
           date
@@ -408,6 +727,12 @@ export const onCreatePost = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -428,6 +753,97 @@ export const onCreatePost = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
+      gallery {
+        id
+        name
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -500,9 +916,10 @@ export const onUpdatePost = /* GraphQL */ `
       data
       date
       videoURL
-      gallery {
+      featuredImage {
         id
-        name
+        key
+        mime
         project {
           id
           date
@@ -512,6 +929,12 @@ export const onUpdatePost = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -532,6 +955,97 @@ export const onUpdatePost = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
+      gallery {
+        id
+        name
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -604,9 +1118,10 @@ export const onDeletePost = /* GraphQL */ `
       data
       date
       videoURL
-      gallery {
+      featuredImage {
         id
-        name
+        key
+        mime
         project {
           id
           date
@@ -616,6 +1131,12 @@ export const onDeletePost = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -636,6 +1157,97 @@ export const onDeletePost = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
+      gallery {
+        id
+        name
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -716,6 +1328,34 @@ export const onCreateCategory = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -730,6 +1370,7 @@ export const onCreateCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -744,6 +1385,7 @@ export const onCreateCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -782,6 +1424,34 @@ export const onUpdateCategory = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -796,6 +1466,7 @@ export const onUpdateCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -810,6 +1481,7 @@ export const onUpdateCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -848,6 +1520,34 @@ export const onDeleteCategory = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -862,6 +1562,7 @@ export const onDeleteCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -876,6 +1577,7 @@ export const onDeleteCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1184,6 +1886,34 @@ export const onCreateProjectStaff = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -1198,6 +1928,7 @@ export const onCreateProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -1212,6 +1943,7 @@ export const onCreateProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1282,6 +2014,34 @@ export const onUpdateProjectStaff = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -1296,6 +2056,7 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -1310,6 +2071,7 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1380,6 +2142,34 @@ export const onDeleteProjectStaff = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -1394,6 +2184,7 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -1408,6 +2199,7 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1485,6 +2277,11 @@ export const onCreateStaff = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1541,6 +2338,7 @@ export const onCreateStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -1580,6 +2378,11 @@ export const onUpdateStaff = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1636,6 +2439,7 @@ export const onUpdateStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -1675,6 +2479,11 @@ export const onDeleteStaff = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1731,6 +2540,7 @@ export const onDeleteStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -1756,6 +2566,172 @@ export const onCreateImage = /* GraphQL */ `
       id
       key
       mime
+      project {
+        id
+        date
+        title
+        abstract
+        details
+        funding
+        videoURL
+        categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        category {
+          id
+          label
+          value
+          description
+          Project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        collaborators {
+          items {
+            id
+          }
+          nextToken
+        }
+      }
+      post {
+        id
+        title
+        data
+        date
+        videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        staffID {
+          id
+          name
+          firstName
+          lastName
+          mugshot
+          title
+          bio
+          email
+          website
+          cognitoID
+          posts {
+            nextToken
+          }
+          roles {
+            nextToken
+          }
+          projects {
+            nextToken
+          }
+        }
+      }
       gallery {
         id
         name
@@ -1768,6 +2744,12 @@ export const onCreateImage = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -1788,6 +2770,11 @@ export const onCreateImage = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1823,6 +2810,172 @@ export const onUpdateImage = /* GraphQL */ `
       id
       key
       mime
+      project {
+        id
+        date
+        title
+        abstract
+        details
+        funding
+        videoURL
+        categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        category {
+          id
+          label
+          value
+          description
+          Project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        collaborators {
+          items {
+            id
+          }
+          nextToken
+        }
+      }
+      post {
+        id
+        title
+        data
+        date
+        videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        staffID {
+          id
+          name
+          firstName
+          lastName
+          mugshot
+          title
+          bio
+          email
+          website
+          cognitoID
+          posts {
+            nextToken
+          }
+          roles {
+            nextToken
+          }
+          projects {
+            nextToken
+          }
+        }
+      }
       gallery {
         id
         name
@@ -1835,6 +2988,12 @@ export const onUpdateImage = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -1855,6 +3014,11 @@ export const onUpdateImage = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1890,6 +3054,172 @@ export const onDeleteImage = /* GraphQL */ `
       id
       key
       mime
+      project {
+        id
+        date
+        title
+        abstract
+        details
+        funding
+        videoURL
+        categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        category {
+          id
+          label
+          value
+          description
+          Project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        collaborators {
+          items {
+            id
+          }
+          nextToken
+        }
+      }
+      post {
+        id
+        title
+        data
+        date
+        videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        staffID {
+          id
+          name
+          firstName
+          lastName
+          mugshot
+          title
+          bio
+          email
+          website
+          cognitoID
+          posts {
+            nextToken
+          }
+          roles {
+            nextToken
+          }
+          projects {
+            nextToken
+          }
+        }
+      }
       gallery {
         id
         name
@@ -1902,6 +3232,12 @@ export const onDeleteImage = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -1922,6 +3258,11 @@ export const onDeleteImage = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1965,6 +3306,34 @@ export const onCreateGallery = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -1979,6 +3348,7 @@ export const onCreateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -1993,6 +3363,7 @@ export const onCreateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2018,6 +3389,33 @@ export const onCreateGallery = /* GraphQL */ `
         data
         date
         videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         gallery {
           id
           name
@@ -2030,6 +3428,7 @@ export const onCreateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2069,6 +3468,24 @@ export const onCreateGallery = /* GraphQL */ `
           id
           key
           mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
           gallery {
             id
             name
@@ -2093,6 +3510,34 @@ export const onUpdateGallery = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -2107,6 +3552,7 @@ export const onUpdateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -2121,6 +3567,7 @@ export const onUpdateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2146,6 +3593,33 @@ export const onUpdateGallery = /* GraphQL */ `
         data
         date
         videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         gallery {
           id
           name
@@ -2158,6 +3632,7 @@ export const onUpdateGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2197,6 +3672,24 @@ export const onUpdateGallery = /* GraphQL */ `
           id
           key
           mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
           gallery {
             id
             name
@@ -2221,6 +3714,34 @@ export const onDeleteGallery = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -2235,6 +3756,7 @@ export const onDeleteGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -2249,6 +3771,7 @@ export const onDeleteGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2274,6 +3797,33 @@ export const onDeleteGallery = /* GraphQL */ `
         data
         date
         videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         gallery {
           id
           name
@@ -2286,6 +3836,7 @@ export const onDeleteGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -2325,6 +3876,24 @@ export const onDeleteGallery = /* GraphQL */ `
           id
           key
           mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
           gallery {
             id
             name

@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Image from 'react-graceful-image';
+
 import { Storage, Logger } from 'aws-amplify';
 
-import FLLoadingIndicator from 'components/LoadingIndicator';
-
-const transparent1X1 =
-  'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+import FastlabLLW from 'images/Fastlab_LLW.svg';
 
 const logger = new Logger('Storage.S3Image');
 
@@ -14,7 +13,7 @@ class S3Image extends React.Component {
   constructor(props) {
     super(props);
 
-    const initSrc = this.props.src || transparent1X1;
+    const initSrc = this.props.src || FastlabLLW;
 
     this.state = {
       src: initSrc,
@@ -39,25 +38,52 @@ class S3Image extends React.Component {
   }
 
   load() {
-    const { s3key, level, track, identityId } = this.props;
-    if (!s3key) {
-      logger.debug('empty s3Key and path');
+    const { imgKey, level, track, identityId } = this.props;
+    if (!imgKey) {
+      // logger.debug('empty imgKey and path');
       return;
     }
-    logger.debug(`loading ${s3key} ...`);
-    this.getImageSource(s3key, level, track, identityId);
+    // logger.debug(`loading ${imgKey} ...`);
+    this.getImageSource(imgKey, level, track, identityId);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.load();
   }
 
-  imageEl(src) {
-    return (
+  imageEl(src, enableHover, style, hover, hoverStyle, width, height) {
+    if (enableHover) {
+      return (
+        <div
+          key="ImageEl"
+          role="button"
+          tabIndex={0}
+          style={hover ? hoverStyle.container : style.container}
+          onClick={this.handleClick}
+          onKeyDown={this.handleClick}
+          onMouseOver={this.changeHover}
+          onMouseOut={this.changeHover}
+          onFocus={() => {}}
+          onBlur={() => {}}
+        >
+          <Image
+            style={hover ? hoverStyle.image : style.image}
+            width="100%"
+            height="100%"
+            src={src}
+            alt=""
+          />
+        </div>
+      );
+    }
+    return [
       <div
-        key={src}
+        key="ImageEl"
         role="button"
         tabIndex={0}
+        width={width}
+        height={height}
+        style={style.container}
         onClick={this.handleClick}
         onKeyDown={this.handleClick}
         onMouseOver={this.changeHover}
@@ -65,27 +91,40 @@ class S3Image extends React.Component {
         onFocus={() => {}}
         onBlur={() => {}}
       >
-        <img src={src} alt="" />
-      </div>
-    );
+        <Image
+          style={style.image}
+          width="100%"
+          height="100%"
+          src={src}
+          alt=""
+        />
+      </div>,
+    ];
   }
 
   render() {
-    const { src } = this.state;
+    const { enableHover, style, hoverStyle, width, height } = this.props;
+    const { src, hover } = this.state;
+
     if (!src) {
       return null;
     }
 
-    return (
-      [this.imageEl(src)] || <FLLoadingIndicator key="ImageLoadingIndicator" />
-    );
+    return [
+      this.imageEl(src, enableHover, style, hover, hoverStyle, width, height),
+    ];
   }
 }
 
 S3Image.propTypes = {
   identityId: PropTypes.any,
+  enableHover: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
   src: PropTypes.any,
-  s3key: PropTypes.string,
+  style: PropTypes.object,
+  hoverStyle: PropTypes.object,
+  imgKey: PropTypes.string,
   level: PropTypes.any,
   track: PropTypes.any,
 };

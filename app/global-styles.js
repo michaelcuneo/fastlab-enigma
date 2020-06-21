@@ -26,7 +26,9 @@ const GlobalStyle = createGlobalStyle`
 
   p,
   label {
-    font-family: Georgia, Times, 'Times New Roman', serif;
+    font-family: 'archia', sans-serif;
+    font-size: 16px;
+    line-height: 25px;
   }
 `;
 

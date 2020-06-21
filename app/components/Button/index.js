@@ -12,10 +12,12 @@ import { Link } from 'react-router-dom';
 
 import StyledButton from './StyledButton';
 
-function Button({ to, children, color, onClick }) {
+function Button({ to, children, color, onClick, arrow }) {
   const button = (
     <Link style={{ textDecoration: 'none' }} to={to} onClick={onClick}>
-      <StyledButton color={color}>{children}</StyledButton>
+      <StyledButton arrow={arrow} color={color}>
+        {children}
+      </StyledButton>
     </Link>
   );
 
@@ -27,6 +29,7 @@ Button.propTypes = {
   to: PropTypes.string,
   children: PropTypes.node,
   onClick: PropTypes.func,
+  arrow: PropTypes.string,
 };
 
 export default Button;

@@ -1,34 +1,87 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import { Flex, Box, Text } from 'rebass';
+import { useMediaQuery } from 'react-responsive';
 
-const ProjectContainer = ({ data, height, width, top, left, staggered }) => {
+import { Storage, Logger } from 'aws-amplify';
+
+import { Flex, Text } from 'rebass';
+
+import { useSpring, animated as a } from 'react-spring';
+
+const logger = new Logger('Storage.S3Image');
+
+function ProjectContainer({
+  item,
+  height,
+  width,
+  screenWidth,
+  screenHeight,
+  top,
+  left,
+  staggered,
+}) {
+  const [project, setProject] = useState(item);
+  const [image, setImage] = useState('');
+
+  const [hoverState, setHoverState] = useState(false);
+
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const CustomAnimation = useSpring({
+    opacity: !hoverState ? '0' : '1',
+    right: !hoverState ? '-200px' : '0px',
+  });
+
+  const resetState = () => {
+    setHoverState(false);
+  };
+
+  useEffect(() => {
+    resetState();
+    setupProject();
+  }, []);
+
+  const CustomAnimatedFlex = styled(a.div)`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    background: #ffffff;
+    border-left: 4px solid red;
+    margin: 5px 0px 0px 0px;
+    overflow: hidden;
+    padding: 34px;
+  `;
+
   let PX;
+  let PB;
   let SX;
   let PT;
   let WIDTH;
   let HEIGHT;
 
   if (staggered) {
-    PX = ['0px', '15px', '15px'];
-    PT = Math.random() * (200 - 0);
+    PX = [screenWidth * 0.0933, screenWidth * 0.0933, screenWidth * 0.0078];
+    PB = isTabletMobile ? '10px' : screenHeight * 0.0324;
+    PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
     SX = {
-      zIndex: 999,
-      minWidth: `${width * 0.2792}px`,
-      minHeight: `${height * 0.2792 * 1.82}px`,
-      height: `${height * 0.2792}px`,
-      maxWidth: `${width * 0.2792}px`,
+      overflow: 'hidden',
     };
-    HEIGHT = '536px';
-    WIDTH = '640px';
+    HEIGHT = isTabletMobile ? '450px' : screenHeight * 0.5926;
+    WIDTH = isTabletMobile ? '100%' : screenWidth * 0.2792;
   } else {
     PX = [];
+    PB = [];
+    PT = [];
     SX = {
       position: 'absolute',
-      zIndex: 999,
       minWidth: width,
       minHeight: height,
+      overflow: 'hidden',
       top,
       left,
     };
@@ -36,65 +89,89 @@ const ProjectContainer = ({ data, height, width, top, left, staggered }) => {
     WIDTH = width;
   }
 
+  const setupProject = async () => {
+    if (item !== undefined) {
+      setProject(item);
+      getImageSource(item.featuredImage.key, null, null, null);
+    }
+  };
+
+  const getImageSource = (key, newLevel, track, identityId) => {
+    Storage.get(key, { level: newLevel || 'public', track, identityId })
+      .then(url => {
+        setImage(url);
+      })
+      .catch(err => logger.debug(err));
+  };
+
   return (
-    <Box key={data.id} px={PX} pt={PT} sx={SX}>
-      <Flex
-        alignContent="flex-end"
-        alignItems="flex-end"
-        justifyContent="flex-end"
-        sx={{
-          backgroundImage: `url(${data.image})`,
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          minHeight: HEIGHT,
-          height: HEIGHT,
-          maxWidth: WIDTH,
-        }}
+    <Flex
+      key={project ? project.id : 'Box'}
+      px={PX}
+      pt={PT}
+      pb={PB}
+      sx={SX}
+      maxWidth="100vw"
+      height="auto"
+      flexDirection="row"
+      flexWrap="wrap"
+    >
+      <Link
+        onMouseOver={() => setHoverState(true)}
+        onFocus={() => {}}
+        onMouseLeave={() => setHoverState(false)}
+        style={{ textDecoration: 'none' }}
+        to={`/project/${project ? project.id : null}`}
       >
         <Flex
           sx={{
-            position: 'relative',
-            bottom: 0,
-            background: '#ffffff',
-            borderLeft: '4px solid red',
+            alignItems: 'flex-end',
+            justifyContent: 'flex-end',
+            backgroundImage: `url(${image})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            minWidth: WIDTH,
+            minHeight: HEIGHT,
+            width: WIDTH,
+            height: HEIGHT,
           }}
-          mt="5px"
-          p="34px"
-          flexDirection="column"
-          justifyContent="space-between"
         >
-          <Text
-            sx={{
-              color: '#151417',
-              fontSize: '24px',
-              lineHeight: '28px',
-              fontFamily: 'archia',
-            }}
-          >
-            {data.title}
-          </Text>
-          <Text
-            sx={{
-              color: '#868686',
-              fontSize: '16px',
-              lineHeight: '25px',
-              fontFamily: 'archia',
-            }}
-            my="14px"
-          >
-            {data.tags}
-          </Text>
+          <CustomAnimatedFlex style={CustomAnimation}>
+            <Text
+              sx={{
+                color: '#151417',
+                fontSize: '24px',
+                lineHeight: '28px',
+                fontFamily: 'archia',
+              }}
+            >
+              {project ? project.title : 'Error'}
+            </Text>
+            <Text
+              sx={{
+                color: '#868686',
+                fontSize: '16px',
+                lineHeight: '25px',
+                fontFamily: 'archia',
+              }}
+              my="14px"
+            >
+              {project ? project.category.label : 'Error'}
+            </Text>
+          </CustomAnimatedFlex>
         </Flex>
-      </Flex>
-    </Box>
+      </Link>
+    </Flex>
   );
-};
+}
 
 ProjectContainer.propTypes = {
-  data: PropTypes.object,
+  item: PropTypes.object,
   width: PropTypes.number,
   height: PropTypes.number,
+  screenWidth: PropTypes.number,
+  screenHeight: PropTypes.number,
   top: PropTypes.string,
   left: PropTypes.string,
   staggered: PropTypes.bool,

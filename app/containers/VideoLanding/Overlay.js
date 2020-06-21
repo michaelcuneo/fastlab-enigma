@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Flex } from 'rebass';
 import H1 from 'components/H1';
 
-const Overlay = ({ height, width }) => {
+const Overlay = ({ height, width, text }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const StyledGradientFooter = styled(Flex)`
@@ -35,7 +35,7 @@ const Overlay = ({ height, width }) => {
     <React.Fragment>
       <StyledFlexHeader alignItems="center">
         <H1 height={height} width={width}>
-          The centre of <br /> applied chaos
+          {text}
           <span className="blink_me">_</span>
         </H1>
       </StyledFlexHeader>
@@ -47,6 +47,7 @@ const Overlay = ({ height, width }) => {
 Overlay.propTypes = {
   height: PropTypes.number,
   width: PropTypes.number,
+  text: PropTypes.object,
 };
 
 export default Overlay;

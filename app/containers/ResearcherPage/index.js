@@ -94,7 +94,6 @@ function ResearcherPage({ width, height, match }) {
                 height: 'auto',
                 top: '400px',
                 background: '#151417',
-                borderTop: '1px solid rgba(255, 255, 255, 0.4)',
               }}
             >
               <Flex
@@ -103,38 +102,35 @@ function ResearcherPage({ width, height, match }) {
                 }}
                 justifyContent="flex-begin"
                 alignItems="flex-begin"
-                pt="162px"
+                pt="40px"
+                pb="142px"
                 px={width * 0.0729}
               >
-                <Button to="/about" color="dark">
-                  Back
-                </Button>
-                <Flex
-                  height="auto"
-                  flexDirection="column"
-                  pl={width * 0.0802}
-                  sx={{ position: 'relative', minWidth: width * 0.4229 }}
-                >
-                  <DetailHeader>{data.getStaff.name}</DetailHeader>
+                <Flex flexDirection="column">
+                  <Box>
+                    <Button to="/about" color="dark" arrow="left">
+                      Back
+                    </Button>
+                  </Box>
+                  <Box pt="50px">
+                    <SideBio
+                      data={data.getStaff}
+                      width={width}
+                      height={height}
+                    />
+                  </Box>
                 </Flex>
-              </Flex>
-              <Flex
-                sx={{
-                  position: 'relative',
-                }}
-                justifyContent="flex-begin"
-                alignItems="flex-begin"
-                pt="51px"
-                pb="162px"
-                px={width * 0.0729}
-              >
-                <SideBio data={data.getStaff} width={width} height={height} />
                 <Flex
                   height="auto"
                   flexDirection="column"
+                  maxWidth={width * 0.4313}
+                  pt="40px"
                   pl={width * 0.0802}
-                  sx={{ position: 'relative', minWidth: width * 0.4229 }}
+                  sx={{ position: 'relative' }}
                 >
+                  <DetailHeader pb={['51px']}>
+                    {data.getStaff.name}
+                  </DetailHeader>
                   <DetailText>
                     <ParsedContent content={data.getStaff.bio} />
                   </DetailText>
