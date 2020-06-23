@@ -33,7 +33,7 @@ function LatestProjectsContainer({ dark }) {
           sx={{ position: 'relative' }}
           flexWrap="wrap"
           width="100%"
-          minHeight="1350px"
+          minHeight={height * 1.25}
           height="auto"
         >
           <Connect

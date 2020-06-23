@@ -10,7 +10,6 @@ import { Connect } from 'aws-amplify-react';
 import { Flex, Box, Text } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
-import Overlay from './Overlay';
 
 import { listProjects } from '../../../src/graphql/queries';
 
@@ -25,7 +24,6 @@ const AllProjects = ({ width, height, dark }) => {
 
   return (
     <React.Fragment>
-      {!dark && <Overlay width={width} height={height} />}
       <Flex
         flexDirection="column"
         sx={{ background: dark ? '#151417' : '#EC184A' }}
@@ -34,7 +32,7 @@ const AllProjects = ({ width, height, dark }) => {
       >
         {!dark && (
           <Box pt={['172px']} pb={['60px']}>
-            <StyledText>FastLab projects</StyledText>
+            <StyledText>All Projects</StyledText>
           </Box>
         )}
         <Flex flexWrap="wrap" flexDirection="row" sx={{ height: 'auto' }}>

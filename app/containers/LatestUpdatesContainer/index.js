@@ -47,13 +47,19 @@ const LatestUpdatesContainer = ({ width, height, dark }) => {
           {({ data, loading, error }) => {
             if (error) return <h3>Error</h3>;
             if (loading || !data) return null;
-            return data.listPosts.items.map(thisItem => (
-              <UpdateContainer
-                key={thisItem.id}
-                width={width}
-                item={thisItem}
-              />
-            ));
+            return data.listPosts.items.map(
+              item =>
+                item && (
+                  <UpdateContainer
+                    key={item.id}
+                    width={width * 0.2792}
+                    height={height * 0.5926}
+                    screenWidth={width}
+                    screenHeight={height}
+                    item={item}
+                  />
+                ),
+            );
           }}
         </Connect>
       </Flex>

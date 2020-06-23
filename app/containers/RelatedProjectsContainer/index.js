@@ -48,7 +48,7 @@ const RelatedProjectsContainer = ({ width, height }) => {
                     eq: true,
                   },
                 },
-                limit: 7,
+                limit: 3,
               })}
             >
               {({ data, loading, error }) => {

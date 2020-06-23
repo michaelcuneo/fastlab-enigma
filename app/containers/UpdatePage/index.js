@@ -9,7 +9,7 @@ import { Connect } from 'aws-amplify-react';
 import CollaboratorBio from 'components/CollaboratorBio';
 import ParsedContent from 'components/ParsedContent';
 
-import Carousel from 'react-multi-carousel';
+import Slider from 'react-slick';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -57,40 +57,21 @@ function UpdatePage({ width, height, match }) {
 
   const StyledFlexHeader = styled(Flex)`
     position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 400px;
     align-items: center;
-    padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
+    width: ${isTabletMobile ? width * 0.4229 : width * 0.4229};
     z-index: 3;
   `;
 
-  const responsive = {
-    desktop: {
-      breakpoint: {
-        max: 3000,
-        min: 1024,
-      },
-      items: 2,
-      partialVisibilityGutter: 40,
-    },
-    mobile: {
-      breakpoint: {
-        max: 464,
-        min: 0,
-      },
-      items: 1,
-      partialVisibilityGutter: 30,
-    },
-    tablet: {
-      breakpoint: {
-        max: 1024,
-        min: 464,
-      },
-      items: 2,
-      partialVisibilityGutter: 30,
-    },
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
   };
 
   return (
@@ -110,7 +91,9 @@ function UpdatePage({ width, height, match }) {
 
           return (
             <React.Fragment>
-              <StyledFlexHeader>
+              <StyledFlexHeader
+                px={isTabletMobile ? width * 0.096 : width * 0.2167}
+              >
                 <H2>
                   <Markup content={data.getPost.title} />
                 </H2>
@@ -171,20 +154,7 @@ function UpdatePage({ width, height, match }) {
                       </DetailText>
                     </Flex>
                   </Flex>
-                  <Carousel
-                    additionalTransfrom={0}
-                    arrows
-                    autoPlaySpeed={3000}
-                    centerMode={false}
-                    draggable
-                    focusOnSelect={false}
-                    infinite
-                    keyBoardControl
-                    minimumTouchDrag={80}
-                    responsive={responsive}
-                    slidesToSlide={1}
-                    swipeable
-                  >
+                  <Slider {...settings}>
                     {data.getPost.gallery.images.items.map(image => (
                       <CustomS3Image
                         key={image.id}
@@ -203,7 +173,7 @@ function UpdatePage({ width, height, match }) {
                         imgKey={image.key}
                       />
                     ))}
-                  </Carousel>
+                  </Slider>
                 </Flex>
                 <Footer height={height} width={width} />
               </Flex>

@@ -30,6 +30,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
     line-height: 25px;
   }
+
+  .slick-slide div {
+    outline: none !important;
+  }
 `;
 
 export default GlobalStyle;

@@ -19,7 +19,7 @@ import { Flex } from 'rebass';
 
 import messages from './messages';
 
-function UpdatesPage({ width, height }) {
+function ProjectsPage({ width, height }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const StyledGradientHeader = styled(Flex)`
@@ -65,10 +65,9 @@ function UpdatesPage({ width, height }) {
           height: 'auto',
           top: '400px',
           background: '#151417',
-          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
         }}
       >
-        <AllUpdatesContainer dark width={width} height={height} />
+        <AllUpdatesContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
       <OverlayContainer width={width} />
@@ -76,9 +75,9 @@ function UpdatesPage({ width, height }) {
   );
 }
 
-UpdatesPage.propTypes = {
+ProjectsPage.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
 };
 
-export default UpdatesPage;
+export default ProjectsPage;

@@ -49,6 +49,8 @@ class CustomS3Image extends React.Component {
     this.load();
   }
 
+  handleClick() {}
+
   imageEl(src, enableHover, style, hover, hoverStyle, width, height) {
     if (enableHover) {
       return (

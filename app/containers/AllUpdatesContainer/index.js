@@ -1,42 +1,28 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import Button from 'components/Button';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box } from 'rebass';
 
-import PostContainer from 'containers/UpdateContainer';
-import Overlay from './Overlay';
+import UpdateContainer from 'containers/UpdateContainer';
 
 import { listPosts } from '../../../src/graphql/queries';
 
-const AllProjects = ({ width, height, dark }) => {
+const AllProjects = ({ width, height }) => {
   const [nextToken, setNextToken] = useState(null);
-
-  const StyledText = styled(Text)`
-    font-size: 34pt;
-    font-family: 'archiaregular', sans-serif;
-    color: white;
-  `;
 
   return (
     <React.Fragment>
-      {!dark && <Overlay width={width} height={height} />}
       <Flex
         flexDirection="column"
-        sx={{ background: dark ? '#151417' : '#EC184A' }}
+        sx={{ background: '#151417' }}
         justifyContent="space-around"
         pl={[width * 0.0729]}
       >
-        {!dark && (
-          <Box pt={['172px']} pb={['60px']}>
-            <StyledText>FastLab projects</StyledText>
-          </Box>
-        )}
         <Flex flexWrap="wrap" flexDirection="row" sx={{ height: 'auto' }}>
           <Connect
             key="AllProjects"
@@ -52,10 +38,10 @@ const AllProjects = ({ width, height, dark }) => {
                 data.listPosts.items.map(thisItem => (
                   <Flex>
                     <Box pr={[width * 0.0039]} py={['40px']}>
-                      <PostContainer
+                      <UpdateContainer
                         key={thisItem.id}
                         width={width * 0.2792}
-                        height={height * 0.4167}
+                        height={height * 0.5926}
                         screenWidth={width}
                         screenHeight={height}
                         item={thisItem}
@@ -77,7 +63,7 @@ const AllProjects = ({ width, height, dark }) => {
                     arrow="right"
                     onClick={() => setNextToken(data.listPosts.nextToken)}
                   >
-                    Explore more posts
+                    Explore more updates
                   </Button>
                 </Flex>,
               ];
@@ -90,7 +76,6 @@ const AllProjects = ({ width, height, dark }) => {
 };
 
 AllProjects.propTypes = {
-  dark: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
 };
