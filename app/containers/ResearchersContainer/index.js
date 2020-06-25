@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
@@ -8,23 +8,15 @@ import { graphqlOperation } from 'aws-amplify';
 
 import { Connect } from 'aws-amplify-react';
 
-import SmallButton from 'components/SmallButton';
-
 import { Flex, Box } from 'rebass';
 
-import {
-  listStaffs,
-  listStaffRoless,
-  listRoles,
-} from '../../../src/graphql/queries';
+import { listStaffs } from '../../../src/graphql/queries';
 
 import messages from './messages';
 
 import StaffLink from '../StaffLink';
 
 function ResearchersContainer({ width }) {
-  const [selection, setSelection] = useState();
-
   const staffTemplate = newStaff => (
     <Flex
       flexDirection="column"
@@ -63,44 +55,6 @@ function ResearchersContainer({ width }) {
         <DetailHeader pt="10px" pb="20px" sx={{ width: width * 0.5729 }}>
           <FormattedMessage {...messages.researchers} />
         </DetailHeader>
-        <Flex
-          flexDirection="row"
-          flexWrap="wrap"
-          py="30px"
-          sx={{ width: width * 0.5729 }}
-        >
-          <Connect key="CategorySelector" query={graphqlOperation(listRoles)}>
-            {({ data, loading, error }) => {
-              if (error) return <h3>Error</h3>;
-              if (loading || !data) return null;
-              return [
-                data.listRoles.items.map(item => (
-                  <SmallButton
-                    color="dark"
-                    key={item.id}
-                    label={item.label}
-                    onClick={() => setSelection(item.value)}
-                    selection={selection}
-                    item={item}
-                  />
-                )),
-                <SmallButton
-                  color="dark"
-                  key="All"
-                  label="All Researchers"
-                  onClick={() => setSelection(null)}
-                  selection="All"
-                  item={{
-                    id: 'all',
-                    label: 'All',
-                    value: 'all',
-                    description: 'all',
-                  }}
-                />,
-              ];
-            }}
-          </Connect>
-        </Flex>
       </Flex>
       <Box style={{ userSelect: 'none', width: '100%' }} key="CurrentStaff">
         <Flex
@@ -109,42 +63,20 @@ function ResearchersContainer({ width }) {
           flexWrap="wrap"
           maxWidth={[1, 1, width * 0.5729]}
         >
-          {selection ? (
-            <Connect
-              key="ListProjectsFiltered"
-              query={graphqlOperation(listStaffRoless, {
-                filter: {
-                  roleId: {
-                    eq: selection,
-                  },
-                },
-                limit: 100,
-              })}
-            >
-              {({ data, loading, error }) => {
-                if (error) return <h3>Error</h3>;
-                if (loading || !data) return null;
-                return data.listStaffRoless.items.map(staffs => [
-                  staffs && staffTemplate(staffs.staff),
-                ]);
-              }}
-            </Connect>
-          ) : (
-            <Connect
-              key="ListProjectsUnfiltered"
-              query={graphqlOperation(listStaffs, {
-                limit: 100,
-              })}
-            >
-              {({ data, loading, error }) => {
-                if (error) return <h3>Error</h3>;
-                if (loading || !data) return null;
-                return data.listStaffs.items.map(staffs => [
-                  staffs && staffTemplate(staffs),
-                ]);
-              }}
-            </Connect>
-          )}
+          <Connect
+            key="ListProjectsUnfiltered"
+            query={graphqlOperation(listStaffs, {
+              limit: 100,
+            })}
+          >
+            {({ data, loading, error }) => {
+              if (error) return <h3>Error</h3>;
+              if (loading || !data) return null;
+              return data.listStaffs.items.map(staffs => [
+                staffs && staffTemplate(staffs),
+              ]);
+            }}
+          </Connect>
         </Flex>
       </Box>
     </React.Fragment>

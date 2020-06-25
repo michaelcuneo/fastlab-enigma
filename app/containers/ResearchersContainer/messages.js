@@ -10,7 +10,7 @@ export const scope = 'boilerplate.containers.FeaturePage';
 export default defineMessages({
   researchers: {
     id: `${scope}.researchers`,
-    defaultMessage: 'FastLab researchers',
+    defaultMessage: 'Humans of FastLab',
   },
   back: {
     id: `${scope}.back`,

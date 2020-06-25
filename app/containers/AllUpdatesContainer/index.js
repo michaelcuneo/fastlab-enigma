@@ -58,7 +58,7 @@ const AllProjects = ({ width, height }) => {
                   pr={width * 0.0729}
                 >
                   <Button
-                    color="pink"
+                    color="dark"
                     to="/updates"
                     arrow="right"
                     onClick={() => setNextToken(data.listPosts.nextToken)}

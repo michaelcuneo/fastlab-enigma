@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Flex, Box, Image } from 'rebass';
+import { Link } from 'react-router-dom';
 
 import { FormattedMessage } from 'react-intl';
 
@@ -29,78 +30,86 @@ const PointsContainer = ({ width }) => {
       flexDirection="column"
       style={{ position: 'relative', background: '#151417' }}
     >
-      <Flex flexDirection="row" width="100%" pb="60px">
-        <Box width={width * 0.1813} px={width * 0.0133}>
-          <Image
-            height={width * 0.1813}
-            width={width * 0.1813}
-            src={Point1}
-            alt="Point One"
-          />
-        </Box>
-        <Box width={width * 0.5973}>
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-            <FormattedMessage {...messages.pointone} />
-          </PointHeader>
-          <PointText>
-            <FormattedMessage {...messages.point1message} />
-          </PointText>
-        </Box>
-      </Flex>
-      <Flex flexDirection="row" width="100%" pb="60px">
-        <Box width={width * 0.1813} px={width * 0.0133}>
-          <Image
-            height={width * 0.1813}
-            width={width * 0.1813}
-            src={Point2}
-            alt="Point Two"
-          />
-        </Box>
-        <Box width={width * 0.5973}>
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-            <FormattedMessage {...messages.pointtwo} />
-          </PointHeader>
-          <PointText>
-            <FormattedMessage {...messages.point2message} />
-          </PointText>
-        </Box>
-      </Flex>
-      <Flex flexDirection="row" width="100%" pb="60px">
-        <Box width={width * 0.1813} px={width * 0.0133}>
-          <Image
-            height={width * 0.1813}
-            width={width * 0.1813}
-            src={Point3}
-            alt="Point Three"
-          />
-        </Box>
-        <Box width={width * 0.5973}>
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-            <FormattedMessage {...messages.pointthree} />
-          </PointHeader>
-          <PointText>
-            <FormattedMessage {...messages.point3message} />
-          </PointText>
-        </Box>
-      </Flex>
-      <Flex flexDirection="row" width="100%" pb="60px">
-        <Box width={width * 0.1813} px={width * 0.0133}>
-          <Image
-            height={width * 0.1813}
-            width={width * 0.1813}
-            src={Point4}
-            alt="Point Four"
-          />
-        </Box>
-        <Box width={width * 0.5973}>
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-            <FormattedMessage {...messages.pointfour} />
-          </PointHeader>
-          <PointText>
-            <FormattedMessage {...messages.point4message} />
-          </PointText>
-        </Box>
-      </Flex>
+      <Link to="about">
+        <Flex flexDirection="row" width="100%" pb="60px">
+          <Box width={width * 0.1813} px={width * 0.0133}>
+            <Image
+              height={width * 0.1813}
+              width={width * 0.1813}
+              src={Point1}
+              alt="Point One"
+            />
+          </Box>
+          <Box width={width * 0.5973}>
+            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+              <FormattedMessage {...messages.pointone} />
+            </PointHeader>
+            <PointText>
+              <FormattedMessage {...messages.point1message} />
+            </PointText>
+          </Box>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="row" width="100%" pb="60px">
+          <Box width={width * 0.1813} px={width * 0.0133}>
+            <Image
+              height={width * 0.1813}
+              width={width * 0.1813}
+              src={Point2}
+              alt="Point Two"
+            />
+          </Box>
+          <Box width={width * 0.5973}>
+            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+              <FormattedMessage {...messages.pointtwo} />
+            </PointHeader>
+            <PointText>
+              <FormattedMessage {...messages.point2message} />
+            </PointText>
+          </Box>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="row" width="100%" pb="60px">
+          <Box width={width * 0.1813} px={width * 0.0133}>
+            <Image
+              height={width * 0.1813}
+              width={width * 0.1813}
+              src={Point3}
+              alt="Point Three"
+            />
+          </Box>
+          <Box width={width * 0.5973}>
+            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+              <FormattedMessage {...messages.pointthree} />
+            </PointHeader>
+            <PointText>
+              <FormattedMessage {...messages.point3message} />
+            </PointText>
+          </Box>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="row" width="100%" pb="60px">
+          <Box width={width * 0.1813} px={width * 0.0133}>
+            <Image
+              height={width * 0.1813}
+              width={width * 0.1813}
+              src={Point4}
+              alt="Point Four"
+            />
+          </Box>
+          <Box width={width * 0.5973}>
+            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+              <FormattedMessage {...messages.pointfour} />
+            </PointHeader>
+            <PointText>
+              <FormattedMessage {...messages.point4message} />
+            </PointText>
+          </Box>
+        </Flex>
+      </Link>
     </Flex>
   ) : (
     <Flex
@@ -111,65 +120,73 @@ const PointsContainer = ({ width }) => {
       justifyContent="space-between"
       style={{ position: 'relative', background: '#151417' }}
     >
-      <Flex flexDirection="column" width={width * 0.1302}>
-        <Image
-          height={width * 0.0677}
-          width={width * 0.0677}
-          src={Point1}
-          alt="Point One"
-        />
-        <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-          <FormattedMessage {...messages.pointone} />
-        </PointHeader>
-        <PointText>
-          We carry out research at the intersection of Art, Science and
-          Technology.
-        </PointText>
-      </Flex>
-      <Flex flexDirection="column" width={[width * 0.1302]}>
-        <Image
-          height={width * 0.0677}
-          width={width * 0.0677}
-          src={Point2}
-          alt="Point Two"
-        />
-        <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-          <FormattedMessage {...messages.pointtwo} />
-        </PointHeader>
-        <PointText>
-          We offer organisations insights, analysis, and tools to help them
-          tackle the constantly evolving challenge of change.
-        </PointText>
-      </Flex>
-      <Flex flexDirection="column" width={[width * 0.1302]}>
-        <Image
-          height={width * 0.0677}
-          width={width * 0.0677}
-          src={Point3}
-          alt="Point Three"
-        />
-        <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-          <FormattedMessage {...messages.pointthree} />
-        </PointHeader>
-        <PointText>
-          We help forward-thinking organisations build a framework within their
-          teams to support consistent creativity and innovation.
-        </PointText>
-      </Flex>
-      <Flex flexDirection="column" width={[width * 0.1302]}>
-        <Image
-          height={width * 0.0677}
-          width={width * 0.0677}
-          src={Point4}
-          alt="Point Four"
-        />
-        <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
-          <FormattedMessage {...messages.pointfour} />
-        </PointHeader>
-        <PointText>
-          We help organisations engrain brilliant thinking into their culture.
-        </PointText>
-      </Flex>
+      <Link to="about">
+        <Flex flexDirection="column" width={width * 0.1302}>
+          <Image
+            height={width * 0.0677}
+            width={width * 0.0677}
+            src={Point1}
+            alt="Point One"
+          />
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointone} />
+          </PointHeader>
+          <PointText>
+            We carry out research at the intersection of Art, Science and
+            Technology.
+          </PointText>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="column" width={[width * 0.1302]}>
+          <Image
+            height={width * 0.0677}
+            width={width * 0.0677}
+            src={Point2}
+            alt="Point Two"
+          />
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointtwo} />
+          </PointHeader>
+          <PointText>
+            We offer organisations insights, analysis, and tools to help them
+            tackle the constantly evolving challenge of change.
+          </PointText>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="column" width={[width * 0.1302]}>
+          <Image
+            height={width * 0.0677}
+            width={width * 0.0677}
+            src={Point3}
+            alt="Point Three"
+          />
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointthree} />
+          </PointHeader>
+          <PointText>
+            We help forward-thinking organisations build a framework within
+            their teams to support consistent creativity and innovation.
+          </PointText>
+        </Flex>
+      </Link>
+      <Link to="about">
+        <Flex flexDirection="column" width={[width * 0.1302]}>
+          <Image
+            height={width * 0.0677}
+            width={width * 0.0677}
+            src={Point4}
+            alt="Point Four"
+          />
+          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <FormattedMessage {...messages.pointfour} />
+          </PointHeader>
+          <PointText>
+            We help organisations engrain brilliant thinking into their culture.
+          </PointText>
+        </Flex>
+      </Link>
     </Flex>
   );
 };

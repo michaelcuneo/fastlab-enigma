@@ -32,6 +32,15 @@ export default defineMessages({
     id: `${scope}.projectsDetails`,
     defaultMessage: 'See our amazing projects.',
   },
+  areas: {
+    id: `${scope}.areas`,
+    defaultMessage: 'Rabbit Hole',
+  },
+  areasDetails: {
+    id: `${scope}.projectsDetails`,
+    defaultMessage:
+      'Get a deeper understanding of our research paradigm, and how it can help you',
+  },
   updates: {
     id: `${scope}.updates`,
     defaultMessage: 'Updates',

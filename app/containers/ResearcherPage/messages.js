@@ -10,6 +10,6 @@ export const scope = 'boilerplate.containers.ContactPage';
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: `FastLab researchers`,
+    defaultMessage: `Humans of FastLab`,
   },
 });

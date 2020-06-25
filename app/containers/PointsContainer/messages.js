@@ -10,24 +10,24 @@ export const scope = 'boilerplate.containers.pointscontainer';
 export default defineMessages({
   pointone: {
     id: `${scope}.pointone`,
-    defaultMessage: 'Point one',
+    defaultMessage: 'Problems',
   },
   pointtwo: {
     id: `${scope}.pointtwo`,
-    defaultMessage: 'Point two',
+    defaultMessage: 'Solutions',
   },
   pointthree: {
     id: `${scope}.pointthree`,
-    defaultMessage: 'Point three',
+    defaultMessage: 'Collaboration',
   },
   pointfour: {
     id: `${scope}.pointfour`,
-    defaultMessage: 'Point four',
+    defaultMessage: 'Workflow',
   },
   point1message: {
     id: `${scope}.point1message`,
     defaultMessage:
-      'We carry out research at the intersection of Art, Science and Technology.',
+      'Across its themes of Human Behaviour, Future Work, Transmedia Arts, Narrative possibilities and Connected Communities the FASTLab team thinks - among other things - about Innovation and enterprise; Technology (AI & Robotics); globalization; migration; aging; (in-work) poverty and inequality; macro-economic instability FASTLab’s transdisciplinary team pursues a broad range of projects, from exhibitions and installations, performances and prototypes, to cooperation with the private sector, NGO’s and universities.',
   },
   point2message: {
     id: `${scope}.point2message`,

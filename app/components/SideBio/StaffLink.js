@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import S3Image from './S3Image';
+import S3Image from 'components/S3Image';
 
 const StaffLink = ({ width, staff }) => (
   <S3Image
     key={staff.id}
+    width={122}
+    height={122}
+    imgKey={`public/${staff.mugshot}`}
     style={{
       container: {
         width: `${width * 0.0635}px`,
@@ -40,7 +43,6 @@ const StaffLink = ({ width, staff }) => (
         border: '4px solid white',
       },
     }}
-    imgKey={staff.mugshot}
     enableHover
   />
 );

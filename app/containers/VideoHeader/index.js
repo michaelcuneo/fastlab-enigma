@@ -49,11 +49,11 @@ const VideoHeader = ({ width, height }) => {
   });
 
   return isTabletMobile ? (
-    <Flex sx={{ position: 'relative' }}>
+    <Flex sx={{ position: 'relative', zIndex: 0 }}>
       <Image size="contain" height="483px" width={width} src={maskGroup} />
     </Flex>
   ) : (
-    <div height={height} width={width}>
+    <div style={{ zIndex: 0 }} height={height} width={width}>
       <Player
         height={height}
         width={width}

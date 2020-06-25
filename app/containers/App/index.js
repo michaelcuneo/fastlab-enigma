@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import HomePage from 'containers/HomePage/Loadable';
 import ComingSoon from 'containers/ComingSoon/Loadable';
 import AboutPage from 'containers/AboutPage/Loadable';
+import AreasPage from 'containers/AreasPage/Loadable';
 import ContactPage from 'containers/ContactPage/Loadable';
 import ProgramsPage from 'containers/ProgramsPage/Loadable';
 import ProjectsPage from 'containers/ProjectsPage/Loadable';
@@ -17,7 +18,6 @@ import ProjectPage from 'containers/ProjectPage/Loadable';
 import UpdatesPage from 'containers/UpdatesPage/Loadable';
 import UpdatePage from 'containers/UpdatePage/Loadable';
 import ResearcherPage from 'containers/ResearcherPage/Loadable';
-import LoginPage from 'containers/LoginPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import LoadingIndicator from 'components/LoadingIndicator';
@@ -124,6 +124,12 @@ function App({ runtime }) {
             )}
           />
           <Route
+            path="/areas"
+            render={props => (
+              <AreasPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
             path="/updates"
             render={props => (
               <UpdatesPage {...props} height={height} width={width} />
@@ -139,12 +145,6 @@ function App({ runtime }) {
             path="/about"
             render={props => (
               <AboutPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/login"
-            render={props => (
-              <LoginPage {...props} height={height} width={width} />
             )}
           />
           <Route

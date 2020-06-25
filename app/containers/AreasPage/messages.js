@@ -5,11 +5,11 @@
  */
 import { defineMessages } from 'react-intl';
 
-export const scope = 'boilerplate.containers.ContactPage';
+export const scope = 'boilerplate.containers.AreasPage';
 
 export default defineMessages({
   header: {
     id: `${scope}.header`,
-    defaultMessage: `Researcher`,
+    defaultMessage: `Rabbit Hole`,
   },
 });

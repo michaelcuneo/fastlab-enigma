@@ -5,13 +5,13 @@ import styled from 'styled-components';
 
 import { useMediaQuery } from 'react-responsive';
 
-import { Storage, Logger } from 'aws-amplify';
-
 import { Flex, Text } from 'rebass';
+
+// import Displacement from 'images/1.jpg';
 
 import { useSpring, animated as a } from 'react-spring';
 
-const logger = new Logger('Storage.S3Image');
+// import Image from './Image';
 
 function ProjectContainer({
   item,
@@ -25,8 +25,12 @@ function ProjectContainer({
 }) {
   const [project, setProject] = useState(item);
   const [image, setImage] = useState('');
-
   const [hoverState, setHoverState] = useState(false);
+
+  useEffect(() => {
+    resetState();
+    setupProject();
+  }, []);
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
@@ -38,11 +42,6 @@ function ProjectContainer({
   const resetState = () => {
     setHoverState(false);
   };
-
-  useEffect(() => {
-    resetState();
-    setupProject();
-  }, []);
 
   const CustomAnimatedFlex = styled(a.div)`
     display: flex;
@@ -92,16 +91,31 @@ function ProjectContainer({
   const setupProject = async () => {
     if (item !== undefined) {
       setProject(item);
-      getImageSource(item.featuredImage.key, null, null, null);
+      getImageSource(`public/${item.featuredImage.key}`);
     }
   };
 
-  const getImageSource = (key, newLevel, track, identityId) => {
-    Storage.get(key, { level: newLevel || 'public', track, identityId })
-      .then(url => {
-        setImage(url);
-      })
-      .catch(err => logger.debug(err));
+  const getImageSource = imgKey => {
+    const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
+
+    const request = {
+      bucket: 'fastlab-master-20190705141744-storage164059-master',
+      key: imgKey,
+      edits: {
+        normalize: true,
+        sharpen: true,
+        resize: {
+          width: 538,
+          fit: 'cover',
+        },
+      },
+    };
+
+    const strRequest = JSON.stringify(request);
+    const encRequest = btoa(strRequest);
+    const url = `${domain}${encRequest}`;
+
+    setImage(url);
   };
 
   return (
@@ -137,6 +151,16 @@ function ProjectContainer({
             height: HEIGHT,
           }}
         >
+          {/*
+          <Image
+            width={width}
+            height={height}
+            url1={image}
+            url2={image}
+            disp={Displacement}
+            intensity={0.8}
+          />
+          */}
           <CustomAnimatedFlex style={CustomAnimation}>
             <Text
               sx={{

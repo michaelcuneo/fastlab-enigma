@@ -9,7 +9,7 @@ import { Connect } from 'aws-amplify-react';
 import CollaboratorBio from 'components/CollaboratorBio';
 import ParsedContent from 'components/ParsedContent';
 
-import Slider from 'react-slick';
+import Slideshow from 'react-slidez';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -24,7 +24,7 @@ import { Flex, Box, Text } from 'rebass';
 import OverlayContainer from 'containers/OverlayContainer';
 import Footer from 'components/Footer';
 
-import CustomS3Image from './CustomS3Image';
+import S3Modal from 'components/S3Modal';
 import { getProject } from '../../../src/graphql/queries';
 
 function ProjectPage({ width, height, match }) {
@@ -63,14 +63,6 @@ function ProjectPage({ width, height, match }) {
     padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
     z-index: 3;
   `;
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-  };
 
   return (
     <React.Fragment>
@@ -130,7 +122,7 @@ function ProjectPage({ width, height, match }) {
                       <DetailText>
                         <ParsedContent content={data.getProject.abstract} />
                       </DetailText>
-                      <DetailHeader pt="80px" pb="75px">
+                      <DetailHeader pt="80px" pb="30px">
                         DETAILS
                       </DetailHeader>
                       <DetailText
@@ -153,28 +145,27 @@ function ProjectPage({ width, height, match }) {
                       </DetailText>
                     </Flex>
                   </Flex>
-                  <Slider {...settings}>
-                    {data.getProject.gallery.images.items.map(image => (
-                      <Flex flexDirection="row" height="450px">
-                        <CustomS3Image
-                          key={image.id}
-                          style={{
-                            container: {
-                              width: width * 0.4229,
-                              height: width * 0.4229,
-                            },
-                            image: {
-                              width: '100%',
-                              height: '100%',
-                              objectFit: 'cover',
-                              objectPosition: 'center',
-                            },
-                          }}
-                          imgKey={image.key}
-                        />
-                      </Flex>
-                    ))}
-                  </Slider>
+                  <Flex style={{ minHeight: '500px', maxHeight: '800px' }}>
+                    {data.getProject.gallery.images.items && (
+                      <Slideshow
+                        showIndex
+                        autoplay={false}
+                        enableKeyboard
+                        useDotIndex
+                        height="500px"
+                        width={`${width * 0.4229}px`}
+                        effect="fade"
+                      >
+                        {data.getProject.gallery.images.items.map(image => (
+                          <S3Modal
+                            imgKey={`public/${image.key}`}
+                            sWidth={Math.round(width * 0.4229)}
+                            lWidth={width}
+                          />
+                        ))}
+                      </Slideshow>
+                    )}
+                  </Flex>
                   <Flex flexDirection="row">
                     <Flex flexDirection="column" pr={width * 0.1172}>
                       <DetailHeader pt="80px" pb="30px">

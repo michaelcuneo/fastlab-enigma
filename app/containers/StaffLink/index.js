@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Flex } from 'rebass';
 
-import S3Image from './S3Image';
+import S3Image from 'components/S3Image';
 import StaffName from './StaffName';
 
 const StaffLink = ({ width, typeSize, staff }) => (
@@ -44,7 +44,9 @@ const StaffLink = ({ width, typeSize, staff }) => (
           border: '4px solid white',
         },
       }}
-      imgKey={staff.mugshot}
+      width={122}
+      height={122}
+      imgKey={`public/${staff.mugshot}`}
       enableHover
     />
     <Flex flexDirection="column" alignItems="center" pt="14px" pb="28px">

@@ -80,15 +80,20 @@ const SideBio = ({ width, data }) => {
       maxWidth={containerWidth}
       height="auto"
     >
-      <Flex p={width * 0.0182} alignItems="center">
+      <Flex
+        p={width * 0.0182}
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Box p={2}>
           <StaffLink
+            minWidth={width}
             width={width}
             typeSize={['10px', '12px', '14px']}
             staff={data}
           />
         </Box>
-        <Box p={2}>
+        <Box minWidth="210px" width="210px">
           <Flex flexDirection="column">
             <Box>
               <StyledText>{data.firstName}</StyledText>
@@ -109,7 +114,11 @@ const SideBio = ({ width, data }) => {
             </Box>
             <Box>
               {data.projects.items.map(item => (
-                <StyledSubHeader link={`/project/${item.project.id}`} to>
+                <StyledSubHeader
+                  key={item.id}
+                  link={`/project/${item.project.id}`}
+                  to
+                >
                   <Text pt={2}>{item.project.title}</Text>
                 </StyledSubHeader>
               ))}

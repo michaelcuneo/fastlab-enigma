@@ -61,7 +61,7 @@ function ContactPage({ width, height }) {
         flexDirection="column"
         sx={{
           position: 'absolute',
-          height: 'auto',
+          height: '100% - 400px',
           top: '400px',
           background: '#151417',
           borderTop: '1px solid rgba(255, 255, 255, 0.2)',

@@ -8,8 +8,6 @@ import { Flex, Box, Text } from 'rebass';
 
 import { Markup } from 'interweave';
 
-import { Storage, Logger } from 'aws-amplify';
-
 const UpdateContainer = ({ item, width }) => {
   const [post, setPost] = useState(item);
   const [image, setImage] = useState('');
@@ -18,21 +16,39 @@ const UpdateContainer = ({ item, width }) => {
     setupPost();
   }, []);
 
-  const logger = new Logger('Storage.S3Image');
-
   const setupPost = async () => {
     if (item !== undefined) {
       setPost(item);
-      getImageSource(item.featuredImage.key, null, null, null);
+      getImageSource(`public/${item.featuredImage.key}`);
     }
   };
 
-  const getImageSource = (key, newLevel, track, identityId) => {
-    Storage.get(key, { level: newLevel || 'public', track, identityId })
-      .then(url => {
-        setImage(url);
-      })
-      .catch(err => logger.debug(err));
+  const getImageSource = imgKey => {
+    const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
+
+    const request = {
+      bucket: 'fastlab-master-20190705141744-storage164059-master',
+      key: imgKey,
+      edits: {
+        // smartCrop: true,
+        normalize: true,
+        // grayscale: true,
+        sharpen: true,
+        // blur: 5,
+        // rotate: 180,
+        resize: {
+          width: 536,
+          height: 382,
+          fit: 'cover',
+        },
+      },
+    };
+
+    const strRequest = JSON.stringify(request);
+    const encRequest = btoa(strRequest);
+    const url = `${domain}${encRequest}`;
+
+    setImage(url);
   };
 
   return (

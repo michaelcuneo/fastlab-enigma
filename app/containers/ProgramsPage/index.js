@@ -52,7 +52,7 @@ function ProgramsPage({ width, height }) {
     },
     {
       id: 3,
-      title: 'ZED Studio',
+      title: 'Studio ZED',
       link: 'zed',
       details:
         'Studio ZED is the School of Creative Industries Work Integrated Learning full service design studio at the University of Newcastle.</p><p>Established in response to market demand for student designers Studio ZED matches student designers with clients to work on live-briefs for course-work credits.</p><p>Clients range from University departments and services to NGO’s and charities who otherwise may not be in a position to commission quality brochures, websites or presentations.</p><p>Studio ZED provides students with relevant industry appropriate experience so that when they graduate they are better prepared for their careers in Visual Communication.</p><p>If you are a potential client wishing to support our students learning journey through commissioning students at Studio ZED please contact us HERE (ZED URL)</p><p>If you are a student designer wishing to build your portfolio or improve your skills working on live briefs for real world clients speak to any member of the VisComm design team or drop into the studio on the 2nd floor of University House, Auckland Street and introduce yourself.</p><p>And if you’re planning on postgraduate studies in Design, Studio ZED provides a studio environment and community of practice for design research that will help you in establishing professional relationships with practitioners in other creative fields.</p>',

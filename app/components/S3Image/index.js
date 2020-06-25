@@ -1,68 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import Image from 'react-graceful-image';
 
-import { Storage, Logger } from 'aws-amplify';
+import btoa from 'btoa';
 
-import FastlabLLW from 'images/Fastlab_LLW.svg';
+const S3Image = ({
+  imgKey,
+  enableHover,
+  style,
+  hoverStyle,
+  width,
+  height,
+  handleClick,
+}) => {
+  const [hover, setHover] = useState(false);
+  const [src, setSrc] = useState('');
 
-const logger = new Logger('Storage.S3Image');
+  useEffect(() => {
+    getImageSource(imgKey);
+  }, []);
 
-class S3Image extends React.Component {
-  constructor(props) {
-    super(props);
+  const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
 
-    const initSrc = this.props.src || FastlabLLW;
-
-    this.state = {
-      src: initSrc,
-      hover: null,
-    };
-  }
-
-  changeHover = () => {
-    this.setState(prevState => ({
-      hover: !prevState.hover,
-    }));
+  const request = {
+    bucket: 'fastlab-master-20190705141744-storage164059-master',
+    key: imgKey,
+    edits: {
+      normalize: true,
+      sharpen: true,
+      resize: {
+        width,
+        height,
+        fit: 'cover',
+      },
+    },
   };
 
-  getImageSource(key, newLevel, track, identityId) {
-    Storage.get(key, { level: newLevel || 'public', track, identityId })
-      .then(url => {
-        this.setState({
-          src: url,
-        });
-      })
-      .catch(err => logger.debug(err));
-  }
+  const changeHover = () => setHover(!hover);
 
-  load() {
-    const { imgKey, level, track, identityId } = this.props;
-    if (!imgKey) {
-      // logger.debug('empty imgKey and path');
-      return;
-    }
-    // logger.debug(`loading ${imgKey} ...`);
-    this.getImageSource(imgKey, level, track, identityId);
-  }
+  const getImageSource = () => {
+    const strRequest = JSON.stringify(request);
+    const encRequest = btoa(strRequest);
+    const url = `${domain}${encRequest}`;
 
-  componentWillMount() {
-    this.load();
-  }
+    setSrc(url);
+  };
 
-  imageEl(src, enableHover, style, hover, hoverStyle, width, height) {
+  const imageEl = () => {
     if (enableHover) {
       return (
         <div
-          key="ImageEl"
           role="button"
           tabIndex={0}
           style={hover ? hoverStyle.container : style.container}
-          onClick={this.handleClick}
-          onKeyDown={this.handleClick}
-          onMouseOver={this.changeHover}
-          onMouseOut={this.changeHover}
+          onClick={handleClick}
+          onKeyDown={handleClick}
+          onMouseOver={changeHover}
+          onMouseOut={changeHover}
           onFocus={() => {}}
           onBlur={() => {}}
         >
@@ -76,18 +71,17 @@ class S3Image extends React.Component {
         </div>
       );
     }
-    return [
+    return (
       <div
-        key="ImageEl"
         role="button"
         tabIndex={0}
         width={width}
         height={height}
         style={style.container}
-        onClick={this.handleClick}
-        onKeyDown={this.handleClick}
-        onMouseOver={this.changeHover}
-        onMouseOut={this.changeHover}
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        onMouseOver={changeHover}
+        onMouseOut={changeHover}
         onFocus={() => {}}
         onBlur={() => {}}
       >
@@ -98,35 +92,24 @@ class S3Image extends React.Component {
           src={src}
           alt=""
         />
-      </div>,
-    ];
+      </div>
+    );
+  };
+
+  if (!src) {
+    return null;
   }
-
-  render() {
-    const { enableHover, style, hoverStyle, width, height } = this.props;
-    const { src, hover } = this.state;
-
-    if (!src) {
-      return null;
-    }
-
-    return [
-      this.imageEl(src, enableHover, style, hover, hoverStyle, width, height),
-    ];
-  }
-}
+  return imageEl();
+};
 
 S3Image.propTypes = {
-  identityId: PropTypes.any,
   enableHover: PropTypes.bool,
   width: PropTypes.number,
   height: PropTypes.number,
-  src: PropTypes.any,
   style: PropTypes.object,
   hoverStyle: PropTypes.object,
   imgKey: PropTypes.string,
-  level: PropTypes.any,
-  track: PropTypes.any,
+  handleClick: PropTypes.func,
 };
 
 export default S3Image;

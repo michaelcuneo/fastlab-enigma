@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
+import Slideshow from 'react-slidez';
+
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
 import CollaboratorBio from 'components/CollaboratorBio';
 import ParsedContent from 'components/ParsedContent';
-
-import Slider from 'react-slick';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -26,7 +26,7 @@ import Footer from 'components/Footer';
 
 import moment from 'moment';
 
-import CustomS3Image from './CustomS3Image';
+import S3Modal from 'components/S3Modal';
 import { getPost } from '../../../src/graphql/queries';
 
 function UpdatePage({ width, height, match }) {
@@ -66,14 +66,6 @@ function UpdatePage({ width, height, match }) {
     z-index: 3;
   `;
 
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-  };
-
   return (
     <React.Fragment>
       <Helmet key="Helmet">
@@ -108,6 +100,7 @@ function UpdatePage({ width, height, match }) {
                   top: '400px',
                   background: '#151417',
                   borderTop: '1px solid rgba(255, 255, 255, 0.4)',
+                  zIndex: 1,
                 }}
               >
                 <Flex
@@ -154,26 +147,27 @@ function UpdatePage({ width, height, match }) {
                       </DetailText>
                     </Flex>
                   </Flex>
-                  <Slider {...settings}>
-                    {data.getPost.gallery.images.items.map(image => (
-                      <CustomS3Image
-                        key={image.id}
-                        style={{
-                          container: {
-                            width: width * 0.4229,
-                            height: width * 0.4229,
-                          },
-                          image: {
-                            width: '100%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            objectPosition: 'center',
-                          },
-                        }}
-                        imgKey={image.key}
-                      />
-                    ))}
-                  </Slider>
+                  <Flex style={{ height: '500px' }}>
+                    {data.getPost.gallery.images.items && (
+                      <Slideshow
+                        showIndex
+                        autoplay={false}
+                        enableKeyboard
+                        useDotIndex
+                        height="500px"
+                        width={`${width * 0.4229}px`}
+                        effect="fade"
+                      >
+                        {data.getPost.gallery.images.items.map(image => (
+                          <S3Modal
+                            imgKey={`public/${image.key}`}
+                            sWidth={Math.round(width * 0.4229)}
+                            lWidth={window.innerWidth}
+                          />
+                        ))}
+                      </Slideshow>
+                    )}
+                  </Flex>
                 </Flex>
                 <Footer height={height} width={width} />
               </Flex>

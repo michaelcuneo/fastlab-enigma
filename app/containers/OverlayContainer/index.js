@@ -55,7 +55,7 @@ const OverlayContainer = () => {
         bottom: 0,
         padding: 0,
         margin: 0,
-        zIndex: 3,
+        zIndex: 2,
         pointerEvents: 'none',
       }}
     >
