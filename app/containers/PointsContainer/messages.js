@@ -10,11 +10,11 @@ export const scope = 'boilerplate.containers.pointscontainer';
 export default defineMessages({
   pointone: {
     id: `${scope}.pointone`,
-    defaultMessage: 'Problems',
+    defaultMessage: 'Projects',
   },
   pointtwo: {
     id: `${scope}.pointtwo`,
-    defaultMessage: 'Solutions',
+    defaultMessage: 'Innovation',
   },
   pointthree: {
     id: `${scope}.pointthree`,
@@ -22,7 +22,7 @@ export default defineMessages({
   },
   pointfour: {
     id: `${scope}.pointfour`,
-    defaultMessage: 'Workflow',
+    defaultMessage: 'Imagination',
   },
   point1message: {
     id: `${scope}.point1message`,

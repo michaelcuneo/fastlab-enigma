@@ -167,7 +167,7 @@ function ProjectContainer({
                 color: '#151417',
                 fontSize: '24px',
                 lineHeight: '28px',
-                fontFamily: 'archia',
+                fontFamily: 'archiaregular',
               }}
             >
               {project ? project.title : 'Error'}
@@ -177,7 +177,7 @@ function ProjectContainer({
                 color: '#868686',
                 fontSize: '16px',
                 lineHeight: '25px',
-                fontFamily: 'archia',
+                fontFamily: 'archiaregular',
               }}
               my="14px"
             >

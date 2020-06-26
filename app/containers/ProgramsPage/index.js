@@ -62,14 +62,14 @@ function ProgramsPage({ width, height }) {
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
 
   const DetailHeader = styled(Box)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 40px;
     line-height: 25px;
     color: #ec184a;
   `;
 
   const DetailText = styled(Text)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 16px;
     line-height: 25px;
   `;

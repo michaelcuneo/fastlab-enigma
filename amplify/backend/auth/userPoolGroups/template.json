@@ -5,12 +5,10 @@
       "Type": "String",
       "Default": "authfastlabUserPoolId"
     },
-
     "authfastlabIdentityPoolId": {
       "Type": "String",
       "Default": "authfastlabIdentityPoolId"
     },
-
     "authfastlabAppClientID": {
       "Type": "String",
       "Default": "authfastlabAppClientID"
@@ -45,17 +43,14 @@
       "Properties": {
         "GroupName": "admin",
         "Precedence": 1,
-
         "RoleArn": {
           "Fn::GetAtt": ["adminGroupRole", "Arn"]
         },
-
         "UserPoolId": {
           "Ref": "authfastlabUserPoolId"
         }
       }
     },
-
     "adminGroupRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -79,17 +74,7 @@
               "Principal": {
                 "Federated": "cognito-identity.amazonaws.com"
               },
-              "Action": "sts:AssumeRoleWithWebIdentity",
-              "Condition": {
-                "StringEquals": {
-                  "cognito-identity.amazonaws.com:aud": {
-                    "Ref": "authfastlabIdentityPoolId"
-                  }
-                },
-                "ForAnyValue:StringLike": {
-                  "cognito-identity.amazonaws.com:amr": "authenticated"
-                }
-              }
+              "Action": "sts:AssumeRoleWithWebIdentity"
             }
           ]
         }
@@ -101,17 +86,14 @@
       "Properties": {
         "GroupName": "standard",
         "Precedence": 2,
-
         "RoleArn": {
           "Fn::GetAtt": ["standardGroupRole", "Arn"]
         },
-
         "UserPoolId": {
           "Ref": "authfastlabUserPoolId"
         }
       }
     },
-
     "standardGroupRole": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -135,17 +117,7 @@
               "Principal": {
                 "Federated": "cognito-identity.amazonaws.com"
               },
-              "Action": "sts:AssumeRoleWithWebIdentity",
-              "Condition": {
-                "StringEquals": {
-                  "cognito-identity.amazonaws.com:aud": {
-                    "Ref": "authfastlabIdentityPoolId"
-                  }
-                },
-                "ForAnyValue:StringLike": {
-                  "cognito-identity.amazonaws.com:amr": "authenticated"
-                }
-              }
+              "Action": "sts:AssumeRoleWithWebIdentity"
             }
           ]
         }
@@ -329,7 +301,6 @@
       "DependsOn": ["RoleMapFunction"]
     }
   },
-
   "Outputs": {
     "adminGroupRole": {
       "Value": {

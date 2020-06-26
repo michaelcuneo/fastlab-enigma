@@ -112,7 +112,7 @@ const UpdateContainer = ({ item, width }) => {
                   color: '#151417',
                   fontSize: '24px',
                   lineHeight: '28px',
-                  fontFamily: 'archia',
+                  fontFamily: 'archiaregular',
                   height: '28px',
                   overflow: 'hidden',
                 }}
@@ -126,7 +126,7 @@ const UpdateContainer = ({ item, width }) => {
                   color: '#b9b9b9',
                   fontSize: '24px',
                   lineHeight: '28px',
-                  fontFamily: 'archia',
+                  fontFamily: 'archiaregular',
                 }}
               >
                 {moment(post.date).format('D MMM')}

@@ -30,7 +30,7 @@ const PointsContainer = ({ width }) => {
       flexDirection="column"
       style={{ position: 'relative', background: '#151417' }}
     >
-      <Link to="about">
+      <Link to="/projects">
         <Flex flexDirection="row" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
@@ -50,7 +50,7 @@ const PointsContainer = ({ width }) => {
           </Box>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/about">
         <Flex flexDirection="row" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
@@ -70,7 +70,7 @@ const PointsContainer = ({ width }) => {
           </Box>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/">
         <Flex flexDirection="row" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
@@ -90,7 +90,7 @@ const PointsContainer = ({ width }) => {
           </Box>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/areas">
         <Flex flexDirection="row" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
@@ -120,7 +120,7 @@ const PointsContainer = ({ width }) => {
       justifyContent="space-between"
       style={{ position: 'relative', background: '#151417' }}
     >
-      <Link to="about">
+      <Link to="/projects">
         <Flex flexDirection="column" width={width * 0.1302}>
           <Image
             height={width * 0.0677}
@@ -137,7 +137,7 @@ const PointsContainer = ({ width }) => {
           </PointText>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/about">
         <Flex flexDirection="column" width={[width * 0.1302]}>
           <Image
             height={width * 0.0677}
@@ -154,7 +154,7 @@ const PointsContainer = ({ width }) => {
           </PointText>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/">
         <Flex flexDirection="column" width={[width * 0.1302]}>
           <Image
             height={width * 0.0677}
@@ -171,7 +171,7 @@ const PointsContainer = ({ width }) => {
           </PointText>
         </Flex>
       </Link>
-      <Link to="about">
+      <Link to="/areas">
         <Flex flexDirection="column" width={[width * 0.1302]}>
           <Image
             height={width * 0.0677}

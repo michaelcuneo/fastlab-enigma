@@ -56,14 +56,14 @@ export const HeaderLink = ({
   `;
 
   const LinkText = styled(Text)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 50px;
     line-height: 100px;
     color: white;
   `;
 
   const LinkDetails = styled(a.div)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 18px;
     line-height: 22px;
     color: white;

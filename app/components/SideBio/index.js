@@ -85,7 +85,7 @@ const SideBio = ({ width, data }) => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Box p={2}>
+        <Box minWidth="122px" width="122px" m={3}>
           <StaffLink
             minWidth={width}
             width={width}
@@ -93,7 +93,7 @@ const SideBio = ({ width, data }) => {
             staff={data}
           />
         </Box>
-        <Box minWidth="210px" width="210px">
+        <Box minWidth="210px" width="210px" m={3}>
           <Flex flexDirection="column">
             <Box>
               <StyledText>{data.firstName}</StyledText>

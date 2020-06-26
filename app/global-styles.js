@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 16px;
     line-height: 25px;
     color: white;
@@ -26,7 +26,7 @@ const GlobalStyle = createGlobalStyle`
 
   p,
   label {
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 16px;
     line-height: 25px;
   }

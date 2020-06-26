@@ -35,14 +35,14 @@ export function ComingSoon() {
   };
 
   const DetailHeader = styled(Box)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 30px;
     line-height: 25px;
     color: #ec184a;
   `;
 
   const DetailText = styled(Text)`
-    font-family: 'archia', sans-serif;
+    font-family: 'archiaregular', sans-serif;
     font-size: 14px;
     line-height: 23px;
   `;
