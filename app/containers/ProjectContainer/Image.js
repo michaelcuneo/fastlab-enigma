@@ -5,7 +5,7 @@ import { Canvas } from 'react-three-fiber';
 
 import ImageWebGL from './ImageWebGL';
 
-const Image = ({ width, height, url1, url2, disp, intensity }) => (
+const Image = ({ width, height, url1, url2, disp, intensity, hover }) => (
   <Canvas className="canvas" invalidateFrameloop>
     <ImageWebGL
       url1={url1}
@@ -14,6 +14,7 @@ const Image = ({ width, height, url1, url2, disp, intensity }) => (
       intensity={intensity}
       height={height}
       width={width}
+      hover={hover}
     />
   </Canvas>
 );
@@ -25,6 +26,7 @@ Image.propTypes = {
   url2: PropTypes.string,
   disp: PropTypes.string,
   intensity: PropTypes.number,
+  hover: PropTypes.bool,
 };
 
 export default Image;

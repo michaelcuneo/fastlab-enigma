@@ -8,16 +8,8 @@ import { useSpring, a } from 'react-spring/three';
 import { CustomVertex } from './CustomVertex';
 import { CustomFragment } from './CustomFragment';
 
-const ImageWebGL = ({
-  url1,
-  url2,
-  disp,
-  intensity,
-  clicked,
-  height,
-  width,
-}) => {
-  const { progress } = useSpring({ progress: clicked ? 1 : 0 });
+const ImageWebGL = ({ url1, url2, disp, intensity, hover, height, width }) => {
+  const { progress } = useSpring({ progress: hover ? 1 : 0 });
 
   const { gl, invalidate } = useThree();
 
@@ -50,8 +42,8 @@ const ImageWebGL = ({
     };
   }, [url1, url2, disp]);
 
-  const argWidth = (width / window.innerWidth) * 100;
-  const argHeight = (height / (window.innerHeight - 110)) * 100;
+  const argWidth = (width / window.innerWidth) * 30;
+  const argHeight = (height / window.innerHeight) * 30;
 
   return (
     <mesh>
@@ -70,7 +62,7 @@ ImageWebGL.propTypes = {
   url2: PropTypes.string,
   disp: PropTypes.string,
   intensity: PropTypes.number,
-  clicked: PropTypes.bool,
+  hover: PropTypes.bool,
   height: PropTypes.number,
   width: PropTypes.number,
 };

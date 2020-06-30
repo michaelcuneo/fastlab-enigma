@@ -53,6 +53,7 @@ const StyledButton = ({ children, color, arrow }) => {
     background: ${background};
     border: 0px;
     padding: 0px 30px 0px 30px;
+    outline: none;
   `;
 
   return (

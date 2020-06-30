@@ -7,11 +7,11 @@ import { useMediaQuery } from 'react-responsive';
 
 import { Flex, Text } from 'rebass';
 
-// import Displacement from 'images/1.jpg';
+import Displacement from 'images/1.jpg';
 
 import { useSpring, animated as a } from 'react-spring';
 
-// import Image from './Image';
+import Image from './Image';
 
 function ProjectContainer({
   item,
@@ -24,7 +24,8 @@ function ProjectContainer({
   staggered,
 }) {
   const [project, setProject] = useState(item);
-  const [image, setImage] = useState('');
+  const [image1, setImage1] = useState('');
+  const [image2, setImage2] = useState('');
   const [hoverState, setHoverState] = useState(false);
 
   useEffect(() => {
@@ -45,9 +46,10 @@ function ProjectContainer({
 
   const CustomAnimatedFlex = styled(a.div)`
     display: flex;
+    position: absolute;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    // position: relative;
     bottom: 0;
     background: #ffffff;
     border-left: 4px solid red;
@@ -91,11 +93,12 @@ function ProjectContainer({
   const setupProject = async () => {
     if (item !== undefined) {
       setProject(item);
-      getImageSource(`public/${item.featuredImage.key}`);
+      getImageSource1(`public/${item.featuredImage.key}`);
+      getImageSource2(`public/${item.featuredImage.key}`);
     }
   };
 
-  const getImageSource = imgKey => {
+  const getImageSource1 = imgKey => {
     const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
 
     const request = {
@@ -115,7 +118,31 @@ function ProjectContainer({
     const encRequest = btoa(strRequest);
     const url = `${domain}${encRequest}`;
 
-    setImage(url);
+    setImage1(url);
+  };
+
+  const getImageSource2 = imgKey => {
+    const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
+
+    const request = {
+      bucket: 'fastlab-master-20190705141744-storage164059-master',
+      key: imgKey,
+      edits: {
+        normalize: true,
+        sharpen: true,
+        grayscale: true,
+        resize: {
+          width: 538,
+          fit: 'cover',
+        },
+      },
+    };
+
+    const strRequest = JSON.stringify(request);
+    const encRequest = btoa(strRequest);
+    const url = `${domain}${encRequest}`;
+
+    setImage2(url);
   };
 
   return (
@@ -141,26 +168,21 @@ function ProjectContainer({
           sx={{
             alignItems: 'flex-end',
             justifyContent: 'flex-end',
-            backgroundImage: `url(${image})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
             minWidth: WIDTH,
             minHeight: HEIGHT,
             width: WIDTH,
             height: HEIGHT,
           }}
         >
-          {/*
           <Image
-            width={width}
-            height={height}
-            url1={image}
-            url2={image}
+            width={WIDTH}
+            height={HEIGHT}
+            url1={image1}
+            url2={image2}
             disp={Displacement}
-            intensity={0.8}
+            intensity={0.4}
+            hover={hoverState}
           />
-          */}
           <CustomAnimatedFlex style={CustomAnimation}>
             <Text
               sx={{
