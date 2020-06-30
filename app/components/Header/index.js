@@ -107,6 +107,13 @@ function Header() {
               isTabletMobile={isTabletMobile}
             />
             <HeaderLink
+              to="/exhibits"
+              link={<FormattedMessage {...messages.exhibits} />}
+              linkDetails={<FormattedMessage {...messages.exhibitsDetails} />}
+              onClick={closeMenu}
+              isTabletMobile={isTabletMobile}
+            />
+            <HeaderLink
               to="/programs"
               link={<FormattedMessage {...messages.programs} />}
               linkDetails={<FormattedMessage {...messages.programsDetails} />}

@@ -147,7 +147,7 @@ function ProjectContainer({
 
   return (
     <Flex
-      key={project ? project.id : 'Box'}
+      key={project.id}
       px={PX}
       pt={PT}
       pb={PB}
@@ -162,7 +162,7 @@ function ProjectContainer({
         onFocus={() => {}}
         onMouseLeave={() => setHoverState(false)}
         style={{ textDecoration: 'none' }}
-        to={`/project/${project ? project.id : null}`}
+        to={`/project/${project.id}`}
       >
         <Flex
           sx={{
@@ -180,7 +180,7 @@ function ProjectContainer({
             url1={image1}
             url2={image2}
             disp={Displacement}
-            intensity={0.4}
+            intensity={0.1}
             hover={hoverState}
           />
           <CustomAnimatedFlex style={CustomAnimation}>
@@ -192,7 +192,7 @@ function ProjectContainer({
                 fontFamily: 'archiaregular',
               }}
             >
-              {project ? project.title : 'Error'}
+              {project.title}
             </Text>
             <Text
               sx={{
@@ -203,7 +203,7 @@ function ProjectContainer({
               }}
               my="14px"
             >
-              {project ? project.category.label : 'Error'}
+              {project.category.label}
             </Text>
           </CustomAnimatedFlex>
         </Flex>

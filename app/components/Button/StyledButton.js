@@ -54,6 +54,7 @@ const StyledButton = ({ children, color, arrow }) => {
     border: 0px;
     padding: 0px 30px 0px 30px;
     outline: none;
+    z-index: 999999;
   `;
 
   return (

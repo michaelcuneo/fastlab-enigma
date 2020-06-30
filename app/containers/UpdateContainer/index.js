@@ -105,7 +105,11 @@ const UpdateContainer = ({ item, width }) => {
               background: '#ffffff',
             }}
           >
-            <Flex width="100%" flexDirection="row">
+            <Flex
+              width="100%"
+              justifyContent="space-around"
+              flexDirection="row"
+            >
               <Text
                 sx={{
                   maxWidth: '80%',

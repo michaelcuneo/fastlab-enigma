@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { useMediaQuery } from 'react-responsive';
 
 import { Flex, Box, Text } from 'rebass';
+import { VERSION } from 'containers/App/constants';
+
 // import LocaleToggle from 'containers/LocaleToggle';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
@@ -27,7 +29,13 @@ function Footer() {
           py={3}
           style={{ fontFamily: 'jetbrains-medium', fontSize: '8pt' }}
         >
-          <FormattedMessage {...messages.licenseMessage} />
+          <FormattedMessage
+            {...messages.licenseMessage}
+            values={{
+              copy: '©',
+              version: VERSION,
+            }}
+          />
         </Text>
       </Flex>
       <Flex
@@ -69,7 +77,13 @@ function Footer() {
           pb="85px"
           style={{ fontFamily: 'jetbrains-medium', fontSize: '11px' }}
         >
-          <FormattedMessage {...messages.licenseMessage} />
+          <FormattedMessage
+            {...messages.licenseMessage}
+            values={{
+              copy: '©',
+              version: VERSION,
+            }}
+          />
         </Text>
       </Flex>
     </MobileWrapper>

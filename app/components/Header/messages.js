@@ -37,9 +37,17 @@ export default defineMessages({
     defaultMessage: 'Rabbit Hole',
   },
   areasDetails: {
-    id: `${scope}.projectsDetails`,
+    id: `${scope}.areasDetails`,
     defaultMessage:
       'Get a deeper understanding of our research paradigm, and how it can help you',
+  },
+  exhibits: {
+    id: `${scope}.exhibits`,
+    defaultMessage: 'Exhibitions',
+  },
+  exhibitsDetails: {
+    id: `${scope}.exhibitsDetails`,
+    defaultMessage: `See if we're showing anything local or over VR right now.`,
   },
   updates: {
     id: `${scope}.updates`,
