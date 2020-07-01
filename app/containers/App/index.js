@@ -3,21 +3,32 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
+import { useMediaQuery } from 'react-responsive';
+
 import { ThemeProvider } from 'styled-components';
 
 import HomePage from 'containers/HomePage/Loadable';
-import LoginPage from 'containers/LoginPage/Loadable';
+import ComingSoon from 'containers/ComingSoon/Loadable';
+import AboutPage from 'containers/AboutPage/Loadable';
+import AreasPage from 'containers/AreasPage/Loadable';
+import ContactPage from 'containers/ContactPage/Loadable';
+import ProgramsPage from 'containers/ProgramsPage/Loadable';
+import ProjectsPage from 'containers/ProjectsPage/Loadable';
+import ProjectPage from 'containers/ProjectPage/Loadable';
+import UpdatesPage from 'containers/UpdatesPage/Loadable';
+import UpdatePage from 'containers/UpdatePage/Loadable';
+import ResearcherPage from 'containers/ResearcherPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+
+import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
-import Footer from 'components/Footer';
 
 import AppWrapper from './AppWrapper';
 import theme from './Theme';
 
 import GlobalStyle from '../../global-styles';
 
-// Add the rebass theme here later for break point configuration
-function App({ runtime /* , loggedIn */ }) {
+function App({ runtime }) {
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
 
@@ -26,7 +37,6 @@ function App({ runtime /* , loggedIn */ }) {
   }, [window.removeEventListener('resize', setDimensions)]);
 
   useEffect(() => {
-    // When initial state username is not null, submit the form to load repos
     if (process.env.NODE_ENV === 'production') {
       runtime.install({
         onUpdating: () => {},
@@ -43,42 +53,119 @@ function App({ runtime /* , loggedIn */ }) {
   }, []);
 
   const setDimensions = () => {
-    setWidth(document.body.scrollWidth);
-    setHeight(document.body.scrollHeight);
+    setWidth(window.innerWidth);
+    setHeight(window.innerHeight);
   };
 
-  return (
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  return height && width ? (
     <AppWrapper id="outer-container">
       <Helmet titleTemplate="%s - fastlab" defaultTitle="Fastlab">
-        <meta name="description" content="A React.js Boilerplate application" />
+        <meta
+          name="description"
+          content="A School of Creative Industries, University of Newcastle, application"
+        />
       </Helmet>
       <Header />
-      <Switch>
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <HomePage {...props} height={height} width={width} />
-          )}
-        />
-        <Route
-          path="/login"
-          render={props => (
-            <LoginPage {...props} height={height} width={width} />
-          )}
-        />
-        <Route path="" component={NotFoundPage} />
-      </Switch>
-      <Footer />
+      {isTabletMobile ? (
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <ComingSoon {...props} height={height} width={width} />
+            )}
+          />
+        </Switch>
+      ) : (
+        <Switch id="page-wrap">
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <HomePage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/researcher/:id"
+            render={props => (
+              <ResearcherPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/update/:id"
+            render={props => (
+              <UpdatePage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/project/:id"
+            render={props => (
+              <ProjectPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/contact"
+            render={props => (
+              <ContactPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/projects/:nextToken"
+            render={props => (
+              <ProjectsPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/projects"
+            render={props => (
+              <ProjectsPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/areas"
+            render={props => (
+              <AreasPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/updates"
+            render={props => (
+              <UpdatesPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/programs"
+            render={props => (
+              <ProgramsPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path="/about"
+            render={props => (
+              <AboutPage {...props} height={height} width={width} />
+            )}
+          />
+          <Route
+            path=""
+            render={props => (
+              <NotFoundPage {...props} height={height} width={width} />
+            )}
+          />
+        </Switch>
+      )}
+
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>
+  ) : (
+    <LoadingIndicator />
   );
 }
 
 App.propTypes = {
   runtime: PropTypes.object,
-  // loggedIn: PropTypes.bool,
 };
 
 export default App;

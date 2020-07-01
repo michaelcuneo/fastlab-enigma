@@ -9,21 +9,9 @@ import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import history from 'utils/history';
-import globalReducer from 'containers/App/reducer';
-import userReducer from 'containers/User/reducer';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
 
-const globalPersistConfig = {
-  key: 'global',
-  storage,
-};
-
-const userPersistConfig = {
-  key: 'user',
-  storage,
-};
-
-const languageProviderConfig = {
+const languagePersistConfig = {
   key: 'language',
   storage,
 };
@@ -33,9 +21,7 @@ const languageProviderConfig = {
  */
 export default function createReducer(injectedReducers = {}) {
   const rootReducer = combineReducers({
-    global: persistReducer(globalPersistConfig, globalReducer),
-    user: persistReducer(userPersistConfig, userReducer),
-    language: persistReducer(languageProviderConfig, languageProviderReducer),
+    language: persistReducer(languagePersistConfig, languageProviderReducer),
     router: connectRouter(history),
     ...injectedReducers,
   });

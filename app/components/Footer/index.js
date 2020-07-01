@@ -1,16 +1,21 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Flex, Text } from 'rebass';
+import { useMediaQuery } from 'react-responsive';
+
+import { Flex, Box, Text } from 'rebass';
 // import LocaleToggle from 'containers/LocaleToggle';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
-import Wrapper from './Wrapper';
+import { DesktopWrapper, MobileWrapper } from './Wrapper';
+import { FooterLink } from './FooterLink';
 import messages from './messages';
 
 function Footer() {
-  return (
-    <Wrapper>
+  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1225 });
+
+  return isDesktopOrLaptop ? (
+    <DesktopWrapper>
       <Flex
         alignContent="center"
         justifyContent="center"
@@ -25,43 +30,17 @@ function Footer() {
           <FormattedMessage {...messages.licenseMessage} />
         </Text>
       </Flex>
-      <Flex alignItems="center" flexDirection="row">
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Home
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          About
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Projects
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Updates
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Programs
-        </Text>
-        <Text
-          px={4}
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '13pt' }}
-        >
-          Contact
-        </Text>
+      <Flex
+        sx={{ width: '40%' }}
+        alignItems="center"
+        justifyContent="space-between"
+      >
+        <FooterLink to="/">Home</FooterLink>
+        <FooterLink to="/about">About</FooterLink>
+        <FooterLink to="/projects">Projects</FooterLink>
+        <FooterLink to="/updates">Updates</FooterLink>
+        <FooterLink to="/programs">Programs</FooterLink>
+        <FooterLink to="/contact">Contact</FooterLink>
       </Flex>
       <Flex
         alignContent="center"
@@ -71,7 +50,29 @@ function Footer() {
       >
         <UonIcon />
       </Flex>
-    </Wrapper>
+    </DesktopWrapper>
+  ) : (
+    <MobileWrapper>
+      <Flex
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <Box pt="75px">
+          <FastlabIcon />
+        </Box>
+        <Box p="38.1px">
+          <UonIcon />
+        </Box>
+        <Text
+          pb="85px"
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '11px' }}
+        >
+          <FormattedMessage {...messages.licenseMessage} />
+        </Text>
+      </Flex>
+    </MobileWrapper>
   );
 }
 

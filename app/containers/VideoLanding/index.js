@@ -7,9 +7,11 @@ import {
   VolumeMenuButton,
 } from 'video-react';
 
-import H1 from 'components/H1';
+import { Flex, Image } from 'rebass';
 
-import { Flex } from 'rebass';
+import { useMediaQuery } from 'react-responsive';
+
+import maskGroup from 'images/Mask_Group_1.png';
 
 import backgroundVideo1 from 'video/background-video-01.mp4';
 import backgroundVideo2 from 'video/background-video-02.mp4';
@@ -23,12 +25,13 @@ import backgroundVideo9 from 'video/background-video-09.mp4';
 import backgroundVideo10 from 'video/background-video-10.mp4';
 import backgroundVideo11 from 'video/background-video-11.mp4';
 
-import BackgroundImage from './BackgroundImage';
-
 import Overlay from './Overlay';
 
-const VideoLanding = ({ width, height }) => {
+const VideoLanding = ({ width, height, text }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
+
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
   const videos = [
     backgroundVideo1,
     backgroundVideo2,
@@ -47,57 +50,34 @@ const VideoLanding = ({ width, height }) => {
     setBackgroundVideo(videos[Math.floor(Math.random() * videos.length)]);
   });
 
-  return (
-    <React.Fragment>
-      <div
-        style={{
-          maxHeight: '100vh',
-          maxWidth: '100vw',
-          zIndex: 1,
-        }}
+  return isTabletMobile ? (
+    <Flex sx={{ position: 'relative' }}>
+      <Image size="contain" height="483px" width={width} src={maskGroup} />
+      <Overlay height="483px" width={width} text={text} />
+    </Flex>
+  ) : (
+    <div height={height} width={width}>
+      <Player
+        height={height}
+        width={width}
+        playsInline
+        src={backgroundVideo}
+        autoPlay
+        loop
       >
-        {backgroundVideo ? (
-          <Player
-            height={height}
-            width={width}
-            playsInline
-            poster="/assets/poster.png"
-            src={backgroundVideo}
-            autoPlay
-            loop
-          >
-            <ControlBar disableCompletely />
-            <BigPlayButton disabled />
-            <VolumeMenuButton disabled />
-          </Player>
-        ) : (
-          <BackgroundImage />
-        )}
-        <Flex
-          height="100%"
-          flexDirection="column"
-          justifyContent="center"
-          sx={{
-            position: 'absolute',
-            top: 0,
-            left: width * 0.2167,
-            zIndex: '1',
-          }}
-        >
-          <H1 height={height} width={width}>
-            The centre of <br /> applied chaos
-            <span className="blink_me">_</span>
-          </H1>
-        </Flex>
-        <Overlay />
-      </div>
-    </React.Fragment>
+        <ControlBar disableCompletely />
+        <BigPlayButton disabled />
+        <VolumeMenuButton disabled />
+        <Overlay height={height} width={width} text={text} />
+      </Player>
+    </div>
   );
 };
 
 VideoLanding.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  text: PropTypes.object,
 };
 
 export default VideoLanding;

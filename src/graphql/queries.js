@@ -12,6 +12,94 @@ export const getProject = /* GraphQL */ `
       funding
       videoURL
       categoryId
+      featured
+      featuredImage {
+        id
+        key
+        mime
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
       category {
         id
         label
@@ -26,6 +114,12 @@ export const getProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -53,6 +147,12 @@ export const getProject = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -73,6 +173,11 @@ export const getProject = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -111,6 +216,7 @@ export const getProject = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -146,6 +252,34 @@ export const listProjects = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -160,6 +294,7 @@ export const listProjects = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -174,6 +309,7 @@ export const listProjects = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -205,9 +341,10 @@ export const getPost = /* GraphQL */ `
       data
       date
       videoURL
-      gallery {
+      featuredImage {
         id
-        name
+        key
+        mime
         project {
           id
           date
@@ -217,6 +354,12 @@ export const getPost = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -237,6 +380,97 @@ export const getPost = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+      }
+      gallery {
+        id
+        name
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -314,6 +548,33 @@ export const listPosts = /* GraphQL */ `
         data
         date
         videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         gallery {
           id
           name
@@ -326,6 +587,7 @@ export const listPosts = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -380,6 +642,34 @@ export const getCategory = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -394,6 +684,7 @@ export const getCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -408,6 +699,7 @@ export const getCategory = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -451,6 +743,12 @@ export const listCategorys = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -643,6 +941,34 @@ export const getProjectStaff = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -657,6 +983,7 @@ export const getProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -671,6 +998,7 @@ export const getProjectStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -746,6 +1074,12 @@ export const listProjectStaffs = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -806,6 +1140,11 @@ export const getStaff = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -862,6 +1201,7 @@ export const getStaff = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           staff {
             id
@@ -933,6 +1273,172 @@ export const getImage = /* GraphQL */ `
       id
       key
       mime
+      project {
+        id
+        date
+        title
+        abstract
+        details
+        funding
+        videoURL
+        categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        category {
+          id
+          label
+          value
+          description
+          Project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        collaborators {
+          items {
+            id
+          }
+          nextToken
+        }
+      }
+      post {
+        id
+        title
+        data
+        date
+        videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
+        gallery {
+          id
+          name
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          images {
+            nextToken
+          }
+        }
+        staffID {
+          id
+          name
+          firstName
+          lastName
+          mugshot
+          title
+          bio
+          email
+          website
+          cognitoID
+          posts {
+            nextToken
+          }
+          roles {
+            nextToken
+          }
+          projects {
+            nextToken
+          }
+        }
+      }
       gallery {
         id
         name
@@ -945,6 +1451,12 @@ export const getImage = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -965,6 +1477,11 @@ export const getImage = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name
@@ -1005,6 +1522,63 @@ export const listImages = /* GraphQL */ `
         id
         key
         mime
+        project {
+          id
+          date
+          title
+          abstract
+          details
+          funding
+          videoURL
+          categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
+          category {
+            id
+            label
+            value
+            description
+          }
+          gallery {
+            id
+            name
+          }
+          collaborators {
+            nextToken
+          }
+        }
+        post {
+          id
+          title
+          data
+          date
+          videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
+          gallery {
+            id
+            name
+          }
+          staffID {
+            id
+            name
+            firstName
+            lastName
+            mugshot
+            title
+            bio
+            email
+            website
+            cognitoID
+          }
+        }
         gallery {
           id
           name
@@ -1017,6 +1591,7 @@ export const listImages = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1048,6 +1623,34 @@ export const getGallery = /* GraphQL */ `
         funding
         videoURL
         categoryId
+        featured
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         category {
           id
           label
@@ -1062,6 +1665,7 @@ export const getGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
         }
         gallery {
@@ -1076,6 +1680,7 @@ export const getGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1101,6 +1706,33 @@ export const getGallery = /* GraphQL */ `
         data
         date
         videoURL
+        featuredImage {
+          id
+          key
+          mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
+          gallery {
+            id
+            name
+          }
+        }
         gallery {
           id
           name
@@ -1113,6 +1745,7 @@ export const getGallery = /* GraphQL */ `
             funding
             videoURL
             categoryId
+            featured
           }
           post {
             id
@@ -1152,6 +1785,24 @@ export const getGallery = /* GraphQL */ `
           id
           key
           mime
+          project {
+            id
+            date
+            title
+            abstract
+            details
+            funding
+            videoURL
+            categoryId
+            featured
+          }
+          post {
+            id
+            title
+            data
+            date
+            videoURL
+          }
           gallery {
             id
             name
@@ -1181,6 +1832,12 @@ export const listGallerys = /* GraphQL */ `
           funding
           videoURL
           categoryId
+          featured
+          featuredImage {
+            id
+            key
+            mime
+          }
           category {
             id
             label
@@ -1201,6 +1858,11 @@ export const listGallerys = /* GraphQL */ `
           data
           date
           videoURL
+          featuredImage {
+            id
+            key
+            mime
+          }
           gallery {
             id
             name

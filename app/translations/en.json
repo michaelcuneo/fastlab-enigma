@@ -1,6 +1,6 @@
 {
   "boilerplate.components.Footer.author.message": "Made with love by {author}.",
-  "boilerplate.components.Footer.license.message": "©2020 The University of Newcastle Australia.",
+  "boilerplate.components.Footer.license.message": "©2020 The University of Newcastle Australia. ${version}",
   "boilerplate.components.Header.features": "Features",
   "boilerplate.components.Header.home": "Home",
   "boilerplate.containers.FeaturePage.css.header": "Features",

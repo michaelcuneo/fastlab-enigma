@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 
+import ParsedContent from 'components/ParsedContent';
+
 import VideoLanding from 'containers/VideoLanding';
 import PointsContainer from 'containers/PointsContainer';
-import ShowcaseContainer from 'containers/ShowcaseContainer';
-import UpdatesContainer from 'containers/UpdatesContainer';
+import LatestProjectsContainer from 'containers/LatestProjectsContainer';
+import LatestUpdatesContainer from 'containers/LatestUpdatesContainer';
 import OverlayContainer from 'containers/OverlayContainer';
+
+import Footer from 'components/Footer';
 
 export function HomePage() {
   const [height, setHeight] = useState();
@@ -26,18 +30,20 @@ export function HomePage() {
 
   return (
     <React.Fragment>
-      {/* div with id="page-wrap" is important for the burger menu */}
-      <div id="page-wrap">
-        <Helmet>
-          <title>Home Page</title>
-          <meta name="description" content="Fastlab" />
-        </Helmet>
-        <VideoLanding width={width} height={height} />
-        <PointsContainer width={width} height={height} />
-        <ShowcaseContainer width={width} height={height} />
-        <UpdatesContainer width={width} height={height} />
-        <OverlayContainer width={width} height={height} />
-      </div>
+      <OverlayContainer width={width} height={height} />
+      <Helmet>
+        <title>Home Page</title>
+        <meta name="description" content="Fastlab" />
+      </Helmet>
+      <VideoLanding
+        width={width}
+        height={height}
+        text={<ParsedContent content="The centre of <br /> applied chaos" />}
+      />
+      <PointsContainer width={width} height={height} />
+      <LatestProjectsContainer width={width} height={height} />
+      <LatestUpdatesContainer width={width} height={height} />
+      <Footer width={width} height={height} />
     </React.Fragment>
   );
 }

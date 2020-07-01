@@ -13,7 +13,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
-import FontFaceObserver from 'fontfaceobserver';
 import history from 'utils/history';
 import 'sanitize.css/sanitize.css';
 
@@ -21,8 +20,7 @@ import 'sanitize.css/sanitize.css';
 import App from 'containers/App';
 
 // Import AWS Authentication stuff.
-import Amplify, { Auth, I18n } from 'aws-amplify';
-import AuthManager from 'containers/AuthManager';
+import Amplify from 'aws-amplify';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
@@ -35,6 +33,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { setAutoFreeze } from 'immer';
 import { localForage } from 'localforage';
+
+import { library } from '@fortawesome/fontawesome-svg-core';
+
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 import configureStore from './configureStore';
 
@@ -49,30 +51,20 @@ import 'video-react/dist/video-react.css';
 import 'customType.css';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 
+import 'react-multi-carousel/lib/styles.css';
+
+import 'primereact/resources/themes/nova-light/theme.css';
+import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+library.add(faAngleRight);
+
 setAutoFreeze(false);
 
-I18n.setLanguage('en');
-const dict = {
-  en: {
-    'Phone Number': 'Mobile Phone Number',
-  },
-};
-
-I18n.putVocabularies(dict);
-
 Amplify.configure(awsExports);
-Auth.configure({
-  authenticationFlowType: 'USER_PASSWORD_AUTH',
-});
-
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
-
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
-  document.body.classList.add('fontLoaded');
-});
 
 // Create redux store with history
 const initialState = {};
@@ -93,9 +85,7 @@ const render = messages => {
       >
         <LanguageProvider messages={messages}>
           <ConnectedRouter history={history}>
-            <AuthManager>
-              <App runtime={runtime} />
-            </AuthManager>
+            <App runtime={runtime} />
           </ConnectedRouter>
         </LanguageProvider>
       </PersistGate>
@@ -132,3 +122,5 @@ if (!window.Intl) {
 } else {
   render(translationMessages);
 }
+
+window.LOG_LEVEL = 'debug';
