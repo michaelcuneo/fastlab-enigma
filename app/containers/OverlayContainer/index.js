@@ -50,11 +50,12 @@ const OverlayContainer = () => {
   return width && height && grid1x && grid2x ? (
     <Box
       style={{
-        position: 'fixed',
+        position: 'absolute',
+        minHeight: '100%',
+        height: '100%',
+        width,
         top: 0,
         bottom: 0,
-        padding: 0,
-        margin: 0,
         zIndex: 2,
         pointerEvents: 'none',
       }}

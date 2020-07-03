@@ -28,7 +28,7 @@ const PointsContainer = ({ width }) => {
       px={width * 0.0827}
       justifyContent="space-between"
       flexDirection="column"
-      style={{ position: 'relative', background: '#151417' }}
+      style={{ position: 'relative', background: '#151417', zIndex: 0 }}
     >
       <Link to="/projects">
         <Flex flexDirection="row" width="100%" pb="60px">

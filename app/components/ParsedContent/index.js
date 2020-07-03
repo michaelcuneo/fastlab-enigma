@@ -5,11 +5,11 @@ import S3Image from 'components/S3Image';
 
 import parse from 'html-react-parser';
 
-const ParsedContent = props => {
+const ParsedContent = content => {
   let ParsedPost = '';
 
-  if (props.content !== null)
-    ParsedPost = parse(props.content, {
+  if (content !== null)
+    ParsedPost = parse(content, {
       replace: domNode => {
         if (domNode.name && domNode.name === 'img') {
           return React.createElement(

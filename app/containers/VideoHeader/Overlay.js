@@ -18,7 +18,7 @@ const Overlay = ({ width, height, text }) => {
     right: 0;
     width: ${width}px;
     height: ${height}px;
-    z-index: 2;
+    z-index: 1;
   `;
 
   return (

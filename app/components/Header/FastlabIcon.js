@@ -11,7 +11,7 @@ const StyledDesktopIcon = styled(NormalImg)`
   height: 32px;
   left: 167px;
   top: 26px;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const FastlabIconDesktop = () => (
@@ -24,7 +24,7 @@ const StyledMobileIcon = styled(NormalImg)`
   height: 26px;
   left: 20px;
   top: 26px;
-  z-index: 2;
+  z-index: 3;
 `;
 
 export const FastlabIconMobile = () => (

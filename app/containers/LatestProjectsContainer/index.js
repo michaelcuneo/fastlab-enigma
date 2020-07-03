@@ -26,7 +26,7 @@ function LatestProjectsContainer({ dark }) {
     <React.Fragment>
       <Flex
         flexDirection="column"
-        sx={{ background: '#151417', zIndex: '1' }}
+        sx={{ background: '#151417' }}
         justifyContent="space-around"
       >
         <Flex

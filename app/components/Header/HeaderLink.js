@@ -26,9 +26,11 @@ export const HeaderLink = ({
     resetState();
   }, []);
 
+  const height = window.innerHeight;
+
   const CustomAnimation = useSpring({
-    minHeight: !hoverState ? 110 : 250,
-    maxHeight: !hoverState ? 110 : 250,
+    minHeight: !hoverState ? height * 0.1018 : height * 0.2314,
+    maxHeight: !hoverState ? height * 0.1018 : height * 0.2314,
     background: !hoverState ? '#151417' : '#EC184A',
   });
 

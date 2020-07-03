@@ -15,6 +15,9 @@ const GlobalStyle = createGlobalStyle`
   body {
     height: 100%;
     width: 100%;
+    position: relative;
+    float: left;
+    width: 100%;
   }
 
   body {

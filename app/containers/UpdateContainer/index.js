@@ -60,7 +60,10 @@ const UpdateContainer = ({ item, width }) => {
       flexDirection="row"
       flexWrap="wrap"
     >
-      <Link style={{ textDecoration: 'none' }} to={`/update/${item.id}`}>
+      <Link
+        style={{ zIndex: 3, textDecoration: 'none' }}
+        to={`/update/${item.id}`}
+      >
         <Box sx={{ position: 'relative' }}>
           <Flex
             sx={{
@@ -105,15 +108,19 @@ const UpdateContainer = ({ item, width }) => {
               background: '#ffffff',
             }}
           >
-            <Flex width="100%" flexDirection="row">
+            <Flex
+              width="100%"
+              justifyContent="space-between"
+              flexDirection="row"
+            >
               <Text
                 sx={{
-                  maxWidth: '80%',
+                  width: 'auto',
                   color: '#151417',
                   fontSize: '24px',
                   lineHeight: '28px',
                   fontFamily: 'archiaregular',
-                  height: '28px',
+                  height: '30px',
                   overflow: 'hidden',
                 }}
               >
@@ -121,12 +128,13 @@ const UpdateContainer = ({ item, width }) => {
               </Text>
               <Text
                 sx={{
-                  maxWidth: '20%',
-                  flex: 'auto',
+                  minWidth: '20%',
                   color: '#b9b9b9',
                   fontSize: '24px',
                   lineHeight: '28px',
                   fontFamily: 'archiaregular',
+                  height: '30px',
+                  overflow: 'hidden',
                 }}
               >
                 {moment(post.date).format('D MMM')}

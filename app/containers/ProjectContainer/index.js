@@ -49,7 +49,6 @@ function ProjectContainer({
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    // position: relative;
     bottom: 0;
     background: #ffffff;
     border-left: 4px solid red;
@@ -70,6 +69,7 @@ function ProjectContainer({
     PB = isTabletMobile ? '10px' : screenHeight * 0.0324;
     PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
     SX = {
+      position: 'relative',
       overflow: 'hidden',
     };
     HEIGHT = isTabletMobile ? '450px' : screenHeight * 0.5926;
@@ -108,7 +108,8 @@ function ProjectContainer({
         normalize: true,
         sharpen: true,
         resize: {
-          width: 538,
+          width: 512,
+          height: 512,
           fit: 'cover',
         },
       },
@@ -132,7 +133,8 @@ function ProjectContainer({
         sharpen: true,
         grayscale: true,
         resize: {
-          width: 538,
+          width: 512,
+          height: 512,
           fit: 'cover',
         },
       },
@@ -152,7 +154,6 @@ function ProjectContainer({
       pt={PT}
       pb={PB}
       sx={SX}
-      maxWidth="100vw"
       height="auto"
       flexDirection="row"
       flexWrap="wrap"
@@ -161,7 +162,7 @@ function ProjectContainer({
         onMouseOver={() => setHoverState(true)}
         onFocus={() => {}}
         onMouseLeave={() => setHoverState(false)}
-        style={{ textDecoration: 'none' }}
+        style={{ zIndex: 3, textDecoration: 'none' }}
         to={`/project/${project ? project.id : null}`}
       >
         <Flex
@@ -175,12 +176,12 @@ function ProjectContainer({
           }}
         >
           <Image
-            width={WIDTH}
-            height={HEIGHT}
+            width={512}
+            height={512}
             url1={image1}
             url2={image2}
             disp={Displacement}
-            intensity={0.4}
+            intensity={0.2}
             hover={hoverState}
           />
           <CustomAnimatedFlex style={CustomAnimation}>

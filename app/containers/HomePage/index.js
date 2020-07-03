@@ -30,11 +30,11 @@ export function HomePage() {
 
   return (
     <React.Fragment>
-      <OverlayContainer width={width} height={height} />
       <Helmet>
         <title>Home Page</title>
         <meta name="description" content="Fastlab" />
       </Helmet>
+      <OverlayContainer width={width} height={height} />
       <VideoLanding
         width={width}
         height={height}

@@ -15,7 +15,6 @@ import Footer from 'components/Footer';
 
 import Sig1 from 'images/scribbles_mark-1-white.svg';
 
-import OverlayContainer from 'containers/OverlayContainer';
 import VideoHeader from 'containers/VideoHeader';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
@@ -23,8 +22,11 @@ import { Flex, Box, Text, Image } from 'rebass';
 
 import Button from 'components/Button';
 
+import AboutContainer from 'containers/AboutContainer';
+import BusinessContainer from 'containers/BusinessContainer';
+import ResearchersContainer from 'containers/ResearchersContainer';
+
 import messages from './messages';
-import ResearchersContainer from '../ResearchersContainer';
 
 function AboutPage({ width, height }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
@@ -32,17 +34,14 @@ function AboutPage({ width, height }) {
   const menuItems = [
     {
       id: 0,
-      title: 'About Fastlab',
+      title: 'About',
       link: 'about',
-      details:
-        '<p>Housed in the School of Creative Industries and Innovation Hub’s Honeysuckle building FASTLab carries out research and development at the intersection of Art, Science and Technology.</p><p>FASTLab is a Gateway to the University of Newcastle’s internationally recognised research centres, the expertise of staff, students and graduates, and the outstanding facilities the University has to offer.</p><p>Across its themes of Human Behaviour, Future Work, Transmedia Arts, Narrative possibilities and Connected Communities the FASTLab team thinks - among other things - about Innovation and enterprise; Technology (AI & Robotics); globalization; migration; aging; (in-work) poverty and inequality; macro-economic instability. FASTLab’s transdisciplinary team pursues a broad range of projects, from exhibitions and installations, performances and prototypes, to cooperation with the private sector, NGO’s and universities.',
     },
     {
       id: 1,
       title: 'FastLab and your business',
       link: 'business',
-      details:
-        '<p>New and emerging technologies and innovative business models are rapidly transforming life, business and the global economy. As digital technologies reshape and disrupt our world, businesses established in less turbulent times need to make complex and critical decisions to navigate this changed landscape.</p><p>We offer organisations real insights, analysis, and tools to help them tackle the constantly evolving challenge of change.</p>',
+      details: 'Nothing',
     },
     {
       id: 2,
@@ -62,7 +61,7 @@ function AboutPage({ width, height }) {
       title: 'Join the FastLab team',
       link: 'join',
       details:
-        '<p>There are a number of ways to work with FASTLab.</p><strong>You can take part in RAPID</strong><p>RAPID is series of research ‘sprints’ conducted over a 3-6 month period. EachRAPID sprint is a research project carried out between FASTLab researchers and anexternal partner (a community, business or NGO). RAPID provides financial,human and technological resources to enable partners to work together on user-driven real-world problems.</p><strong>You can enrol a research student</strong><p>Transmission offers organisations   a   new   avenue   for   improving   their   competitiveposition   and   renewing   their   business.Transmission   is   a   research   program   thatpresents an opportunity for organisations to design projects for our students, who aresupervised by FASTLab researchers in tandem with industry professionals.</p><strong>You can be a research student</strong>Transmission offers<ul><li>Masters and PhD</li><li>students a unique opportunity to undertake practice based research, gain a thorough understanding of innovation methods, tackle real-world business challenges and expand their professional networks.</li></ul><strong>You can commission workshops</strong><p>If   you’re   tired   of   consultants   wielding   post-it-notes   and   maker-pens   we   can   offer   acompletely   different   and   dynamic   format   for   your   next   workshop.   Our   playfulprocesses   deliver   results   and   a   high   level   of   participant   satisfaction.   FromHackathons   to   one-day   games   we   design   sessions   that   engage   all   your   staffensuring that everyone’s ideas are liberated. Whether you’re innovating, strategizing,team building or problem solving   – use our creative talent to get you to where youneed to be and enjoy the journey to get you there!</p><strong>You can contract us for research and consultancy</strong><p>This one doesn’t really need much more describing but our staff team have researchexpertise to help you evaluate the success of a current project or co-design a newone using (for example) innovation and Human-Centered Design research methodsthrough Visual Storytelling, Design Thinking, Design Ethnography, User Experiences(UX), Service Design, Co- & Participatory Design.You can ask us to build and test prototypes and pretotypes.....We can help you innovate your product as a service provider, help you reinvent yourrole and support it with digital frameworks and platforms, adding the customerexperience and your client ownership.</p><strong>You can come to a talk or a networking session</strong><p>We run keynotes and interactive talks to provoke and promote discussion about thethings that have been exercising us at any given time.</p><p>Sign up to our newsfeed for regular updates and come and introduce yourself.</p>',
+        '<p>There are a number of ways to work with FASTLab.</p><strong>You can take part in RAPID</strong><p>RAPID is series of research ‘sprints’ conducted over a 3-6 month period. Each RAPID sprint is a research project carried out between FASTLab researchers and anexternal partner (a community, business or NGO). RAPID provides financial, human and technological resources to enable partners to work together on user-driven real-world problems.</p><strong>You can enrol a research student</strong><p>Transmission offers organisations a new avenue for improving their competitiveposition and renewing their business. Transmission is a research program that presents an opportunity for organisations to design projects for our students, who are supervised by FASTLab researchers in tandem with industry professionals.</p><strong>You can be a research student</strong>Transmission offers<ul><li>Masters and PhD</li><li>students a unique opportunity to undertake practice based research, gain a thorough understanding of innovation methods, tackle real-world business challenges and expand their professional networks.</li></ul><strong>You can commission workshops</strong><p>If you’re tired of consultants wielding post-it-notes and maker-pens we can offer acompletely different and dynamic format for your next workshop. Our playful processes deliver results and a high level of participant satisfaction. From Hack-a-thons to one-day games we design sessions that engage all your staff ensuring that everyone’s ideas are liberated. Whether you’re innovating, strategizing, team building or problem solving – use our creative talent to get you to where you need to be and enjoy the journey to get you there!</p><strong>You can contract us for research and consultancy</strong><p>This one doesn’t really need much more describing but our staff team have research expertise to help you evaluate the success of a current project or co-design a newone using (for example) innovation and Human-Centered Design research methods through Visual Storytelling, Design Thinking, Design Ethnography, User Experiences(UX), Service Design, Co- & Participatory Design. You can ask us to build and test prototypes and pretotypes... We can help you innovate your product as a service provider, help you reinvent your role and support it with digital frameworks and platforms, adding the custom erexperience and your client ownership.</p><strong>You can come to a talk or a networking session</strong><p>We run keynotes and interactive talks to provoke and promote discussion about thethings that have been exercising us at any given time.</p><p>Sign up to our newsfeed for regular updates and come and introduce yourself.</p>',
     },
     {
       id: 5,
@@ -107,6 +106,28 @@ function AboutPage({ width, height }) {
     padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
     z-index: 3;
   `;
+
+  const renderSelection = () => {
+    switch (menuItems[currentMenuItem].link) {
+      case 'about':
+        return <AboutContainer width={width} />;
+      case 'researchers':
+        return <ResearchersContainer width={width} />;
+      case 'business':
+        return <BusinessContainer width={width} />;
+      default:
+        return (
+          <React.Fragment>
+            <DetailHeader pt="10px" pb="30px">
+              {menuItems[currentMenuItem].title}
+            </DetailHeader>
+            <DetailText pr={['0px', '0px', width * 0.1432]}>
+              <ParsedContent content={menuItems[currentMenuItem].details} />
+            </DetailText>
+          </React.Fragment>
+        );
+    }
+  };
 
   return (
     <React.Fragment>
@@ -158,18 +179,7 @@ function AboutPage({ width, height }) {
             pl={['0px', '0px', width * 0.0802]}
             sx={{ position: 'relative', minWidth: width * 0.4229 }}
           >
-            {menuItems[currentMenuItem].link === 'researchers' ? (
-              <ResearchersContainer width={width} />
-            ) : (
-              <React.Fragment>
-                <DetailHeader pt="10px" pb="30px">
-                  {menuItems[currentMenuItem].title}
-                </DetailHeader>
-                <DetailText pr={['0px', '0px', width * 0.1432]}>
-                  <ParsedContent content={menuItems[currentMenuItem].details} />
-                </DetailText>
-              </React.Fragment>
-            )}
+            {renderSelection()}
           </Flex>
         </Flex>
         <Flex sx={{ position: 'relative' }}>
@@ -217,7 +227,6 @@ function AboutPage({ width, height }) {
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
     </React.Fragment>
   );
 }

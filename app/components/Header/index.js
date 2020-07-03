@@ -49,6 +49,7 @@ function Header() {
               position: 'absolute',
               right: 26,
               top: 26,
+              zIndex: 3,
             }}
             width="56"
             height="56"

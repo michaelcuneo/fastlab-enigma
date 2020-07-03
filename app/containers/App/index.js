@@ -23,7 +23,12 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
 
+import ScrollToTop from 'utils/ScrollToTop';
+
+import OverlayContainer from 'containers/OverlayContainer';
+
 import AppWrapper from './AppWrapper';
+import Content from './Content';
 import theme from './Theme';
 
 import GlobalStyle from '../../global-styles';
@@ -68,96 +73,99 @@ function App({ runtime }) {
         />
       </Helmet>
       <Header />
-      {isTabletMobile ? (
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <ComingSoon {...props} height={height} width={width} />
-            )}
-          />
-        </Switch>
-      ) : (
-        <Switch id="page-wrap">
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <HomePage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/researcher/:id"
-            render={props => (
-              <ResearcherPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/update/:id"
-            render={props => (
-              <UpdatePage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/project/:id"
-            render={props => (
-              <ProjectPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/contact"
-            render={props => (
-              <ContactPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/projects/:nextToken"
-            render={props => (
-              <ProjectsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/projects"
-            render={props => (
-              <ProjectsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/areas"
-            render={props => (
-              <AreasPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/updates"
-            render={props => (
-              <UpdatesPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/programs"
-            render={props => (
-              <ProgramsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/about"
-            render={props => (
-              <AboutPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path=""
-            render={props => (
-              <NotFoundPage {...props} height={height} width={width} />
-            )}
-          />
-        </Switch>
-      )}
-
+      <Content>
+        {isTabletMobile ? (
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <ComingSoon {...props} height={height} width={width} />
+              )}
+            />
+          </Switch>
+        ) : (
+          <Switch id="page-wrap">
+            <Route
+              exact
+              path="/"
+              render={props => (
+                <HomePage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/researcher/:id"
+              render={props => (
+                <ResearcherPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/update/:id"
+              render={props => (
+                <UpdatePage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/project/:id"
+              render={props => (
+                <ProjectPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/contact"
+              render={props => (
+                <ContactPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/projects/:nextToken"
+              render={props => (
+                <ProjectsPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/projects"
+              render={props => (
+                <ProjectsPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/areas"
+              render={props => (
+                <AreasPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/updates"
+              render={props => (
+                <UpdatesPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/programs"
+              render={props => (
+                <ProgramsPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path="/about"
+              render={props => (
+                <AboutPage {...props} height={height} width={width} />
+              )}
+            />
+            <Route
+              path=""
+              render={props => (
+                <NotFoundPage {...props} height={height} width={width} />
+              )}
+            />
+          </Switch>
+        )}
+        <OverlayContainer width={width} height={height} />
+      </Content>
       <GlobalStyle />
       <ThemeProvider theme={theme} />
+      <ScrollToTop />
     </AppWrapper>
   ) : (
     <LoadingIndicator />

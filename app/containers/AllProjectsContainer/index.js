@@ -26,7 +26,7 @@ const AllProjects = ({ width, height, dark }) => {
     <React.Fragment>
       <Flex
         flexDirection="column"
-        sx={{ background: dark ? '#151417' : '#EC184A' }}
+        sx={{ background: dark ? '#151417' : '#EC184A', zIndex: 0 }}
         justifyContent="space-around"
         pl={[width * 0.0729]}
       >

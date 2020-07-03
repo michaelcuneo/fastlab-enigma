@@ -146,7 +146,7 @@ function ProjectPage({ width, height, match }) {
                     </Flex>
                   </Flex>
                   <Flex style={{ minHeight: '500px', maxHeight: '800px' }}>
-                    {data.getProject.gallery.images.items && (
+                    {data.getProject.gallery !== null && (
                       <Slideshow
                         showIndex
                         autoplay={false}
