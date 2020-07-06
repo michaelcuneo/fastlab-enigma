@@ -44,7 +44,7 @@ const SideBio = ({ width, data }) => {
     background: #151417;
     border: 1px solid #707070;
     border-radius: 40px;
-    z-index: 99999;
+    z-index: 3;
   `;
 
   const StyledText = styled(Text)`

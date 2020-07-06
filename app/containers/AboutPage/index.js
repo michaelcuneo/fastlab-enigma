@@ -26,7 +26,7 @@ import Button from 'components/Button';
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
 
-function AboutPage({ width, height }) {
+function AboutPage({ width, height, scrollHeight, scrollWidth }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const menuItems = [
@@ -122,6 +122,12 @@ function AboutPage({ width, height }) {
         </H2>
       </StyledFlexHeader>
       <StyledGradientHeader />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
       <Flex
         width={width}
         flexDirection="column"
@@ -213,7 +219,6 @@ function AboutPage({ width, height }) {
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
     </React.Fragment>
   );
 }
@@ -221,6 +226,8 @@ function AboutPage({ width, height }) {
 AboutPage.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  scrollWidth: PropTypes.number,
+  scrollHeight: PropTypes.number,
 };
 
 export default AboutPage;

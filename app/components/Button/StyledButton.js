@@ -39,6 +39,7 @@ const StyledButton = ({ children, color, arrow }) => {
 
   const CustomButton = styled(a.button)`
     display: flex;
+    position: relative;
     align-items: center;
     width: auto;
     height: 80px;
@@ -54,7 +55,7 @@ const StyledButton = ({ children, color, arrow }) => {
     border: 0px;
     padding: 0px 30px 0px 30px;
     outline: none;
-    z-index: 999999;
+    z-index: 3;
   `;
 
   return (

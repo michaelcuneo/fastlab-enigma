@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 
 import ParsedContent from 'components/ParsedContent';
@@ -11,41 +12,35 @@ import OverlayContainer from 'containers/OverlayContainer';
 
 import Footer from 'components/Footer';
 
-export function HomePage() {
-  const [height, setHeight] = useState();
-  const [width, setWidth] = useState();
+const HomePage = ({ width, height, scrollWidth, scrollHeight }) => (
+  <React.Fragment>
+    <Helmet>
+      <title>Home Page</title>
+      <meta name="description" content="Fastlab" />
+    </Helmet>
+    <OverlayContainer
+      width={width}
+      height={height}
+      scrollWidth={scrollWidth}
+      scrollHeight={scrollHeight}
+    />
+    <VideoLanding
+      width={width}
+      height={height}
+      text={<ParsedContent content="The centre of <br /> applied chaos" />}
+    />
+    <PointsContainer width={width} height={height} />
+    <LatestProjectsContainer width={width} height={height} />
+    <LatestUpdatesContainer width={width} height={height} />
+    <Footer width={width} height={height} />
+  </React.Fragment>
+);
 
-  useEffect(() => {
-    // Set the dimensions once.
-    setDimensions();
-
-    // Set the dimensions again if we resize.
-    window.addEventListener('resize', setDimensions);
-  }, [window.removeEventListener('resize', setDimensions)]);
-
-  const setDimensions = () => {
-    setWidth(document.body.scrollWidth);
-    setHeight(document.body.scrollHeight);
-  };
-
-  return (
-    <React.Fragment>
-      <OverlayContainer width={width} height={height} />
-      <Helmet>
-        <title>Home Page</title>
-        <meta name="description" content="Fastlab" />
-      </Helmet>
-      <VideoLanding
-        width={width}
-        height={height}
-        text={<ParsedContent content="The centre of <br /> applied chaos" />}
-      />
-      <PointsContainer width={width} height={height} />
-      <LatestProjectsContainer width={width} height={height} />
-      <LatestUpdatesContainer width={width} height={height} />
-      <Footer width={width} height={height} />
-    </React.Fragment>
-  );
-}
+HomePage.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  scrollWidth: PropTypes.number,
+  scrollHeight: PropTypes.number,
+};
 
 export default HomePage;

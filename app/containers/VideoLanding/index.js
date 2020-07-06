@@ -81,7 +81,11 @@ const VideoLanding = ({ width, height, text }) => {
   });
 
   return (
-    <div height={height} width={width}>
+    <div
+      style={{ position: 'relative', zIndex: 0 }}
+      height={height}
+      width={width}
+    >
       <Player
         height={height}
         width={width}

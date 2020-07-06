@@ -42,8 +42,8 @@ const ImageWebGL = ({ url1, url2, disp, intensity, hover, height, width }) => {
     };
   }, [url1, url2, disp]);
 
-  const argWidth = (width / window.innerWidth) * 30;
-  const argHeight = (height / window.innerHeight) * 30;
+  const argWidth = width / 50;
+  const argHeight = height / 50;
 
   return (
     <mesh>

@@ -32,10 +32,18 @@ import GlobalStyle from '../../global-styles';
 function App({ runtime }) {
   const [height, setHeight] = useState(null);
   const [width, setWidth] = useState(null);
+  const [scrollWidth, setScrollWidth] = useState(null);
+  const [scrollHeight, setScrollHeight] = useState(null);
 
   useEffect(() => {
     window.addEventListener('resize', setDimensions);
-  }, [window.removeEventListener('resize', setDimensions)]);
+    window.addEventListener('load', setDimensions);
+    window.addEventListener('popstate', setDimensions);
+  }, [
+    window.removeEventListener('resize', setDimensions),
+    window.removeEventListener('load', setDimensions),
+    window.removeEventListener('popstate', setDimensions),
+  ]);
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
@@ -56,9 +64,11 @@ function App({ runtime }) {
   const setDimensions = () => {
     setWidth(window.innerWidth);
     setHeight(window.innerHeight);
+    setScrollWidth(document.body.scrollWidth);
+    setScrollHeight(document.body.scrollHeight);
   };
 
-  return height && width ? (
+  return height && width && scrollWidth && scrollHeight ? (
     <AppWrapper id="outer-container">
       <Helmet titleTemplate="%s - fastlab" defaultTitle="Fastlab">
         <meta
@@ -72,79 +82,157 @@ function App({ runtime }) {
           exact
           path="/"
           render={props => (
-            <HomePage {...props} height={height} width={width} />
+            <HomePage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/researcher/:id"
           render={props => (
-            <ResearcherPage {...props} height={height} width={width} />
+            <ResearcherPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/update/:id"
           render={props => (
-            <UpdatePage {...props} height={height} width={width} />
+            <UpdatePage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/project/:id"
           render={props => (
-            <ProjectPage {...props} height={height} width={width} />
+            <ProjectPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/contact"
           render={props => (
-            <ContactPage {...props} height={height} width={width} />
+            <ContactPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/projects/:nextToken"
           render={props => (
-            <ProjectsPage {...props} height={height} width={width} />
+            <ProjectsPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/exhibits"
           render={props => (
-            <ExhibitionsPage {...props} height={height} width={width} />
+            <ExhibitionsPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/projects"
           render={props => (
-            <ProjectsPage {...props} height={height} width={width} />
+            <ProjectsPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/areas"
           render={props => (
-            <AreasPage {...props} height={height} width={width} />
+            <AreasPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/updates"
           render={props => (
-            <UpdatesPage {...props} height={height} width={width} />
+            <UpdatesPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/programs"
           render={props => (
-            <ProgramsPage {...props} height={height} width={width} />
+            <ProgramsPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path="/about"
           render={props => (
-            <AboutPage {...props} height={height} width={width} />
+            <AboutPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
         <Route
           path=""
           render={props => (
-            <NotFoundPage {...props} height={height} width={width} />
+            <NotFoundPage
+              {...props}
+              height={height}
+              width={width}
+              scrollWidth={scrollWidth}
+              scrollHeight={scrollHeight}
+            />
           )}
         />
       </Switch>

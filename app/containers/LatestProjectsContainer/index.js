@@ -16,10 +16,7 @@ import ProjectContainer from 'containers/ProjectContainer';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-function LatestProjectsContainer({ dark }) {
-  const height = window.innerHeight;
-  const width = window.innerWidth;
-
+const LatestProjectsContainer = ({ height, width, dark }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return (
@@ -161,10 +158,12 @@ function LatestProjectsContainer({ dark }) {
       )}
     </React.Fragment>
   );
-}
+};
 
 LatestProjectsContainer.propTypes = {
   dark: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default LatestProjectsContainer;

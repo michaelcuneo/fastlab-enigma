@@ -71,6 +71,7 @@ function ProjectContainer({
     PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
     SX = {
       overflow: 'hidden',
+      zIndex: 3,
     };
     HEIGHT = isTabletMobile ? '450px' : screenHeight * 0.5926;
     WIDTH = isTabletMobile ? '100%' : screenWidth * 0.2792;
@@ -85,6 +86,7 @@ function ProjectContainer({
       overflow: 'hidden',
       top,
       left,
+      zIndex: 3,
     };
     HEIGHT = height;
     WIDTH = width;
@@ -108,7 +110,8 @@ function ProjectContainer({
         normalize: true,
         sharpen: true,
         resize: {
-          width: 538,
+          width: 512,
+          height: 512,
           fit: 'cover',
         },
       },
@@ -132,7 +135,8 @@ function ProjectContainer({
         sharpen: true,
         grayscale: true,
         resize: {
-          width: 538,
+          width: 512,
+          height: 512,
           fit: 'cover',
         },
       },
