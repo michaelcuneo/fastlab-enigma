@@ -12,7 +12,7 @@ import { Flex, Box } from 'rebass';
 
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
-import { HeaderLink /* , LoginLink */ } from './HeaderLink';
+import { HeaderLink } from './HeaderLink';
 import messages from './messages';
 
 import { DesktopLaptopStyles, TabletMobileStyles } from './MenuStyles';

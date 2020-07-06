@@ -98,7 +98,7 @@
         "Runtime": "nodejs10.x",
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-fastlab-master-164059-deployment",
+          "S3Bucket": "amplify-fastlab-dev-140332-deployment",
           "S3Key": "amplify-builds/fastlabPostConfirmation-724666746c676a6d4c6e-build.zip"
         }
       }

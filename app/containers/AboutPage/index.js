@@ -142,16 +142,14 @@ function AboutPage({ width, height }) {
           pt={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
-          {!isTabletMobile && (
-            <SideMenu
-              width={width}
-              height={height}
-              menuItems={menuItems}
-              currentMenuItem={currentMenuItem}
-              setCurrentMenuItem={setCurrentMenuItem}
-              isTabletMobile={isTabletMobile}
-            />
-          )}
+          <SideMenu
+            width={width}
+            height={height}
+            menuItems={menuItems}
+            currentMenuItem={currentMenuItem}
+            setCurrentMenuItem={setCurrentMenuItem}
+            isTabletMobile={isTabletMobile}
+          />
           <Flex
             height="auto"
             flexDirection="column"
@@ -195,24 +193,22 @@ function AboutPage({ width, height }) {
               : width * 0.2167
           }
         >
-          {!isTabletMobile && (
-            <Button
-              color="dark"
-              to="/about"
-              onClick={() => {
-                if (currentMenuItem === 5) {
-                  setCurrentMenuItem(0);
-                } else {
-                  setCurrentMenuItem(currentMenuItem + 1);
-                }
-              }}
-              arrow="right"
-            >
-              {currentMenuItem === 5
-                ? menuItems[0].title
-                : menuItems[currentMenuItem + 1].title}
-            </Button>
-          )}
+          <Button
+            color="dark"
+            to="/about"
+            onClick={() => {
+              if (currentMenuItem === 5) {
+                setCurrentMenuItem(0);
+              } else {
+                setCurrentMenuItem(currentMenuItem + 1);
+              }
+            }}
+            arrow="right"
+          >
+            {currentMenuItem === 5
+              ? menuItems[0].title
+              : menuItems[currentMenuItem + 1].title}
+          </Button>
         </Flex>
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />

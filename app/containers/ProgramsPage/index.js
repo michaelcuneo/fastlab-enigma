@@ -129,15 +129,13 @@ function ProgramsPage({ width, height }) {
           pt={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
-          {!isTabletMobile && (
-            <SideMenu
-              width={width}
-              height={height}
-              menuItems={menuItems}
-              currentMenuItem={currentMenuItem}
-              setCurrentMenuItem={setCurrentMenuItem}
-            />
-          )}
+          <SideMenu
+            width={width}
+            height={height}
+            menuItems={menuItems}
+            currentMenuItem={currentMenuItem}
+            setCurrentMenuItem={setCurrentMenuItem}
+          />
           <Flex
             height="auto"
             flexDirection="column"
@@ -177,24 +175,22 @@ function ProgramsPage({ width, height }) {
               : width * 0.2167
           }
         >
-          {!isTabletMobile && (
-            <Button
-              color="dark"
-              to="/programs"
-              onClick={() => {
-                if (currentMenuItem === 3) {
-                  setCurrentMenuItem(0);
-                } else {
-                  setCurrentMenuItem(currentMenuItem + 1);
-                }
-              }}
-              arrow="right"
-            >
-              {currentMenuItem === 3
-                ? menuItems[0].title
-                : menuItems[currentMenuItem + 1].title}
-            </Button>
-          )}
+          <Button
+            color="dark"
+            to="/programs"
+            onClick={() => {
+              if (currentMenuItem === 3) {
+                setCurrentMenuItem(0);
+              } else {
+                setCurrentMenuItem(currentMenuItem + 1);
+              }
+            }}
+            arrow="right"
+          >
+            {currentMenuItem === 3
+              ? menuItems[0].title
+              : menuItems[currentMenuItem + 1].title}
+          </Button>
         </Flex>
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />

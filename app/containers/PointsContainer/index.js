@@ -31,7 +31,7 @@ const PointsContainer = ({ width }) => {
       style={{ position: 'relative', background: '#151417' }}
     >
       <Link to="/projects">
-        <Flex flexDirection="row" width="100%" pb="60px">
+        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
               height={width * 0.1813}
@@ -51,7 +51,7 @@ const PointsContainer = ({ width }) => {
         </Flex>
       </Link>
       <Link to="/about">
-        <Flex flexDirection="row" width="100%" pb="60px">
+        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
               height={width * 0.1813}
@@ -71,7 +71,7 @@ const PointsContainer = ({ width }) => {
         </Flex>
       </Link>
       <Link to="/">
-        <Flex flexDirection="row" width="100%" pb="60px">
+        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
               height={width * 0.1813}
@@ -91,7 +91,7 @@ const PointsContainer = ({ width }) => {
         </Flex>
       </Link>
       <Link to="/areas">
-        <Flex flexDirection="row" width="100%" pb="60px">
+        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
           <Box width={width * 0.1813} px={width * 0.0133}>
             <Image
               height={width * 0.1813}

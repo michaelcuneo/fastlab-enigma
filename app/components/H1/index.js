@@ -3,10 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Text } from 'rebass';
 
-// Calculate 100 Pixels as a percentage of the height of the screen.
-// Update the height in real time from Props, and calculate on the fly for responsive.
-
-// 100px high is 9.26% of 1080
 const H1 = ({ children }) => {
   const StyledText = styled(Text)`
     font-family: 'archiaregular', sans-serif;
@@ -15,8 +11,6 @@ const H1 = ({ children }) => {
 
   return (
     <StyledText
-      className="glitch"
-      data-text="glitch"
       fontSize={['40px', '80px', '100px']}
       lineHeight={['40px', '80px', '100px']}
     >

@@ -11,8 +11,6 @@ const H2 = ({ children }) => {
 
   return (
     <StyledText
-      className="glitch"
-      data-text="glitch"
       fontSize={['25px', '40px', '50px']}
       lineHeight={['25px', '40px', '50px']}
     >

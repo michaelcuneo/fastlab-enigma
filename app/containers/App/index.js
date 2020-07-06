@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
 
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
 
 import { ThemeProvider } from 'styled-components';
 
 import HomePage from 'containers/HomePage/Loadable';
-import ComingSoon from 'containers/ComingSoon/Loadable';
 import AboutPage from 'containers/AboutPage/Loadable';
 import AreasPage from 'containers/AreasPage/Loadable';
 import ContactPage from 'containers/ContactPage/Loadable';
+import ExhibitionsPage from 'containers/ExhibitionsPage/Loadable';
 import ProgramsPage from 'containers/ProgramsPage/Loadable';
 import ProjectsPage from 'containers/ProjectsPage/Loadable';
 import ProjectPage from 'containers/ProjectPage/Loadable';
@@ -19,6 +19,7 @@ import UpdatesPage from 'containers/UpdatesPage/Loadable';
 import UpdatePage from 'containers/UpdatePage/Loadable';
 import ResearcherPage from 'containers/ResearcherPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+// import ComingSoon from 'containers/ComingSoon/Loadable';
 
 import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
@@ -57,8 +58,6 @@ function App({ runtime }) {
     setHeight(window.innerHeight);
   };
 
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   return height && width ? (
     <AppWrapper id="outer-container">
       <Helmet titleTemplate="%s - fastlab" defaultTitle="Fastlab">
@@ -68,94 +67,87 @@ function App({ runtime }) {
         />
       </Helmet>
       <Header />
-      {isTabletMobile ? (
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <ComingSoon {...props} height={height} width={width} />
-            )}
-          />
-        </Switch>
-      ) : (
-        <Switch id="page-wrap">
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <HomePage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/researcher/:id"
-            render={props => (
-              <ResearcherPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/update/:id"
-            render={props => (
-              <UpdatePage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/project/:id"
-            render={props => (
-              <ProjectPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/contact"
-            render={props => (
-              <ContactPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/projects/:nextToken"
-            render={props => (
-              <ProjectsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/projects"
-            render={props => (
-              <ProjectsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/areas"
-            render={props => (
-              <AreasPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/updates"
-            render={props => (
-              <UpdatesPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/programs"
-            render={props => (
-              <ProgramsPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path="/about"
-            render={props => (
-              <AboutPage {...props} height={height} width={width} />
-            )}
-          />
-          <Route
-            path=""
-            render={props => (
-              <NotFoundPage {...props} height={height} width={width} />
-            )}
-          />
-        </Switch>
-      )}
-
+      <Switch id="page-wrap">
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <HomePage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/researcher/:id"
+          render={props => (
+            <ResearcherPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/update/:id"
+          render={props => (
+            <UpdatePage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/project/:id"
+          render={props => (
+            <ProjectPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/contact"
+          render={props => (
+            <ContactPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/projects/:nextToken"
+          render={props => (
+            <ProjectsPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/exhibits"
+          render={props => (
+            <ExhibitionsPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/projects"
+          render={props => (
+            <ProjectsPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/areas"
+          render={props => (
+            <AreasPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/updates"
+          render={props => (
+            <UpdatesPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/programs"
+          render={props => (
+            <ProgramsPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path="/about"
+          render={props => (
+            <AboutPage {...props} height={height} width={width} />
+          )}
+        />
+        <Route
+          path=""
+          render={props => (
+            <NotFoundPage {...props} height={height} width={width} />
+          )}
+        />
+      </Switch>
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>

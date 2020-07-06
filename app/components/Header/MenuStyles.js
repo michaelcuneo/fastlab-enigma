@@ -5,7 +5,6 @@ export const TabletMobileStyles = {
     height: '38px',
     right: '20px',
     top: '20px',
-    pointerEvents: 'none',
   },
   bmBurgerBars: {
     background: '#373a47',
