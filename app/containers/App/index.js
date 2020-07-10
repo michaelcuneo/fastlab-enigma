@@ -36,16 +36,6 @@ function App({ runtime }) {
   const [scrollHeight, setScrollHeight] = useState(null);
 
   useEffect(() => {
-    window.addEventListener('resize', setDimensions);
-    window.addEventListener('load', setDimensions);
-    window.addEventListener('popstate', setDimensions);
-  }, [
-    window.removeEventListener('resize', setDimensions),
-    window.removeEventListener('load', setDimensions),
-    window.removeEventListener('popstate', setDimensions),
-  ]);
-
-  useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       runtime.install({
         onUpdating: () => {},
@@ -58,8 +48,18 @@ function App({ runtime }) {
         onUpdateFailed: () => {},
       });
     }
+
+    window.addEventListener('resize', setDimensions);
+    window.addEventListener('load', setDimensions);
+    window.addEventListener('popstate', setDimensions);
+    window.addEventListener('', setDimensions);
+
     setDimensions();
-  }, []);
+  }, [
+    window.removeEventListener('resize', setDimensions),
+    window.removeEventListener('load', setDimensions),
+    window.removeEventListener('popstate', setDimensions),
+  ]);
 
   const setDimensions = () => {
     setWidth(window.innerWidth);
