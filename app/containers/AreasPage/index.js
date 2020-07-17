@@ -28,10 +28,9 @@ import TransmediaArts from 'images/transmedia_arts.jpg';
 
 import Button from 'components/Button';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
-
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 const AreasPage = () => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
@@ -231,9 +230,14 @@ const AreasPage = () => {
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
-}
+};
 
 export default AreasPage;

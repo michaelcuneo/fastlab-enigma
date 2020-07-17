@@ -180,7 +180,12 @@ function UpdatePage({ match }) {
           );
         }}
       </Connect>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

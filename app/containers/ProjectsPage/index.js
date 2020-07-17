@@ -76,7 +76,12 @@ function ProjectsPage() {
         <AllProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

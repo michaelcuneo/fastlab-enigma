@@ -10,9 +10,8 @@ import Button from 'components/Button';
 import { Flex, Box, Text } from 'rebass';
 
 import UpdateContainer from 'containers/UpdateContainer';
-import Overlay from './Overlay';
-
 import useWindowDimensions from 'utils/getWindowDimensions';
+import Overlay from './Overlay';
 
 import { listPosts } from '../../../src/graphql/queries';
 

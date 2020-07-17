@@ -28,12 +28,8 @@ MenuItem.propTypes = {
   currentMenuItem: PropTypes.number,
 };
 
-const SideMenu = ({
-  menuItems,
-  setCurrentMenuItem,
-  currentMenuItem,
-}) => {
-  const { width, height, scrollWidth, scrollHeight } =  useWindowDimensions();
+const SideMenu = ({ menuItems, setCurrentMenuItem, currentMenuItem }) => {
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const containerWidth = width * 0.2073;
 

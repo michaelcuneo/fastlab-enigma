@@ -102,7 +102,12 @@ function ProgramsPage() {
         </Flex>
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight}/>
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

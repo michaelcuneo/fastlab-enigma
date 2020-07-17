@@ -36,9 +36,9 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 const VideoHeader = () => {
   const [backgroundVideo, setBackgroundVideo] = useState();
-  
-  const { width, height, scrollWidth, scrollHeight } =  useWindowDimensions();
-  
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const desktopVideos = [

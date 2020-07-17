@@ -39,7 +39,7 @@ const HomePage = () => {
       <LatestUpdatesContainer width={width} height={height} />
       <Footer width={width} height={height} />
     </React.Fragment>
-  )
+  );
 };
 
 export default HomePage;

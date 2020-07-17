@@ -16,14 +16,14 @@ import Footer from 'components/Footer';
 
 import OverlayContainer from 'containers/OverlayContainer';
 
-import useWindowDimensions from 'utils/getWindowDimensions'
+import useWindowDimensions from 'utils/getWindowDimensions';
 
 import messages from './messages';
 
 function ContactPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const {width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -128,7 +128,12 @@ function ContactPage() {
         </Flex>
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

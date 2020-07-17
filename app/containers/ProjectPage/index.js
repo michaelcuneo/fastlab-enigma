@@ -203,7 +203,11 @@ function ProjectPage({ match }) {
           );
         }}
       </Connect>
-      <OverlayContainer width={width} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

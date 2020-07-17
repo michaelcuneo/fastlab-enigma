@@ -57,116 +57,36 @@ function App({ runtime }) {
       </Helmet>
       <Header />
       <Switch id="page-wrap">
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <HomePage
-              {...props}
-            />
-          )}
-        />
+        <Route exact path="/" render={props => <HomePage {...props} />} />
         <Route
           path="/researcher/:id"
-          render={props => (
-            <ResearcherPage
-              {...props}
-            />
-          )}
+          render={props => <ResearcherPage {...props} />}
         />
-        <Route
-          path="/update/:id"
-          render={props => (
-            <UpdatePage
-              {...props}
-            />
-          )}
-        />
+        <Route path="/update/:id" render={props => <UpdatePage {...props} />} />
         <Route
           path="/project/:id"
-          render={props => (
-            <ProjectPage
-              {...props}
-            />
-          )}
+          render={props => <ProjectPage {...props} />}
         />
-        <Route
-          path="/contact"
-          render={props => (
-            <ContactPage
-              {...props}
-            />
-          )}
-        />
+        <Route path="/contact" render={props => <ContactPage {...props} />} />
         <Route
           path="/projects/:nextToken"
-          render={props => (
-            <ProjectsPage
-              {...props}
-            />
-          )}
+          render={props => <ProjectsPage {...props} />}
         />
         <Route
           path="/exhibits"
-          render={props => (
-            <ExhibitionsPage
-              {...props}
-            />
-          )}
+          render={props => <ExhibitionsPage {...props} />}
         />
-        <Route
-          path="/projects"
-          render={props => (
-            <ProjectsPage
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path="/areas"
-          render={props => (
-            <AreasPage
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path="/updates"
-          render={props => (
-            <UpdatesPage
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path="/programs"
-          render={props => (
-            <ProgramsPage
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path="/about"
-          render={props => (
-            <AboutPage
-              {...props}
-            />
-          )}
-        />
-        <Route
-          path=""
-          render={props => (
-            <NotFoundPage
-              {...props}
-            />
-          )}
-        />
+        <Route path="/projects" render={props => <ProjectsPage {...props} />} />
+        <Route path="/areas" render={props => <AreasPage {...props} />} />
+        <Route path="/updates" render={props => <UpdatesPage {...props} />} />
+        <Route path="/programs" render={props => <ProgramsPage {...props} />} />
+        <Route path="/about" render={props => <AboutPage {...props} />} />
+        <Route path="" render={props => <NotFoundPage {...props} />} />
       </Switch>
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>
-  )
+  );
 }
 
 App.propTypes = {

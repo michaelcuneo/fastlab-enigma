@@ -44,7 +44,8 @@ function ProgramsPage() {
       id: 1,
       title: 'Transmission',
       link: 'transmission',
-      details: '<p>Transmission develops our Research Higher Degree candidates as the future leaders in their field. As a key part of FASTlab, Transmission provides mentoring through our academic staff who are increasingly working with industry partners.</p><p>Transmission continues to support practice based and practice led research which has been traditionally proposed by individual candidates. However research projects developed in collaboration with and funded by industry, business and community is also undertaken. Our research students develop a strong set of skills, enabling them to conduct agile, people centred research and development applied creatively with real world relevance and impact.</p><p>In this way, Transmission offers organisations a new avenue for improving their competitive position and renewing their business. Supporting research  in this way is highly cost effective and attractive to our industry partners. Transmission builds bridges between academia, industry and community providing organisations with access to the latest research knowledge and the opportunity to address research questions that are the key to developing their organisations.</p>',
+      details:
+        '<p>Transmission develops our Research Higher Degree candidates as the future leaders in their field. As a key part of FASTlab, Transmission provides mentoring through our academic staff who are increasingly working with industry partners.</p><p>Transmission continues to support practice based and practice led research which has been traditionally proposed by individual candidates. However research projects developed in collaboration with and funded by industry, business and community is also undertaken. Our research students develop a strong set of skills, enabling them to conduct agile, people centred research and development applied creatively with real world relevance and impact.</p><p>In this way, Transmission offers organisations a new avenue for improving their competitive position and renewing their business. Supporting research  in this way is highly cost effective and attractive to our industry partners. Transmission builds bridges between academia, industry and community providing organisations with access to the latest research knowledge and the opportunity to address research questions that are the key to developing their organisations.</p>',
     },
     {
       id: 2,
@@ -198,7 +199,12 @@ function ProgramsPage() {
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
+      <OverlayContainer
+        width={width}
+        height={height}
+        scrollWidth={scrollWidth}
+        scrollHeight={scrollHeight}
+      />
     </React.Fragment>
   );
 }

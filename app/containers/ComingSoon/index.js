@@ -106,6 +106,6 @@ const ComingSoon = () => {
       </Flex>
     </React.Fragment>
   );
-}
+};
 
 export default ComingSoon;
