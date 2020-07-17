@@ -16,27 +16,16 @@ import Sig2 from 'images/scribbles_mark-2-white.svg';
 import OverlayContainer from 'containers/OverlayContainer';
 import VideoHeader from 'containers/VideoHeader';
 
-import { Flex /* , Box, Text */, Image } from 'rebass';
+import { Flex, Image } from 'rebass';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
 
 import messages from './messages';
 
-function ProgramsPage({ width, height }) {
+function ProgramsPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  /*
-  const DetailHeader = styled(Box)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 40px;
-    line-height: 25px;
-    color: #ec184a;
-  `;
-
-  const DetailText = styled(Text)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
-  `;
-  */
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -113,14 +102,9 @@ function ProgramsPage({ width, height }) {
         </Flex>
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight}/>
     </React.Fragment>
   );
 }
-
-ProgramsPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
 
 export default ProgramsPage;

@@ -17,10 +17,14 @@ import VideoHeader from 'containers/VideoHeader';
 
 import { Flex } from 'rebass';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import messages from './messages';
 
-function ProjectsPage({ width, height }) {
+function UpdatesPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -46,7 +50,7 @@ function ProjectsPage({ width, height }) {
   return (
     <React.Fragment>
       <Helmet key="Helmet">
-        <title>About Page</title>
+        <title>Updates Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
       <VideoHeader width={width} height={height} />
@@ -70,14 +74,9 @@ function ProjectsPage({ width, height }) {
         <AllUpdatesContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
 
-ProjectsPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
-
-export default ProjectsPage;
+export default UpdatesPage;

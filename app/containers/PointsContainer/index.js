@@ -12,12 +12,16 @@ import Point2 from 'images/Point_Two.svg';
 import Point3 from 'images/Point_Three.svg';
 import Point4 from 'images/Point_Four.svg';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { PointHeader, PointText } from './PointText';
 
 import messages from './messages';
 
-const PointsContainer = ({ width }) => {
+const PointsContainer = () => {
   const headerPadding = '52px';
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
@@ -189,11 +193,6 @@ const PointsContainer = ({ width }) => {
       </Link>
     </Flex>
   );
-};
-
-PointsContainer.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default PointsContainer;

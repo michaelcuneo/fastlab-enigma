@@ -13,26 +13,14 @@ import { Flex, Box, Text } from 'rebass';
 import VideoHeader from 'containers/VideoHeader';
 import OverlayContainer from 'containers/OverlayContainer';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import Footer from 'components/Footer';
 
-export function ComingSoon() {
+const ComingSoon = () => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const [height, setHeight] = useState();
-  const [width, setWidth] = useState();
-
-  useEffect(() => {
-    // Set the dimensions once.
-    setDimensions();
-
-    // Set the dimensions again if we resize.
-    window.addEventListener('resize', setDimensions);
-  }, [window.removeEventListener('resize', setDimensions)]);
-
-  const setDimensions = () => {
-    setWidth(document.body.scrollWidth);
-    setHeight(document.body.scrollHeight);
-  };
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -72,7 +60,7 @@ export function ComingSoon() {
     <React.Fragment>
       <OverlayContainer width={width} height={height} />
       <Helmet>
-        <title>Home Page</title>
+        <title>Coming Soon</title>
         <meta name="description" content="Fastlab" />
       </Helmet>
       <StyledFlexHeader>

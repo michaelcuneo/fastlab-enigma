@@ -5,7 +5,11 @@ import { useMediaQuery } from 'react-responsive';
 
 import { Box } from 'rebass';
 
-const OverlayContainer = ({ scrollWidth, scrollHeight }) => {
+import useWindowDimensions from 'utils/getWindowDimensions';
+
+const OverlayContainer = () => {
+  const { height, width, scrollHeight, scrollWidth } = useWindowDimensions();
+
   const [grid1x, setGrid1x] = useState(null);
   const [grid2x, setGrid2x] = useState(null);
   const [grid3x, setGrid3x] = useState(null);

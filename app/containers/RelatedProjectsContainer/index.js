@@ -10,11 +10,15 @@ import { Connect } from 'aws-amplify-react';
 import { Flex, Box, Text } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import Overlay from './Overlay';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-const RelatedProjectsContainer = ({ width, height }) => {
+const RelatedProjectsContainer = () => {
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
   const StyledText = styled(Text)`
     font-size: 34pt;
     font-family: 'archiaregular', sans-serif;
@@ -82,11 +86,6 @@ const RelatedProjectsContainer = ({ width, height }) => {
       </Flex>
     </React.Fragment>
   );
-};
-
-RelatedProjectsContainer.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default RelatedProjectsContainer;

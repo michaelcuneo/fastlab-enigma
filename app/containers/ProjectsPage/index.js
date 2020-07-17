@@ -16,12 +16,16 @@ import AllProjectsContainer from 'containers/AllProjectsContainer';
 import OverlayContainer from 'containers/OverlayContainer';
 import VideoHeader from 'containers/VideoHeader';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { Flex } from 'rebass';
 
 import messages from './messages';
 
-function ProjectsPage({ width, height }) {
+function ProjectsPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -72,7 +76,7 @@ function ProjectsPage({ width, height }) {
         <AllProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
@@ -80,6 +84,8 @@ function ProjectsPage({ width, height }) {
 ProjectsPage.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  scrollWidth: PropTypes.number,
+  scrollHeight: PropTypes.number,
 };
 
 export default ProjectsPage;

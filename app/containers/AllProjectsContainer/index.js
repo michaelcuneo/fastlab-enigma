@@ -11,10 +11,14 @@ import { Flex, Box, Text } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { listProjects } from '../../../src/graphql/queries';
 
-const AllProjects = ({ width, height, dark }) => {
+const AllProjects = ({ dark }) => {
   const [nextToken, setNextToken] = useState(null);
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledText = styled(Text)`
     font-size: 34pt;
@@ -89,8 +93,6 @@ const AllProjects = ({ width, height, dark }) => {
 
 AllProjects.propTypes = {
   dark: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default AllProjects;

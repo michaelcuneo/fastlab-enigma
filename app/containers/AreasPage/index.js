@@ -31,8 +31,12 @@ import Button from 'components/Button';
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
 
-function AreasPage({ width, height }) {
+import useWindowDimensions from 'utils/getWindowDimensions';
+
+const AreasPage = () => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const menuItems = [
     {
@@ -72,7 +76,7 @@ function AreasPage({ width, height }) {
       title: 'Transmedia Arts',
       link: 'transmedia',
       image: TransmediaArts,
-      details: `<p>This theme expands our understanding of art, site, narrative, aesthetics and ethics, through diverse approaches to making. This research area draws on discursive histories, dynamic cultural traditions and contemporary creative expression across all forms of immersive media and technology, performance and material practices.</p><p>Through digital domains and new and existing archives, transmedia researchers bring audiences and creators together across 'exhibitionary complex' to explore and curate the creative 'contact zones' of the future.</p>`,
+      details: `<p>As human's we learn through our stories & how we create the narratives that change society, community, industry and culture.</p><p>FASTLab tramsmedia group focuses on how to expand our understanding of visual narratives, the impact of aesthetics on human cognition, our understanding of both ourselves and the world around us. How we might create a more sustainable world and what we do to mantain it.</p>`,
     },
   ];
 
@@ -227,14 +231,9 @@ function AreasPage({ width, height }) {
         <RelatedProjectsContainer width={width} height={height} />
         <Footer height={height} width={width} />
       </Flex>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
-
-AreasPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-};
 
 export default AreasPage;

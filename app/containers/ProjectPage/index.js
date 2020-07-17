@@ -25,10 +25,15 @@ import OverlayContainer from 'containers/OverlayContainer';
 import Footer from 'components/Footer';
 
 import S3Modal from 'components/S3Modal';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { getProject } from '../../../src/graphql/queries';
 
-function ProjectPage({ width, height, match }) {
+function ProjectPage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -198,14 +203,12 @@ function ProjectPage({ width, height, match }) {
           );
         }}
       </Connect>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
 
 ProjectPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
   match: PropTypes.object,
 };
 

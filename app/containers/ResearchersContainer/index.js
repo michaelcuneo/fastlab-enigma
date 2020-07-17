@@ -10,13 +10,16 @@ import { Connect } from 'aws-amplify-react';
 
 import { Flex, Box } from 'rebass';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { listStaffs } from '../../../src/graphql/queries';
 
 import messages from './messages';
 
 import StaffLink from '../StaffLink';
 
-function ResearchersContainer({ width }) {
+function ResearchersContainer() {
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
   const staffTemplate = newStaff => (
     <Flex
       flexDirection="column"

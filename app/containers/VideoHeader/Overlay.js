@@ -4,11 +4,15 @@ import styled from 'styled-components';
 
 import { useMediaQuery } from 'react-responsive';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { Flex } from 'rebass';
 import H1 from 'components/H1';
 
-const Overlay = ({ width, height, text }) => {
+const Overlay = ({ text }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const StyledFlexHeader = styled(Flex)`
     position: absolute;
@@ -38,8 +42,6 @@ const Overlay = ({ width, height, text }) => {
 };
 
 Overlay.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
   text: PropTypes.object,
 };
 

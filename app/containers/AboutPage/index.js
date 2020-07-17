@@ -21,12 +21,15 @@ import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Box, Text, Image } from 'rebass';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import Button from 'components/Button';
 
 import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
 
-function AboutPage({ width, height, scrollHeight, scrollWidth }) {
+function AboutPage() {
+  const { height, width, scrollHeight, scrollWidth } = useWindowDimensions();
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const menuItems = [
@@ -114,7 +117,7 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <StyledFlexHeader>
         <H2>
           <FormattedMessage {...messages.header} />
@@ -122,14 +125,8 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
         </H2>
       </StyledFlexHeader>
       <StyledGradientHeader />
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
       <Flex
-        width={width}
         flexDirection="column"
         sx={{
           position: 'absolute',
@@ -149,8 +146,6 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
           <SideMenu
-            width={width}
-            height={height}
             menuItems={menuItems}
             currentMenuItem={currentMenuItem}
             setCurrentMenuItem={setCurrentMenuItem}
@@ -163,7 +158,7 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
             sx={{ position: 'relative', minWidth: width * 0.4229 }}
           >
             {menuItems[currentMenuItem].link === 'researchers' ? (
-              <ResearchersContainer width={width} />
+              <ResearchersContainer />
             ) : (
               <React.Fragment>
                 <DetailHeader pt="10px" pb="30px">
@@ -188,7 +183,6 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
           />
         </Flex>
         <Flex
-          width="100%"
           flexDirection="row"
           justifyContent="flex-end"
           pt={[32]}
@@ -216,18 +210,11 @@ function AboutPage({ width, height, scrollHeight, scrollWidth }) {
               : menuItems[currentMenuItem + 1].title}
           </Button>
         </Flex>
-        <RelatedProjectsContainer width={width} height={height} />
-        <Footer height={height} width={width} />
+        <RelatedProjectsContainer />
+        <Footer />
       </Flex>
     </React.Fragment>
   );
 }
-
-AboutPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  scrollWidth: PropTypes.number,
-  scrollHeight: PropTypes.number,
-};
 
 export default AboutPage;

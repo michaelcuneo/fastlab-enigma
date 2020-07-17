@@ -24,27 +24,14 @@ import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import AppWrapper from './AppWrapper';
 import theme from './Theme';
 
 import GlobalStyle from '../../global-styles';
 
 function App({ runtime }) {
-  const [height, setHeight] = useState(null);
-  const [width, setWidth] = useState(null);
-  const [scrollWidth, setScrollWidth] = useState(null);
-  const [scrollHeight, setScrollHeight] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener('resize', setDimensions);
-    window.addEventListener('load', setDimensions);
-    window.addEventListener('popstate', setDimensions);
-  }, [
-    window.removeEventListener('resize', setDimensions),
-    window.removeEventListener('load', setDimensions),
-    window.removeEventListener('popstate', setDimensions),
-  ]);
-
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       runtime.install({
@@ -58,17 +45,9 @@ function App({ runtime }) {
         onUpdateFailed: () => {},
       });
     }
-    setDimensions();
   }, []);
 
-  const setDimensions = () => {
-    setWidth(window.innerWidth);
-    setHeight(window.innerHeight);
-    setScrollWidth(document.body.scrollWidth);
-    setScrollHeight(document.body.scrollHeight);
-  };
-
-  return height && width && scrollWidth && scrollHeight ? (
+  return (
     <AppWrapper id="outer-container">
       <Helmet titleTemplate="%s - fastlab" defaultTitle="Fastlab">
         <meta
@@ -84,10 +63,6 @@ function App({ runtime }) {
           render={props => (
             <HomePage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -96,10 +71,6 @@ function App({ runtime }) {
           render={props => (
             <ResearcherPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -108,10 +79,6 @@ function App({ runtime }) {
           render={props => (
             <UpdatePage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -120,10 +87,6 @@ function App({ runtime }) {
           render={props => (
             <ProjectPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -132,10 +95,6 @@ function App({ runtime }) {
           render={props => (
             <ContactPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -144,10 +103,6 @@ function App({ runtime }) {
           render={props => (
             <ProjectsPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -156,10 +111,6 @@ function App({ runtime }) {
           render={props => (
             <ExhibitionsPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -168,10 +119,6 @@ function App({ runtime }) {
           render={props => (
             <ProjectsPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -180,10 +127,6 @@ function App({ runtime }) {
           render={props => (
             <AreasPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -192,10 +135,6 @@ function App({ runtime }) {
           render={props => (
             <UpdatesPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -204,10 +143,6 @@ function App({ runtime }) {
           render={props => (
             <ProgramsPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -216,10 +151,6 @@ function App({ runtime }) {
           render={props => (
             <AboutPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -228,10 +159,6 @@ function App({ runtime }) {
           render={props => (
             <NotFoundPage
               {...props}
-              height={height}
-              width={width}
-              scrollWidth={scrollWidth}
-              scrollHeight={scrollHeight}
             />
           )}
         />
@@ -239,9 +166,7 @@ function App({ runtime }) {
       <GlobalStyle />
       <ThemeProvider theme={theme} />
     </AppWrapper>
-  ) : (
-    <LoadingIndicator />
-  );
+  )
 }
 
 App.propTypes = {

@@ -49,7 +49,6 @@ function ProjectContainer({
     position: absolute;
     flex-direction: column;
     justify-content: center;
-    // position: relative;
     bottom: 0;
     background: #ffffff;
     border-left: 4px solid red;

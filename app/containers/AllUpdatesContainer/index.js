@@ -8,12 +8,15 @@ import { Connect } from 'aws-amplify-react';
 
 import { Flex, Box } from 'rebass';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import UpdateContainer from 'containers/UpdateContainer';
 
 import { listPosts } from '../../../src/graphql/queries';
 
-const AllProjects = ({ width, height }) => {
+const AllProjects = () => {
   const [nextToken, setNextToken] = useState(null);
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -40,8 +43,8 @@ const AllProjects = ({ width, height }) => {
                     <Box pr={[width * 0.0039]} py={['40px']}>
                       <UpdateContainer
                         key={thisItem.id}
-                        width={width * 0.2792}
-                        height={height * 0.5926}
+                        width={width}
+                        height={height}
                         screenWidth={width}
                         screenHeight={height}
                         item={thisItem}
@@ -73,11 +76,6 @@ const AllProjects = ({ width, height }) => {
       </Flex>
     </React.Fragment>
   );
-};
-
-AllProjects.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default AllProjects;

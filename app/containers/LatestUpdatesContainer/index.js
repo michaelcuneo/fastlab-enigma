@@ -12,14 +12,18 @@ import { Flex, Box, Text } from 'rebass';
 import UpdateContainer from 'containers/UpdateContainer';
 import Overlay from './Overlay';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { listPosts } from '../../../src/graphql/queries';
 
-const LatestUpdatesContainer = ({ width, height, dark }) => {
+const LatestUpdatesContainer = ({ dark }) => {
   const StyledText = styled(Text)`
     font-size: 34pt;
     font-family: 'archiaregular', sans-serif;
     color: white;
   `;
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -52,8 +56,8 @@ const LatestUpdatesContainer = ({ width, height, dark }) => {
                 item && (
                   <UpdateContainer
                     key={item.id}
-                    width={width * 0.2792}
-                    height={height * 0.5926}
+                    width={width}
+                    height={height}
                     screenWidth={width}
                     screenHeight={height}
                     item={item}
@@ -83,8 +87,6 @@ const LatestUpdatesContainer = ({ width, height, dark }) => {
 
 LatestUpdatesContainer.propTypes = {
   dark: PropTypes.bool,
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default LatestUpdatesContainer;

@@ -27,10 +27,15 @@ import Footer from 'components/Footer';
 import moment from 'moment';
 
 import S3Modal from 'components/S3Modal';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { getPost } from '../../../src/graphql/queries';
 
-function UpdatePage({ width, height, match }) {
+function UpdatePage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -175,14 +180,12 @@ function UpdatePage({ width, height, match }) {
           );
         }}
       </Connect>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
 
 UpdatePage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
   match: PropTypes.object,
 };
 

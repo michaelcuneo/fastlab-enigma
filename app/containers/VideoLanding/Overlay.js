@@ -4,12 +4,15 @@ import styled from 'styled-components';
 
 import { useMediaQuery } from 'react-responsive';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { Flex } from 'rebass';
 import H1 from 'components/H1';
 
-const Overlay = ({ height, width, text }) => {
+const Overlay = ({ text }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
   const StyledGradientFooter = styled(Flex)`
     position: absolute;
     bottom: 0;
@@ -45,8 +48,6 @@ const Overlay = ({ height, width, text }) => {
 };
 
 Overlay.propTypes = {
-  height: PropTypes.number,
-  width: PropTypes.number,
   text: PropTypes.object,
 };
 

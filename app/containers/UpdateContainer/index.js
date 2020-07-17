@@ -8,9 +8,13 @@ import { Flex, Box, Text } from 'rebass';
 
 import { Markup } from 'interweave';
 
-const UpdateContainer = ({ item, width }) => {
+import useWindowDimensions from 'utils/getWindowDimensions';
+
+const UpdateContainer = ({ item }) => {
   const [post, setPost] = useState(item);
   const [image, setImage] = useState('');
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   useEffect(() => {
     setupPost();
@@ -55,10 +59,11 @@ const UpdateContainer = ({ item, width }) => {
     <Flex
       mx={['7.5px']}
       key={item.id}
-      maxWidth="100vw"
+      maxWidth="100%"
       width={width}
       flexDirection="row"
       flexWrap="wrap"
+      sx={{ zIndex: 0 }}
     >
       <Link style={{ textDecoration: 'none' }} to={`/update/${item.id}`}>
         <Box sx={{ position: 'relative' }}>
@@ -71,7 +76,7 @@ const UpdateContainer = ({ item, width }) => {
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               overflow: 'hidden',
-              width: '536px',
+              width: `${width * 0.27916}px`,
               height: '382px',
             }}
           >
@@ -91,7 +96,6 @@ const UpdateContainer = ({ item, width }) => {
             </Flex>
           </Flex>
           <Flex
-            mt="5px"
             px="34px"
             pt="34px"
             flexDirection="column"
@@ -100,7 +104,7 @@ const UpdateContainer = ({ item, width }) => {
               alignItems: 'flex-end',
               justifyContent: 'flex-end',
               overflow: 'hidden',
-              width: '536px',
+              width: `${width * 0.27916}px`,
               height: '274px',
               background: '#ffffff',
             }}
@@ -162,7 +166,6 @@ const UpdateContainer = ({ item, width }) => {
 
 UpdateContainer.propTypes = {
   item: PropTypes.object,
-  width: PropTypes.number,
 };
 
 export default UpdateContainer;

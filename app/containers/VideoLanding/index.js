@@ -33,10 +33,14 @@ import backgroundVideo9480 from 'video/background-video-09480.mp4';
 import backgroundVideo10480 from 'video/background-video-10480.mp4';
 import backgroundVideo11480 from 'video/background-video-11480.mp4';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import Overlay from './Overlay';
 
-const VideoLanding = ({ width, height, text }) => {
+const VideoLanding = ({ text }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
+
+  const { width, height, scrollWidth, scrollHeight } =  useWindowDimensions();
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
@@ -104,8 +108,6 @@ const VideoLanding = ({ width, height, text }) => {
 };
 
 VideoLanding.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
   text: PropTypes.object,
 };
 

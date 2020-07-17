@@ -23,11 +23,15 @@ import { Flex, Box, Text } from 'rebass';
 
 import Button from 'components/Button';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import messages from './messages';
 import { getStaff } from '../../../src/graphql/queries';
 
-function ResearcherPage({ width, height, match }) {
+function ResearcherPage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -142,7 +146,7 @@ function ResearcherPage({ width, height, match }) {
           );
         }}
       </Connect>
-      <OverlayContainer width={width} />
+      <OverlayContainer width={width} height={height} scrollWidth={scrollWidth} scrollHeight={scrollHeight} />
     </React.Fragment>
   );
 }
@@ -150,6 +154,8 @@ function ResearcherPage({ width, height, match }) {
 ResearcherPage.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  scrollWidth: PropTypes.number,
+  scrollHeight: PropTypes.number,
   match: PropTypes.object,
 };
 

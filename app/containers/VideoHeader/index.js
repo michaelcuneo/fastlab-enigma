@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import {
   Player,
   ControlBar,
@@ -33,9 +32,13 @@ import backgroundVideo9480 from 'video/background-video-09480.mp4';
 import backgroundVideo10480 from 'video/background-video-10480.mp4';
 import backgroundVideo11480 from 'video/background-video-11480.mp4';
 
-const VideoHeader = ({ width, height }) => {
-  const [backgroundVideo, setBackgroundVideo] = useState();
+import useWindowDimensions from 'utils/getWindowDimensions';
 
+const VideoHeader = () => {
+  const [backgroundVideo, setBackgroundVideo] = useState();
+  
+  const { width, height, scrollWidth, scrollHeight } =  useWindowDimensions();
+  
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const desktopVideos = [
@@ -98,11 +101,6 @@ const VideoHeader = ({ width, height }) => {
       </Player>
     </div>
   );
-};
-
-VideoHeader.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
 };
 
 export default VideoHeader;

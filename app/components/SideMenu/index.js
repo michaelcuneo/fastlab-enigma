@@ -4,6 +4,8 @@ import styled from 'styled-components';
 
 import { Box, Text } from 'rebass';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 const MenuItem = ({ py, onClick, item, currentMenuItem }) => {
   const StyledText = styled(Text)`
     font-family: 'jetbrains-bold', sans-serif;
@@ -27,11 +29,12 @@ MenuItem.propTypes = {
 };
 
 const SideMenu = ({
-  width,
   menuItems,
   setCurrentMenuItem,
   currentMenuItem,
 }) => {
+  const { width, height, scrollWidth, scrollHeight } =  useWindowDimensions();
+
   const containerWidth = width * 0.2073;
 
   const StyledMenu = styled(Box)`
@@ -62,7 +65,6 @@ const SideMenu = ({
 };
 
 SideMenu.propTypes = {
-  width: PropTypes.number,
   menuItems: PropTypes.array,
   setCurrentMenuItem: PropTypes.func,
   currentMenuItem: PropTypes.number,
