@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Helmet } from 'react-helmet';
@@ -25,7 +24,7 @@ import messages from './messages';
 function ProjectsPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -54,7 +53,7 @@ function ProjectsPage() {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <StyledFlexHeader>
         <H2>
           <FormattedMessage {...messages.header} />
@@ -72,25 +71,13 @@ function ProjectsPage() {
           background: '#151417',
         }}
       >
-        <LatestProjectsContainer width={width} height={height} dark />
-        <AllProjectsContainer width={width} height={height} />
-        <Footer height={height} width={width} />
+        <LatestProjectsContainer dark />
+        <AllProjectsContainer />
+        <Footer />
       </Flex>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }
-
-ProjectsPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  scrollWidth: PropTypes.number,
-  scrollHeight: PropTypes.number,
-};
 
 export default ProjectsPage;

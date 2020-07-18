@@ -22,7 +22,7 @@ const LatestUpdatesContainer = ({ dark }) => {
     color: white;
   `;
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -54,11 +54,8 @@ const LatestUpdatesContainer = ({ dark }) => {
               item =>
                 item && (
                   <UpdateContainer
+                    width={width * 0.2792}
                     key={item.id}
-                    width={width}
-                    height={height}
-                    screenWidth={width}
-                    screenHeight={height}
                     item={item}
                   />
                 ),

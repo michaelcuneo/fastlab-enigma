@@ -8,13 +8,9 @@ import { Flex, Box, Text } from 'rebass';
 
 import { Markup } from 'interweave';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
-const UpdateContainer = ({ item }) => {
+const UpdateContainer = ({ item, width }) => {
   const [post, setPost] = useState(item);
   const [image, setImage] = useState('');
-
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
 
   useEffect(() => {
     setupPost();
@@ -59,7 +55,7 @@ const UpdateContainer = ({ item }) => {
     <Flex
       mx={['7.5px']}
       key={item.id}
-      maxWidth="100%"
+      maxWidth={width}
       width={width}
       flexDirection="row"
       flexWrap="wrap"
@@ -76,8 +72,8 @@ const UpdateContainer = ({ item }) => {
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               overflow: 'hidden',
-              width: `${width * 0.27916}px`,
-              height: '382px',
+              width,
+              height: width / 1.403,
             }}
           >
             <Flex
@@ -104,8 +100,8 @@ const UpdateContainer = ({ item }) => {
               alignItems: 'flex-end',
               justifyContent: 'flex-end',
               overflow: 'hidden',
-              width: `${width * 0.27916}px`,
-              height: '274px',
+              width,
+              height: width / 1.956,
               background: '#ffffff',
             }}
           >
@@ -166,6 +162,7 @@ const UpdateContainer = ({ item }) => {
 
 UpdateContainer.propTypes = {
   item: PropTypes.object,
+  width: PropTypes.number,
 };
 
 export default UpdateContainer;

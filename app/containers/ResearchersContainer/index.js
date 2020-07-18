@@ -19,7 +19,7 @@ import messages from './messages';
 import StaffLink from '../StaffLink';
 
 function ResearchersContainer() {
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const staffTemplate = newStaff => (
     <Flex
       flexDirection="column"

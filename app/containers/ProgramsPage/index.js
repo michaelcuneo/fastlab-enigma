@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Helmet } from 'react-helmet';
@@ -30,7 +29,7 @@ import messages from './messages';
 function ProgramsPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const menuItems = [
     {
@@ -105,7 +104,7 @@ function ProgramsPage() {
         <title>Programs Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <StyledFlexHeader>
         <H2>
           <FormattedMessage {...messages.header} />
@@ -196,15 +195,10 @@ function ProgramsPage() {
               : menuItems[currentMenuItem + 1].title}
           </Button>
         </Flex>
-        <RelatedProjectsContainer width={width} height={height} />
-        <Footer height={height} width={width} />
+        <RelatedProjectsContainer />
+        <Footer />
       </Flex>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }

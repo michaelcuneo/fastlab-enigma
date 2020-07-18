@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 
 import { useMediaQuery } from 'react-responsive';
 
 import { Box } from 'rebass';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 const OverlayContainer = () => {
-  const { height, width, scrollHeight, scrollWidth } = useWindowDimensions();
-
   const [grid1x, setGrid1x] = useState(null);
   const [grid2x, setGrid2x] = useState(null);
   const [grid3x, setGrid3x] = useState(null);
@@ -18,16 +13,40 @@ const OverlayContainer = () => {
   const [grid6x, setGrid6x] = useState(null);
   const [grid7x, setGrid7x] = useState(null);
 
+  const [scrollWidth, setScrollWidth] = useState(document.body.scrollWidth);
+  const [scrollHeight, setScrollHeight] = useState(document.body.scrollHeight);
+
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   useEffect(() => {
     handleResize();
+  }, []);
 
-    window.addEventListener('resize', handleResize);
-  }, [window.removeEventListener('resize', handleResize)]);
+  useEffect(() => {
+    window.addEventListener('loaded', handleResize());
+    return () => {
+      window.removeEventListener('loaded', handleResize());
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize());
+    return () => {
+      window.removeEventListener('resize', handleResize());
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('DOMContentLoaded', handleResize());
+    return () => {
+      window.removeEventListener('DOMContentLoaded', handleResize());
+    };
+  }, []);
 
   const handleResize = () => {
     // set overall width and height
+    setScrollWidth(document.body.scrollWidth);
+    setScrollHeight(document.body.scrollHeight);
 
     if (!isTabletMobile) {
       // Calculate Scaled Desktop Grid Area
@@ -214,11 +233,6 @@ const OverlayContainer = () => {
       )}
     </Box>
   ) : null;
-};
-
-OverlayContainer.propTypes = {
-  scrollWidth: PropTypes.number,
-  scrollHeight: PropTypes.number,
 };
 
 export default OverlayContainer;

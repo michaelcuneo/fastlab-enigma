@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Flex, Box, Image } from 'rebass';
 import { Link } from 'react-router-dom';
 
@@ -21,14 +20,14 @@ import messages from './messages';
 const PointsContainer = () => {
   const headerPadding = '52px';
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return isTabletMobile ? (
     <Flex
-      pt={['80px', '80px', '114px']} // Distance from Landing Container to first image.
-      pb="80px" // Distance from Point Container to first image in showcase.
+      pt={['80px', '80px', '114px']}
+      pb="80px"
       px={width * 0.0827}
       justifyContent="space-between"
       flexDirection="column"
@@ -45,7 +44,7 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <PointHeader pt={headerPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointone} />
             </PointHeader>
             <PointText>
@@ -65,7 +64,7 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <PointHeader pt={headerPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointtwo} />
             </PointHeader>
             <PointText>
@@ -85,7 +84,7 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <PointHeader pt={headerPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointthree} />
             </PointHeader>
             <PointText>
@@ -105,7 +104,7 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+            <PointHeader pt={headerPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointfour} />
             </PointHeader>
             <PointText>
@@ -132,7 +131,7 @@ const PointsContainer = () => {
             src={Point1}
             alt="Point One"
           />
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+          <PointHeader pt={headerPadding} pb={height * 0.0102}>
             <FormattedMessage {...messages.pointone} />
           </PointHeader>
           <PointText>
@@ -149,7 +148,7 @@ const PointsContainer = () => {
             src={Point2}
             alt="Point Two"
           />
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+          <PointHeader pt={headerPadding} pb={height * 0.0102}>
             <FormattedMessage {...messages.pointtwo} />
           </PointHeader>
           <PointText>
@@ -166,7 +165,7 @@ const PointsContainer = () => {
             src={Point3}
             alt="Point Three"
           />
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+          <PointHeader pt={headerPadding} pb={height * 0.0102}>
             <FormattedMessage {...messages.pointthree} />
           </PointHeader>
           <PointText>
@@ -183,7 +182,7 @@ const PointsContainer = () => {
             src={Point4}
             alt="Point Four"
           />
-          <PointHeader pt={headerPadding} pb={window.innerHeight * 0.0102}>
+          <PointHeader pt={headerPadding} pb={height * 0.0102}>
             <FormattedMessage {...messages.pointfour} />
           </PointHeader>
           <PointText>

@@ -18,7 +18,7 @@ import { listProjects } from '../../../src/graphql/queries';
 const AllProjects = ({ dark }) => {
   const [nextToken, setNextToken] = useState(null);
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const StyledText = styled(Text)`
     font-size: 34pt;

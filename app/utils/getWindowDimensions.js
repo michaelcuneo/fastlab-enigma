@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+import history from 'utils/history';
+
 const getWindowDimensions = () => {
   const { innerWidth: width, innerHeight: height } = window;
   const { scrollWidth, scrollHeight } = document.body;
@@ -17,13 +19,29 @@ const useWindowDimensions = () => {
     getWindowDimensions(),
   );
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowDimensions(getWindowDimensions());
-    };
+  const handleResize = () => {
+    setWindowDimensions(getWindowDimensions());
+  };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+  useEffect(() => {
+    handleResize('Pathname Changed');
+  }, [history.location.pathname]);
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize('Resize'));
+    return () => {
+      window.removeEventListener('resize', handleResize('Resize'));
+    };
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener('DOMContentLoaded', handleResize('ContentLoaded'));
+    return () => {
+      window.removeEventListener(
+        'DOMContentLoaded',
+        handleResize('ContentLoaded'),
+      );
+    };
   }, []);
 
   return windowDimensions;

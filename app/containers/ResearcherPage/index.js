@@ -31,7 +31,7 @@ import { getStaff } from '../../../src/graphql/queries';
 function ResearcherPage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -73,7 +73,7 @@ function ResearcherPage({ match }) {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <StyledFlexHeader>
         <H2>
           <FormattedMessage {...messages.header} />
@@ -140,27 +140,18 @@ function ResearcherPage({ match }) {
                   </DetailText>
                 </Flex>
               </Flex>
-              <RelatedProjectsContainer width={width} height={height} />
-              <Footer height={height} width={width} />
+              <RelatedProjectsContainer />
+              <Footer />
             </Flex>
           );
         }}
       </Connect>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }
 
 ResearcherPage.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  scrollWidth: PropTypes.number,
-  scrollHeight: PropTypes.number,
   match: PropTypes.object,
 };
 

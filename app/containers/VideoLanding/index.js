@@ -40,7 +40,7 @@ import Overlay from './Overlay';
 const VideoLanding = ({ text }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
@@ -20,7 +20,7 @@ import Footer from 'components/Footer';
 const ComingSoon = () => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const DetailHeader = styled(Box)`
     font-family: 'archiaregular', sans-serif;
@@ -58,7 +58,7 @@ const ComingSoon = () => {
 
   return (
     <React.Fragment>
-      <OverlayContainer width={width} height={height} />
+      <OverlayContainer />
       <Helmet>
         <title>Coming Soon</title>
         <meta name="description" content="Fastlab" />
@@ -70,7 +70,7 @@ const ComingSoon = () => {
         </H2>
       </StyledFlexHeader>
       <StyledGradientHeader />
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <Flex
         width={width}
         flexDirection="column"
@@ -102,7 +102,7 @@ const ComingSoon = () => {
             experience.
           </DetailText>
         </Flex>
-        <Footer width={width} height={height} />
+        <Footer />
       </Flex>
     </React.Fragment>
   );

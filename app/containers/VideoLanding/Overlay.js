@@ -12,7 +12,7 @@ import H1 from 'components/H1';
 const Overlay = ({ text }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const StyledGradientFooter = styled(Flex)`
     position: absolute;
     bottom: 0;
@@ -31,7 +31,7 @@ const Overlay = ({ text }) => {
     right: 0;
     height: ${height};
     width: ${width};
-    z-index: 1;
+    z-index: 2;
   `;
 
   return (

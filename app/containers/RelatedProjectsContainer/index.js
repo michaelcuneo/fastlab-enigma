@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import Button from 'components/Button';
@@ -18,7 +17,8 @@ import Overlay from './Overlay';
 import { listProjects } from '../../../src/graphql/queries';
 
 const RelatedProjectsContainer = () => {
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
+
   const StyledText = styled(Text)`
     font-size: 34pt;
     font-family: 'archiaregular', sans-serif;

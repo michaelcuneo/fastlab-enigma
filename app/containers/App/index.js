@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { Switch, Route } from 'react-router-dom';
-
-// import { useMediaQuery } from 'react-responsive';
 
 import { ThemeProvider } from 'styled-components';
 
@@ -19,12 +17,8 @@ import UpdatesPage from 'containers/UpdatesPage/Loadable';
 import UpdatePage from 'containers/UpdatePage/Loadable';
 import ResearcherPage from 'containers/ResearcherPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
-// import ComingSoon from 'containers/ComingSoon/Loadable';
 
-import LoadingIndicator from 'components/LoadingIndicator';
 import Header from 'components/Header';
-
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 import AppWrapper from './AppWrapper';
 import theme from './Theme';

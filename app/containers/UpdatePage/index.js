@@ -153,7 +153,7 @@ function UpdatePage({ match }) {
                     </Flex>
                   </Flex>
                   <Flex style={{ height: '500px' }}>
-                    {data.getPost.gallery.images.items && (
+                    {data.getPost.gallery && (
                       <Slideshow
                         showIndex
                         autoplay={false}

@@ -29,7 +29,7 @@ MenuItem.propTypes = {
 };
 
 const SideMenu = ({ menuItems, setCurrentMenuItem, currentMenuItem }) => {
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const containerWidth = width * 0.2073;
 
@@ -44,6 +44,7 @@ const SideMenu = ({ menuItems, setCurrentMenuItem, currentMenuItem }) => {
     <StyledMenu
       px={width * 0.0182}
       minWidth={containerWidth}
+      maxWidth={containerWidth}
       height="auto"
       py="50px"
     >

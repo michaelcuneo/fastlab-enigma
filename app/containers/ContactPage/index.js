@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
@@ -23,7 +22,7 @@ import messages from './messages';
 function ContactPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   const StyledGradientHeader = styled(Flex)`
     position: absolute;
@@ -52,7 +51,7 @@ function ContactPage() {
         <title>Contact Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <StyledFlexHeader>
         <H2>
           <FormattedMessage {...messages.header} />
@@ -75,8 +74,10 @@ function ContactPage() {
           sx={{
             position: 'relative',
           }}
+          height="100%"
           justifyContent="flex-begin"
           alignItems="flex-begin"
+          alignContent="center"
           pt={['20px', '20px', '182px']}
           pb={['20px', '20px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.2167]}
@@ -126,14 +127,9 @@ function ContactPage() {
             </Text>
           </Flex>
         </Flex>
-        <Footer height={height} width={width} />
+        <Footer />
       </Flex>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }

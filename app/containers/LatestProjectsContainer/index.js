@@ -21,7 +21,7 @@ import { listProjects } from '../../../src/graphql/queries';
 const LatestProjectsContainer = ({ dark }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -122,15 +122,7 @@ const LatestProjectsContainer = ({ dark }) => {
                 </React.Fragment>
               ) : (
                 data.listProjects.items.map(item => (
-                  <ProjectContainer
-                    key={item.id}
-                    width="100%"
-                    height="100%"
-                    screenWidth={width}
-                    screenHeight={height}
-                    item={item}
-                    staggered
-                  />
+                  <ProjectContainer key={item.id} item={item} staggered />
                 ))
               );
             }}

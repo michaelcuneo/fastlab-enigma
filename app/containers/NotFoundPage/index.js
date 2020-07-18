@@ -1,11 +1,4 @@
-/**
- * NotFoundPage
- *
- * This is the page we show when the user visits a url that doesn't have a route
- */
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
 import OverlayContainer from 'containers/OverlayContainer';
@@ -14,14 +7,18 @@ import Footer from 'components/Footer';
 import { Flex, Box } from 'rebass';
 import H1 from 'components/H1';
 import Button from 'components/Button';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import messages from './messages';
 
-function NotFound({ height, width }) {
+const NotFound = () => {
+  const { height } = useWindowDimensions();
   return (
     <React.Fragment>
-      <OverlayContainer width={width} height={height} />
+      <OverlayContainer />
       <Flex
-        height={window.innerHeight - 155}
+        height={height - 155}
         flexDirection="column"
         justifyContent="center"
         alignContent="center"
@@ -39,14 +36,9 @@ function NotFound({ height, width }) {
           </Button>
         </Box>
       </Flex>
-      <Footer height={height} width={width} />
+      <Footer />
     </React.Fragment>
   );
-}
-
-NotFound.propTypes = {
-  height: PropTypes.number,
-  width: PropTypes.number,
 };
 
 export default NotFound;

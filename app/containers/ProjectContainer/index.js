@@ -70,6 +70,7 @@ function ProjectContainer({
     PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
     SX = {
       overflow: 'hidden',
+      position: 'relative',
       zIndex: 3,
     };
     HEIGHT = isTabletMobile ? '450px' : screenHeight * 0.5926;

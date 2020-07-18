@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Helmet } from 'react-helmet';
@@ -35,7 +34,7 @@ import ResearchersContainer from '../ResearchersContainer';
 const AreasPage = () => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   const menuItems = [
     {
@@ -160,8 +159,6 @@ const AreasPage = () => {
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
           <SideMenu
-            width={width}
-            height={height}
             menuItems={menuItems}
             currentMenuItem={currentMenuItem}
             setCurrentMenuItem={setCurrentMenuItem}
@@ -227,15 +224,10 @@ const AreasPage = () => {
               : menuItems[currentMenuItem + 1].title}
           </Button>
         </Flex>
-        <RelatedProjectsContainer width={width} height={height} />
-        <Footer height={height} width={width} />
+        <RelatedProjectsContainer />
+        <Footer />
       </Flex>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 };

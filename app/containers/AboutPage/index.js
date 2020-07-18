@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import { Helmet } from 'react-helmet';
@@ -29,7 +28,7 @@ import messages from './messages';
 import ResearchersContainer from '../ResearchersContainer';
 
 function AboutPage() {
-  const { height, width, scrollHeight, scrollWidth } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const menuItems = [
@@ -131,6 +130,7 @@ function AboutPage() {
         sx={{
           position: 'absolute',
           height: 'auto',
+          maxWidth: '100%',
           top: '400px',
           background: '#151417',
           borderTop: '1px solid rgba(255, 255, 255, 0.2)',

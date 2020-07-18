@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 import Button from 'components/Button';
 
@@ -16,7 +15,7 @@ import { listPosts } from '../../../src/graphql/queries';
 
 const AllProjects = () => {
   const [nextToken, setNextToken] = useState(null);
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -39,19 +38,17 @@ const AllProjects = () => {
               if (loading || !data) return null;
               return [
                 data.listPosts.items.map(thisItem => (
-                  <Flex>
-                    <Box pr={[width * 0.0039]} py={['40px']}>
-                      <UpdateContainer
-                        key={thisItem.id}
-                        width={width}
-                        height={height}
-                        screenWidth={width}
-                        screenHeight={height}
-                        item={thisItem}
-                        staggered
-                      />
-                    </Box>
-                  </Flex>
+                  <Box pr={[width * 0.0039]} py={['40px']}>
+                    <UpdateContainer
+                      key={thisItem.id}
+                      item={thisItem}
+                      width={width * 0.2792}
+                      height={height * 0.4167}
+                      screenWidth={width}
+                      screenHeight={height}
+                      staggered
+                    />
+                  </Box>
                 )),
                 <Flex
                   width="100%"
