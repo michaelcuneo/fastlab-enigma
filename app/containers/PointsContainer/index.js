@@ -21,7 +21,6 @@ const PointsContainer = () => {
   const headerPadding = '52px';
 
   const { width, height } = useWindowDimensions();
-
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return isTabletMobile ? (

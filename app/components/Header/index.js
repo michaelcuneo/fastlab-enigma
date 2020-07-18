@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { slide as Menu } from 'react-burger-menu';
 import { FormattedMessage } from 'react-intl';
 
@@ -12,6 +11,7 @@ import { Flex, Box } from 'rebass';
 
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
+import { StyledLine } from './StyledLine';
 import { HeaderLink } from './HeaderLink';
 import messages from './messages';
 
@@ -24,14 +24,6 @@ function Header() {
 
   const closeMenu = () => setMenuOpened(false);
   const handleStateChange = state => setMenuOpened(state.isOpen);
-
-  const StyledLine = styled.hr`
-    position: absolute;
-    color: #707070;
-    top: 106px;
-    width: 100%;
-    outline: none;
-  `;
 
   return (
     <React.Fragment>

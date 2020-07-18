@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Text } from 'rebass';
+import { AnimatedBox } from './AnimatedBox';
+import { StyledLink } from './StyledLink';
+import { LinkText } from './LinkText';
+import { LinkDetails } from './LinkDetails';
+import { LinkArrow } from './LinkArrow';
 
-import { useSpring, animated as a } from 'react-spring';
+import {
+  CustomAnimation,
+  CustomDetailAnimation,
+  CustomHideAnimation,
+} from './CustomAnimation';
 
 export const HeaderLink = ({
   to,
@@ -24,60 +30,10 @@ export const HeaderLink = ({
 
   useEffect(() => {
     resetState();
+    return () => {
+      resetState();
+    };
   }, []);
-
-  const CustomAnimation = useSpring({
-    minHeight: !hoverState ? 110 : 250,
-    maxHeight: !hoverState ? 110 : 250,
-    background: !hoverState ? '#151417' : '#EC184A',
-  });
-
-  const CustomHideAnimation = useSpring({
-    display: !hoverState ? 'none' : 'flex',
-  });
-
-  const CustomDetailAnimation = useSpring({
-    display: !hoverState ? 'none' : 'flex',
-  });
-
-  const StyledLink = styled(Link)`
-    text-decoration: none !important;
-    cursor: pointer;
-    outline: 0;
-    color: white;
-  `;
-
-  const AnimatedBox = styled(a.div)`
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    padding: 0px 0px 0px 35px;
-    justify-content: center;
-  `;
-
-  const LinkText = styled(Text)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 50px;
-    line-height: 100px;
-    color: white;
-  `;
-
-  const LinkDetails = styled(a.div)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 18px;
-    line-height: 22px;
-    color: white;
-  `;
-
-  const LinkArrow = styled(a.div)`
-    position: absolute;
-    right: 0;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-    padding: 0px 20px 0px 0px;
-    color: white;
-  `;
 
   return isTabletMobile ? (
     <StyledLink to={to} onClick={onClick}>
@@ -101,10 +57,12 @@ export const HeaderLink = ({
       to={to}
       onClick={onClick}
     >
-      <AnimatedBox style={CustomAnimation}>
+      <AnimatedBox style={CustomAnimation(hoverState)}>
         <LinkText>{link}</LinkText>
-        <LinkDetails style={CustomDetailAnimation}>{linkDetails}</LinkDetails>
-        <LinkArrow style={CustomHideAnimation}>
+        <LinkDetails style={CustomDetailAnimation(hoverState)}>
+          {linkDetails}
+        </LinkDetails>
+        <LinkArrow style={CustomHideAnimation(hoverState)}>
           <FontAwesomeIcon icon="angle-right" size="3x" />
         </LinkArrow>
       </AnimatedBox>

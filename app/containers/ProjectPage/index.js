@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import { graphqlOperation } from 'aws-amplify';
@@ -19,7 +18,7 @@ import { Markup } from 'interweave';
 
 import VideoHeader from 'containers/VideoHeader';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex } from 'rebass';
 
 import OverlayContainer from 'containers/OverlayContainer';
 import Footer from 'components/Footer';
@@ -28,46 +27,16 @@ import S3Modal from 'components/S3Modal';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
+import { DetailHeader } from './DetailHeader';
+import { DetailText } from './DetailText';
+import { StyledFlexHeader } from './StyledFlexHeader';
+import { StyledGradientHeader } from './StyledGradientHeader';
+
 import { getProject } from '../../../src/graphql/queries';
 
 function ProjectPage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
-
-  const DetailHeader = styled(Box)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 40px;
-    line-height: 25px;
-    color: #ec184a;
-  `;
-
-  const DetailText = styled(Text)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
-  `;
-
-  const StyledGradientHeader = styled(Flex)`
-    position: absolute;
-    top: 144px;
-    left: 0px;
-    right: 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), #151417);
-    height: 256px;
-    z-index: 2;
-  `;
-
-  const StyledFlexHeader = styled(Flex)`
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    height: 400px;
-    align-items: center;
-    padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
-    z-index: 3;
-  `;
+  const { width } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -75,7 +44,7 @@ function ProjectPage({ match }) {
         <title>Project Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getProject, { id: match.params.id })}
@@ -87,6 +56,8 @@ function ProjectPage({ match }) {
           return (
             <React.Fragment>
               <StyledFlexHeader
+                isTabletMobile={isTabletMobile}
+                width={width}
                 px={isTabletMobile ? width * 0.096 : width * 0.2167}
               >
                 <H2>
@@ -145,7 +116,11 @@ function ProjectPage({ match }) {
                       </DetailHeader>
                       <DetailText pb="30px">
                         {data.getProject.collaborators.items.map(item => [
-                          <CollaboratorBio width={width} data={item.staff} />,
+                          <CollaboratorBio
+                            key={item.id}
+                            width={width}
+                            data={item.staff}
+                          />,
                         ])}
                       </DetailText>
                     </Flex>
@@ -163,6 +138,7 @@ function ProjectPage({ match }) {
                       >
                         {data.getProject.gallery.images.items.map(image => (
                           <S3Modal
+                            key={image.id}
                             imgKey={`public/${image.key}`}
                             sWidth={Math.round(width * 0.4229)}
                             lWidth={width}
@@ -197,17 +173,13 @@ function ProjectPage({ match }) {
                     </Flex>
                   </Flex>
                 </Flex>
-                <Footer height={height} width={width} />
+                <Footer />
               </Flex>
             </React.Fragment>
           );
         }}
       </Connect>
-      <OverlayContainer
-        width={width}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }

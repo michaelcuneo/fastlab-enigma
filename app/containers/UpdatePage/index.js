@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 
 import Slideshow from 'react-slidez';
@@ -19,7 +18,7 @@ import { Markup } from 'interweave';
 
 import VideoHeader from 'containers/VideoHeader';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex } from 'rebass';
 
 import OverlayContainer from 'containers/OverlayContainer';
 import Footer from 'components/Footer';
@@ -30,46 +29,17 @@ import S3Modal from 'components/S3Modal';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
+import { DetailHeader } from './DetailHeader';
+import { DetailText } from './DetailText';
+import { StyledFlexHeader } from './StyledFlexHeader';
+import { StyledGradientHeader } from './StyledGradientHeader';
+
 import { getPost } from '../../../src/graphql/queries';
 
 function UpdatePage({ match }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width, height, scrollWidth, scrollHeight } = useWindowDimensions();
-
-  const DetailHeader = styled(Box)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 40px;
-    line-height: 25px;
-    color: #ec184a;
-  `;
-
-  const DetailText = styled(Text)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 16px;
-    line-height: 25px;
-  `;
-
-  const StyledGradientHeader = styled(Flex)`
-    position: absolute;
-    top: 144px;
-    left: 0px;
-    right: 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), #151417);
-    height: 256px;
-    z-index: 2;
-  `;
-
-  const StyledFlexHeader = styled(Flex)`
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 400px;
-    align-items: center;
-    width: ${isTabletMobile ? width * 0.4229 : width * 0.4229};
-    z-index: 3;
-  `;
+  const { width } = useWindowDimensions();
 
   return (
     <React.Fragment>
@@ -77,7 +47,7 @@ function UpdatePage({ match }) {
         <title>Project Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader width={width} height={height} />
+      <VideoHeader />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getPost, { id: match.params.id })}
@@ -89,6 +59,7 @@ function UpdatePage({ match }) {
           return (
             <React.Fragment>
               <StyledFlexHeader
+                isTabletMobile={isTabletMobile}
                 px={isTabletMobile ? width * 0.096 : width * 0.2167}
               >
                 <H2>
@@ -165,6 +136,7 @@ function UpdatePage({ match }) {
                       >
                         {data.getPost.gallery.images.items.map(image => (
                           <S3Modal
+                            key={image.key}
                             imgKey={`public/${image.key}`}
                             sWidth={Math.round(width * 0.4229)}
                             lWidth={window.innerWidth}
@@ -174,18 +146,13 @@ function UpdatePage({ match }) {
                     )}
                   </Flex>
                 </Flex>
-                <Footer height={height} width={width} />
+                <Footer />
               </Flex>
             </React.Fragment>
           );
         }}
       </Connect>
-      <OverlayContainer
-        width={width}
-        height={height}
-        scrollWidth={scrollWidth}
-        scrollHeight={scrollHeight}
-      />
+      <OverlayContainer />
     </React.Fragment>
   );
 }

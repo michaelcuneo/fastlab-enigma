@@ -7,6 +7,12 @@ import { Flex, Box, Text } from 'rebass';
 
 import StaffLink from './StaffLink';
 
+import { StyledMenu } from './StyledMenu';
+import { StyledText } from './StyledText';
+import { StyledHeader } from './StyledHeader';
+import { StyledSubText } from './StyledSubText';
+import { StyledLine } from './StyledLine';
+
 const StyledSubHeader = ({ link, to, children }) => {
   const HeaderLinkHref = styled.a`
     font-face: 'jetbrains-medium';
@@ -39,39 +45,6 @@ StyledSubHeader.propTypes = {
 
 const SideBio = ({ width, data }) => {
   const containerWidth = width * 0.2073;
-
-  const StyledMenu = styled(Box)`
-    background: #151417;
-    border: 1px solid #707070;
-    border-radius: 40px;
-    z-index: 3;
-  `;
-
-  const StyledText = styled(Text)`
-    font-face: 'jetbrains-medium';
-    type-size: 20px;
-    line-height: 25px;
-    color: #0ff48d;
-  `;
-
-  const StyledSubText = styled(Text)`
-    font-face: 'jetbrains-medium';
-    type-size: 16px;
-    line-height: 25px;
-    padding: 2px;
-  `;
-
-  const StyledHeader = styled(Text)`
-    font-face: 'jetbrains-medium';
-    type-size: 14px;
-    line-height: 22px;
-    color: #0ff48d;
-  `;
-
-  const StyledLine = styled.hr`
-    width: 100%;
-    color: #707070;
-  `;
 
   return (
     <StyledMenu

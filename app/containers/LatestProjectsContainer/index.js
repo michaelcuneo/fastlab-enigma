@@ -122,7 +122,13 @@ const LatestProjectsContainer = ({ dark }) => {
                 </React.Fragment>
               ) : (
                 data.listProjects.items.map(item => (
-                  <ProjectContainer key={item.id} item={item} staggered />
+                  <ProjectContainer
+                    key={item.id}
+                    item={item}
+                    width={width}
+                    height={height}
+                    staggered
+                  />
                 ))
               );
             }}

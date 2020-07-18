@@ -1,25 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-
-import { Box, Text } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-const MenuItem = ({ py, onClick, item, currentMenuItem }) => {
-  const StyledText = styled(Text)`
-    font-family: 'jetbrains-bold', sans-serif;
-    font-size: 20px;
-    line-size: 25px;
-    color: ${currentMenuItem === item.id ? '#0FF48D' : 'white'};
-  `;
+import { StyledMenu } from './StyledMenu';
+import { StyledText } from './StyledText';
 
-  return (
-    <StyledText py={py} onClick={onClick}>
-      {item.title}
-    </StyledText>
-  );
-};
+const MenuItem = ({ py, onClick, item, currentMenuItem }) => (
+  <StyledText
+    py={py}
+    onClick={onClick}
+    currentMenuItem={currentMenuItem}
+    item={item}
+  >
+    {item.title}
+  </StyledText>
+);
 
 MenuItem.propTypes = {
   py: PropTypes.string,
@@ -32,13 +28,6 @@ const SideMenu = ({ menuItems, setCurrentMenuItem, currentMenuItem }) => {
   const { width } = useWindowDimensions();
 
   const containerWidth = width * 0.2073;
-
-  const StyledMenu = styled(Box)`
-    background: #151417;
-    border: 1px solid #707070;
-    border-radius: 40px;
-    z-index: 3;
-  `;
 
   return (
     <StyledMenu

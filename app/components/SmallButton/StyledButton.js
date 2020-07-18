@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useSpring, animated as a } from 'react-spring';
-
-import styled from 'styled-components';
+import CustomButton from './CustomButton';
+import CustomAnimation from './CustomAnimation';
 
 function StyledButton({ children, color, active }) {
   let shadow;
@@ -25,39 +24,15 @@ function StyledButton({ children, color, active }) {
   }
 
   const [hoverState, setHoverState] = useState(false);
-  const CustomAnimation = useSpring({
-    boxShadow: !hoverState
-      ? `0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(0, 0, 0, 0)`
-      : `-10px -10px 40px rgba(255, 255, 255, 0.1), 10px 10px 40px ${shadow}`,
-  });
-
-  const CustomButton = styled(a.button)`
-    display: inline-flex;
-    align-content: center;
-    align-items: center;
-    width: auto;
-    height: 50px;
-    text-decoration: none;
-    -webkit-font-smoothing: antialiased;
-    -webkit-touch-callout: none;
-    cursor: pointer;
-    font-family: 'jetbrains-bold', sans-serif;
-    font-size: 17px;
-    color: white;
-    border-radius: 40px;
-    background: ${background};
-    border: 0px;
-    padding: 0px 30px 0px 30px;
-    color: ${active ? 'white' : 'green'};
-    z-index: 3;
-  `;
 
   return (
     <CustomButton
       onMouseOver={() => setHoverState(true)}
       onFocus={() => setHoverState(true)}
       onMouseLeave={() => setHoverState(false)}
-      style={CustomAnimation}
+      background={background}
+      active={active}
+      style={CustomAnimation({ hoverState, shadow })}
     >
       {children}
     </CustomButton>

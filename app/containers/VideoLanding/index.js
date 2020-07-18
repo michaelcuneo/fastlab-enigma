@@ -39,9 +39,7 @@ import Overlay from './Overlay';
 
 const VideoLanding = ({ text }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
-
   const { width, height } = useWindowDimensions();
-
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const desktopVideos = [
@@ -101,7 +99,7 @@ const VideoLanding = ({ text }) => {
         <ControlBar disableCompletely />
         <BigPlayButton disabled />
         <VolumeMenuButton disabled />
-        <Overlay height={height} width={width} text={text} />
+        <Overlay text={text} />
       </Player>
     </div>
   );

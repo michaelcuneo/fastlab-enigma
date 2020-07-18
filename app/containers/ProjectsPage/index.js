@@ -1,6 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
-
 import { Helmet } from 'react-helmet';
 
 import { FormattedMessage } from 'react-intl';
@@ -19,33 +17,14 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { Flex } from 'rebass';
 
+import { StyledFlexHeader } from './StyledFlexHeader';
+import { StyledGradientHeader } from './StyledGradientHeader';
+
 import messages from './messages';
 
 function ProjectsPage() {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width } = useWindowDimensions();
-
-  const StyledGradientHeader = styled(Flex)`
-    position: absolute;
-    top: 144px;
-    left: 0px;
-    right: 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), #151417);
-    height: 256px;
-    z-index: 2;
-  `;
-
-  const StyledFlexHeader = styled(Flex)`
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    height: 400px;
-    align-items: center;
-    padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
-    z-index: 3;
-  `;
 
   return (
     <React.Fragment>
@@ -54,7 +33,7 @@ function ProjectsPage() {
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
       <VideoHeader />
-      <StyledFlexHeader>
+      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
         <H2>
           <FormattedMessage {...messages.header} />
           <span className="blink_me">_</span>

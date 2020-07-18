@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
 
 import { graphqlOperation } from 'aws-amplify';
 
@@ -12,39 +10,15 @@ import { Flex, Box } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
+import { DetailHeader } from './DetailHeader';
+import { StaffTemplate } from './StaffTemplate';
+
 import { listStaffs } from '../../../src/graphql/queries';
 
 import messages from './messages';
 
-import StaffLink from '../StaffLink';
-
 function ResearchersContainer() {
   const { width } = useWindowDimensions();
-  const staffTemplate = newStaff => (
-    <Flex
-      flexDirection="column"
-      key={newStaff.id}
-      value={newStaff.id}
-      width={[5 / 10, 2 / 10, width * 0.0635]}
-      sx={{ maxWidth: width * 0.0635 }}
-    >
-      <Link to={`/researcher/${newStaff.id}`}>
-        <StaffLink
-          key={newStaff.id}
-          width={width}
-          typeSize={['10px', '12px', '14px']}
-          staff={newStaff}
-        />
-      </Link>
-    </Flex>
-  );
-
-  const DetailHeader = styled(Box)`
-    font-family: 'archiaregular', sans-serif;
-    font-size: 40px;
-    line-height: 25px;
-    color: #ec184a;
-  `;
 
   return (
     <React.Fragment>
@@ -76,7 +50,13 @@ function ResearchersContainer() {
               if (error) return <h3>Error</h3>;
               if (loading || !data) return null;
               return data.listStaffs.items.map(staffs => [
-                staffs && staffTemplate(staffs),
+                staffs && (
+                  <StaffTemplate
+                    key={staffs.id}
+                    width={width}
+                    newStaff={staffs}
+                  />
+                ),
               ]);
             }}
           </Connect>

@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import Button from 'components/Button';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
+
+import { StyledText } from './StyledText';
 
 import { listProjects } from '../../../src/graphql/queries';
 
@@ -19,12 +20,6 @@ const AllProjects = ({ dark }) => {
   const [nextToken, setNextToken] = useState(null);
 
   const { width, height } = useWindowDimensions();
-
-  const StyledText = styled(Text)`
-    font-size: 34pt;
-    font-family: 'archiaregular', sans-serif;
-    color: white;
-  `;
 
   return (
     <React.Fragment>
@@ -41,7 +36,6 @@ const AllProjects = ({ dark }) => {
         )}
         <Flex flexWrap="wrap" flexDirection="row" sx={{ height: 'auto' }}>
           <Connect
-            key="AllProjects"
             query={graphqlOperation(listProjects, {
               limit: 9,
               nextToken,
@@ -52,10 +46,9 @@ const AllProjects = ({ dark }) => {
               if (loading || !data) return null;
               return [
                 data.listProjects.items.map(thisItem => (
-                  <Flex>
+                  <Flex key={thisItem.id}>
                     <Box pr={[width * 0.0039]} py={['40px']}>
                       <ProjectContainer
-                        key={thisItem.id}
                         width={width * 0.2792}
                         height={height * 0.4167}
                         screenWidth={width}

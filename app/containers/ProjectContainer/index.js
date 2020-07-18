@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -9,7 +8,8 @@ import { Flex, Text } from 'rebass';
 
 import Displacement from 'images/1.jpg';
 
-import { useSpring, animated as a } from 'react-spring';
+import { CustomAnimatedFlex } from './CustomAnimatedFlex';
+import { CustomAnimation } from './CustomAnimation';
 
 import Image from './Image';
 
@@ -31,31 +31,16 @@ function ProjectContainer({
   useEffect(() => {
     resetState();
     setupProject();
+    return () => {
+      resetState();
+    };
   }, []);
 
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const CustomAnimation = useSpring({
-    opacity: !hoverState ? '0' : '1',
-    right: !hoverState ? '-200px' : '0px',
-  });
-
   const resetState = () => {
     setHoverState(false);
   };
-
-  const CustomAnimatedFlex = styled(a.div)`
-    display: flex;
-    position: absolute;
-    flex-direction: column;
-    justify-content: center;
-    bottom: 0;
-    background: #ffffff;
-    border-left: 4px solid red;
-    margin: 5px 0px 0px 0px;
-    overflow: hidden;
-    padding: 34px;
-  `;
 
   let PX;
   let PB;
@@ -151,7 +136,6 @@ function ProjectContainer({
 
   return (
     <Flex
-      key={project.id}
       px={PX}
       pt={PT}
       pb={PB}
@@ -187,7 +171,7 @@ function ProjectContainer({
             intensity={0.1}
             hover={hoverState}
           />
-          <CustomAnimatedFlex style={CustomAnimation}>
+          <CustomAnimatedFlex style={CustomAnimation(hoverState)}>
             <Text
               sx={{
                 color: '#151417',
