@@ -7,6 +7,6 @@ export const StyledImageHeader = styled(Image)`
   left: 0px;
   right: 0px;
   width: 100%;
-  height: 400px;
+  height: auto;
   align-items: center;
 `;

@@ -14,7 +14,7 @@ export const StyledFlexHeader = ({ isTabletMobile, small, children }) => {
     bottom: 0;
     left: ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
     right: 0;
-    height: ${isTabletMobile || small ? '400px' : '100%'};
+    height: ${!isTabletMobile && small && '400px'};
     width: ${width};
     z-index: 2;
   `;

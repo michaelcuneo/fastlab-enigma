@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-
 import { Text } from 'rebass';
 
-export const PointText = styled(Text)`
+export const StyledText = styled(Text)`
+  font-size: 34pt;
   font-family: 'archiaregular', sans-serif;
-  font-size: 20px;
-  text-decoration: none;
-  color: #ffffff;
+  color: white;
 `;

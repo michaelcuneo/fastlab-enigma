@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { useMediaQuery } from 'react-responsive';
+
 import Button from 'components/Button';
 
 import { graphqlOperation } from 'aws-amplify';
@@ -9,6 +11,7 @@ import { Connect } from 'aws-amplify-react';
 import { Flex, Box } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
+import MobileProjectContainer from 'containers/MobileProjectContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
@@ -18,7 +21,7 @@ import { listProjects } from '../../../src/graphql/queries';
 
 const AllProjects = ({ dark }) => {
   const [nextToken, setNextToken] = useState(null);
-
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
   const { width, height } = useWindowDimensions();
 
   return (
@@ -48,14 +51,25 @@ const AllProjects = ({ dark }) => {
                 data.listProjects.items.map(thisItem => (
                   <Flex key={thisItem.id}>
                     <Box pr={[width * 0.0039]} py={['40px']}>
-                      <ProjectContainer
-                        width={width * 0.2792}
-                        height={height * 0.4167}
-                        screenWidth={width}
-                        screenHeight={height}
-                        item={thisItem}
-                        staggered
-                      />
+                      {isTabletMobile ? (
+                        <MobileProjectContainer
+                          width={width * 0.2792}
+                          height={height * 0.4167}
+                          screenWidth={width}
+                          screenHeight={height}
+                          item={thisItem}
+                          staggered
+                        />
+                      ) : (
+                        <ProjectContainer
+                          width={width * 0.2792}
+                          height={height * 0.4167}
+                          screenWidth={width}
+                          screenHeight={height}
+                          item={thisItem}
+                          staggered
+                        />
+                      )}
                     </Box>
                   </Flex>
                 )),

@@ -2,11 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import useWindowDimensions from 'utils/getWindowDimensions';
+
 import { Flex, Text } from 'rebass';
 
 function MobileProjectContainer({ item }) {
   const [project, setProject] = useState(item);
   const [image, setImage] = useState();
+
+  const { width } = useWindowDimensions();
 
   useEffect(() => {
     setupProject();
@@ -45,25 +49,42 @@ function MobileProjectContainer({ item }) {
 
   return (
     <Flex
-      maxWidth="100vw"
-      width="100vw"
-      height="auto"
+      width="100%"
+      height="100%"
       flexDirection="row"
       flexWrap="wrap"
+      px={width * 0.0827}
+      m="20px"
     >
-      <Link style={{ textDecoration: 'none' }} to={`/project/${project.id}`}>
+      <Link
+        style={{ width: '100%', textDecoration: 'none' }}
+        to={`/project/${project.id}`}
+      >
         <Flex
           alignItems="flex-end"
           justifyContent="flex-end"
+          height="320px"
+          minWidth="95%"
+          width="95%"
           sx={{
             background: `url(${image})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
           }}
         >
-          <Flex>
+          <Flex
+            flexDirection="column"
+            minWidth="100%"
+            width="100%"
+            p={width * 0.0827}
+            sx={{
+              background: 'white',
+            }}
+          >
             <Text
               sx={{
                 color: '#151417',
-                fontSize: '24px',
+                fontSize: '20px',
                 lineHeight: '28px',
                 fontFamily: 'archiaregular',
               }}
@@ -73,11 +94,10 @@ function MobileProjectContainer({ item }) {
             <Text
               sx={{
                 color: '#868686',
-                fontSize: '16px',
-                lineHeight: '25px',
+                fontSize: '10px',
+                lineHeight: '15px',
                 fontFamily: 'archiaregular',
               }}
-              my="14px"
             >
               {project.category.label}
             </Text>

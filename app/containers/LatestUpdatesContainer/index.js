@@ -1,27 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+
+import { useMediaQuery } from 'react-responsive';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
 import Button from 'components/Button';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box } from 'rebass';
 
 import UpdateContainer from 'containers/UpdateContainer';
+import MobileUpdateContainer from 'containers/MobileUpdateContainer';
 import useWindowDimensions from 'utils/getWindowDimensions';
+
+import { StyledText } from './StyledText';
 import Overlay from './Overlay';
 
 import { listPosts } from '../../../src/graphql/queries';
 
 const LatestUpdatesContainer = ({ dark }) => {
-  const StyledText = styled(Text)`
-    font-size: 34pt;
-    font-family: 'archiaregular', sans-serif;
-    color: white;
-  `;
-
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
   const { width, height } = useWindowDimensions();
 
   return (
@@ -38,6 +37,9 @@ const LatestUpdatesContainer = ({ dark }) => {
         )}
       </Box>
       <Flex
+        flexWrap={isTabletMobile ? 'wrap' : 'none'}
+        width="100%"
+        height="auto"
         sx={{ background: dark ? '#151417' : '#EC184A' }}
         px={width * 0.0729}
       >
@@ -50,15 +52,20 @@ const LatestUpdatesContainer = ({ dark }) => {
           {({ data, loading, error }) => {
             if (error) return <h3>Error</h3>;
             if (loading || !data) return null;
-            return data.listPosts.items.map(
-              item =>
-                item && (
-                  <UpdateContainer
-                    width={width * 0.2792}
-                    key={item.id}
-                    item={item}
-                  />
-                ),
+            return data.listPosts.items.map(item =>
+              item && isTabletMobile ? (
+                <MobileUpdateContainer
+                  width={width}
+                  key={item.id}
+                  item={item}
+                />
+              ) : (
+                <UpdateContainer
+                  width={width * 0.2792}
+                  key={item.id}
+                  item={item}
+                />
+              ),
             );
           }}
         </Connect>

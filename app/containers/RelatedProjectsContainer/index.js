@@ -1,29 +1,28 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import Button from 'components/Button';
+
+import { useMediaQuery } from 'react-responsive';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
-import { Flex, Box, Text } from 'rebass';
+import { Flex, Box } from 'rebass';
 
 import ProjectContainer from 'containers/ProjectContainer';
+import MobileProjectContainer from 'containers/MobileProjectContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
+
+import { StyledText } from './StyledText';
 
 import Overlay from './Overlay';
 
 import { listProjects } from '../../../src/graphql/queries';
 
 const RelatedProjectsContainer = () => {
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
   const { width, height } = useWindowDimensions();
-
-  const StyledText = styled(Text)`
-    font-size: 34pt;
-    font-family: 'archiaregular', sans-serif;
-    color: white;
-  `;
 
   return (
     <React.Fragment>
@@ -58,15 +57,25 @@ const RelatedProjectsContainer = () => {
               {({ data, loading, error }) => {
                 if (error) return <h3>Error</h3>;
                 if (loading || !data) return null;
-                return data.listProjects.items.map(item => (
-                  <ProjectContainer
-                    key={item.id}
-                    item={item}
-                    screenWidth={width}
-                    screenHeight={height}
-                    staggered
-                  />
-                ));
+                return data.listProjects.items.map(item =>
+                  isTabletMobile ? (
+                    <MobileProjectContainer
+                      key={item.id}
+                      item={item}
+                      screenWidth={width}
+                      screenHeight={height}
+                      staggered
+                    />
+                  ) : (
+                    <ProjectContainer
+                      key={item.id}
+                      item={item}
+                      screenWidth={width}
+                      screenHeight={height}
+                      staggered
+                    />
+                  ),
+                );
               }}
             </Connect>
           </Flex>

@@ -13,11 +13,16 @@ import Point4 from 'images/Point_Four.svg';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-import { PointHeader, PointText } from './PointText';
+import { PointText } from './PointText';
+import { PointHeader } from './PointHeader';
+
+import { MobilePointText } from './MobilePointText';
+import { MobilePointHeader } from './MobilePointHeader';
 
 import messages from './messages';
 
 const PointsContainer = () => {
+  const mobileHeaderPadding = '0px';
   const headerPadding = '52px';
 
   const { width, height } = useWindowDimensions();
@@ -25,16 +30,21 @@ const PointsContainer = () => {
 
   return isTabletMobile ? (
     <Flex
-      pt={['80px', '80px', '114px']}
-      pb="80px"
+      pt={['60px', '60px', '114px']}
+      pb="60px"
       px={width * 0.0827}
       justifyContent="space-between"
       flexDirection="column"
       style={{ position: 'relative', background: '#151417' }}
     >
       <Link to="/projects">
-        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
-          <Box width={width * 0.1813} px={width * 0.0133}>
+        <Flex
+          flexDirection="row"
+          alignItems="flex-begin"
+          width="100%"
+          pb="60px"
+        >
+          <Box width={width * 0.1813} px="15px">
             <Image
               height={width * 0.1813}
               width={width * 0.1813}
@@ -43,18 +53,23 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={height * 0.0102}>
+            <MobilePointHeader pt={mobileHeaderPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointone} />
-            </PointHeader>
-            <PointText>
+            </MobilePointHeader>
+            <MobilePointText>
               <FormattedMessage {...messages.point1message} />
-            </PointText>
+            </MobilePointText>
           </Box>
         </Flex>
       </Link>
       <Link to="/about">
-        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
-          <Box width={width * 0.1813} px={width * 0.0133}>
+        <Flex
+          flexDirection="row"
+          alignItems="flex-begin"
+          width="100%"
+          pb="60px"
+        >
+          <Box width={width * 0.1813} px="15px">
             <Image
               height={width * 0.1813}
               width={width * 0.1813}
@@ -63,18 +78,23 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={height * 0.0102}>
+            <MobilePointHeader pt={mobileHeaderPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointtwo} />
-            </PointHeader>
-            <PointText>
+            </MobilePointHeader>
+            <MobilePointText>
               <FormattedMessage {...messages.point2message} />
-            </PointText>
+            </MobilePointText>
           </Box>
         </Flex>
       </Link>
       <Link to="/">
-        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
-          <Box width={width * 0.1813} px={width * 0.0133}>
+        <Flex
+          flexDirection="row"
+          alignItems="flex-begin"
+          width="100%"
+          pb="60px"
+        >
+          <Box width={width * 0.1813} px="15px">
             <Image
               height={width * 0.1813}
               width={width * 0.1813}
@@ -83,18 +103,23 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={height * 0.0102}>
+            <MobilePointHeader pt={mobileHeaderPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointthree} />
-            </PointHeader>
-            <PointText>
+            </MobilePointHeader>
+            <MobilePointText>
               <FormattedMessage {...messages.point3message} />
-            </PointText>
+            </MobilePointText>
           </Box>
         </Flex>
       </Link>
       <Link to="/areas">
-        <Flex flexDirection="row" alignItems="center" width="100%" pb="60px">
-          <Box width={width * 0.1813} px={width * 0.0133}>
+        <Flex
+          flexDirection="row"
+          alignItems="flex-begin"
+          width="100%"
+          pb="60px"
+        >
+          <Box width={width * 0.1813} px="15px">
             <Image
               height={width * 0.1813}
               width={width * 0.1813}
@@ -103,12 +128,12 @@ const PointsContainer = () => {
             />
           </Box>
           <Box width={width * 0.5973}>
-            <PointHeader pt={headerPadding} pb={height * 0.0102}>
+            <MobilePointHeader pt={mobileHeaderPadding} pb={height * 0.0102}>
               <FormattedMessage {...messages.pointfour} />
-            </PointHeader>
-            <PointText>
+            </MobilePointHeader>
+            <MobilePointText>
               <FormattedMessage {...messages.point4message} />
-            </PointText>
+            </MobilePointText>
           </Box>
         </Flex>
       </Link>
