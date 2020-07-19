@@ -5,7 +5,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { useMediaQuery } from 'react-responsive';
 
-import H2 from 'components/H2';
 import ParsedContent from 'components/ParsedContent';
 import SideMenu from 'components/SideMenu';
 import Footer from 'components/Footer';
@@ -13,7 +12,7 @@ import Footer from 'components/Footer';
 import Sig1 from 'images/scribbles_mark-1-white.svg';
 
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoHeader from 'containers/VideoHeader';
+import VideoLanding from 'containers/VideoLanding';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Image } from 'rebass';
@@ -38,32 +37,38 @@ function AboutPage() {
 
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
 
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      position: 'relative',
+      height: 'auto',
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
+
   return (
     <React.Fragment>
       <Helmet key="Helmet">
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
-      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
-        <H2>
-          <FormattedMessage {...messages.header} />
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
+      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width} />
       <StyledGradientHeader />
       <OverlayContainer />
-      <Flex
-        flexDirection="column"
-        sx={{
-          position: 'absolute',
-          height: 'auto',
-          maxWidth: '100%',
-          top: '400px',
-          background: '#151417',
-          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-        }}
-      >
+      <Flex flexDirection="column" sx={SX}>
         <Flex
           sx={{
             position: 'relative',

@@ -4,18 +4,15 @@ import { Helmet } from 'react-helmet';
 
 import { FormattedMessage } from 'react-intl';
 
-import { useMediaQuery } from 'react-responsive';
-
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
-import H2 from 'components/H2';
 import ParsedContent from 'components/ParsedContent';
 import SideBio from 'components/SideBio';
 import Footer from 'components/Footer';
 
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoHeader from 'containers/VideoHeader';
+import VideoLanding from 'containers/VideoLanding';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Box } from 'rebass';
@@ -26,15 +23,12 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { DetailHeader } from './DetailHeader';
 import { DetailText } from './DetailText';
-import { StyledFlexHeader } from './StyledFlexHeader';
 import { StyledGradientHeader } from './StyledGradientHeader';
 
 import messages from './messages';
 import { getStaff } from '../../../src/graphql/queries';
 
 function ResearcherPage({ match }) {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width, height } = useWindowDimensions();
 
   return (
@@ -43,13 +37,7 @@ function ResearcherPage({ match }) {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
-      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
-        <H2>
-          <FormattedMessage {...messages.header} />
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
       <StyledGradientHeader />
       <Connect
         key="StaffContainer"

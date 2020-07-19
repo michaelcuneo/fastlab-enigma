@@ -1,51 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
-
 import { Helmet } from 'react-helmet';
-
 import { FormattedMessage } from 'react-intl';
 
-import { useMediaQuery } from 'react-responsive';
-
-import H2 from 'components/H2';
 import Footer from 'components/Footer';
 
 import Sig2 from 'images/scribbles_mark-2-white.svg';
 
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoHeader from 'containers/VideoHeader';
+import VideoLanding from 'containers/VideoLanding';
 
 import { Flex, Image } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
+import { StyledGradientHeader } from './StyledGradientHeader';
+
 import messages from './messages';
 
 const ProgramsPage = () => {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width } = useWindowDimensions();
-
-  const StyledGradientHeader = styled(Flex)`
-    position: absolute;
-    top: 144px;
-    left: 0px;
-    right: 0px;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), #151417);
-    height: 256px;
-    z-index: 2;
-  `;
-
-  const StyledFlexHeader = styled(Flex)`
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    height: 400px;
-    align-items: center;
-    padding: 0px 0px 0px ${isTabletMobile ? width * 0.096 : width * 0.2167}px;
-    z-index: 3;
-  `;
 
   return (
     <React.Fragment>
@@ -53,13 +26,7 @@ const ProgramsPage = () => {
         <title>Programs Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
-      <StyledFlexHeader>
-        <H2>
-          <FormattedMessage {...messages.header} />
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
       <StyledGradientHeader />
       <Flex
         width={width}

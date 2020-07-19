@@ -37,7 +37,7 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 import Overlay from './Overlay';
 
-const VideoLanding = ({ text }) => {
+const VideoLanding = ({ text, small }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
   const { width, height } = useWindowDimensions();
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
@@ -99,7 +99,7 @@ const VideoLanding = ({ text }) => {
         <ControlBar disableCompletely />
         <BigPlayButton disabled />
         <VolumeMenuButton disabled />
-        <Overlay text={text} />
+        <Overlay text={text} small={small} />
       </Player>
     </div>
   );
@@ -107,6 +107,7 @@ const VideoLanding = ({ text }) => {
 
 VideoLanding.propTypes = {
   text: PropTypes.object,
+  small: PropTypes.bool,
 };
 
 export default VideoLanding;

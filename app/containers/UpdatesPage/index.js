@@ -10,7 +10,7 @@ import Footer from 'components/Footer';
 
 import AllUpdatesContainer from 'containers/AllUpdatesContainer';
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoHeader from 'containers/VideoHeader';
+import VideoLanding from 'containers/VideoLanding';
 
 import { Flex } from 'rebass';
 
@@ -32,7 +32,7 @@ function UpdatesPage() {
         <title>Updates Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
       <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
         <H2>
           <FormattedMessage {...messages.header} />

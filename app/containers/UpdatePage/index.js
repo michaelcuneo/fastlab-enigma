@@ -16,7 +16,7 @@ import H2 from 'components/H2';
 
 import { Markup } from 'interweave';
 
-import VideoHeader from 'containers/VideoHeader';
+import VideoLanding from 'containers/VideoLanding';
 
 import { Flex } from 'rebass';
 
@@ -47,7 +47,7 @@ function UpdatePage({ match }) {
         <title>Project Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
+      <VideoLanding small />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getPost, { id: match.params.id })}

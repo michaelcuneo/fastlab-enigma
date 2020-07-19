@@ -20,6 +20,7 @@ const HomePage = () => (
     <OverlayContainer />
     <VideoLanding
       text={<ParsedContent content="The centre of <br /> applied chaos" />}
+      small={false}
     />
     <PointsContainer />
     <LatestProjectsContainer />

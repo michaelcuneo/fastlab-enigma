@@ -2,28 +2,22 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 
-import { useMediaQuery } from 'react-responsive';
-
 import { Flex, Text, Image } from 'rebass';
 
 import Sig3 from 'images/scribbles_mark-3-white.svg';
 
-import VideoHeader from 'containers/VideoHeader';
-import H2 from 'components/H2';
+import VideoLanding from 'containers/VideoLanding';
 import Footer from 'components/Footer';
 
 import OverlayContainer from 'containers/OverlayContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-import { StyledFlexHeader } from './StyledFlexHeader';
 import { StyledGradientHeader } from './StyledGradientHeader';
 
 import messages from './messages';
 
 function ContactPage() {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width, height } = useWindowDimensions();
 
   return (
@@ -32,13 +26,7 @@ function ContactPage() {
         <title>Contact Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoHeader />
-      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
-        <H2>
-          <FormattedMessage {...messages.header} />
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
       <StyledGradientHeader />
       <Flex
         width={width}

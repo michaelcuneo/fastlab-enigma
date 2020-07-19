@@ -13,6 +13,7 @@ import Button from 'components/Button';
 
 import { Flex, Image } from 'rebass';
 import ProjectContainer from 'containers/ProjectContainer';
+import MobileProjectContainer from 'containers/MobileProjectContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
@@ -20,7 +21,6 @@ import { listProjects } from '../../../src/graphql/queries';
 
 const LatestProjectsContainer = ({ dark }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width, height } = useWindowDimensions();
 
   return (
@@ -122,13 +122,7 @@ const LatestProjectsContainer = ({ dark }) => {
                 </React.Fragment>
               ) : (
                 data.listProjects.items.map(item => (
-                  <ProjectContainer
-                    key={item.id}
-                    item={item}
-                    width={width}
-                    height={height}
-                    staggered
-                  />
+                  <MobileProjectContainer key={item.id} item={item} staggered />
                 ))
               );
             }}
