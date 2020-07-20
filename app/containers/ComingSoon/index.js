@@ -1,29 +1,21 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-import H2 from 'components/H2';
-
 import ParsedContent from 'components/ParsedContent';
-
-import { useMediaQuery } from 'react-responsive';
 
 import { Flex } from 'rebass';
 
-import VideoHeader from 'containers/VideoHeader';
+import Landing from 'containers/Landing';
 import OverlayContainer from 'containers/OverlayContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
 import Footer from 'components/Footer';
 
-import { DetailHeader } from './DetailHeader';
-import { DetailText } from './DetailText';
-import { StyledFlexHeader } from './StyledFlexHeader';
-import { StyledGradientHeader } from './StyledGradientHeader';
+import { DetailHeader } from 'components/DetailHeader';
+import { DetailText } from 'components/DetailText';
 
 const ComingSoon = () => {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width } = useWindowDimensions();
 
   return (
@@ -33,14 +25,7 @@ const ComingSoon = () => {
         <title>Coming Soon</title>
         <meta name="description" content="Fastlab" />
       </Helmet>
-      <StyledFlexHeader isTabletMobile={isTabletMobile}>
-        <H2>
-          The centre of <br /> applied chaos
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
-      <StyledGradientHeader />
-      <VideoHeader />
+      <Landing text={'The centre of <br /> applied chaos'} small />
       <Flex
         width={width}
         flexDirection="column"

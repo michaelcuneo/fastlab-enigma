@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Box } from 'rebass';
 
-export const DetailHeader = ({ isTabletMobile, pt, pb, children }) => {
+import { useMediaQuery } from 'react-responsive';
+
+export function DetailHeader({ children }) {
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
   const Header = styled(Box)`
     font-family: 'archiaregular', sans-serif;
     font-size: ${isTabletMobile ? '30px' : '40px'};
@@ -12,15 +16,12 @@ export const DetailHeader = ({ isTabletMobile, pt, pb, children }) => {
   `;
 
   return (
-    <Header pt={pt} pb={pb}>
+    <Header pt="10px" pb="20px">
       {children}
     </Header>
   );
-};
+}
 
 DetailHeader.propTypes = {
-  isTabletMobile: PropTypes.bool,
   children: PropTypes.node,
-  pt: PropTypes.array,
-  pb: PropTypes.array,
 };

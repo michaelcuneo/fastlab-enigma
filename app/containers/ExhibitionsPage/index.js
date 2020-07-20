@@ -8,14 +8,12 @@ import Footer from 'components/Footer';
 import Sig2 from 'images/scribbles_mark-2-white.svg';
 
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Text, Image } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
-
-import { StyledGradientHeader } from './StyledGradientHeader';
 
 import messages from './messages';
 
@@ -50,9 +48,7 @@ const ExhibitionsPage = () => {
         <title>Programs Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
-        <StyledGradientHeader />
-      </VideoLanding>
+      <Landing text={<FormattedMessage {...messages.header} />} small />
       <OverlayContainer />
       <Flex width={width} flexDirection="column" sx={SX}>
         <Flex

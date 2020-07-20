@@ -32,6 +32,9 @@ const LatestProjectsContainer = ({ dark }) => {
       >
         <Flex
           sx={{ position: 'relative' }}
+          alignItems="center"
+          justifyItems="center"
+          justifyContent="center"
           flexWrap="wrap"
           width="100%"
           minHeight={height * 1.25}

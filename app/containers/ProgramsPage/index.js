@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-
 import { FormattedMessage } from 'react-intl';
-
 import { useMediaQuery } from 'react-responsive';
 
 import ParsedContent from 'components/ParsedContent';
@@ -11,9 +9,8 @@ import TopMenu from 'components/TopMenu';
 import Footer from 'components/Footer';
 
 import Sig2 from 'images/scribbles_mark-2-white.svg';
-
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Image } from 'rebass';
@@ -22,9 +19,8 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 import Button from 'components/Button';
 
-import { DetailHeader } from './DetailHeader';
-import { DetailText } from './DetailText';
-import { StyledGradientHeader } from './StyledGradientHeader';
+import { DetailHeader } from 'components/DetailHeader';
+import { DetailText } from 'components/DetailText';
 import { menuItems } from './menuItems';
 
 import messages from './messages';
@@ -62,9 +58,8 @@ function ProgramsPage() {
         <title>Programs Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
-        <StyledGradientHeader />
-      </VideoLanding>
+      <Landing text={<FormattedMessage {...messages.header} />} small />
+      <OverlayContainer />
       <Flex flexDirection="column" sx={SX}>
         <Flex
           sx={{
@@ -74,6 +69,7 @@ function ProgramsPage() {
           justifyContent="flex-begin"
           alignItems="flex-begin"
           pt={['40px', '40px', '182px']}
+          pb={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
           {isTabletMobile ? (
@@ -90,7 +86,7 @@ function ProgramsPage() {
                 sx={{ position: 'relative', minWidth: width * 0.4229 }}
               >
                 <React.Fragment>
-                  <DetailHeader pt="10px" pb="30px">
+                  <DetailHeader>
                     {menuItems[currentMenuItem].title}
                   </DetailHeader>
                   <DetailText pr={['0px', '0px', width * 0.1432]}>
@@ -103,39 +99,29 @@ function ProgramsPage() {
             </React.Fragment>
           ) : (
             <React.Fragment>
+              <SideMenu
+                width={width}
+                height={height}
+                menuItems={menuItems}
+                currentMenuItem={currentMenuItem}
+                setCurrentMenuItem={setCurrentMenuItem}
+              />
               <Flex
-                sx={{
-                  position: 'relative',
-                }}
-                justifyContent="flex-begin"
-                alignItems="flex-begin"
-                pt={['40px', '40px', '182px']}
-                px={[width * 0.0933, width * 0.0933, width * 0.0729]}
+                height="auto"
+                flexDirection="column"
+                pl={['0px', '0px', width * 0.0802]}
+                sx={{ position: 'relative', minWidth: width * 0.4229 }}
               >
-                <SideMenu
-                  width={width}
-                  height={height}
-                  menuItems={menuItems}
-                  currentMenuItem={currentMenuItem}
-                  setCurrentMenuItem={setCurrentMenuItem}
-                />
-                <Flex
-                  height="auto"
-                  flexDirection="column"
-                  pl={['0px', '0px', width * 0.0802]}
-                  sx={{ position: 'relative', minWidth: width * 0.4229 }}
-                >
-                  <React.Fragment>
-                    <DetailHeader pt="10px" pb="30px">
-                      {menuItems[currentMenuItem].title}
-                    </DetailHeader>
-                    <DetailText pr={['0px', '0px', width * 0.1432]}>
-                      <ParsedContent
-                        content={menuItems[currentMenuItem].details}
-                      />
-                    </DetailText>
-                  </React.Fragment>
-                </Flex>
+                <React.Fragment>
+                  <DetailHeader pt="10px" pb="30px">
+                    {menuItems[currentMenuItem].title}
+                  </DetailHeader>
+                  <DetailText pr={['0px', '0px', width * 0.1432]}>
+                    <ParsedContent
+                      content={menuItems[currentMenuItem].details}
+                    />
+                  </DetailText>
+                </React.Fragment>
               </Flex>
             </React.Fragment>
           )}
@@ -183,7 +169,6 @@ function ProgramsPage() {
         <RelatedProjectsContainer />
         <Footer />
       </Flex>
-      <OverlayContainer />
     </React.Fragment>
   );
 }

@@ -5,15 +5,18 @@ import { useMediaQuery } from 'react-responsive';
 import H1 from 'components/H1';
 import H2 from 'components/H2';
 
-import { StyledFlexHeader } from './StyledFlexHeader';
-import { StyledGradientFooter } from './StyledGradientFooter';
+import { StyledGradientHeader } from 'components/StyledGradientHeader';
+import { StyledFlexHeader } from 'components/StyledFlexHeader';
+
+import useWindowDimensions from 'utils/getWindowDimensions';
 
 const Overlay = ({ text, small }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+  const { width } = useWindowDimensions();
 
   return (
     <React.Fragment>
-      <StyledFlexHeader isTabletMobile={isTabletMobile} small={small}>
+      <StyledFlexHeader width={width} small={small}>
         {isTabletMobile || small ? (
           <H2>
             {text}
@@ -26,7 +29,7 @@ const Overlay = ({ text, small }) => {
           </H1>
         )}
       </StyledFlexHeader>
-      <StyledGradientFooter justifyContent="flex-end" />
+      <StyledGradientHeader justifyContent="flex-end" />
     </React.Fragment>
   );
 };

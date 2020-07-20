@@ -3,25 +3,27 @@ import PropTypes from 'prop-types';
 
 import Popover from 'react-popover';
 
-import { Flex } from 'rebass';
+import { Flex, Box } from 'rebass';
 
 import { StyledMenu } from './StyledMenu';
 import { StyledText } from './StyledText';
 import { DropdownText } from './DropdownText';
 
 const CurrentMenuItem = ({ onClick, menuItems, currentMenuItem }) => (
-  <StyledText
-    onClick={onClick}
-    currentMenuItem={currentMenuItem}
-    menuItems={menuItems}
-  >
-    {menuItems[currentMenuItem].title}
-  </StyledText>
+  <Box width="100%" height="auto">
+    <StyledText
+      onClick={onClick}
+      currentMenuItem={currentMenuItem}
+      menuItems={menuItems}
+    >
+      {menuItems[currentMenuItem].title}
+    </StyledText>
+  </Box>
 );
 
 CurrentMenuItem.propTypes = {
   onClick: PropTypes.func,
-  menuItems: PropTypes.object,
+  menuItems: PropTypes.array,
   currentMenuItem: PropTypes.number,
 };
 
@@ -37,17 +39,19 @@ MenuItem.propTypes = {
 const PopoverBody = ({ menuItems, setCurrentMenuItem, setOpen }) => (
   <Flex
     flexDirection="column"
-    maxWidth="auto"
-    width="auto"
+    width="100%"
+    minWidth="100%"
     sx={{
+      position: 'relative',
       background: '#151417',
       border: '1px solid #707070',
       borderRadius: '40px',
-      zIndex: 99999,
+      zIndex: '99999 !important',
     }}
   >
     {menuItems.map(item => (
       <MenuItem
+        key={item.id}
         item={item}
         onClick={() => {
           setCurrentMenuItem(item.id);

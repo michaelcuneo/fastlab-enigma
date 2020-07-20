@@ -10,13 +10,9 @@ import { Connect } from 'aws-amplify-react';
 import CollaboratorBio from 'components/CollaboratorBio';
 import ParsedContent from 'components/ParsedContent';
 
-import { useMediaQuery } from 'react-responsive';
-
-import H2 from 'components/H2';
-
 import { Markup } from 'interweave';
 
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 
 import { Flex } from 'rebass';
 
@@ -29,16 +25,12 @@ import S3Modal from 'components/S3Modal';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-import { DetailHeader } from './DetailHeader';
-import { DetailText } from './DetailText';
-import { StyledFlexHeader } from './StyledFlexHeader';
-import { StyledGradientHeader } from './StyledGradientHeader';
+import { DetailHeader } from 'components/DetailHeader';
+import { DetailText } from 'components/DetailText';
 
 import { getPost } from '../../../src/graphql/queries';
 
 function UpdatePage({ match }) {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
   const { width } = useWindowDimensions();
 
   return (
@@ -47,7 +39,6 @@ function UpdatePage({ match }) {
         <title>Project Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding small />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getPost, { id: match.params.id })}
@@ -58,15 +49,7 @@ function UpdatePage({ match }) {
 
           return (
             <React.Fragment>
-              <StyledFlexHeader
-                isTabletMobile={isTabletMobile}
-                px={isTabletMobile ? width * 0.096 : width * 0.2167}
-              >
-                <H2>
-                  <Markup content={data.getPost.title} />
-                </H2>
-              </StyledFlexHeader>
-              <StyledGradientHeader />
+              <Landing text={<Markup content={data.getPost.title} />} small />
               <Flex
                 width={width}
                 flexDirection="column"

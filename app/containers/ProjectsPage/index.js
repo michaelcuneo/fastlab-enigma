@@ -1,23 +1,44 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import { useMediaQuery } from 'react-responsive';
 
 import LatestProjectsContainer from 'containers/LatestProjectsContainer';
 import AllProjectsContainer from 'containers/AllProjectsContainer';
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import Footer from 'components/Footer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { Flex } from 'rebass';
 
-import { StyledGradientHeader } from './StyledGradientHeader';
-
 import messages from './messages';
 
 function ProjectsPage() {
   const { width } = useWindowDimensions();
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
 
   return (
     <React.Fragment>
@@ -25,18 +46,8 @@ function ProjectsPage() {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
-      <StyledGradientHeader />
-      <Flex
-        width={width}
-        flexDirection="column"
-        sx={{
-          position: 'absolute',
-          height: 'auto',
-          top: '400px',
-          background: '#151417',
-        }}
-      >
+      <Landing text={<FormattedMessage {...messages.header} />} small />
+      <Flex width={width} flexDirection="column" sx={SX}>
         <LatestProjectsContainer dark />
         <AllProjectsContainer />
         <Footer />

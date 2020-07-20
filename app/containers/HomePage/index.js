@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 
 import ParsedContent from 'components/ParsedContent';
 
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import PointsContainer from 'containers/PointsContainer';
 import LatestProjectsContainer from 'containers/LatestProjectsContainer';
 import LatestUpdatesContainer from 'containers/LatestUpdatesContainer';
@@ -18,7 +18,7 @@ const HomePage = () => (
       <meta name="description" content="Fastlab" />
     </Helmet>
     <OverlayContainer />
-    <VideoLanding
+    <Landing
       text={<ParsedContent content="The centre of <br /> applied chaos" />}
       small={false}
     />

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
+import { useMediaQuery } from 'react-responsive';
 
 import { graphqlOperation } from 'aws-amplify';
 
@@ -10,7 +11,7 @@ import { Flex, Box } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-import { DetailHeader } from './DetailHeader';
+import { DetailHeader } from 'components/DetailHeader';
 import { StaffTemplate } from './StaffTemplate';
 
 import { listStaffs } from '../../../src/graphql/queries';
@@ -19,11 +20,11 @@ import messages from './messages';
 
 function ResearchersContainer() {
   const { width } = useWindowDimensions();
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return (
     <React.Fragment>
       <Flex
-        flexDirection="column"
         key="HeaderBox"
         flexWrap="wrap"
         justifyContent="space-between"
@@ -38,7 +39,7 @@ function ResearchersContainer() {
           key="Wrapper"
           justifyContent="space-between"
           flexWrap="wrap"
-          maxWidth={[1, 1, width * 0.5729]}
+          maxWidth={[width, width, width * 0.5729]}
         >
           <Connect
             key="ListProjectsUnfiltered"
@@ -52,6 +53,7 @@ function ResearchersContainer() {
               return data.listStaffs.items.map(staffs => [
                 staffs && (
                   <StaffTemplate
+                    isTabletMobile={isTabletMobile}
                     key={staffs.id}
                     width={width}
                     newStaff={staffs}

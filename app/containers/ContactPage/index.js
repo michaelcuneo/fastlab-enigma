@@ -7,14 +7,12 @@ import { Flex, Text, Image } from 'rebass';
 
 import Sig3 from 'images/scribbles_mark-3-white.svg';
 
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import Footer from 'components/Footer';
 
 import OverlayContainer from 'containers/OverlayContainer';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
-
-import { StyledGradientHeader } from './StyledGradientHeader';
 
 import messages from './messages';
 
@@ -49,9 +47,7 @@ function ContactPage() {
         <title>Contact Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
-        <StyledGradientHeader />
-      </VideoLanding>
+      <Landing text={<FormattedMessage {...messages.header} />} small />
       <Flex width={width} flexDirection="column" sx={SX}>
         <Flex
           sx={{

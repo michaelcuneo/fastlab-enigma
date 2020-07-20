@@ -12,13 +12,13 @@ const StaffLink = ({ width, typeSize, staff }) => (
       key={staff.id}
       style={{
         container: {
-          width: `${width * 0.0635}px`,
-          height: `${width * 0.0635}px`,
+          width,
+          height: width,
           borderRadius: '50%',
         },
         image: {
-          width: `${width * 0.0635}px`,
-          height: `${width * 0.0635}px`,
+          width,
+          height: width,
           objectFit: 'cover',
           objectPosition: 'center',
           WebkitFilter: 'grayscale(100%)',
@@ -29,13 +29,13 @@ const StaffLink = ({ width, typeSize, staff }) => (
       }}
       hoverStyle={{
         container: {
-          width: `${width * 0.0635}px`,
-          height: `${width * 0.0635}px`,
+          width,
+          height: width,
           borderRadius: '50%',
         },
         image: {
-          width: `${width * 0.0635}px`,
-          height: `${width * 0.0635}px`,
+          width,
+          height: width,
           objectFit: 'cover',
           objectPosition: 'center',
           WebkitFilter: 'grayscale(0%)',
@@ -44,8 +44,8 @@ const StaffLink = ({ width, typeSize, staff }) => (
           border: '4px solid white',
         },
       }}
-      width={122}
-      height={122}
+      width={Math.round(width)}
+      height={Math.round(width)}
       imgKey={`public/${staff.mugshot}`}
       enableHover
     />

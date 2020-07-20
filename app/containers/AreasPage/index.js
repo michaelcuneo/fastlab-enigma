@@ -10,7 +10,7 @@ import Footer from 'components/Footer';
 
 import Sig1 from 'images/scribbles_mark-1-white.svg';
 import OverlayContainer from 'containers/OverlayContainer';
-import VideoLanding from 'containers/VideoLanding';
+import Landing from 'containers/Landing';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Image } from 'rebass';
@@ -19,9 +19,8 @@ import useWindowDimensions from 'utils/getWindowDimensions';
 
 import Button from 'components/Button';
 
-import { DetailHeader } from './DetailHeader';
-import { DetailText } from './DetailText';
-import { StyledGradientHeader } from './StyledGradientHeader';
+import { DetailHeader } from 'components/DetailHeader';
+import { DetailText } from 'components/DetailText';
 import { menuItems } from './menuItems';
 
 import messages from './messages';
@@ -60,9 +59,7 @@ const AreasPage = () => {
         <title>Rabbit Hole</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
-        <StyledGradientHeader />
-      </VideoLanding>
+      <Landing text={<FormattedMessage {...messages.header} />} small />
       <Flex width={width} flexDirection="column" sx={SX}>
         <Flex
           sx={{
@@ -72,6 +69,7 @@ const AreasPage = () => {
           justifyContent="flex-begin"
           alignItems="flex-begin"
           pt={['40px', '40px', '182px']}
+          pb={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
           {isTabletMobile ? (
@@ -85,6 +83,7 @@ const AreasPage = () => {
               <Flex
                 height="auto"
                 flexDirection="column"
+                pt={['40px', '40px']}
                 pl={['0px', '0px', width * 0.0802]}
                 sx={{ position: 'relative', minWidth: width * 0.4229 }}
               >

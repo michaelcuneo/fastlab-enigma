@@ -12,7 +12,7 @@ export const StyledText = ({ children, onClick }) => {
   `;
 
   return (
-    <Styled onClick={onClick} p="15px">
+    <Styled onClick={onClick} px="20px" py="20px">
       {children}
     </Styled>
   );

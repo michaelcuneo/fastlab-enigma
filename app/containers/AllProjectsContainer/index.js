@@ -47,49 +47,50 @@ const AllProjects = ({ dark }) => {
             {({ data, loading, error }) => {
               if (error) return <h3>Error</h3>;
               if (loading || !data) return null;
-              return [
-                data.listProjects.items.map(thisItem => (
-                  <Flex key={thisItem.id}>
-                    <Box pr={[width * 0.0039]} py={['40px']}>
-                      {isTabletMobile ? (
-                        <MobileProjectContainer
-                          width={width * 0.2792}
-                          height={height * 0.4167}
-                          screenWidth={width}
-                          screenHeight={height}
-                          item={thisItem}
-                          staggered
-                        />
-                      ) : (
+              return (
+                <React.Fragment>
+                  {data.listProjects.items.map(thisItem =>
+                    !isTabletMobile ? (
+                      <Box
+                        key={thisItem.id}
+                        pr={[width * 0.0039]}
+                        py={['40px']}
+                      >
                         <ProjectContainer
-                          width={width * 0.2792}
-                          height={height * 0.4167}
+                          width={width}
+                          height={height}
                           screenWidth={width}
                           screenHeight={height}
                           item={thisItem}
                           staggered
                         />
-                      )}
-                    </Box>
-                  </Flex>
-                )),
-                <Flex
-                  width="100%"
-                  flexDirection="row"
-                  justifyContent="flex-end"
-                  pb={[100]}
-                  pr={width * 0.0729}
-                >
-                  <Button
-                    color="pink"
-                    to="/projects"
-                    arrow="right"
-                    onClick={() => setNextToken(data.listProjects.nextToken)}
+                      </Box>
+                    ) : (
+                      <MobileProjectContainer
+                        key={thisItem.id}
+                        item={thisItem}
+                        staggered
+                      />
+                    ),
+                  )}
+                  <Flex
+                    width="100%"
+                    flexDirection="row"
+                    justifyContent="flex-end"
+                    pb={[100]}
+                    pr={width * 0.0729}
                   >
-                    Explore more projects
-                  </Button>
-                </Flex>,
-              ];
+                    <Button
+                      color="pink"
+                      to="/projects"
+                      arrow="right"
+                      onClick={() => setNextToken(data.listProjects.nextToken)}
+                    >
+                      Explore more projects
+                    </Button>
+                  </Flex>
+                </React.Fragment>
+              );
             }}
           </Connect>
         </Flex>

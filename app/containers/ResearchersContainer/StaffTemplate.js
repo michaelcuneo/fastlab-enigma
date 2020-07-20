@@ -6,17 +6,16 @@ import { Flex } from 'rebass';
 
 import StaffLink from 'containers/StaffLink';
 
-export const StaffTemplate = ({ width, newStaff }) => (
+export const StaffTemplate = ({ isTabletMobile, width, newStaff }) => (
   <Flex
     flexDirection="column"
     key={newStaff.id}
     value={newStaff.id}
-    width={[5 / 10, 2 / 10, width * 0.0635]}
-    sx={{ maxWidth: width * 0.0635 }}
+    width={[width * 0.4, width * 0.4, width * 0.0635]}
   >
     <Link to={`/researcher/${newStaff.id}`}>
       <StaffLink
-        width={width}
+        width={isTabletMobile ? width * 0.4 : width * 0.0635}
         typeSize={['10px', '12px', '14px']}
         staff={newStaff}
       />
@@ -25,6 +24,7 @@ export const StaffTemplate = ({ width, newStaff }) => (
 );
 
 StaffTemplate.propTypes = {
+  isTabletMobile: PropTypes.bool,
   width: PropTypes.number,
   newStaff: PropTypes.object,
 };

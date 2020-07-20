@@ -7,7 +7,7 @@ import TransmediaArts from 'images/transmedia_arts.jpg';
 export const menuItems = [
   {
     id: 0,
-    title: 'Culture and Community',
+    title: 'Culture & Community',
     link: 'culture',
     image: Culture,
     details:

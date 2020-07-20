@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Flex } from 'rebass';
 
 export const StyledGradientHeader = styled(Flex)`
-  position: relative;
+  position: absolute;
   bottom: 0px;
   left: 0px;
   right: 0px;
