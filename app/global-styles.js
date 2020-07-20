@@ -39,6 +39,10 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none !important;
     color: white !important;
   }
+
+  .Popover-below {
+    flex-direction: column;
+  }
 `;
 
 export default GlobalStyle;

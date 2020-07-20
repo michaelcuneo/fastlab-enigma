@@ -31,28 +31,20 @@ export const onCreateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -64,14 +56,10 @@ export const onCreateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -84,11 +72,7 @@ export const onCreateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -103,8 +87,6 @@ export const onCreateProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -112,17 +94,11 @@ export const onCreateProject = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       category {
         id
@@ -143,31 +119,21 @@ export const onCreateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -186,28 +152,20 @@ export const onCreateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -219,14 +177,10 @@ export const onCreateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -239,24 +193,16 @@ export const onCreateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       collaborators {
         items {
@@ -271,8 +217,6 @@ export const onCreateProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -285,16 +229,10 @@ export const onCreateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -328,28 +266,20 @@ export const onUpdateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -361,14 +291,10 @@ export const onUpdateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -381,11 +307,7 @@ export const onUpdateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -400,8 +322,6 @@ export const onUpdateProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -409,17 +329,11 @@ export const onUpdateProject = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       category {
         id
@@ -440,31 +354,21 @@ export const onUpdateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -483,28 +387,20 @@ export const onUpdateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -516,14 +412,10 @@ export const onUpdateProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -536,24 +428,16 @@ export const onUpdateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       collaborators {
         items {
@@ -568,8 +452,6 @@ export const onUpdateProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -582,16 +464,10 @@ export const onUpdateProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -625,28 +501,20 @@ export const onDeleteProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -658,14 +526,10 @@ export const onDeleteProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -678,11 +542,7 @@ export const onDeleteProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -697,8 +557,6 @@ export const onDeleteProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -706,17 +564,11 @@ export const onDeleteProject = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       category {
         id
@@ -737,31 +589,21 @@ export const onDeleteProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -780,28 +622,20 @@ export const onDeleteProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -813,14 +647,10 @@ export const onDeleteProject = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -833,24 +663,16 @@ export const onDeleteProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       collaborators {
         items {
@@ -865,8 +687,6 @@ export const onDeleteProject = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -879,16 +699,10 @@ export const onDeleteProject = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -918,28 +732,20 @@ export const onCreatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -951,14 +757,10 @@ export const onCreatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -971,11 +773,7 @@ export const onCreatePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -990,8 +788,6 @@ export const onCreatePost = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -999,17 +795,11 @@ export const onCreatePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -1028,28 +818,20 @@ export const onCreatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -1061,14 +843,10 @@ export const onCreatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -1081,24 +859,16 @@ export const onCreatePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staffID {
         id
@@ -1118,8 +888,6 @@ export const onCreatePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -1127,24 +895,16 @@ export const onCreatePost = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -1174,28 +934,20 @@ export const onUpdatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -1207,14 +959,10 @@ export const onUpdatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -1227,11 +975,7 @@ export const onUpdatePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -1246,8 +990,6 @@ export const onUpdatePost = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1255,17 +997,11 @@ export const onUpdatePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -1284,28 +1020,20 @@ export const onUpdatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -1317,14 +1045,10 @@ export const onUpdatePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -1337,24 +1061,16 @@ export const onUpdatePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staffID {
         id
@@ -1374,8 +1090,6 @@ export const onUpdatePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -1383,24 +1097,16 @@ export const onUpdatePost = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -1430,28 +1136,20 @@ export const onDeletePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -1463,14 +1161,10 @@ export const onDeletePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -1483,11 +1177,7 @@ export const onDeletePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -1502,8 +1192,6 @@ export const onDeletePost = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1511,17 +1199,11 @@ export const onDeletePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -1540,28 +1222,20 @@ export const onDeletePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -1573,14 +1247,10 @@ export const onDeletePost = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -1593,24 +1263,16 @@ export const onDeletePost = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staffID {
         id
@@ -1630,8 +1292,6 @@ export const onDeletePost = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -1639,24 +1299,16 @@ export const onDeletePost = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -1691,8 +1343,6 @@ export const onCreateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1700,17 +1350,11 @@ export const onCreateCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -1727,11 +1371,7 @@ export const onCreateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -1746,8 +1386,6 @@ export const onCreateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1755,28 +1393,18 @@ export const onCreateCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -1811,8 +1439,6 @@ export const onUpdateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1820,17 +1446,11 @@ export const onUpdateCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -1847,11 +1467,7 @@ export const onUpdateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -1866,8 +1482,6 @@ export const onUpdateCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1875,28 +1489,18 @@ export const onUpdateCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -1931,8 +1535,6 @@ export const onDeleteCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1940,17 +1542,11 @@ export const onDeleteCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -1967,11 +1563,7 @@ export const onDeleteCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -1986,8 +1578,6 @@ export const onDeleteCategory = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -1995,28 +1585,18 @@ export const onDeleteCategory = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2036,8 +1616,6 @@ export const onCreateRole = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -2050,16 +1628,10 @@ export const onCreateRole = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2079,8 +1651,6 @@ export const onUpdateRole = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -2093,16 +1663,10 @@ export const onUpdateRole = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2122,8 +1686,6 @@ export const onDeleteRole = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -2136,16 +1698,10 @@ export const onDeleteRole = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2163,13 +1719,9 @@ export const onCreateStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2189,8 +1741,6 @@ export const onCreateStaffRoles = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2198,24 +1748,16 @@ export const onCreateStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2233,13 +1775,9 @@ export const onUpdateStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2259,8 +1797,6 @@ export const onUpdateStaffRoles = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2268,24 +1804,16 @@ export const onUpdateStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2303,13 +1831,9 @@ export const onDeleteStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2329,8 +1853,6 @@ export const onDeleteStaffRoles = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2338,24 +1860,16 @@ export const onDeleteStaffRoles = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2387,8 +1901,6 @@ export const onCreateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2396,17 +1908,11 @@ export const onCreateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -2423,11 +1929,7 @@ export const onCreateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -2442,8 +1944,6 @@ export const onCreateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2451,25 +1951,17 @@ export const onCreateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2489,8 +1981,6 @@ export const onCreateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2498,24 +1988,16 @@ export const onCreateProjectStaff = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2547,8 +2029,6 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2556,17 +2036,11 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -2583,11 +2057,7 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -2602,8 +2072,6 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2611,25 +2079,17 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2649,8 +2109,6 @@ export const onUpdateProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2658,24 +2116,16 @@ export const onUpdateProjectStaff = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2707,8 +2157,6 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2716,17 +2164,11 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -2743,11 +2185,7 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -2762,8 +2200,6 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -2771,25 +2207,17 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       staff {
         id
@@ -2809,8 +2237,6 @@ export const onDeleteProjectStaff = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           nextToken
         }
@@ -2818,24 +2244,16 @@ export const onDeleteProjectStaff = /* GraphQL */ `
           items {
             id
             roleId
-            createdAt
-            updatedAt
           }
           nextToken
         }
         projects {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2863,14 +2281,10 @@ export const onCreateStaff = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -2883,11 +2297,7 @@ export const onCreateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -2900,8 +2310,6 @@ export const onCreateStaff = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -2914,11 +2322,7 @@ export const onCreateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -2935,8 +2339,6 @@ export const onCreateStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -2949,16 +2351,10 @@ export const onCreateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -2986,14 +2382,10 @@ export const onUpdateStaff = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -3006,11 +2398,7 @@ export const onUpdateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -3023,8 +2411,6 @@ export const onUpdateStaff = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -3037,11 +2423,7 @@ export const onUpdateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -3058,8 +2440,6 @@ export const onUpdateStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -3072,16 +2452,10 @@ export const onUpdateStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -3109,14 +2483,10 @@ export const onDeleteStaff = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -3129,11 +2499,7 @@ export const onDeleteStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -3146,8 +2512,6 @@ export const onDeleteStaff = /* GraphQL */ `
             label
             value
             description
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -3160,11 +2524,7 @@ export const onDeleteStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
@@ -3181,8 +2541,6 @@ export const onDeleteStaff = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           staff {
             id
@@ -3195,16 +2553,10 @@ export const onDeleteStaff = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -3238,8 +2590,6 @@ export const onCreateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3247,17 +2597,11 @@ export const onCreateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -3274,11 +2618,7 @@ export const onCreateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3293,8 +2633,6 @@ export const onCreateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3302,25 +2640,17 @@ export const onCreateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -3342,8 +2672,6 @@ export const onCreateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3351,17 +2679,11 @@ export const onCreateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3376,8 +2698,6 @@ export const onCreateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3385,14 +2705,10 @@ export const onCreateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -3414,11 +2730,7 @@ export const onCreateImage = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -3437,28 +2749,20 @@ export const onCreateImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -3470,14 +2774,10 @@ export const onCreateImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -3490,27 +2790,17 @@ export const onCreateImage = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -3544,8 +2834,6 @@ export const onUpdateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3553,17 +2841,11 @@ export const onUpdateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -3580,11 +2862,7 @@ export const onUpdateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3599,8 +2877,6 @@ export const onUpdateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3608,25 +2884,17 @@ export const onUpdateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -3648,8 +2916,6 @@ export const onUpdateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3657,17 +2923,11 @@ export const onUpdateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3682,8 +2942,6 @@ export const onUpdateImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3691,14 +2949,10 @@ export const onUpdateImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -3720,11 +2974,7 @@ export const onUpdateImage = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -3743,28 +2993,20 @@ export const onUpdateImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -3776,14 +3018,10 @@ export const onUpdateImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -3796,27 +3034,17 @@ export const onUpdateImage = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -3850,8 +3078,6 @@ export const onDeleteImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3859,17 +3085,11 @@ export const onDeleteImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -3886,11 +3106,7 @@ export const onDeleteImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3905,8 +3121,6 @@ export const onDeleteImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3914,25 +3128,17 @@ export const onDeleteImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -3954,8 +3160,6 @@ export const onDeleteImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3963,17 +3167,11 @@ export const onDeleteImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -3988,8 +3186,6 @@ export const onDeleteImage = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -3997,14 +3193,10 @@ export const onDeleteImage = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -4026,11 +3218,7 @@ export const onDeleteImage = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       gallery {
         id
@@ -4049,28 +3237,20 @@ export const onDeleteImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           category {
             id
             label
             value
             description
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           collaborators {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         post {
           id
@@ -4082,14 +3262,10 @@ export const onDeleteImage = /* GraphQL */ `
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
           staffID {
             id
@@ -4102,27 +3278,17 @@ export const onDeleteImage = /* GraphQL */ `
             email
             website
             cognitoID
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         images {
           items {
             id
             key
             mime
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -4155,8 +3321,6 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4164,17 +3328,11 @@ export const onCreateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -4191,11 +3349,7 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4210,8 +3364,6 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4219,25 +3371,17 @@ export const onCreateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -4259,8 +3403,6 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4268,17 +3410,11 @@ export const onCreateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4293,8 +3429,6 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4302,14 +3436,10 @@ export const onCreateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -4331,11 +3461,7 @@ export const onCreateGallery = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       images {
         items {
@@ -4352,8 +3478,6 @@ export const onCreateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4361,22 +3485,14 @@ export const onCreateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -4409,8 +3525,6 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4418,17 +3532,11 @@ export const onUpdateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -4445,11 +3553,7 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4464,8 +3568,6 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4473,25 +3575,17 @@ export const onUpdateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -4513,8 +3607,6 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4522,17 +3614,11 @@ export const onUpdateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4547,8 +3633,6 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4556,14 +3640,10 @@ export const onUpdateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -4585,11 +3665,7 @@ export const onUpdateGallery = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       images {
         items {
@@ -4606,8 +3682,6 @@ export const onUpdateGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4615,22 +3689,14 @@ export const onUpdateGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -4663,8 +3729,6 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4672,17 +3736,11 @@ export const onDeleteGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         category {
           id
@@ -4699,11 +3757,7 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4718,8 +3772,6 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4727,25 +3779,17 @@ export const onDeleteGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         collaborators {
           items {
             id
-            createdAt
-            updatedAt
           }
           nextToken
         }
-        createdAt
-        updatedAt
       }
       post {
         id
@@ -4767,8 +3811,6 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4776,17 +3818,11 @@ export const onDeleteGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         gallery {
           id
@@ -4801,8 +3837,6 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4810,14 +3844,10 @@ export const onDeleteGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           images {
             nextToken
           }
-          createdAt
-          updatedAt
         }
         staffID {
           id
@@ -4839,11 +3869,7 @@ export const onDeleteGallery = /* GraphQL */ `
           projects {
             nextToken
           }
-          createdAt
-          updatedAt
         }
-        createdAt
-        updatedAt
       }
       images {
         items {
@@ -4860,8 +3886,6 @@ export const onDeleteGallery = /* GraphQL */ `
             videoURL
             categoryId
             featured
-            createdAt
-            updatedAt
           }
           post {
             id
@@ -4869,22 +3893,14 @@ export const onDeleteGallery = /* GraphQL */ `
             data
             date
             videoURL
-            createdAt
-            updatedAt
           }
           gallery {
             id
             name
-            createdAt
-            updatedAt
           }
-          createdAt
-          updatedAt
         }
         nextToken
       }
-      createdAt
-      updatedAt
     }
   }
 `;

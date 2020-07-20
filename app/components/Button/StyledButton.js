@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { Text } from 'rebass';
-
 import { CustomButton } from './CustomButton';
 import { CustomAnimation } from './CustomAnimation';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
+import { useMediaQuery } from 'react-responsive';
 
 import { Flex, Text, Image } from 'rebass';
 
@@ -19,6 +20,28 @@ import messages from './messages';
 
 function ContactPage() {
   const { width, height } = useWindowDimensions();
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      position: 'relative',
+      height: 'auto',
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
 
   return (
     <React.Fragment>
@@ -26,29 +49,19 @@ function ContactPage() {
         <title>Contact Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <VideoLanding text={<FormattedMessage {...messages.header} />} small />
-      <StyledGradientHeader />
-      <Flex
-        width={width}
-        flexDirection="column"
-        sx={{
-          position: 'absolute',
-          height: '100% - 400px',
-          top: '400px',
-          background: '#151417',
-          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-        }}
-      >
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
+        <StyledGradientHeader />
+      </VideoLanding>
+      <Flex width={width} flexDirection="column" sx={SX}>
         <Flex
           sx={{
             position: 'relative',
           }}
-          height="100%"
+          flexDirection={isTabletMobile ? 'column' : 'row'}
           justifyContent="flex-begin"
           alignItems="flex-begin"
-          alignContent="center"
-          pt={['20px', '20px', '182px']}
-          pb={['20px', '20px', '182px']}
+          pt={['40px', '40px', '182px']}
+          pb={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.2167]}
         >
           <Image

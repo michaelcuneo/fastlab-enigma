@@ -14,7 +14,7 @@ import UpdateContainer from 'containers/UpdateContainer';
 import MobileUpdateContainer from 'containers/MobileUpdateContainer';
 import useWindowDimensions from 'utils/getWindowDimensions';
 
-import { StyledText } from './StyledText';
+import { StyledHeader } from './StyledHeader';
 import Overlay from './Overlay';
 
 import { listPosts } from '../../../src/graphql/queries';
@@ -32,7 +32,9 @@ const LatestUpdatesContainer = ({ dark }) => {
       >
         {!dark && (
           <Box pt={['172px']} pb={['60px']}>
-            <StyledText>Latest Updates</StyledText>
+            <StyledHeader isTabletMobile={isTabletMobile}>
+              Latest Updates
+            </StyledHeader>
           </Box>
         )}
       </Box>

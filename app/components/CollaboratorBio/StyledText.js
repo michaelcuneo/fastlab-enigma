@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+
 import { Text } from 'rebass';
 
 export const StyledText = styled(Text)`
-  font-size: 34pt;
-  font-family: 'archiaregular', sans-serif;
-  color: white;
+  font-face: 'jetbrains-medium';
+  type-size: 20px;
+  line-height: 25px;
+  color: #0ff48d;
 `;

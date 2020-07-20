@@ -1,35 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-
-import { Flex, Box, Text } from 'rebass';
-
+import { Flex, Box } from 'rebass';
 import StaffLink from './StaffLink';
 
-const StyledSubHeader = ({ link, to, children }) => {
-  const HeaderLinkHref = styled.a`
-    font-face: 'jetbrains-medium';
-    type-size: 16px;
-    line-height: 22px;
-    text-decoration: none;
-    color: white;
-  `;
+import { HeaderLinkA } from './HeaderLinkA';
+import { HeaderLinkTo } from './HeaderLinkTo';
 
-  const HeaderLinkTo = styled(Link)`
-    font-face: 'jetbrains-medium';
-    type-size: 16px;
-    line-height: 22px;
-    text-decoration: none;
-    color: white;
-  `;
+import { StyledMenu } from './StyledMenu';
+import { StyledText } from './StyledText';
 
-  return to ? (
+const StyledSubHeader = ({ link, to, children }) =>
+  to ? (
     <HeaderLinkTo to={link}>{children}</HeaderLinkTo>
   ) : (
-    <HeaderLinkHref href={link}>{children}</HeaderLinkHref>
+    <HeaderLinkA href={link}>{children}</HeaderLinkA>
   );
-};
 
 StyledSubHeader.propTypes = {
   link: PropTypes.string,
@@ -39,18 +25,6 @@ StyledSubHeader.propTypes = {
 
 const CollaboratorBio = ({ width, data }) => {
   const containerWidth = width * 0.1786;
-
-  const StyledMenu = styled(Box)`
-    background: #151417;
-    z-index: 99999;
-  `;
-
-  const StyledText = styled(Text)`
-    font-face: 'jetbrains-medium';
-    type-size: 20px;
-    line-height: 25px;
-    color: #0ff48d;
-  `;
 
   return (
     <StyledMenu

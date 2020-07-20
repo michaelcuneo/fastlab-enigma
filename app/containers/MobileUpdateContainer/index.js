@@ -6,8 +6,6 @@ import moment from 'moment';
 
 import { Flex, Box, Text } from 'rebass';
 
-import { Markup } from 'interweave';
-
 const MobileUpdateContainer = ({ item, width }) => {
   const [post, setPost] = useState(item);
   const [image, setImage] = useState('');
@@ -58,7 +56,7 @@ const MobileUpdateContainer = ({ item, width }) => {
       flexDirection="row"
       flexWrap="wrap"
       px={width * 0.0827}
-      m="20px"
+      mb="20px"
     >
       <Link
         style={{ width: '100%', textDecoration: 'none' }}
@@ -68,9 +66,9 @@ const MobileUpdateContainer = ({ item, width }) => {
           <Flex
             alignItems="flex-end"
             justifyContent="flex-end"
-            height="320px"
-            minWidth="95%"
-            width="95%"
+            height="220px"
+            minWidth="auto"
+            width="auto"
             sx={{
               background: `url(${image})`,
               backgroundRepeat: 'no-repeat',
@@ -93,67 +91,50 @@ const MobileUpdateContainer = ({ item, width }) => {
             </Flex>
           </Flex>
           <Flex
-            px="34px"
-            pt="34px"
+            px="20px"
+            pt="20px"
             flexDirection="column"
             justifyContent="space-between"
             sx={{
-              alignItems: 'flex-end',
-              justifyContent: 'flex-end',
               overflow: 'hidden',
-              width,
+              maxWidth: width,
               height: width / 1.956,
               background: '#ffffff',
             }}
           >
-            <Flex
-              width="100%"
-              justifyContent="space-around"
-              flexDirection="row"
-            >
+            <Flex maxWidth="100%" flexDirection="row">
               <Text
                 sx={{
-                  maxWidth: '80%',
                   color: '#151417',
-                  fontSize: '24px',
-                  lineHeight: '28px',
+                  fontSize: '20px',
+                  lineHeight: '25px',
                   fontFamily: 'archiaregular',
-                  height: '28px',
+                  height: '100px',
                   overflow: 'hidden',
                 }}
               >
                 {post.title}
               </Text>
+            </Flex>
+            <Flex maxWidth="100%" flexDirection="row">
               <Text
                 sx={{
-                  maxWidth: '20%',
                   flex: 'auto',
                   color: '#b9b9b9',
-                  fontSize: '24px',
-                  lineHeight: '28px',
+                  fontSize: '15px',
+                  lineHeight: '20px',
                   fontFamily: 'archiaregular',
                 }}
               >
                 {moment(post.date).format('D MMM')}
               </Text>
+              <Text
+                sx={{ color: '#868686', fontSize: '14px', lineHeight: '20px' }}
+                mb="34px"
+              >
+                {post.tags ? post.tags : 'No Tags'}
+              </Text>
             </Flex>
-            <Text
-              sx={{
-                color: '#151417',
-                fontSize: '16px',
-                lineHeight: '25px',
-                height: '100px',
-                overflow: 'hidden',
-              }}
-            >
-              <Markup content={post.data} noHtml />
-            </Text>
-            <Text
-              sx={{ color: '#868686', fontSize: '14px', lineHeight: '20px' }}
-              mb="34px"
-            >
-              {post.tags ? post.tags : 'No Tags'}
-            </Text>
           </Flex>
         </Box>
       </Link>

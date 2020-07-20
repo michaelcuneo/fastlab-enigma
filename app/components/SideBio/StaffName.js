@@ -5,13 +5,21 @@ import { Text } from 'rebass';
 
 function StaffName(props) {
   const StyledText = styled(Text)`
-    text-transform: uppercase;
-    font-family: 'jetbrains-bold', sans-serif;
-    font-weight: 400;
     color: ${props.mode ? '#000' : '#fff'};
   `;
 
-  return <StyledText fontSize={props.typeSize}>{props.children}</StyledText>;
+  return (
+    <StyledText
+      sx={{
+        textTransform: 'uppercase',
+        fontFamily: `'jetbrains-bold', sans-serif`,
+        fontWeight: 400,
+      }}
+      fontSize={props.typeSize}
+    >
+      {props.children}
+    </StyledText>
+  );
 }
 
 StaffName.propTypes = {

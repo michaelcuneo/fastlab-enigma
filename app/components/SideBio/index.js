@@ -13,29 +13,28 @@ import { StyledHeader } from './StyledHeader';
 import { StyledSubText } from './StyledSubText';
 import { StyledLine } from './StyledLine';
 
-const StyledSubHeader = ({ link, to, children }) => {
-  const HeaderLinkHref = styled.a`
-    font-face: 'jetbrains-medium';
-    type-size: 16px;
-    line-height: 22px;
-    text-decoration: none;
-    color: white;
-  `;
+const HeaderLinkHref = styled.a`
+  font-face: 'jetbrains-medium';
+  type-size: 16px;
+  line-height: 22px;
+  text-decoration: none;
+  color: white;
+`;
 
-  const HeaderLinkTo = styled(Link)`
-    font-face: 'jetbrains-medium';
-    type-size: 16px;
-    line-height: 22px;
-    text-decoration: none;
-    color: white;
-  `;
+const HeaderLinkTo = styled(Link)`
+  font-face: 'jetbrains-medium';
+  type-size: 16px;
+  line-height: 22px;
+  text-decoration: none;
+  color: white;
+`;
 
-  return to ? (
+const StyledSubHeader = ({ link, to, children }) =>
+  to ? (
     <HeaderLinkTo to={link}>{children}</HeaderLinkTo>
   ) : (
     <HeaderLinkHref href={link}>{children}</HeaderLinkHref>
   );
-};
 
 StyledSubHeader.propTypes = {
   link: PropTypes.string,

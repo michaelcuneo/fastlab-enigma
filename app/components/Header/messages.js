@@ -69,12 +69,4 @@ export default defineMessages({
     id: `${scope}.contactDetails`,
     defaultMessage: 'Contact FastLab',
   },
-  login: {
-    id: `${scope}.login`,
-    defaultMessage: 'Login',
-  },
-  loginDetails: {
-    id: `${scope}.login`,
-    defaultMessage: 'Login to your account to contribute to FastLab',
-  },
 });

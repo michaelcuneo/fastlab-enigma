@@ -1,43 +1,58 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-
 import { FormattedMessage } from 'react-intl';
-
 import { useMediaQuery } from 'react-responsive';
 
-import H2 from 'components/H2';
 import ParsedContent from 'components/ParsedContent';
 import SideMenu from 'components/SideMenu';
+import TopMenu from 'components/TopMenu';
 import Footer from 'components/Footer';
 
 import Sig1 from 'images/scribbles_mark-1-white.svg';
-
 import OverlayContainer from 'containers/OverlayContainer';
+import VideoLanding from 'containers/VideoLanding';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
 import { Flex, Image } from 'rebass';
 
-import Button from 'components/Button';
-
 import useWindowDimensions from 'utils/getWindowDimensions';
-import ResearchersContainer from '../ResearchersContainer';
+
+import Button from 'components/Button';
 
 import { DetailHeader } from './DetailHeader';
 import { DetailText } from './DetailText';
-import { StyledFlexHeader } from './StyledFlexHeader';
 import { StyledGradientHeader } from './StyledGradientHeader';
-import { StyledImageHeader } from './StyledImageHeader';
-
 import { menuItems } from './menuItems';
 
 import messages from './messages';
+import ResearchersContainer from '../ResearchersContainer';
 
 const AreasPage = () => {
+  const { width } = useWindowDimensions();
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { width } = useWindowDimensions();
-
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
+
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
 
   return (
     <React.Fragment>
@@ -45,59 +60,81 @@ const AreasPage = () => {
         <title>Rabbit Hole</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
-      <StyledImageHeader src={menuItems[currentMenuItem].image} />
-      <StyledFlexHeader isTabletMobile={isTabletMobile} width={width}>
-        <H2>
-          <FormattedMessage {...messages.header} />
-          <span className="blink_me">_</span>
-        </H2>
-      </StyledFlexHeader>
-      <StyledGradientHeader />
-      <Flex
-        width={width}
-        flexDirection="column"
-        sx={{
-          position: 'absolute',
-          height: 'auto',
-          top: '400px',
-          background: '#151417',
-          borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-        }}
-      >
+      <VideoLanding text={<FormattedMessage {...messages.header} />} small>
+        <StyledGradientHeader />
+      </VideoLanding>
+      <Flex width={width} flexDirection="column" sx={SX}>
         <Flex
           sx={{
             position: 'relative',
           }}
+          flexDirection={isTabletMobile ? 'column' : 'row'}
           justifyContent="flex-begin"
           alignItems="flex-begin"
           pt={['40px', '40px', '182px']}
           px={[width * 0.0933, width * 0.0933, width * 0.0729]}
         >
-          <SideMenu
-            menuItems={menuItems}
-            currentMenuItem={currentMenuItem}
-            setCurrentMenuItem={setCurrentMenuItem}
-            isTabletMobile={isTabletMobile}
-          />
-          <Flex
-            height="auto"
-            flexDirection="column"
-            pl={['0px', '0px', width * 0.0802]}
-            sx={{ position: 'relative', minWidth: width * 0.4229 }}
-          >
-            {menuItems[currentMenuItem].link === 'researchers' ? (
-              <ResearchersContainer width={width} />
-            ) : (
-              <React.Fragment>
-                <DetailHeader pt="10px" pb="30px">
-                  {menuItems[currentMenuItem].title}
-                </DetailHeader>
-                <DetailText pr={['0px', '0px', width * 0.1432]}>
-                  <ParsedContent content={menuItems[currentMenuItem].details} />
-                </DetailText>
-              </React.Fragment>
-            )}
-          </Flex>
+          {isTabletMobile ? (
+            <React.Fragment>
+              <TopMenu
+                menuItems={menuItems}
+                currentMenuItem={currentMenuItem}
+                setCurrentMenuItem={setCurrentMenuItem}
+                isTabletMobile={isTabletMobile}
+              />
+              <Flex
+                height="auto"
+                flexDirection="column"
+                pl={['0px', '0px', width * 0.0802]}
+                sx={{ position: 'relative', minWidth: width * 0.4229 }}
+              >
+                {menuItems[currentMenuItem].link === 'researchers' ? (
+                  <ResearchersContainer width={width} />
+                ) : (
+                  <React.Fragment>
+                    <DetailHeader pt="10px" pb="30px">
+                      {menuItems[currentMenuItem].title}
+                    </DetailHeader>
+                    <DetailText pr={['0px', '0px', width * 0.1432]}>
+                      <ParsedContent
+                        content={menuItems[currentMenuItem].details}
+                      />
+                    </DetailText>
+                  </React.Fragment>
+                )}
+              </Flex>
+            </React.Fragment>
+          ) : (
+            <React.Fragment>
+              <SideMenu
+                menuItems={menuItems}
+                currentMenuItem={currentMenuItem}
+                setCurrentMenuItem={setCurrentMenuItem}
+                isTabletMobile={isTabletMobile}
+              />
+              <Flex
+                height="auto"
+                flexDirection="column"
+                pl={['0px', '0px', width * 0.0802]}
+                sx={{ position: 'relative', minWidth: width * 0.4229 }}
+              >
+                {menuItems[currentMenuItem].link === 'researchers' ? (
+                  <ResearchersContainer width={width} />
+                ) : (
+                  <React.Fragment>
+                    <DetailHeader pt="10px" pb="30px">
+                      {menuItems[currentMenuItem].title}
+                    </DetailHeader>
+                    <DetailText pr={['0px', '0px', width * 0.1432]}>
+                      <ParsedContent
+                        content={menuItems[currentMenuItem].details}
+                      />
+                    </DetailText>
+                  </React.Fragment>
+                )}
+              </Flex>
+            </React.Fragment>
+          )}
         </Flex>
         <Flex sx={{ position: 'relative' }}>
           <Image

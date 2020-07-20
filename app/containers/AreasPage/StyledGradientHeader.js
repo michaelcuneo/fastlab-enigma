@@ -3,7 +3,7 @@ import { Flex } from 'rebass';
 
 export const StyledGradientHeader = styled(Flex)`
   position: absolute;
-  top: 144px;
+  bottom: 0;
   left: 0px;
   right: 0px;
   background-image: linear-gradient(rgba(0, 0, 0, 0), #151417);
