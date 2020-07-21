@@ -14,8 +14,6 @@ export const DesktopWrapper = styled(Flex)`
 
 export const MobileWrapper = styled(Flex)`
   position: relative;
-  left: 0;
-  right: 0;
   justify-content: center;
   background: #151417;
   color: #ffffff;

@@ -29,13 +29,13 @@ const Overlay = ({ text, small }) => {
           </H1>
         )}
       </StyledFlexHeader>
-      <StyledGradientHeader justifyContent="flex-end" />
+      <StyledGradientHeader justifyContent="flex-end" small={small} />
     </React.Fragment>
   );
 };
 
 Overlay.propTypes = {
-  text: PropTypes.object,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   small: PropTypes.bool,
 };
 

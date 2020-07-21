@@ -50,7 +50,7 @@ function ProjectContainer({
   let HEIGHT;
 
   if (staggered) {
-    PX = [screenWidth * 0.0933, screenWidth * 0.0933, screenWidth * 0.0078];
+    PX = ['10px', '10px', '2px'];
     PB = isTabletMobile ? '10px' : screenHeight * 0.0324;
     PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
     SX = {

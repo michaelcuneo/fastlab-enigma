@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import Button from 'components/Button';
 
 import { useMediaQuery } from 'react-responsive';
@@ -12,17 +12,15 @@ import { Flex, Box } from 'rebass';
 import ProjectContainer from 'containers/ProjectContainer';
 import MobileProjectContainer from 'containers/MobileProjectContainer';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { StyledText } from './StyledText';
 
 import Overlay from './Overlay';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-const RelatedProjectsContainer = () => {
+const RelatedProjectsContainer = ({ width }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-  const { width, height } = useWindowDimensions();
+  const { innerHeight } = window;
 
   return (
     <React.Fragment>
@@ -32,9 +30,13 @@ const RelatedProjectsContainer = () => {
           flexDirection="column"
           sx={{ background: '#EC184A' }}
           justifyContent="space-around"
-          pl={[width * 0.0729]}
+          pl={[0, 0, width * 0.0729]}
         >
-          <Box pt={['172px']} pb={['60px']}>
+          <Box
+            pl={[width * 0.0729, width * 0.0729, 0]}
+            pt={['172px']}
+            pb={['60px']}
+          >
             <StyledText>Related Projects</StyledText>
           </Box>
           <Flex
@@ -62,16 +64,16 @@ const RelatedProjectsContainer = () => {
                     <MobileProjectContainer
                       key={item.id}
                       item={item}
-                      screenWidth={width}
-                      screenHeight={height}
                       staggered
                     />
                   ) : (
                     <ProjectContainer
                       key={item.id}
                       item={item}
+                      width={width}
+                      height={innerHeight}
                       screenWidth={width}
-                      screenHeight={height}
+                      screenHeight={innerHeight}
                       staggered
                     />
                   ),
@@ -83,10 +85,11 @@ const RelatedProjectsContainer = () => {
         <Flex
           width="100%"
           flexDirection="row"
-          justifyContent="flex-end"
+          justifyContent={isTabletMobile ? 'center' : 'flex-end'}
           sx={{ background: '#ec184a' }}
-          pb={[100]}
-          pr={[width * 0.0729]}
+          pb={[40, 40, 80]}
+          pt={[40, 40, 80]}
+          pr={[0, 0, width * 0.0729]}
         >
           <Button color="pink" to="/projects">
             Explore more projects
@@ -95,6 +98,10 @@ const RelatedProjectsContainer = () => {
       </Flex>
     </React.Fragment>
   );
+};
+
+RelatedProjectsContainer.propTypes = {
+  width: PropTypes.number,
 };
 
 export default RelatedProjectsContainer;

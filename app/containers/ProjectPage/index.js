@@ -11,8 +11,6 @@ import ParsedContent from 'components/ParsedContent';
 
 import Slideshow from 'react-slidez';
 
-import { Markup } from 'interweave';
-
 import Landing from 'containers/Landing';
 
 import { Flex } from 'rebass';
@@ -22,15 +20,12 @@ import Footer from 'components/Footer';
 
 import S3Modal from 'components/S3Modal';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { DetailHeader } from 'components/DetailHeader';
 import { DetailText } from 'components/DetailText';
 
 import { getProject } from '../../../src/graphql/queries';
 
-function ProjectPage({ match }) {
-  const { width } = useWindowDimensions();
+function ProjectPage({ match, width, height }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   let SX;
@@ -60,6 +55,7 @@ function ProjectPage({ match }) {
         <title>Project Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
+      <OverlayContainer width={width} height={height} />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getProject, { id: match.params.id })}
@@ -70,10 +66,7 @@ function ProjectPage({ match }) {
 
           return (
             <React.Fragment>
-              <Landing
-                text={<Markup content={data.getProject.title} />}
-                small
-              />
+              <Landing text={data.getProject.title} small />
               <Flex width={width} flexDirection="column" sx={SX}>
                 <Flex
                   flexDirection="column"
@@ -186,13 +179,14 @@ function ProjectPage({ match }) {
           );
         }}
       </Connect>
-      <OverlayContainer />
     </React.Fragment>
   );
 }
 
 ProjectPage.propTypes = {
   match: PropTypes.object,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default ProjectPage;

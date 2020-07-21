@@ -93,6 +93,7 @@ const MobileUpdateContainer = ({ item, width }) => {
           <Flex
             px="20px"
             pt="20px"
+            height="115px"
             flexDirection="column"
             justifyContent="space-between"
             sx={{
@@ -109,7 +110,6 @@ const MobileUpdateContainer = ({ item, width }) => {
                   fontSize: '20px',
                   lineHeight: '25px',
                   fontFamily: 'archiaregular',
-                  height: '100px',
                   overflow: 'hidden',
                 }}
               >

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
 import { useMediaQuery } from 'react-responsive';
@@ -9,14 +10,11 @@ import OverlayContainer from 'containers/OverlayContainer';
 import Landing from 'containers/Landing';
 import Footer from 'components/Footer';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { Flex } from 'rebass';
 
 import messages from './messages';
 
-function ProjectsPage() {
-  const { width } = useWindowDimensions();
+function ProjectsPage({ width, height }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   let SX;
@@ -46,15 +44,20 @@ function ProjectsPage() {
         <title>About Page</title>
         <meta name="description" content="Fastlab Contact Page" />
       </Helmet>
+      <OverlayContainer width={width} height={height} />
       <Landing text={<FormattedMessage {...messages.header} />} small />
       <Flex width={width} flexDirection="column" sx={SX}>
-        <LatestProjectsContainer dark />
-        <AllProjectsContainer />
+        <LatestProjectsContainer width={width} height={height} dark />
+        <AllProjectsContainer width={width} height={height} />
         <Footer />
       </Flex>
-      <OverlayContainer />
     </React.Fragment>
   );
 }
+
+ProjectsPage.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+};
 
 export default ProjectsPage;

@@ -38,7 +38,7 @@ const StyledButton = ({ children, color, arrow }) => {
     return () => {
       resetState();
     };
-  }, [resetState]);
+  }, [() => setHoverState(false)]);
 
   return (
     <CustomButton

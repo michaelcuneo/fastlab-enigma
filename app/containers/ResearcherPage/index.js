@@ -158,7 +158,7 @@ function ResearcherPage({ match }) {
                   </React.Fragment>
                 )}
               </Flex>
-              <RelatedProjectsContainer />
+              <RelatedProjectsContainer width={width} />
               <Footer />
             </Flex>
           );

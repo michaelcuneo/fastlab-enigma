@@ -5,7 +5,7 @@ import { Box } from 'rebass';
 
 import { useMediaQuery } from 'react-responsive';
 
-export function DetailHeader({ children }) {
+export function DetailHeader({ children, pt, pb, sx }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const Header = styled(Box)`
@@ -16,7 +16,7 @@ export function DetailHeader({ children }) {
   `;
 
   return (
-    <Header pt={['40px', '40px', '100px']} pb={['20px', '20px', '30px']}>
+    <Header pt={pt} pb={pb} sx={sx}>
       {children}
     </Header>
   );
@@ -24,4 +24,7 @@ export function DetailHeader({ children }) {
 
 DetailHeader.propTypes = {
   children: PropTypes.node,
+  pt: PropTypes.string,
+  pb: PropTypes.string,
+  sx: PropTypes.object,
 };

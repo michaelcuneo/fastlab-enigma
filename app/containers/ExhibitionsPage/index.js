@@ -7,11 +7,13 @@ import Footer from 'components/Footer';
 
 import Sig2 from 'images/scribbles_mark-2-white.svg';
 
+import { DetailHeader } from 'components/DetailHeader';
+import { DetailText } from 'components/DetailText';
 import OverlayContainer from 'containers/OverlayContainer';
 import Landing from 'containers/Landing';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
 
-import { Flex, Text, Image } from 'rebass';
+import { Flex, Image } from 'rebass';
 
 import useWindowDimensions from 'utils/getWindowDimensions';
 
@@ -76,10 +78,11 @@ const ExhibitionsPage = () => {
             flexDirection="column"
             sx={{ position: 'relative', minWidth: width * 0.4229 }}
           >
-            <Text pb={37}>COMING SOON</Text>
+            <DetailHeader>WATCH THIS SPACE</DetailHeader>
+            <DetailText>COMING SOON</DetailText>
           </Flex>
         </Flex>
-        <RelatedProjectsContainer />
+        <RelatedProjectsContainer width={width} />
         <Footer />
       </Flex>
     </React.Fragment>

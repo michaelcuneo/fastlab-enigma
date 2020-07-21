@@ -54,7 +54,7 @@ function MobileProjectContainer({ item }) {
       flexDirection="row"
       flexWrap="wrap"
       px={width * 0.0827}
-      m="20px"
+      mb="20px"
     >
       <Link
         style={{ width: '100%', textDecoration: 'none' }}
@@ -64,8 +64,6 @@ function MobileProjectContainer({ item }) {
           alignItems="flex-end"
           justifyContent="flex-end"
           height="320px"
-          minWidth="95%"
-          width="95%"
           sx={{
             background: `url(${image})`,
             backgroundRepeat: 'no-repeat',

@@ -51,15 +51,17 @@ const UpdateContainer = ({ item, width }) => {
     setImage(url);
   };
 
+  const updateWidth = width * 0.2792;
+  const updateImageHeight = (width * 0.2792) / 1.403;
+  const updateTextHeight = (width * 0.2792) / 1.965;
+
   return (
     <Flex
-      mx={['7.5px']}
       key={item.id}
-      maxWidth={width}
-      width={width}
+      maxWidth={updateWidth}
+      width={updateWidth}
       flexDirection="row"
       flexWrap="wrap"
-      sx={{ zIndex: 0 }}
     >
       <Link style={{ textDecoration: 'none' }} to={`/update/${item.id}`}>
         <Box sx={{ position: 'relative' }}>
@@ -72,8 +74,8 @@ const UpdateContainer = ({ item, width }) => {
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               overflow: 'hidden',
-              width,
-              height: width / 1.403,
+              width: updateWidth,
+              height: updateImageHeight,
             }}
           >
             <Flex
@@ -100,8 +102,8 @@ const UpdateContainer = ({ item, width }) => {
               alignItems: 'flex-end',
               justifyContent: 'flex-end',
               overflow: 'hidden',
-              width,
-              height: width / 1.956,
+              width: updateWidth,
+              height: updateTextHeight,
               background: '#ffffff',
             }}
           >

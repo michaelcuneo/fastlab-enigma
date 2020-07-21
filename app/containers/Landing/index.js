@@ -106,7 +106,7 @@ const Landing = ({ text, small }) => {
 };
 
 Landing.propTypes = {
-  text: PropTypes.object,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   small: PropTypes.bool,
 };
 

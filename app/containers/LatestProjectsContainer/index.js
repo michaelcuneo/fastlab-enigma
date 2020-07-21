@@ -15,30 +15,25 @@ import { Flex, Image } from 'rebass';
 import ProjectContainer from 'containers/ProjectContainer';
 import MobileProjectContainer from 'containers/MobileProjectContainer';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { listProjects } from '../../../src/graphql/queries';
 
-const LatestProjectsContainer = ({ dark }) => {
+const LatestProjectsContainer = ({ dark, width }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-  const { width, height } = useWindowDimensions();
+  const { innerHeight } = window;
 
   return (
     <React.Fragment>
       <Flex
         flexDirection="column"
-        sx={{ background: '#151417', zIndex: '1' }}
+        sx={{ position: 'relative', background: '#151417', zIndex: '1' }}
         justifyContent="space-around"
       >
         <Flex
-          sx={{ position: 'relative' }}
-          alignItems="center"
-          justifyItems="center"
-          justifyContent="center"
-          flexWrap="wrap"
+          flexWrap={isTabletMobile ? 'wrap' : 'none'}
           width="100%"
-          minHeight={height * 1.25}
+          minHeight={innerHeight * 1.25}
           height="auto"
+          px={[0, 0, width * 0.0729]}
         >
           <Connect
             key="LatestProjectsData"
@@ -59,66 +54,66 @@ const LatestProjectsContainer = ({ dark }) => {
                   <ProjectContainer
                     key={data.listProjects.items[0].id}
                     width={width * 0.2885}
-                    height={height * 0.3981}
-                    top={`${height * 0.1917}px`}
+                    height={innerHeight * 0.3981}
+                    top={`${innerHeight * 0.1917}px`}
                     left="0px"
                     item={data.listProjects.items[0]}
                   />
                   <Image
                     sx={{
                       width: width * 0.1292,
-                      height: height * 0.1769,
+                      height: innerHeight * 0.1769,
                       position: 'absolute',
                       left: `${width * 0.3323}px`,
-                      top: `${height * 0.087}px`,
+                      top: `${innerHeight * 0.087}px`,
                     }}
                     src={Sig3}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[1].id}
                     width={width * 0.212}
-                    height={height * 0.4685}
-                    top={`${height * 0.388}px`}
+                    height={innerHeight * 0.4685}
+                    top={`${innerHeight * 0.388}px`}
                     left={`${width * 0.2885}px`}
                     item={data.listProjects.items[1]}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[2].id}
                     width={width * 0.2193}
-                    height={height * 0.4685}
-                    top={`${height * 0.2722}px`}
+                    height={innerHeight * 0.4685}
+                    top={`${innerHeight * 0.2722}px`}
                     left={`${width * 0.5005}px`}
                     item={data.listProjects.items[2]}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[3].id}
                     width={width * 0.2802}
-                    height={height * 0.4685}
-                    top={`${height * 0.038}px`}
+                    height={innerHeight * 0.4685}
+                    top={`${innerHeight * 0.038}px`}
                     left={`${width * 0.7198}px`}
                     item={data.listProjects.items[3]}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[4].id}
                     width={width * 0.1521}
-                    height={height * 0.3852}
-                    top={`${height * 0.5898}px`}
+                    height={innerHeight * 0.3852}
+                    top={`${innerHeight * 0.5898}px`}
                     left={`${width * 0.1365}px`}
                     item={data.listProjects.items[4]}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[5].id}
                     width={width * 0.212}
-                    height={height * 0.3852}
-                    top={`${height * 0.8565}px`}
+                    height={innerHeight * 0.3852}
+                    top={`${innerHeight * 0.8565}px`}
                     left={`${width * 0.4323}px`}
                     item={data.listProjects.items[5]}
                   />
                   <ProjectContainer
                     key={data.listProjects.items[6].id}
                     width={width * 0.212}
-                    height={height * 0.4685}
-                    top={`${height * 0.6083}px`}
+                    height={innerHeight * 0.4685}
+                    top={`${innerHeight * 0.6083}px`}
                     left={`${width * 0.7198}px`}
                     item={data.listProjects.items[6]}
                   />
@@ -145,10 +140,11 @@ const LatestProjectsContainer = ({ dark }) => {
         <Flex
           width="100%"
           flexDirection="row"
-          justifyContent="flex-end"
+          justifyContent={isTabletMobile ? 'center' : 'flex-end'}
           sx={{ background: '#151417' }}
-          pb={[100]}
-          pr={width * 0.0729}
+          pb={[40, 40, 80]}
+          pt={[40, 40, 80]}
+          pr={[0, 0, width * 0.0729]}
         >
           <Button color="dark" to="/projects" arrow="right">
             Explore more projects
@@ -161,6 +157,7 @@ const LatestProjectsContainer = ({ dark }) => {
 
 LatestProjectsContainer.propTypes = {
   dark: PropTypes.bool,
+  width: PropTypes.number,
 };
 
 export default LatestProjectsContainer;

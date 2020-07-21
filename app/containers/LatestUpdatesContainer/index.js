@@ -12,23 +12,21 @@ import { Flex, Box } from 'rebass';
 
 import UpdateContainer from 'containers/UpdateContainer';
 import MobileUpdateContainer from 'containers/MobileUpdateContainer';
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { StyledHeader } from './StyledHeader';
 import Overlay from './Overlay';
 
 import { listPosts } from '../../../src/graphql/queries';
 
-const LatestUpdatesContainer = ({ dark }) => {
+const LatestUpdatesContainer = ({ dark, width, height }) => {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-  const { width, height } = useWindowDimensions();
 
   return (
     <React.Fragment>
       {!dark && <Overlay width={width} height={height} />}
       <Box
         sx={{ background: dark ? '#151417' : '#EC184A' }}
-        pl={width * 0.0729}
+        px={width * 0.0729}
       >
         {!dark && (
           <Box pt={['172px']} pb={['60px']}>
@@ -43,7 +41,7 @@ const LatestUpdatesContainer = ({ dark }) => {
         width="100%"
         height="auto"
         sx={{ background: dark ? '#151417' : '#EC184A' }}
-        px={width * 0.0729}
+        px={[0, 0, width * 0.0729]}
       >
         <Connect
           key="CategorySelector"
@@ -62,11 +60,7 @@ const LatestUpdatesContainer = ({ dark }) => {
                   item={item}
                 />
               ) : (
-                <UpdateContainer
-                  width={width * 0.2792}
-                  key={item.id}
-                  item={item}
-                />
+                <UpdateContainer width={width} key={item.id} item={item} />
               ),
             );
           }}
@@ -78,8 +72,8 @@ const LatestUpdatesContainer = ({ dark }) => {
           flexDirection="row"
           justifyContent={isTabletMobile ? 'center' : 'flex-end'}
           sx={{ background: '#EC184A' }}
-          pb={[80]}
-          pt={[80]}
+          pb={[40, 40, 80]}
+          pt={[40, 40, 80]}
           pr={[0, 0, width * 0.0729]}
         >
           <Button color="pink" to="/updates" arrow="right">
@@ -93,6 +87,8 @@ const LatestUpdatesContainer = ({ dark }) => {
 
 LatestUpdatesContainer.propTypes = {
   dark: PropTypes.bool,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default LatestUpdatesContainer;

@@ -23,16 +23,12 @@ import moment from 'moment';
 
 import S3Modal from 'components/S3Modal';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { DetailHeader } from 'components/DetailHeader';
 import { DetailText } from 'components/DetailText';
 
 import { getPost } from '../../../src/graphql/queries';
 
-function UpdatePage({ match }) {
-  const { width } = useWindowDimensions();
-
+function UpdatePage({ match, width, height }) {
   return (
     <React.Fragment>
       <Helmet key="Helmet">
@@ -135,13 +131,15 @@ function UpdatePage({ match }) {
           );
         }}
       </Connect>
-      <OverlayContainer />
+      <OverlayContainer width={width} height={height} />
     </React.Fragment>
   );
 }
 
 UpdatePage.propTypes = {
   match: PropTypes.object,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
 export default UpdatePage;

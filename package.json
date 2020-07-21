@@ -110,6 +110,7 @@
     "react-modal-image": "^2.5.0",
     "react-popover": "^0.5.10",
     "react-redux": "7.0.2",
+    "react-resize-detector": "^5.0.6",
     "react-responsive": "^8.1.0",
     "react-router-dom": "5.0.0",
     "react-select": "^3.1.0",

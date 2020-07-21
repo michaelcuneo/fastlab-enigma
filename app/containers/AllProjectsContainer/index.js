@@ -13,16 +13,15 @@ import { Flex, Box } from 'rebass';
 import ProjectContainer from 'containers/ProjectContainer';
 import MobileProjectContainer from 'containers/MobileProjectContainer';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { StyledText } from './StyledText';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-const AllProjects = ({ dark }) => {
+const AllProjects = ({ dark, width }) => {
   const [nextToken, setNextToken] = useState(null);
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-  const { width, height } = useWindowDimensions();
+
+  const { innerHeight } = window;
 
   return (
     <React.Fragment>
@@ -30,7 +29,7 @@ const AllProjects = ({ dark }) => {
         flexDirection="column"
         sx={{ background: dark ? '#151417' : '#EC184A' }}
         justifyContent="space-around"
-        pl={[width * 0.0729]}
+        px={[0, 0, width * 0.0729]}
       >
         {!dark && (
           <Box pt={['172px']} pb={['60px']}>
@@ -51,16 +50,12 @@ const AllProjects = ({ dark }) => {
                 <React.Fragment>
                   {data.listProjects.items.map(thisItem =>
                     !isTabletMobile ? (
-                      <Box
-                        key={thisItem.id}
-                        pr={[width * 0.0039]}
-                        py={['40px']}
-                      >
+                      <Box key={thisItem.id}>
                         <ProjectContainer
                           width={width}
-                          height={height}
+                          height={innerHeight}
                           screenWidth={width}
-                          screenHeight={height}
+                          screenHeight={innerHeight}
                           item={thisItem}
                           staggered
                         />
@@ -76,9 +71,10 @@ const AllProjects = ({ dark }) => {
                   <Flex
                     width="100%"
                     flexDirection="row"
-                    justifyContent="flex-end"
-                    pb={[100]}
-                    pr={width * 0.0729}
+                    justifyContent={isTabletMobile ? 'center' : 'flex-end'}
+                    pb={[40, 40, 80]}
+                    pt={[40, 40, 80]}
+                    pr={[0, 0, width * 0.0729]}
                   >
                     <Button
                       color="pink"
@@ -101,6 +97,7 @@ const AllProjects = ({ dark }) => {
 
 AllProjects.propTypes = {
   dark: PropTypes.bool,
+  width: PropTypes.number,
 };
 
 export default AllProjects;

@@ -1,31 +1,55 @@
 import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 import Button from 'components/Button';
+
+import { useMediaQuery } from 'react-responsive';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
 import { Flex, Box } from 'rebass';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import UpdateContainer from 'containers/UpdateContainer';
 
 import { listPosts } from '../../../src/graphql/queries';
 
-const AllProjects = () => {
+const AllProjects = ({ width }) => {
   const [nextToken, setNextToken] = useState(null);
-  const { width, height } = useWindowDimensions();
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
 
   return (
     <React.Fragment>
-      <Flex
-        flexDirection="column"
-        sx={{ background: '#151417' }}
-        justifyContent="space-around"
-        pl={[width * 0.0729]}
-      >
-        <Flex flexWrap="wrap" flexDirection="row" sx={{ height: 'auto' }}>
+      <Flex flexDirection="column" sx={SX}>
+        <Flex
+          sx={{
+            position: 'relative',
+          }}
+          flexWrap="wrap"
+          flexDirection={isTabletMobile ? 'column' : 'row'}
+          justifyContent="flex-begin"
+          alignItems="flex-begin"
+          pt={['40px', '40px', '100px']}
+          pb={['40px', '40px', '100px']}
+          px={[width * 0.0933, width * 0.0933, width * 0.0729]}
+        >
           <Connect
             key="AllProjects"
             query={graphqlOperation(listPosts, {
@@ -42,10 +66,7 @@ const AllProjects = () => {
                     <UpdateContainer
                       key={thisItem.id}
                       item={thisItem}
-                      width={width * 0.2792}
-                      height={height * 0.4167}
-                      screenWidth={width}
-                      screenHeight={height}
+                      width={width}
                       staggered
                     />
                   </Box>
@@ -53,9 +74,10 @@ const AllProjects = () => {
                 <Flex
                   width="100%"
                   flexDirection="row"
-                  justifyContent="flex-end"
-                  pb={[100]}
-                  pr={width * 0.0729}
+                  justifyContent={isTabletMobile ? 'center' : 'flex-end'}
+                  pb={[40, 40, 80]}
+                  pt={[40, 40, 80]}
+                  pr={[0, 0, width * 0.0729]}
                 >
                   <Button
                     color="dark"
@@ -73,6 +95,10 @@ const AllProjects = () => {
       </Flex>
     </React.Fragment>
   );
+};
+
+AllProjects.propTypes = {
+  width: PropTypes.number,
 };
 
 export default AllProjects;

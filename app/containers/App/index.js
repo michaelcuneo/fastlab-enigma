@@ -5,6 +5,8 @@ import { Switch, Route } from 'react-router-dom';
 
 import { ThemeProvider } from 'styled-components';
 
+import { withResizeDetector } from 'react-resize-detector';
+
 import HomePage from 'containers/HomePage/Loadable';
 import AboutPage from 'containers/AboutPage/Loadable';
 import AreasPage from 'containers/AreasPage/Loadable';
@@ -25,7 +27,7 @@ import theme from './Theme';
 
 import GlobalStyle from '../../global-styles';
 
-function App({ runtime }) {
+function App({ runtime, width, height }) {
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
       runtime.install({
@@ -51,31 +53,85 @@ function App({ runtime }) {
       </Helmet>
       <Header />
       <Switch id="page-wrap">
-        <Route exact path="/" render={props => <HomePage {...props} />} />
+        <Route
+          exact
+          path="/"
+          render={props => (
+            <HomePage {...props} width={width} height={height} />
+          )}
+        />
         <Route
           path="/researcher/:id"
-          render={props => <ResearcherPage {...props} />}
+          render={props => (
+            <ResearcherPage {...props} width={width} height={height} />
+          )}
         />
-        <Route path="/update/:id" render={props => <UpdatePage {...props} />} />
+        <Route
+          path="/update/:id"
+          render={props => (
+            <UpdatePage {...props} width={width} height={height} />
+          )}
+        />
         <Route
           path="/project/:id"
-          render={props => <ProjectPage {...props} />}
+          render={props => (
+            <ProjectPage {...props} width={width} height={height} />
+          )}
         />
-        <Route path="/contact" render={props => <ContactPage {...props} />} />
+        <Route
+          path="/contact"
+          render={props => (
+            <ContactPage {...props} width={width} height={height} />
+          )}
+        />
         <Route
           path="/projects/:nextToken"
-          render={props => <ProjectsPage {...props} />}
+          render={props => (
+            <ProjectsPage {...props} width={width} height={height} />
+          )}
         />
         <Route
           path="/exhibits"
-          render={props => <ExhibitionsPage {...props} />}
+          render={props => (
+            <ExhibitionsPage {...props} width={width} height={height} />
+          )}
         />
-        <Route path="/projects" render={props => <ProjectsPage {...props} />} />
-        <Route path="/areas" render={props => <AreasPage {...props} />} />
-        <Route path="/updates" render={props => <UpdatesPage {...props} />} />
-        <Route path="/programs" render={props => <ProgramsPage {...props} />} />
-        <Route path="/about" render={props => <AboutPage {...props} />} />
-        <Route path="" render={props => <NotFoundPage {...props} />} />
+        <Route
+          path="/projects"
+          render={props => (
+            <ProjectsPage {...props} width={width} height={height} />
+          )}
+        />
+        <Route
+          path="/areas"
+          render={props => (
+            <AreasPage {...props} width={width} height={height} />
+          )}
+        />
+        <Route
+          path="/updates"
+          render={props => (
+            <UpdatesPage {...props} width={width} height={height} />
+          )}
+        />
+        <Route
+          path="/programs"
+          render={props => (
+            <ProgramsPage {...props} width={width} height={height} />
+          )}
+        />
+        <Route
+          path="/about"
+          render={props => (
+            <AboutPage {...props} width={width} height={height} />
+          )}
+        />
+        <Route
+          path=""
+          render={props => (
+            <NotFoundPage {...props} width={width} height={height} />
+          )}
+        />
       </Switch>
       <GlobalStyle />
       <ThemeProvider theme={theme} />
@@ -85,6 +141,14 @@ function App({ runtime }) {
 
 App.propTypes = {
   runtime: PropTypes.object,
+  width: PropTypes.number,
+  height: PropTypes.number,
 };
 
-export default App;
+export default withResizeDetector(App, {
+  refreshMode: 'throttle',
+  refreshRate: 500,
+  refreshOptions: {
+    trailing: true,
+  },
+});
