@@ -13,7 +13,7 @@ export function StyledFlexHeader({ width, small, children }) {
     top: 0;
     left: 0;
     right: 0;
-    height: ${!small ? '100%' : '400px'};
+    height: ${!small || isTabletMobile ? '100%' : '400px'};
     align-items: center;
     width: ${isTabletMobile ? width : width * 0.4229};
     z-index: 3;

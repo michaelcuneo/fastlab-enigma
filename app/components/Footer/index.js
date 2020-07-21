@@ -6,6 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 import { Flex, Box, Text } from 'rebass';
 import { VERSION } from 'containers/App/constants';
 
+import Tippy from '@tippyjs/react';
+
 // import LocaleToggle from 'containers/LocaleToggle';
 import FastlabIcon from './FastlabIcon';
 import UonIcon from './UonIcon';
@@ -43,12 +45,46 @@ function Footer() {
         alignItems="center"
         justifyContent="space-between"
       >
-        <FooterLink to="/">Home</FooterLink>
-        <FooterLink to="/about">About</FooterLink>
-        <FooterLink to="/projects">Projects</FooterLink>
-        <FooterLink to="/updates">Updates</FooterLink>
-        <FooterLink to="/programs">Programs</FooterLink>
-        <FooterLink to="/contact">Contact</FooterLink>
+        <Tippy content={<FormattedMessage {...messages.homeDetails} />}>
+          <FooterLink to="/">
+            <FormattedMessage {...messages.home} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.aboutDetails} />}>
+          <FooterLink to="/about">
+            <FormattedMessage {...messages.about} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.projectsDetails} />}>
+          <FooterLink to="/projects">
+            <FormattedMessage {...messages.projects} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.updatesDetails} />}>
+          <FooterLink to="/updates">
+            <FormattedMessage {...messages.updates} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.areasDetails} />}>
+          <FooterLink to="/areas">
+            <FormattedMessage {...messages.areas} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.exhibitsDetails} />}>
+          <FooterLink to="/exhibits">
+            <FormattedMessage {...messages.exhibits} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.programsDetails} />}>
+          <FooterLink to="/programs">
+            <FormattedMessage {...messages.programs} />
+          </FooterLink>
+        </Tippy>
+        <Tippy content={<FormattedMessage {...messages.contactDetails} />}>
+          <FooterLink to="/contact">
+            <FormattedMessage {...messages.contact} />
+          </FooterLink>
+        </Tippy>
       </Flex>
       <Flex
         alignContent="center"

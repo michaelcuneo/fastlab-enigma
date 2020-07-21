@@ -72,6 +72,7 @@
     "@fortawesome/react-fontawesome": "^0.1.10",
     "@react-spring/three": "^9.0.0-rc.3",
     "@rebass/forms": "^4.0.6",
+    "@tippyjs/react": "^4.1.0",
     "aws-amplify": "^3.0.18",
     "aws-amplify-react": "^4.1.16",
     "btoa": "^1.2.1",
@@ -126,6 +127,7 @@
     "sanitize.css": "8.0.0",
     "styled-components": "4.2.0",
     "three": "^0.113.2",
+    "tippy.js": "^6.2.5",
     "video-react": "^0.14.1",
     "vivus": "^0.4.5",
     "yup": "^0.28.5"

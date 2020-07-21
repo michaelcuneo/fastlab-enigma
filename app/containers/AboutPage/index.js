@@ -145,14 +145,16 @@ function AboutPage() {
         </Flex>
         <Flex
           flexDirection="row"
-          justifyContent="flex-end"
-          pt={[32]}
-          pb={['20px', '20px', '182px']}
-          pr={
+          justifyContent={isTabletMobile ? 'center' : 'flex-end'}
+          pt={['40px', '40px', '105px']}
+          pb={['40px', '40px', '105px']}
+          pr={[
+            0,
+            0,
             menuItems[currentMenuItem].link === 'researchers'
               ? width * 0.0729
-              : width * 0.2167
-          }
+              : width * 0.2167,
+          ]}
         >
           <Button
             color="dark"

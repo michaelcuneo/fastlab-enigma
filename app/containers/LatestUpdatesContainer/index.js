@@ -76,10 +76,11 @@ const LatestUpdatesContainer = ({ dark }) => {
         <Flex
           width="100%"
           flexDirection="row"
-          justifyContent="flex-end"
+          justifyContent={isTabletMobile ? 'center' : 'flex-end'}
           sx={{ background: '#EC184A' }}
-          pb={[100]}
-          pr={['6.88vw']}
+          pb={[80]}
+          pt={[80]}
+          pr={[0, 0, width * 0.0729]}
         >
           <Button color="pink" to="/updates" arrow="right">
             See all updates

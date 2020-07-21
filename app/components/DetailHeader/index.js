@@ -16,7 +16,7 @@ export function DetailHeader({ children }) {
   `;
 
   return (
-    <Header pt="10px" pb="20px">
+    <Header pt={['40px', '40px', '100px']} pb={['20px', '20px', '30px']}>
       {children}
     </Header>
   );
