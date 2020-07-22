@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
+import { useMediaQuery } from 'react-responsive';
 
 import Slideshow from 'react-slidez';
 
@@ -29,6 +30,29 @@ import { DetailText } from 'components/DetailText';
 import { getPost } from '../../../src/graphql/queries';
 
 function UpdatePage({ match, width, height }) {
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  let SX;
+
+  if (isTabletMobile) {
+    SX = {
+      position: 'relative',
+      height: 'auto',
+      maxWidth: '100%',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  } else {
+    SX = {
+      position: 'absolute',
+      height: 'auto',
+      maxWidth: '100%',
+      top: '400px',
+      background: '#151417',
+      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
+    };
+  }
+
   return (
     <React.Fragment>
       <Helmet key="Helmet">
@@ -46,41 +70,24 @@ function UpdatePage({ match, width, height }) {
           return (
             <React.Fragment>
               <Landing text={<Markup content={data.getPost.title} />} small />
-              <Flex
-                width={width}
-                flexDirection="column"
-                sx={{
-                  position: 'absolute',
-                  height: 'auto',
-                  top: '400px',
-                  background: '#151417',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.4)',
-                  zIndex: 1,
-                }}
-              >
+              <Flex width={width} flexDirection="column" sx={SX}>
                 <Flex
-                  height="auto"
-                  width={width}
                   flexDirection="column"
-                  pl={width * 0.2161}
                   sx={{
                     position: 'relative',
                   }}
                 >
-                  <Flex flexDirection="row">
-                    <Flex
-                      sx={{
-                        width: `${width * 0.4229}px`,
-                      }}
-                      flexDirection="column"
-                    >
-                      <DetailText
-                        sx={{
-                          width: `${width * 0.4229}px`,
-                        }}
-                        pt="80px"
-                        pb="30px"
-                      >
+                  <Flex
+                    sx={{
+                      position: 'relative',
+                    }}
+                    flexDirection={isTabletMobile ? 'column' : 'row'}
+                    justifyContent="flex-begin"
+                    alignItems="flex-begin"
+                    px={[width * 0.0933, width * 0.0933, width * 0.2161]}
+                  >
+                    <Flex width={[1, 1, width * 0.4229]} flexDirection="column">
+                      <DetailText>
                         <ParsedContent content={data.getPost.data} />
                       </DetailText>
                     </Flex>
@@ -102,7 +109,17 @@ function UpdatePage({ match, width, height }) {
                       </DetailText>
                     </Flex>
                   </Flex>
-                  <Flex style={{ height: '500px' }}>
+                  <Flex
+                    sx={{
+                      position: 'relative',
+                    }}
+                    flexDirection={isTabletMobile ? 'column' : 'row'}
+                    justifyContent="flex-begin"
+                    alignItems="flex-begin"
+                    minHeight="500px"
+                    maxHeight="800px"
+                    px={[width * 0.0933, width * 0.0933, width * 0.2161]}
+                  >
                     {data.getPost.gallery && (
                       <Slideshow
                         showIndex

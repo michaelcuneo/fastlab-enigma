@@ -21,8 +21,6 @@ const AllProjects = ({ dark, width }) => {
   const [nextToken, setNextToken] = useState(null);
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  const { innerHeight } = window;
-
   return (
     <React.Fragment>
       <Flex
@@ -53,9 +51,6 @@ const AllProjects = ({ dark, width }) => {
                       <Box key={thisItem.id}>
                         <ProjectContainer
                           width={width}
-                          height={innerHeight}
-                          screenWidth={width}
-                          screenHeight={innerHeight}
                           item={thisItem}
                           staggered
                         />
