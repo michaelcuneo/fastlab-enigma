@@ -51,6 +51,7 @@ const SideBio = ({ width, data }) => {
       minWidth={containerWidth}
       maxWidth={containerWidth}
       height="auto"
+      sx={{ zIndex: 6 }}
     >
       <Flex
         p={width * 0.0182}

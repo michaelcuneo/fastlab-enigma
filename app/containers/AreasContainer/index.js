@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useMediaQuery } from 'react-responsive';
 import { Flex, Image } from 'rebass';
 
 import ParsedContent from 'components/ParsedContent';
@@ -17,26 +16,23 @@ import Sig1 from 'images/scribbles_mark-1-white.svg';
 import { menuItems } from './menuItems';
 import ResearchersContainer from '../ResearchersContainer';
 
-const AreasContainer = ({ width }) => {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+const AreasContainer = ({ width, isTabletMobile }) => {
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
+
+  const { innerHeight } = window;
 
   let SX;
 
   if (isTabletMobile) {
     SX = {
       position: 'relative',
-      height: 'auto',
-      maxWidth: '100%',
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
   } else {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
+      position: 'relative',
+      marginTop: `-${innerHeight - 400}px`,
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
@@ -164,6 +160,7 @@ const AreasContainer = ({ width }) => {
 
 AreasContainer.propTypes = {
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default AreasContainer;

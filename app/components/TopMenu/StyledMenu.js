@@ -11,5 +11,5 @@ export const StyledMenu = styled(Flex)`
   min-height: 60px;
   border: 1px solid #707070;
   border-radius: 30px;
-  z-index: 4;
+  z-index: 5;
 `;

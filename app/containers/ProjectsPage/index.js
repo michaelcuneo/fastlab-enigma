@@ -2,37 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { FormattedMessage } from 'react-intl';
-import { useMediaQuery } from 'react-responsive';
 
 import LatestProjectsContainer from 'containers/LatestProjectsContainer';
 import AllProjectsContainer from 'containers/AllProjectsContainer';
-import OverlayContainer from 'containers/OverlayContainer';
-import Landing from 'containers/Landing';
 import Footer from 'components/Footer';
+import Landing from 'containers/Landing';
 
 import { Flex } from 'rebass';
 
 import messages from './messages';
 
-function ProjectsPage({ width, height }) {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+function ProjectsPage({ width, isTabletMobile }) {
+  const { innerHeight } = window;
 
   let SX;
 
   if (isTabletMobile) {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
+      display: 'relative',
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
   } else {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
+      position: 'relative',
+      marginTop: `-${innerHeight - 400}px`,
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
@@ -42,14 +36,21 @@ function ProjectsPage({ width, height }) {
     <React.Fragment>
       <Helmet key="Helmet">
         <title>About Page</title>
-        <meta name="description" content="Fastlab Contact Page" />
+        <meta name="description" content="FASTLab Contact Page" />
       </Helmet>
-      <OverlayContainer width={width} height={height} />
-      <Landing text={<FormattedMessage {...messages.header} />} small />
-      <Flex width={width} flexDirection="column" sx={SX}>
-        <LatestProjectsContainer width={width} height={height} dark />
-        <AllProjectsContainer width={width} height={height} />
-        <Footer />
+      <Landing
+        text={<FormattedMessage {...messages.header} />}
+        width={width}
+        small
+      />
+      <Flex flexDirection="column" sx={SX}>
+        <LatestProjectsContainer
+          width={width}
+          isTabletMobile={isTabletMobile}
+          dark
+        />
+        <AllProjectsContainer width={width} isTabletMobile={isTabletMobile} />
+        <Footer width={width} isTabletMobile={isTabletMobile} />
       </Flex>
     </React.Fragment>
   );
@@ -57,7 +58,7 @@ function ProjectsPage({ width, height }) {
 
 ProjectsPage.propTypes = {
   width: PropTypes.number,
-  height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default ProjectsPage;

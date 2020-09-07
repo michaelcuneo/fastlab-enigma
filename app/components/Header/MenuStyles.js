@@ -25,7 +25,7 @@ export const TabletMobileStyles = {
   bmMenuWrap: {
     position: 'fixed',
     height: '100%',
-    zIndex: 99999,
+    zIndex: 999999,
   },
   bmMenu: {
     height: '100%',
@@ -42,6 +42,7 @@ export const TabletMobileStyles = {
     display: 'inline-block',
   },
   bmOverlay: {
+    maxWidth: '100%',
     background: 'rgba(0, 0, 0, 0.4)',
   },
 };
@@ -90,6 +91,7 @@ export const DesktopLaptopStyles = {
     display: 'inline-block',
   },
   bmOverlay: {
+    maxWidth: '100%',
     background: 'rgba(0, 0, 0, 0.4)',
   },
 };

@@ -9,6 +9,7 @@ export function DetailHeader({ children, pt, pb, sx }) {
   const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const Header = styled(Box)`
+    width: auto;
     font-family: 'archiaregular', sans-serif;
     font-size: ${isTabletMobile ? '30px' : '40px'};
     line-height: ${isTabletMobile ? '30px' : '25px'};
@@ -24,7 +25,7 @@ export function DetailHeader({ children, pt, pb, sx }) {
 
 DetailHeader.propTypes = {
   children: PropTypes.node,
-  pt: PropTypes.string,
-  pb: PropTypes.string,
+  pt: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  pb: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   sx: PropTypes.object,
 };

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { useMediaQuery } from 'react-responsive';
-
 import Button from 'components/Button';
 
 import { graphqlOperation } from 'aws-amplify';
@@ -17,9 +15,10 @@ import { StyledText } from './StyledText';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-const AllProjects = ({ dark, width }) => {
+const AllProjects = ({ dark, width, isTabletMobile }) => {
   const [nextToken, setNextToken] = useState(null);
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+
+  const { innerHeight } = window;
 
   return (
     <React.Fragment>
@@ -30,7 +29,11 @@ const AllProjects = ({ dark, width }) => {
         px={[0, 0, width * 0.0729]}
       >
         {!dark && (
-          <Box pt={['172px']} pb={['60px']}>
+          <Box
+            pt={['40px', '40px', '182px']}
+            pb={['40px', '40px', '182px']}
+            px={[width * 0.0933, width * 0.0933, width * 0.0729]}
+          >
             <StyledText>All Projects</StyledText>
           </Box>
         )}
@@ -48,18 +51,21 @@ const AllProjects = ({ dark, width }) => {
                 <React.Fragment>
                   {data.listProjects.items.map(thisItem =>
                     !isTabletMobile ? (
-                      <Box key={thisItem.id}>
-                        <ProjectContainer
-                          width={width}
-                          item={thisItem}
-                          staggered
-                        />
-                      </Box>
+                      <ProjectContainer
+                        key={thisItem.id}
+                        width={width}
+                        height={innerHeight}
+                        item={thisItem}
+                        isTabletMobile={isTabletMobile}
+                        wrap
+                      />
                     ) : (
                       <MobileProjectContainer
                         key={thisItem.id}
+                        width={width}
                         item={thisItem}
-                        staggered
+                        isTabletMobile={isTabletMobile}
+                        wrap
                       />
                     ),
                   )}
@@ -93,6 +99,7 @@ const AllProjects = ({ dark, width }) => {
 AllProjects.propTypes = {
   dark: PropTypes.bool,
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default AllProjects;

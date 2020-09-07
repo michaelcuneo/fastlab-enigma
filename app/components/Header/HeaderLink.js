@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { Flex } from 'rebass';
+
 import { AnimatedBox } from './AnimatedBox';
 import { StyledLink } from './StyledLink';
 import { LinkText } from './LinkText';
@@ -39,8 +41,8 @@ export const HeaderLink = ({
     <StyledLink to={to} onClick={onClick}>
       <AnimatedBox>
         <LinkText
-          fontSize={['40px', '40px', '50px']}
-          lineHeight={['80px', '80px', '100px']}
+          fontSize={['40px', '40px', '40px']}
+          lineHeight={['80px', '80px', '80px']}
         >
           {link}
         </LinkText>
@@ -58,10 +60,18 @@ export const HeaderLink = ({
       onClick={onClick}
     >
       <AnimatedBox style={CustomAnimation(hoverState)}>
-        <LinkText>{link}</LinkText>
-        <LinkDetails style={CustomDetailAnimation(hoverState)}>
-          {linkDetails}
-        </LinkDetails>
+        <Flex
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            overflow: 'hidden',
+          }}
+        >
+          <LinkText>{link}</LinkText>
+          <LinkDetails style={CustomDetailAnimation(hoverState)}>
+            {linkDetails}
+          </LinkDetails>
+        </Flex>
         <LinkArrow style={CustomHideAnimation(hoverState)}>
           <FontAwesomeIcon icon="angle-right" size="3x" />
         </LinkArrow>
@@ -77,3 +87,5 @@ HeaderLink.propTypes = {
   linkDetails: PropTypes.object,
   isTabletMobile: PropTypes.bool,
 };
+
+export default HeaderLink;

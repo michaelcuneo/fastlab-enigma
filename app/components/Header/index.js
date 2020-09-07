@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { slide as Menu } from 'react-burger-menu';
 import { FormattedMessage } from 'react-intl';
-
-import { useMediaQuery } from 'react-responsive';
 
 import IconNav from 'images/icon-nav-trigger.svg';
 import CloseNav from 'images/icon-close.svg';
@@ -11,16 +10,14 @@ import { Flex, Box } from 'rebass';
 
 import { FastlabIconDesktop, FastlabIconMobile } from './FastlabIcon';
 
-import { StyledLine } from './StyledLine';
-import { HeaderLink } from './HeaderLink';
+import StyledLine from './StyledLine';
+import HeaderLink from './HeaderLink';
 import messages from './messages';
 
 import { DesktopLaptopStyles, TabletMobileStyles } from './MenuStyles';
 
-function Header() {
+function Header({ width, isTabletMobile }) {
   const [menuOpened, setMenuOpened] = useState(false);
-
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const closeMenu = () => setMenuOpened(false);
   const handleStateChange = state => setMenuOpened(state.isOpen);
@@ -30,7 +27,7 @@ function Header() {
       {isTabletMobile ? <FastlabIconMobile /> : <FastlabIconDesktop />}
       <Menu
         right
-        width={isTabletMobile ? '100%' : '600px'}
+        width={isTabletMobile ? width : '600px'}
         isOpen={menuOpened}
         onStateChange={state => handleStateChange(state)}
         pageWrapId="page-wrap"
@@ -41,6 +38,7 @@ function Header() {
               position: 'absolute',
               right: 26,
               top: 26,
+              zIndex: 999999,
             }}
             width="56"
             height="56"
@@ -57,7 +55,7 @@ function Header() {
         <Flex
           flexDirection="column"
           sx={{
-            padding: '110px 0px 0px 0px',
+            padding: '115px 0px 0px 0px',
             width: '100%',
             height: '100vh',
           }}
@@ -125,5 +123,10 @@ function Header() {
     </React.Fragment>
   );
 }
+
+Header.propTypes = {
+  width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
+};
 
 export default Header;

@@ -52,11 +52,11 @@ const MobileUpdateContainer = ({ item, width }) => {
   return (
     <Flex
       width="100%"
-      height="100%"
       flexDirection="row"
       flexWrap="wrap"
       px={width * 0.0827}
       mb="20px"
+      sx={{ zIndex: 5 }}
     >
       <Link
         style={{ width: '100%', textDecoration: 'none' }}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
 
 import ParsedContent from 'components/ParsedContent';
 import SideMenu from 'components/SideMenu';
@@ -16,37 +15,11 @@ import { Flex, Image } from 'rebass';
 import Button from 'components/Button';
 import { menuItems } from './menuItems';
 
-const ProgramsContainer = ({ width, height }) => {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+const ProgramsContainer = ({ width, isTabletMobile }) => {
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
-
-  let SX;
-
-  if (isTabletMobile) {
-    SX = {
-      position: 'relative',
-      height: 'auto',
-      maxWidth: '100%',
-      background: '#151417',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-    };
-  } else {
-    SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
-      background: '#151417',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-    };
-  }
-
   return (
-    <Flex flexDirection="column" sx={SX}>
+    <React.Fragment>
       <Flex
-        sx={{
-          position: 'relative',
-        }}
         flexDirection={isTabletMobile ? 'column' : 'row'}
         justifyContent="flex-begin"
         alignItems="flex-begin"
@@ -79,7 +52,6 @@ const ProgramsContainer = ({ width, height }) => {
           <React.Fragment>
             <SideMenu
               width={width}
-              height={height}
               menuItems={menuItems}
               currentMenuItem={currentMenuItem}
               setCurrentMenuItem={setCurrentMenuItem}
@@ -142,13 +114,13 @@ const ProgramsContainer = ({ width, height }) => {
             : menuItems[currentMenuItem + 1].title}
         </Button>
       </Flex>
-    </Flex>
+    </React.Fragment>
   );
 };
 
 ProgramsContainer.propTypes = {
   width: PropTypes.number,
-  height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default ProgramsContainer;

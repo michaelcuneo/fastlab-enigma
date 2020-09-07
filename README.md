@@ -1,8 +1,8 @@
-<img src="https://raw.githubusercontent.com/michaelcuneo/fastlab-brand/master/Fastlab_LLR.svg" alt="Fastlab Banner" align="center" />
+<img src="https://raw.githubusercontent.com/michaelcuneo/fastlab-brand/master/Fastlab_LLR.svg" alt="FASTLab Banner" align="center" />
 
 <br />
 
-<div align="center"><strong>Fastlab - Enigma collaborative repo</strong></div>
+<div align="center"><strong>FASTLab - Enigma collaborative repo</strong></div>
 
 <br />
 

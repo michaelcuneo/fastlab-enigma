@@ -62,6 +62,7 @@ const UpdateContainer = ({ item, width }) => {
       width={updateWidth}
       flexDirection="row"
       flexWrap="wrap"
+      sx={{ zIndex: 5 }}
     >
       <Link style={{ textDecoration: 'none' }} to={`/update/${item.id}`}>
         <Box sx={{ position: 'relative' }}>

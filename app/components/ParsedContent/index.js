@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import S3Image from 'components/S3Image';
+import StyledLink from 'components/StyledLink';
 
 import parse from 'html-react-parser';
 
@@ -17,6 +18,16 @@ const ParsedContent = props => {
             {
               s3key: domNode.attribs.src,
               src: domNode.attribs.src,
+            },
+            null,
+          );
+        }
+        if (domNode.name && domNode.name === 'a') {
+          return React.createElement(
+            StyledLink,
+            {
+              href: domNode.attribs.href,
+              text: domNode.attribs.text,
             },
             null,
           );

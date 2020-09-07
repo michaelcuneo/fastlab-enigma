@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Button from 'components/Button';
 
-import { useMediaQuery } from 'react-responsive';
-
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
 
@@ -14,9 +12,8 @@ import MobileUpdateContainer from 'containers/MobileUpdateContainer';
 
 import { listPosts } from '../../../src/graphql/queries';
 
-const AllUpdates = ({ width }) => {
+const AllUpdates = ({ width, isTabletMobile }) => {
   const [nextToken, setNextToken] = useState(null);
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const { innerHeight } = window;
 
@@ -24,7 +21,7 @@ const AllUpdates = ({ width }) => {
     <React.Fragment>
       <Flex
         flexDirection="column"
-        sx="#151417"
+        sx={{ height: '100%', overflow: 'scroll', zIndex: 5 }}
         justifyContent="space-around"
         px={[0, 0, width * 0.0729]}
       >
@@ -49,9 +46,7 @@ const AllUpdates = ({ width }) => {
                           item={thisItem}
                           width={width}
                           height={innerHeight}
-                          screenWidth={width}
-                          screenHeight={innerHeight}
-                          staggered
+                          wrap
                         />
                       </Box>
                     ) : (
@@ -59,7 +54,7 @@ const AllUpdates = ({ width }) => {
                         key={thisItem.id}
                         width={width}
                         item={thisItem}
-                        staggered
+                        wrap
                       />
                     ),
                   )}
@@ -92,6 +87,7 @@ const AllUpdates = ({ width }) => {
 
 AllUpdates.propTypes = {
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default AllUpdates;

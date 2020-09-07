@@ -1,97 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-
-import { useMediaQuery } from 'react-responsive';
 
 import { Box } from 'rebass';
 
-const OverlayContainer = ({ width, height }) => {
-  const [grid1x, setGrid1x] = useState(null);
-  const [grid2x, setGrid2x] = useState(null);
-  const [grid3x, setGrid3x] = useState(null);
-  const [grid4x, setGrid4x] = useState(null);
-  const [grid5x, setGrid5x] = useState(null);
-  const [grid6x, setGrid6x] = useState(null);
-  const [grid7x, setGrid7x] = useState(null);
-
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
-  const { innerHeight } = window;
-
-  useEffect(() => {
-    handleResize();
-  }, []);
-
-  const handleResize = () => {
-    if (!isTabletMobile) {
-      // Calculate Scaled Desktop Grid Area
-      setGrid1x(width * 0.0688);
-      setGrid2x(width * 0.212);
-      setGrid3x(width * 0.3552);
-      setGrid4x(width * 0.4984);
-      setGrid5x(width * 0.6417);
-      setGrid6x(width * 0.7849);
-      setGrid7x(width * 0.9281);
-    } else {
-      setGrid1x(width * 0.0827);
-      setGrid2x(width * 0.288);
-      setGrid3x(width * 0.4933);
-      setGrid4x(width * 0.6987);
-      setGrid5x(width * 0.904);
-    }
-  };
-
-  return width && height && grid1x && grid2x ? (
+const OverlayContainer = ({ width, height, isTabletMobile }) =>
+  width && height ? (
     <Box
-      id="OverlayContainer"
       style={{
         position: 'absolute',
         top: 0,
         bottom: 0,
         padding: 0,
         margin: 0,
-        zIndex: 2,
+        zIndex: 3,
+        maxWidth: width,
         pointerEvents: 'none',
       }}
     >
       {isTabletMobile ? (
         <svg id="overlay" width={width} height={height}>
           <line
-            x1={grid1x}
+            x1={width * 0.0827}
             y1="0"
-            x2={grid1x}
+            x2={width * 0.0827}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid2x}
+            x1={width * 0.288}
             y1="0"
-            x2={grid2x}
+            x2={width * 0.288}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid3x}
+            x1={width * 0.4933}
             y1="0"
-            x2={grid3x}
+            x2={width * 0.4933}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid4x}
+            x1={width * 0.6987}
             y1="0"
-            x2={grid4x}
+            x2={width * 0.6987}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid5x}
+            x1={width * 0.904}
             y1="0"
-            x2={grid5x}
+            x2={width * 0.904}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
@@ -103,7 +66,7 @@ const OverlayContainer = ({ width, height }) => {
               x={width * 0.012}
               y={width * 0.012}
               width={width * 0.064}
-              height={innerHeight * 0.064}
+              height={width * 0.064}
               patternUnits="userSpaceOnUse"
             >
               <circle
@@ -125,57 +88,57 @@ const OverlayContainer = ({ width, height }) => {
       ) : (
         <svg id="overlay" width={width} height={height}>
           <line
-            x1={grid1x}
+            x1={width * 0.0688}
             y1="0"
-            x2={grid1x}
+            x2={width * 0.0688}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid2x}
+            x1={width * 0.212}
             y1="0"
-            x2={grid2x}
+            x2={width * 0.212}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid3x}
+            x1={width * 0.3552}
             y1="0"
-            x2={grid3x}
+            x2={width * 0.3552}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid4x}
+            x1={width * 0.4984}
             y1="0"
-            x2={grid4x}
+            x2={width * 0.4984}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid5x}
+            x1={width * 0.6417}
             y1="0"
-            x2={grid5x}
+            x2={width * 0.6417}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid6x}
+            x1={width * 0.7849}
             y1="0"
-            x2={grid6x}
+            x2={width * 0.7849}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
           />
           <line
-            x1={grid7x}
+            x1={width * 0.9281}
             y1="0"
-            x2={grid7x}
+            x2={width * 0.9281}
             y2={height}
             stroke="rgba(255, 255, 255, 0.2)"
             strokeWidth={1}
@@ -187,7 +150,7 @@ const OverlayContainer = ({ width, height }) => {
               x={width * 0.0208}
               y={width * 0.0208}
               width={width * 0.023839}
-              height={innerHeight * 0.023839}
+              height={width * 0.023839}
               patternUnits="userSpaceOnUse"
             >
               <circle
@@ -209,11 +172,11 @@ const OverlayContainer = ({ width, height }) => {
       )}
     </Box>
   ) : null;
-};
 
 OverlayContainer.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default OverlayContainer;

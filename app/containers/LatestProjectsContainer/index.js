@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { useMediaQuery } from 'react-responsive';
-
 import Sig1 from 'images/scribbles_mark-1-white.svg';
 import Sig3 from 'images/scribbles_mark-3-white.svg';
 
@@ -17,18 +15,18 @@ import MobileProjectContainer from 'containers/MobileProjectContainer';
 
 import { listProjects } from '../../../src/graphql/queries';
 
-const LatestProjectsContainer = ({ dark, width }) => {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+const LatestProjectsContainer = ({ dark, width, isTabletMobile }) => {
   const { innerHeight } = window;
 
   return (
     <React.Fragment>
       <Flex
         flexDirection="column"
-        sx={{ position: 'relative', background: '#151417', zIndex: '1' }}
+        sx={{ position: 'relative', background: '#151417' }}
         justifyContent="space-around"
       >
         <Flex
+          sx={{ position: 'relative', zIndex: 5 }}
           flexWrap={isTabletMobile ? 'wrap' : 'none'}
           width="100%"
           minHeight={innerHeight * 1.25}
@@ -63,9 +61,9 @@ const LatestProjectsContainer = ({ dark, width }) => {
                     sx={{
                       width: width * 0.1292,
                       height: innerHeight * 0.1769,
-                      position: 'absolute',
-                      left: `${width * 0.3323}px`,
                       top: `${innerHeight * 0.087}px`,
+                      left: `${width * 0.3323}px`,
+                      position: 'absolute',
                     }}
                     src={Sig3}
                   />
@@ -120,7 +118,12 @@ const LatestProjectsContainer = ({ dark, width }) => {
                 </React.Fragment>
               ) : (
                 data.listProjects.items.map(item => (
-                  <MobileProjectContainer key={item.id} item={item} staggered />
+                  <MobileProjectContainer
+                    key={item.id}
+                    width={width}
+                    item={item}
+                    wrap
+                  />
                 ))
               );
             }}
@@ -158,6 +161,7 @@ const LatestProjectsContainer = ({ dark, width }) => {
 LatestProjectsContainer.propTypes = {
   dark: PropTypes.bool,
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default LatestProjectsContainer;

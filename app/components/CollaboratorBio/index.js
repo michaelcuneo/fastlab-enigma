@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 import { Link } from 'react-router-dom';
 import { Flex, Box } from 'rebass';
 import StaffLink from './StaffLink';
@@ -24,7 +25,8 @@ StyledSubHeader.propTypes = {
 };
 
 const CollaboratorBio = ({ width, data }) => {
-  const containerWidth = width * 0.1786;
+  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+  const containerWidth = isTabletMobile ? width : width * 0.1786;
 
   return (
     <StyledMenu

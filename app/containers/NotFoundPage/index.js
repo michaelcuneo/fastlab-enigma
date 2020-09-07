@@ -1,24 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 
-import OverlayContainer from 'containers/OverlayContainer';
 import Footer from 'components/Footer';
 
 import { Flex, Box } from 'rebass';
 import H1 from 'components/H1';
 import Button from 'components/Button';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import messages from './messages';
 
-const NotFound = () => {
-  const { height } = useWindowDimensions();
+const NotFound = ({ width, isTabletMobile }) => {
+  const { innerHeight } = window;
+
   return (
     <React.Fragment>
-      <OverlayContainer />
       <Flex
-        height={height - 155}
+        height={innerHeight}
         flexDirection="column"
         justifyContent="center"
         alignContent="center"
@@ -36,9 +34,14 @@ const NotFound = () => {
           </Button>
         </Box>
       </Flex>
-      <Footer />
+      <Footer width={width} isTabletMobile={isTabletMobile} />
     </React.Fragment>
   );
+};
+
+NotFound.propTypes = {
+  width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default NotFound;

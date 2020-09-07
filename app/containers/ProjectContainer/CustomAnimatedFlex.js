@@ -13,4 +13,5 @@ export const CustomAnimatedFlex = styled(a.div)`
   margin: 5px 0px 0px 0px;
   overflow: hidden;
   padding: 34px;
+  z-index: 999999;
 `;

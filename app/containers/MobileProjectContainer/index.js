@@ -2,15 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import { Flex, Text } from 'rebass';
 
-function MobileProjectContainer({ item }) {
+function MobileProjectContainer({ width, item }) {
   const [project, setProject] = useState(item);
   const [image, setImage] = useState();
-
-  const { width } = useWindowDimensions();
 
   useEffect(() => {
     setupProject();
@@ -50,11 +46,11 @@ function MobileProjectContainer({ item }) {
   return (
     <Flex
       width="100%"
-      height="100%"
       flexDirection="row"
       flexWrap="wrap"
       px={width * 0.0827}
       mb="20px"
+      sx={{ zIndex: 9999 }}
     >
       <Link
         style={{ width: '100%', textDecoration: 'none' }}
@@ -108,6 +104,7 @@ function MobileProjectContainer({ item }) {
 
 MobileProjectContainer.propTypes = {
   item: PropTypes.object,
+  width: PropTypes.number,
 };
 
 export default MobileProjectContainer;

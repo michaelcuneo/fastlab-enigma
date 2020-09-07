@@ -7,8 +7,6 @@ import {
   VolumeMenuButton,
 } from 'video-react';
 
-import { useMediaQuery } from 'react-responsive';
-
 import backgroundVideo1720 from 'video/background-video-01720.mp4';
 import backgroundVideo2720 from 'video/background-video-02720.mp4';
 import backgroundVideo3720 from 'video/background-video-03720.mp4';
@@ -33,14 +31,10 @@ import backgroundVideo9480 from 'video/background-video-09480.mp4';
 import backgroundVideo10480 from 'video/background-video-10480.mp4';
 import backgroundVideo11480 from 'video/background-video-11480.mp4';
 
-import useWindowDimensions from 'utils/getWindowDimensions';
-
 import Overlay from './Overlay';
 
-const Landing = ({ text, small }) => {
+const Landing = ({ text, small, width, isTabletMobile }) => {
   const [backgroundVideo, setBackgroundVideo] = useState();
-  const { width, height } = useWindowDimensions();
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const desktopVideos = [
     backgroundVideo1720,
@@ -83,23 +77,17 @@ const Landing = ({ text, small }) => {
   });
 
   return (
-    <div
-      style={{ position: 'relative', zIndex: 0 }}
-      height={height}
-      width={width}
-    >
-      <Player
-        height={height}
-        width={width}
-        playsInline
-        src={backgroundVideo}
-        autoPlay
-        loop
-      >
+    <div style={{ position: 'relative', zIndex: 0 }} width={width}>
+      <Player width={width} playsInline src={backgroundVideo} autoPlay loop>
         <ControlBar disableCompletely />
         <BigPlayButton disabled />
         <VolumeMenuButton disabled />
-        <Overlay text={text} small={small} />
+        <Overlay
+          text={text}
+          small={small}
+          width={width}
+          isTabletMobile={isTabletMobile}
+        />
       </Player>
     </div>
   );
@@ -108,6 +96,8 @@ const Landing = ({ text, small }) => {
 Landing.propTypes = {
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   small: PropTypes.bool,
+  width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default Landing;

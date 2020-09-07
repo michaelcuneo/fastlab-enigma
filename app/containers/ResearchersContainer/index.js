@@ -1,15 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-import { useMediaQuery } from 'react-responsive';
 
 import { graphqlOperation } from 'aws-amplify';
 
 import { Connect } from 'aws-amplify-react';
 
 import { Flex, Box } from 'rebass';
-
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { DetailHeader } from 'components/DetailHeader';
 import { StaffTemplate } from './StaffTemplate';
@@ -18,58 +15,54 @@ import { listStaffs } from '../../../src/graphql/queries';
 
 import messages from './messages';
 
-function ResearchersContainer() {
-  const { width } = useWindowDimensions();
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
-
-  return (
-    <React.Fragment>
+const ResearchersContainer = ({ width, isTabletMobile }) => (
+  <React.Fragment>
+    <Flex
+      key="HeaderBox"
+      flexWrap="wrap"
+      justifyContent="space-between"
+      sx={{ maxWidth: width * 0.5729, width: width * 0.5729 }}
+    >
+      <DetailHeader pt="10px" pb="20px" sx={{ width: width * 0.5729 }}>
+        <FormattedMessage {...messages.researchers} />
+      </DetailHeader>
+    </Flex>
+    <Box style={{ userSelect: 'none', width: '100%' }} key="CurrentStaff">
       <Flex
-        key="HeaderBox"
-        flexWrap="wrap"
+        key="Wrapper"
         justifyContent="space-between"
-        sx={{ maxWidth: width * 0.5729, width: width * 0.5729 }}
+        flexWrap="wrap"
+        maxWidth={[width, width, width * 0.5729]}
       >
-        <DetailHeader pt="10px" pb="20px" sx={{ width: width * 0.5729 }}>
-          <FormattedMessage {...messages.researchers} />
-        </DetailHeader>
-      </Flex>
-      <Box style={{ userSelect: 'none', width: '100%' }} key="CurrentStaff">
-        <Flex
-          key="Wrapper"
-          justifyContent="space-between"
-          flexWrap="wrap"
-          maxWidth={[width, width, width * 0.5729]}
+        <Connect
+          key="ListProjectsUnfiltered"
+          query={graphqlOperation(listStaffs, {
+            limit: 100,
+          })}
         >
-          <Connect
-            key="ListProjectsUnfiltered"
-            query={graphqlOperation(listStaffs, {
-              limit: 100,
-            })}
-          >
-            {({ data, loading, error }) => {
-              if (error) return <h3>Error</h3>;
-              if (loading || !data) return null;
-              return data.listStaffs.items.map(staffs => [
-                staffs && (
-                  <StaffTemplate
-                    isTabletMobile={isTabletMobile}
-                    key={staffs.id}
-                    width={width}
-                    newStaff={staffs}
-                  />
-                ),
-              ]);
-            }}
-          </Connect>
-        </Flex>
-      </Box>
-    </React.Fragment>
-  );
-}
+          {({ data, loading, error }) => {
+            if (error) return <h3>Error</h3>;
+            if (loading || !data) return null;
+            return data.listStaffs.items.map(staffs => [
+              staffs && (
+                <StaffTemplate
+                  isTabletMobile={isTabletMobile}
+                  key={staffs.id}
+                  width={width}
+                  newStaff={staffs}
+                />
+              ),
+            ]);
+          }}
+        </Connect>
+      </Flex>
+    </Box>
+  </React.Fragment>
+);
 
 ResearchersContainer.propTypes = {
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default ResearchersContainer;

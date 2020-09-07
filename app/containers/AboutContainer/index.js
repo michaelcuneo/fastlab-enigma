@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
 import { Flex, Image } from 'rebass';
 
 import ParsedContent from 'components/ParsedContent';
@@ -17,36 +16,12 @@ import Sig1 from 'images/scribbles_mark-1-white.svg';
 
 import { menuItems } from './MenuItems';
 
-const AboutComponent = ({ width }) => {
+const AboutComponent = ({ width, isTabletMobile }) => {
   const [currentMenuItem, setCurrentMenuItem] = useState(0);
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
-  let SX;
-
-  if (isTabletMobile) {
-    SX = {
-      position: 'relative',
-      height: 'auto',
-      maxWidth: '100%',
-      background: '#151417',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-    };
-  } else {
-    SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
-      background: '#151417',
-      borderTop: '1px solid rgba(255, 255, 255, 0.2)',
-    };
-  }
   return (
-    <Flex flexDirection="column" width="100%" sx={SX}>
+    <React.Fragment>
       <Flex
-        sx={{
-          position: 'relative',
-        }}
         flexDirection={isTabletMobile ? 'column' : 'row'}
         justifyContent="flex-begin"
         alignItems="flex-begin"
@@ -68,7 +43,10 @@ const AboutComponent = ({ width }) => {
               sx={{ position: 'relative', minWidth: width * 0.4229 }}
             >
               {menuItems[currentMenuItem].link === 'researchers' ? (
-                <ResearchersContainer />
+                <ResearchersContainer
+                  width={width}
+                  isTabletMobile={isTabletMobile}
+                />
               ) : (
                 <React.Fragment>
                   <DetailHeader>
@@ -86,6 +64,7 @@ const AboutComponent = ({ width }) => {
         ) : (
           <React.Fragment>
             <SideMenu
+              width={width}
               menuItems={menuItems}
               currentMenuItem={currentMenuItem}
               setCurrentMenuItem={setCurrentMenuItem}
@@ -96,7 +75,7 @@ const AboutComponent = ({ width }) => {
               sx={{ position: 'relative', minWidth: width * 0.4229 }}
             >
               {menuItems[currentMenuItem].link === 'researchers' ? (
-                <ResearchersContainer />
+                <ResearchersContainer width={width} />
               ) : (
                 <React.Fragment>
                   <DetailHeader>
@@ -154,12 +133,13 @@ const AboutComponent = ({ width }) => {
             : menuItems[currentMenuItem + 1].title}
         </Button>
       </Flex>
-    </Flex>
+    </React.Fragment>
   );
 };
 
 AboutComponent.propTypes = {
   width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default AboutComponent;

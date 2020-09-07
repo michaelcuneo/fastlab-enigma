@@ -1,5 +1,5 @@
 export default {
-  breakpoints: ['40em', '65em', '65em'],
+  breakpoints: ['40em', '50em', '64em'],
   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64],
   colors: {
     blue: '#07c',

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { useMediaQuery } from 'react-responsive';
 import { FormattedMessage } from 'react-intl';
 
 import { graphqlOperation } from 'aws-amplify';
@@ -10,17 +9,14 @@ import { Connect } from 'aws-amplify-react';
 import ParsedContent from 'components/ParsedContent';
 import SideBio from 'components/SideBio';
 import BottomBio from 'components/BottomBio';
-import Footer from 'components/Footer';
 
-import OverlayContainer from 'containers/OverlayContainer';
 import Landing from 'containers/Landing';
 import RelatedProjectsContainer from 'containers/RelatedProjectsContainer';
+import Footer from 'components/Footer';
 
 import { Flex, Box } from 'rebass';
 
 import Button from 'components/Button';
-
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { DetailHeader } from 'components/DetailHeader';
 import { DetailText } from 'components/DetailText';
@@ -28,26 +24,21 @@ import { DetailText } from 'components/DetailText';
 import messages from './messages';
 import { getStaff } from '../../../src/graphql/queries';
 
-function ResearcherPage({ match }) {
-  const { width, height } = useWindowDimensions();
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+function ResearcherPage({ match, width, height, isTabletMobile }) {
+  const { innerHeight } = window;
 
   let SX;
 
   if (isTabletMobile) {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
+      position: 'relative',
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
   } else {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
+      position: 'relative',
+      marginTop: `-${innerHeight - 400}px`,
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
@@ -57,9 +48,13 @@ function ResearcherPage({ match }) {
     <React.Fragment>
       <Helmet key="Helmet">
         <title>About Page</title>
-        <meta name="description" content="Fastlab Contact Page" />
+        <meta name="description" content="FASTLab Contact Page" />
       </Helmet>
-      <Landing text={<FormattedMessage {...messages.header} />} small />
+      <Landing
+        text={<FormattedMessage {...messages.header} />}
+        width={width}
+        small
+      />
       <Connect
         key="StaffContainer"
         query={graphqlOperation(getStaff, { id: match.params.id })}
@@ -75,9 +70,6 @@ function ResearcherPage({ match }) {
               sx={SX}
             >
               <Flex
-                sx={{
-                  position: 'relative',
-                }}
                 justifyContent="flex-begin"
                 alignItems="flex-begin"
                 pt="40px"
@@ -159,17 +151,19 @@ function ResearcherPage({ match }) {
                 )}
               </Flex>
               <RelatedProjectsContainer width={width} />
-              <Footer />
             </Flex>
           );
         }}
       </Connect>
-      <OverlayContainer />
+      <Footer width={width} isTabletMobile={isTabletMobile} />
     </React.Fragment>
   );
 }
 
 ResearcherPage.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
   match: PropTypes.object,
 };
 

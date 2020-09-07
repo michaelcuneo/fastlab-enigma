@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { useMediaQuery } from 'react-responsive';
-
 import { Flex, Text } from 'rebass';
 
 import Displacement from 'images/1.jpg';
@@ -13,20 +11,13 @@ import { CustomAnimation } from './CustomAnimation';
 
 import Image from './Image';
 
-function ProjectContainer({
-  item,
-  height,
-  width,
-  screenWidth,
-  screenHeight,
-  top,
-  left,
-  staggered,
-}) {
+function ProjectContainer({ item, height, width, top, left, wrap }) {
   const [project, setProject] = useState(item);
   const [image1, setImage1] = useState('');
   const [image2, setImage2] = useState('');
   const [hoverState, setHoverState] = useState(false);
+
+  const { innerHeight } = window;
 
   useEffect(() => {
     resetState();
@@ -35,8 +26,6 @@ function ProjectContainer({
       resetState();
     };
   }, []);
-
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   const resetState = () => {
     setHoverState(false);
@@ -49,17 +38,17 @@ function ProjectContainer({
   let WIDTH;
   let HEIGHT;
 
-  if (staggered) {
+  if (wrap) {
     PX = ['10px', '10px', '2px'];
-    PB = isTabletMobile ? '10px' : screenHeight * 0.0324;
-    PT = isTabletMobile ? '10px' : screenHeight * 0.0324;
+    PB = innerHeight * 0.0324;
+    PT = innerHeight * 0.0324;
     SX = {
       overflow: 'hidden',
       position: 'relative',
-      zIndex: 3,
+      zIndex: 5,
     };
-    HEIGHT = isTabletMobile ? '450px' : screenHeight * 0.5926;
-    WIDTH = isTabletMobile ? '100%' : screenWidth * 0.2792;
+    HEIGHT = innerHeight * 0.5926;
+    WIDTH = width * 0.2792;
   } else {
     PX = [];
     PB = [];
@@ -71,7 +60,7 @@ function ProjectContainer({
       overflow: 'hidden',
       top,
       left,
-      zIndex: 3,
+      zIndex: 5,
     };
     HEIGHT = height;
     WIDTH = width;
@@ -204,11 +193,9 @@ ProjectContainer.propTypes = {
   item: PropTypes.object,
   width: PropTypes.number,
   height: PropTypes.number,
-  screenWidth: PropTypes.number,
-  screenHeight: PropTypes.number,
   top: PropTypes.string,
   left: PropTypes.string,
-  staggered: PropTypes.bool,
+  wrap: PropTypes.bool,
 };
 
 export default ProjectContainer;

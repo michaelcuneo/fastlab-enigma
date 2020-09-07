@@ -42,11 +42,13 @@ const PopoverBody = ({ menuItems, setCurrentMenuItem, setOpen }) => (
     width="100%"
     minWidth="100%"
     sx={{
+      width: '100%',
+      minWidth: '100%',
       position: 'relative',
       background: '#151417',
       border: '1px solid #707070',
       borderRadius: '40px',
-      zIndex: '99999 !important',
+      zIndex: 999999,
     }}
   >
     {menuItems.map(item => (

@@ -13,15 +13,15 @@ const GlobalStyle = createGlobalStyle`
 
   html,
   body {
-    height: 100%;
-    width: 100%;
-    min-height: 100%;
-    min-width: 100%;
-    max-height: 100%;
     max-width: 100%;
+    height: 100%;
+    background: #151417;
   }
 
   body {
+    display: flex;
+    position: relative; 
+    flex-direction: column;
     font-family: 'archiaregular', sans-serif;
     font-size: 16px;
     line-height: 25px;
@@ -43,6 +43,17 @@ const GlobalStyle = createGlobalStyle`
   .Popover-below {
     flex-direction: column;
   }
+
+  .player-wrapper {
+    position: relative;
+    padding-top: 56.25%;
+  }
+   
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }  
 `;
 
 export default GlobalStyle;

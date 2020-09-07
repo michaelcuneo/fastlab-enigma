@@ -1,17 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Flex, Box, Image } from 'rebass';
 import { Link } from 'react-router-dom';
 
 import { FormattedMessage } from 'react-intl';
 
-import { useMediaQuery } from 'react-responsive';
-
 import Point1 from 'images/Point_One.svg';
 import Point2 from 'images/Point_Two.svg';
 import Point3 from 'images/Point_Three.svg';
 import Point4 from 'images/Point_Four.svg';
-
-import useWindowDimensions from 'utils/getWindowDimensions';
 
 import { PointText } from './PointText';
 import { PointHeader } from './PointHeader';
@@ -21,12 +18,9 @@ import { MobilePointHeader } from './MobilePointHeader';
 
 import messages from './messages';
 
-const PointsContainer = () => {
+const PointsContainer = ({ width, height, isTabletMobile }) => {
   const mobileHeaderPadding = '0px';
   const headerPadding = '52px';
-
-  const { width, height } = useWindowDimensions();
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
 
   return isTabletMobile ? (
     <Flex
@@ -216,6 +210,12 @@ const PointsContainer = () => {
       </Link>
     </Flex>
   );
+};
+
+PointsContainer.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default PointsContainer;

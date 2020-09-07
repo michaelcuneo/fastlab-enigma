@@ -41,7 +41,6 @@ export default defineMessages({
   },
   point4message: {
     id: `${scope}.point4message`,
-    defaultMessage:
-      'We help organisations engrain brilliant thinking into their culture.',
+    defaultMessage: 'We help organisations re-imagine and reshape the future.',
   },
 });

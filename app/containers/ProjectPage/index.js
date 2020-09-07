@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { useMediaQuery } from 'react-responsive';
+
+import ReactPlayer from 'react-player';
 
 import { graphqlOperation } from 'aws-amplify';
 import { Connect } from 'aws-amplify-react';
@@ -12,11 +13,9 @@ import ParsedContent from 'components/ParsedContent';
 import Slideshow from 'react-slidez';
 
 import Landing from 'containers/Landing';
+import Footer from 'components/Footer';
 
 import { Flex } from 'rebass';
-
-import OverlayContainer from 'containers/OverlayContainer';
-import Footer from 'components/Footer';
 
 import S3Modal from 'components/S3Modal';
 
@@ -25,25 +24,21 @@ import { DetailText } from 'components/DetailText';
 
 import { getProject } from '../../../src/graphql/queries';
 
-function ProjectPage({ match, width, height }) {
-  const isTabletMobile = useMediaQuery({ maxWidth: 1224 });
+function ProjectPage({ match, width, isTabletMobile }) {
+  const { innerHeight } = window;
 
   let SX;
 
   if (isTabletMobile) {
     SX = {
       position: 'relative',
-      height: 'auto',
-      maxWidth: '100%',
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
   } else {
     SX = {
-      position: 'absolute',
-      height: 'auto',
-      maxWidth: '100%',
-      top: '400px',
+      position: 'relative',
+      marginTop: `-${innerHeight - 400}px`,
       background: '#151417',
       borderTop: '1px solid rgba(255, 255, 255, 0.2)',
     };
@@ -53,9 +48,8 @@ function ProjectPage({ match, width, height }) {
     <React.Fragment>
       <Helmet key="Helmet">
         <title>Project Page</title>
-        <meta name="description" content="Fastlab Contact Page" />
+        <meta name="description" content="FASTLab Contact Page" />
       </Helmet>
-      <OverlayContainer width={width} height={height} />
       <Connect
         key="LatestProjectsData"
         query={graphqlOperation(getProject, { id: match.params.id })}
@@ -66,7 +60,7 @@ function ProjectPage({ match, width, height }) {
 
           return (
             <React.Fragment>
-              <Landing text={data.getProject.title} small />
+              <Landing text={data.getProject.title} width={width} small />
               <Flex width={width} flexDirection="column" sx={SX}>
                 <Flex
                   flexDirection="column"
@@ -83,19 +77,38 @@ function ProjectPage({ match, width, height }) {
                     alignItems="flex-begin"
                     px={[width * 0.0933, width * 0.0933, width * 0.2161]}
                   >
-                    <Flex width={[1, 1, width * 0.4229]} flexDirection="column">
-                      <DetailHeader>ABSTRACT</DetailHeader>
-                      <DetailText>
+                    <Flex
+                      minWidth={[1, 1, width * 0.4229]}
+                      flexDirection="column"
+                    >
+                      <DetailHeader
+                        pt={['60px', '60px', '105px']}
+                        pb={['44px', '44px', '30px']}
+                      >
+                        ABSTRACT
+                      </DetailHeader>
+                      <DetailText pb={['44px', '44px', '85px']}>
                         <ParsedContent content={data.getProject.abstract} />
                       </DetailText>
-                      <DetailHeader>DETAILS</DetailHeader>
-                      <DetailText>
+                      <DetailHeader pb={['44px', '44px', '30px']}>
+                        DETAILS
+                      </DetailHeader>
+                      <DetailText pb={['44px', '44px', '85px']}>
                         <ParsedContent content={data.getProject.details} />
                       </DetailText>
                     </Flex>
-                    <Flex pl={width * 0.0781} flexDirection="column">
-                      <DetailHeader>COLLABORATORS</DetailHeader>
-                      <DetailText>
+                    <Flex
+                      minWidth={[1, 1, width * 0.2869]}
+                      pl={isTabletMobile ? 0 : width * 0.0781}
+                      flexDirection="column"
+                    >
+                      <DetailHeader
+                        pt={['60px', '60px', '105px']}
+                        pb={['44px', '44px', '30px']}
+                      >
+                        COLLABORATORS
+                      </DetailHeader>
+                      <DetailText pb={['44px', '44px', '85px']}>
                         {data.getProject.collaborators.items.map(item => [
                           <CollaboratorBio
                             key={item.id}
@@ -106,17 +119,38 @@ function ProjectPage({ match, width, height }) {
                       </DetailText>
                     </Flex>
                   </Flex>
+                  {data.getProject.videoURL !== null && (
+                    <Flex
+                      sx={{
+                        position: 'relative',
+                      }}
+                      flexDirection={isTabletMobile ? 'column' : 'row'}
+                      justifyContent="flex-begin"
+                      alignItems="flex-begin"
+                      px={[width * 0.0933, width * 0.0933, width * 0.2161]}
+                    >
+                      <div className="player-wrapper" width={width * 0.4229}>
+                        <ReactPlayer
+                          className="react-player"
+                          width={width * 0.4229}
+                          height="100%"
+                          url={data.getProject.videoURL}
+                        />
+                      </div>
+                    </Flex>
+                  )}
                   {/* Replace this soon with a better slideshow */}
                   <Flex
                     sx={{
                       position: 'relative',
+                      zIndex: 5,
                     }}
                     flexDirection={isTabletMobile ? 'column' : 'row'}
                     justifyContent="flex-begin"
                     alignItems="flex-begin"
                     minHeight="500px"
                     maxHeight="800px"
-                    px={[width * 0.0933, width * 0.0933, width * 0.2161]}
+                    px={[0, 0, width * 0.2161]}
                   >
                     {data.getProject.gallery.images.items && (
                       <Slideshow
@@ -125,14 +159,18 @@ function ProjectPage({ match, width, height }) {
                         enableKeyboard
                         useDotIndex
                         height="500px"
-                        width={`${width * 0.4229}px`}
+                        width={isTabletMobile ? `100%` : `${width * 0.4229}px`}
                         effect="fade"
                       >
                         {data.getProject.gallery.images.items.map(image => (
                           <S3Modal
                             key={image.id}
                             imgKey={`public/${image.key}`}
-                            sWidth={Math.round(width * 0.4229)}
+                            sWidth={
+                              isTabletMobile
+                                ? Math.round(width)
+                                : Math.round(width * 0.4229)
+                            }
                             lWidth={width}
                           />
                         ))}
@@ -146,9 +184,12 @@ function ProjectPage({ match, width, height }) {
                     flexDirection={isTabletMobile ? 'column' : 'row'}
                     justifyContent="flex-begin"
                     alignItems="flex-begin"
-                    px={[width * 0.0933, width * 0.0933, width * 0.2161]}
+                    px={[width * 0.0933, width * 0.0933, width * 0.2167]}
                   >
-                    <Flex flexDirection="column" pr={width * 0.1172}>
+                    <Flex
+                      flexDirection="column"
+                      width={isTabletMobile ? '100%' : width * 0.2167}
+                    >
                       <DetailHeader pt="80px" pb="30px">
                         FUNDING
                       </DetailHeader>
@@ -173,7 +214,7 @@ function ProjectPage({ match, width, height }) {
                     </Flex>
                   </Flex>
                 </Flex>
-                <Footer />
+                <Footer width={width} isTabletMobile={isTabletMobile} />
               </Flex>
             </React.Fragment>
           );
@@ -186,7 +227,7 @@ function ProjectPage({ match, width, height }) {
 ProjectPage.propTypes = {
   match: PropTypes.object,
   width: PropTypes.number,
-  height: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
 };
 
 export default ProjectPage;

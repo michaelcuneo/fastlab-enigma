@@ -1,7 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FormattedMessage } from 'react-intl';
-
-import { useMediaQuery } from 'react-responsive';
 
 import { Flex, Box, Text } from 'rebass';
 import { VERSION } from 'containers/App/constants';
@@ -15,16 +14,43 @@ import { DesktopWrapper, MobileWrapper } from './Wrapper';
 import { FooterLink } from './FooterLink';
 import messages from './messages';
 
-function Footer() {
-  const isDesktopOrLaptop = useMediaQuery({ minWidth: 1225 });
-
-  return isDesktopOrLaptop ? (
+function Footer({ width, isTabletMobile }) {
+  return isTabletMobile ? (
+    <MobileWrapper>
+      <Flex
+        alignItems="center"
+        alignContent="center"
+        justifyContent="center"
+        flexDirection="column"
+      >
+        <Box pt="75px">
+          <FastlabIcon />
+        </Box>
+        <Box p="38px">
+          <UonIcon />
+        </Box>
+        <Text
+          pb="85px"
+          style={{ fontFamily: 'jetbrains-medium', fontSize: '11px' }}
+        >
+          <FormattedMessage
+            {...messages.licenseMessage}
+            values={{
+              copy: '©',
+              version: VERSION,
+            }}
+          />
+        </Text>
+      </Flex>
+    </MobileWrapper>
+  ) : (
     <DesktopWrapper>
       <Flex
         alignContent="center"
         justifyContent="center"
         flexDirection="column"
-        px={['6.88%']}
+        py={['55px']}
+        px={[width * 0.0729]}
       >
         <FastlabIcon />
         <Text
@@ -41,16 +67,23 @@ function Footer() {
         </Text>
       </Flex>
       <Flex
-        sx={{ width: '40%' }}
+        sx={{ width: '60%' }}
         alignItems="center"
+        flexWrap="wrap"
         justifyContent="space-between"
       >
-        <Tippy content={<FormattedMessage {...messages.homeDetails} />}>
+        <Tippy
+          interactive
+          content={<FormattedMessage {...messages.homeDetails} />}
+        >
           <FooterLink to="/">
             <FormattedMessage {...messages.home} />
           </FooterLink>
         </Tippy>
-        <Tippy content={<FormattedMessage {...messages.aboutDetails} />}>
+        <Tippy
+          interactive
+          content={<FormattedMessage {...messages.aboutDetails} />}
+        >
           <FooterLink to="/about">
             <FormattedMessage {...messages.about} />
           </FooterLink>
@@ -95,35 +128,12 @@ function Footer() {
         <UonIcon />
       </Flex>
     </DesktopWrapper>
-  ) : (
-    <MobileWrapper>
-      <Flex
-        alignItems="center"
-        alignContent="center"
-        justifyContent="center"
-        flexDirection="column"
-      >
-        <Box pt="75px">
-          <FastlabIcon />
-        </Box>
-        <Box p="38.1px">
-          <UonIcon />
-        </Box>
-        <Text
-          pb="85px"
-          style={{ fontFamily: 'jetbrains-medium', fontSize: '11px' }}
-        >
-          <FormattedMessage
-            {...messages.licenseMessage}
-            values={{
-              copy: '©',
-              version: VERSION,
-            }}
-          />
-        </Text>
-      </Flex>
-    </MobileWrapper>
   );
 }
+
+Footer.propTypes = {
+  width: PropTypes.number,
+  isTabletMobile: PropTypes.bool,
+};
 
 export default Footer;

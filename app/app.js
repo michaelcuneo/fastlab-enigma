@@ -83,6 +83,9 @@ import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 import 'tippy.js/dist/tippy.css';
 
 library.add(faAngleRight);
@@ -147,5 +150,3 @@ if (!window.Intl) {
 } else {
   render(translationMessages);
 }
-
-window.LOG_LEVEL = 'debug';
