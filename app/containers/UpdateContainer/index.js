@@ -24,7 +24,7 @@ const UpdateContainer = ({ item, width }) => {
   };
 
   const getImageSource = imgKey => {
-    const domain = 'https://d3l78fpbbpsayf.cloudfront.net/';
+    const domain = 'https://d32d35ekbziyl7.cloudfront.net/';
 
     const request = {
       bucket: 'fastlab-master-20190705141744-storage164059-master',
