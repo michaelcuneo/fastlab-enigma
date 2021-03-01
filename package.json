@@ -134,7 +134,7 @@
     "sanitize.css": "8.0.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "4.2.0",
-    "three": "^0.113.2",
+    "three": "^0.125.0",
     "video-react": "^0.14.1",
     "vivus": "^0.4.5",
     "yup": "^0.28.5"
