@@ -92,7 +92,7 @@
     "ip": "1.1.5",
     "jwt-decode": "^2.2.0",
     "localforage": "^1.7.3",
-    "lodash": "4.17.13",
+    "lodash": "4.17.21",
     "minimist": "^1.2.5",
     "moment": "^2.26.0",
     "nuka-carousel": "^4.7.0",
